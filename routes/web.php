@@ -38,6 +38,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/edit-category/{id}', 'Admin\CategoryController@editCategory')->name('category_edit');
         Route::get('/delete-category/{id}', 'Admin\CategoryController@deleteCategory')->name('category_action_delete');
     });
+    Route::group(['prefix' => 'products'], function () {
+       Route::get('/', 'Admin\ProductController@index')->name('product_list');
+       Route::get('/{id}', 'Admin\ProductController@editProduct')->name('product_edit');
+       Route::post('/{id}/edit', 'Admin\ProductController@editProductAction')->name('product_edit_action');
+    });
 });
 
 Route::get('/picture-delete', 'Admin\CategoryController@deletePicture');

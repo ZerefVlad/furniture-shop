@@ -11,7 +11,7 @@ $('#img-input').change(function (e) {
 
         reader.readAsDataURL(e.target.files[0]);
     }
-})
+});
 
 $('#delete-picture').click(function (e) {
     e.preventDefault();

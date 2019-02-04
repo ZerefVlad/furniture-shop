@@ -2,5 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/js/script.js": "/js/script.js",
-    "/js/imageloader.js": "/js/imageloader.js"
+    "/js/imageloader.js": "/js/imageloader.js",
+    "/js/image-upload-form.js": "/js/image-upload-form.js"
 }
