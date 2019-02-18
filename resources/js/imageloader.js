@@ -20,7 +20,7 @@ $('#delete-picture').click(function (e) {
     $.get({
         url: '/picture-delete',
         data: {
-            pictureId: id,
+            category_id: id,
         },
         success: function (data) {
             window.location.reload();

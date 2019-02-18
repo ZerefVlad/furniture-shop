@@ -30,6 +30,9 @@
             <div class="sidebar">
                 <a href="{{route('user_list')}}">Users</a>
                 <a href="{{route('category_list')}}">Categories</a>
+                <a href="{{route('post_list')}}">Posts</a>
+                <a href="{{route('attribute_list')}}">Attribute</a>
+                <a href="{{route('product_list')}}">Products</a>
             </div>
         </div>
         <div class="col-md-9">

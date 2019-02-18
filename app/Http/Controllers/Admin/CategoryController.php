@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\CreateCategoryRequest;
 use App\Models\Image;
 use App\Models\ImageModel;
 use App\Services\CategoryService;
@@ -31,9 +32,9 @@ class CategoryController extends Controller
             ->with('categories', $categories);
     }
 
-    public function createCategory(CategoryCreateRequest $request)
+    public function createCategory(CreateCategoryRequest $request)
     {
-        $image = $request->file('image')->storeAs('categories',$request->title.'.png');
+        $request->file('image')->storeAs('categories/'.$request->title,$request->image_title.'.png');
 
         $this->category_service->createCategory($request->all());
         Session::flash('category_create_success', 'Категория успешно создана');
@@ -52,12 +53,16 @@ class CategoryController extends Controller
             ->with('categories', $categories);
     }
 
-    public function editCategory($id, CategoryCreateRequest $request)
+    public function editCategory($id, CreateCategoryRequest $request)
     {
-        $image = $request->file('image')->storeAs('categories',$request->title.'.png');
+        if ($image = $request->has('image')) {
+            $request->file('image')->storeAs('categories/'.$request->title, $request->image_title.'.png');
+        }
 
-
-        $this->category_service->editCategory($id, $request->all());
+        $this->category_service->editCategory(
+            $this->category_service->getCategory($id),
+            $request->all()
+        );
         Session::flash('category_edit_success', 'Category успешно changed');
 
         return back();
@@ -67,11 +72,8 @@ class CategoryController extends Controller
     {
         $category = $id ? $this->category_service->getCategory($id) : null;
         $categories = $this->category_service->getCategories();
-        $image = ImageModel::where('model', Category::class)
-            ->where('model_id', $id)->first();
-        if ($image) {
-            $image = Image::find($image->image_id);
-        }
+
+        $image = $category->getImage();
 
         return view('admin.category.category_create')
             ->with('action', 'edit')
@@ -86,14 +88,6 @@ class CategoryController extends Controller
     public function deleteCategory($id)
     {
         $this->category_service->deleteCategory($id);
-        $relation = ImageModel::where('model', Category::class)
-            ->where('model_id', $id)->first();
-        if ($relation) {
-            $image = Image::find($relation->image_id);
-            Storage::delete('categories/'.$image->filename);
-            $relation->delete();
-            $image->delete();
-        }
 
         Session::flash('category_delete_success', 'Category успешно deleted');
 
@@ -102,12 +96,7 @@ class CategoryController extends Controller
 
     public function deletePicture(Request $request)
     {
-        $image = Image::find($request->pictureId);
-        Storage::delete('categories/'.$image->filename);
-        $relation = ImageModel::where('image_id', $request->pictureId)->first();
-        if ($relation) {
-            $relation->delete();
-        }
-        $image->delete();
+        $category = $this->category_service->getCategory($request->category_id);
+        $category->deleteImage();
     }
 }

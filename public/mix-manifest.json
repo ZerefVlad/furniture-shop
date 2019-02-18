@@ -2,6 +2,10 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/js/script.js": "/js/script.js",
+    "/js/related-product-add-form.js": "/js/related-product-add-form.js",
     "/js/imageloader.js": "/js/imageloader.js",
-    "/js/image-upload-form.js": "/js/image-upload-form.js"
+    "/js/image-upload-form.js": "/js/image-upload-form.js",
+    "/js/form-updater.js": "/js/form-updater.js",
+    "/js/cart.js": "/js/cart.js",
+    "/js/attribute-add-form.js": "/js/attribute-add-form.js"
 }

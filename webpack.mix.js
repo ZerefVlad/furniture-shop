@@ -15,4 +15,8 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/script.js', 'public/js')
     .js('resources/js/imageloader.js', 'public/js')
     .js('resources/js/image-upload-form.js', 'public/js')
+    .js('resources/js/attribute-add-form.js', 'public/js')
+    .js('resources/js/related-product-add-form.js', 'public/js')
+    .js('resources/js/form-updater.js', 'public/js')
+    .js('resources/js/cart.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');

@@ -9,82 +9,68 @@
 namespace App\Services;
 
 use App\Models\Category;
-use App\Models\Image;
-use App\Models\ImageModel;
-use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 
 
 class CategoryService
 {
-    public function getCategories()
+    public function getCategories(): Collection
     {
         return Category::all();
     }
 
-    public function getCategory(int $category_id)
+    public function getCategory(int $category_id): Category
     {
         return Category::find($category_id);
     }
 
-    public function createCategory(array $category_data)
+    public function createCategory(array $category_data): void
     {
-        $category = Category::create([
-            'title' => $category_data['title'],
-            'code' => $category_data['code'],
-            'parent_id' => $category_data['parent_id'],
-            'active' =>  isset($category_data['active']) ? true : false,
-            'type' => $category_data['type'],
-        ]);
+        $category = new Category();
+        $category->title = $category_data['title'];
+        $category->code = $category_data['code'];
+        $category->parent_id = $category_data['parent_id'];
+        $category->active = isset($category_data['active']) ? true : false;
+        $category->type = $category_data['type'];
+        $category->save();
 
-        $image = new Image();
-        $image->title = $category_data['title'];
-        $image->filename = $category_data['title'].'.png';
-        $image->file_location = 'categories/';
-        $image->url = Storage::url(
-            'categories/'.$category_data['title'].'.png'
-        );
-        $image->alt = $category_data['title'];
-        $image->save();
-        ImageModel::create([
-            'model' => Category::class,
-            'model_id' => $category->id,
-            'image_id' => $image->id,
-        ]);
-
-        return $category;
+        $imageData = [
+            'title' => $category_data['image_title'],
+            'alt' => $category_data['image_alt'],
+            'url' => Storage::url('categories/'.$category_data['image_title'].'.png')
+        ];
+        $category->addImage($imageData);
     }
 
-    public function editCategory(int $category_id, array $category_data): void
+    public function editCategory(Category $category, array $category_data): void
     {
-        $category = Category::find($category_id);
-        $category->update([
-            'title' => $category_data['title'],
-            'code' => $category_data['code'],
-            'parent_id' => $category_data['parent_id'],
-            'active' => isset($category_data['active']) ? true : false,
-            'type' => $category_data['type'],
-        ]);
+        $category->title = $category_data['title'];
+        $category->code = $category_data['code'];
+        $category->parent_id = $category_data['parent_id'];
+        $category->active = isset($category_data['active']) ? true : false;
+        $category->type = $category_data['type'];
+        $category->save();
+        if (isset($category_data['image'])) {
+            $imageData = [
+                'title' => $category_data['image_title'],
+                'alt' => $category_data['image_alt'],
+                'url' => Storage::url('categories/'.$category_data['image_title'].'.png')
+            ];
+            $category->updateImage($imageData);
+        }
 
-        $image = new Image();
-        $image->title = $category_data['title'];
-        $image->filename = $category_data['title'].'.png';
-        $image->file_location = 'categories/';
-        $image->url = Storage::url(
-            'categories/'.$category_data['title'].'.png'
-        );
-        $image->alt = $category_data['title'];
-        $image->save();
-        ImageModel::create([
-            'model' => Category::class,
-            'model_id' => $category->id,
-            'image_id' => $image->id,
-        ]);
+
     }
 
-    public function deleteCategory(int $category_id)
+    public function deleteCategory(Category $category): void
     {
-        Category::find($category_id)->delete();
+        $category->deleteImage();
+        $category->delete();
     }
 
+    public function getCategoryByTitle(string $title): ?Category
+    {
+        return Category::where('title', $title)->first();
+    }
 }

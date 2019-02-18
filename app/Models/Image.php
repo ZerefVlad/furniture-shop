@@ -7,17 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Image
  * @package App\Models
- * @var string title
- * @var string alt
- * @var string filename
+ * @property string model
+ * @property string url
+ * @property string $title
+ * @property string $alt
+ * @property int model_id
  */
 class Image extends Model
 {
     protected $fillable = [
         'title',
+        'model',
+        'model_id',
         'alt',
-        'filename',
-        'file_location',
-        'url'
+        'url',
     ];
+
+    public function models()
+    {
+        $model = app()->make($this->model);
+
+        return $this->belongsTo($model, 'model_id', 'id');
+    }
 }

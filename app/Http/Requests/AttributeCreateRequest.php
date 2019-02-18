@@ -1,10 +1,15 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: root
+ * Date: 08.02.19
+ * Time: 17:43
+ */
 
 namespace App\Http\Requests;
-
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryCreateRequest extends FormRequest
+class AttributeCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,8 +36,8 @@ class CategoryCreateRequest extends FormRequest
 
     public function messages()
     {
-      return [
-       'title.required' => 'заполни поле title'
-      ];
+        return [
+            'title.required' => 'заполни поле title'
+        ];
     }
 }

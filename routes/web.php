@@ -12,6 +12,16 @@
 */
 
 Route::get('/', 'MainController@index');
+Route::group(['prefix' => 'category'], function() {
+    Route::get('/{category}', 'CategoryController@showProducts')->name('show_product');
+    Route::get('/{category}/{product}', 'ProductController@showSingeProduct')->name('show_single_product');
+});
+
+Route::group(['prefix' => 'cart'], function () {
+    Route::get('/add/{product}', 'CartController@addProduct')->name('add_to_cart');
+});
+
+Route::get('/category', 'CategoryController@index');
 
 Auth::routes();
 
@@ -38,13 +48,36 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/edit-category/{id}', 'Admin\CategoryController@editCategory')->name('category_edit');
         Route::get('/delete-category/{id}', 'Admin\CategoryController@deleteCategory')->name('category_action_delete');
     });
+
+    Route::group(['prefix' => 'post'], function () {
+        Route::get('/', 'Admin\PostController@index')->name('post_list');
+        Route::get('/create', 'Admin\PostController@postActionCreate')->name('post_action_create');
+        Route::get('/edit/{id}/{post_name}', 'Admin\PostController@postActionEdit')->name('post_action_edit');
+        Route::post('/create-post', 'Admin\PostController@createPost')->name('post_create');
+        Route::post('/edit-post/{id}', 'Admin\PostController@editPost')->name('post_edit');
+        Route::get('/delete-post/{id}', 'Admin\PostController@deletePost')->name('post_action_delete');
+    });
+
     Route::group(['prefix' => 'products'], function () {
        Route::get('/', 'Admin\ProductController@index')->name('product_list');
        Route::get('/{id}', 'Admin\ProductController@editProduct')->name('product_edit');
        Route::post('/{id}/edit', 'Admin\ProductController@editProductAction')->name('product_edit_action');
+    });
+
+    Route::group(['prefix' => 'attribute'], function () {
+        Route::get('/', 'Admin\AttributeController@index')->name('attribute_list');
+        Route::get('/create', 'Admin\AttributeController@attributeActionCreate')->name('attribute_action_create');
+        Route::get('/edit/{id}/{attribute_name}', 'Admin\AttributeController@attributeActionUpdate')->name('attribute_action_edit');
+        Route::post('/create-attribute', 'Admin\AttributeController@createAttribute')->name('attribute_create');
+        Route::post('/edit-post/{id}', 'Admin\AttributeController@editAttribute')->name('attribute_edit');
+        Route::get('/delete-post/{id}', 'Admin\AttributeController@deleteAttribute')->name('attribute_action_delete');
     });
 });
 
 Route::get('/picture-delete', 'Admin\CategoryController@deletePicture');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

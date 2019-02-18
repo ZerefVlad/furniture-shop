@@ -95,7 +95,7 @@ $('#delete-picture').click(function (e) {
     $.get({
         url: '/picture-delete',
         data: {
-            pictureId: id
+            category_id: id
         },
         success: function success(data) {
             window.location.reload();

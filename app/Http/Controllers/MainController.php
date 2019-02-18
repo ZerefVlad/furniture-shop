@@ -20,7 +20,6 @@ class MainController extends Controller
     public function __construct(CategoryService $category_service)
     {
         $this->category_service = $category_service;
-        $this->middleware('auth');
     }
 
     public function index ()
