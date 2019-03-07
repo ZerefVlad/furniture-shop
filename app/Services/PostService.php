@@ -25,7 +25,7 @@ class PostService
         return Post::find($post_id);
     }
 
-    public function createPost(array $post_data)
+    public function createPost(array $post_data): void
     {
         $post = Post::create([
             'title' => $post_data['title'],
@@ -33,22 +33,15 @@ class PostService
             'text' => $post_data['text'],
         ]);
 
-        $image = new Image();
-        $image->title = $post_data['title'];
-        $image->filename = $post_data['title'].'.png';
-        $image->file_location = 'posts/';
-        $image->url = Storage::url(
-            'posts/'.$post_data['title'].'.png'
-        );
-        $image->alt = $post_data['title'];
-        $image->save();
-        ImageModel::create([
-            'model' => Post::class,
-            'model_id' => $post->id,
-            'image_id' => $image->id,
-        ]);
+        $imageData = [
+            'title' => $post_data['image_title'],
+            'alt' => $post_data['image_alt'],
+            'url' => Storage::url('posts/'.$post_data['image_title'].'.png')
+        ];
+        $post->addImage($imageData);
 
-        return $post;
+
+
     }
 
     public function editPost(int $post_id, array $post_data): void
@@ -59,21 +52,16 @@ class PostService
             'active' => isset($post_data['active']) ? true : false,
             'text' => $post_data['text'],
         ]);
+        if (isset($post_data['image'])) {
+            $imageData = [
+                'title' => $post_data['image_title'],
+                'alt' => $post_data['image_alt'],
+                'url' => Storage::url('posts/'.$post_data['image_title'].'.png')
+            ];
+            $post->updateImage($imageData);
+        }
 
-        $image = new Image();
-        $image->title = $post_data['title'];
-        $image->filename = $post_data['title'].'.png';
-        $image->file_location = 'posts/';
-        $image->url = Storage::url(
-            'posts/'.$post_data['title'].'.png'
-        );
-        $image->alt = $post_data['title'];
-        $image->save();
-        ImageModel::create([
-            'model' => Post::class,
-            'model_id' => $post->id,
-            'image_id' => $image->id,
-        ]);
+
     }
 
     public function deletePost(int $post_id)

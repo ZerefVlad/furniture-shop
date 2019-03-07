@@ -12,12 +12,13 @@
 */
 
 Route::get('/', 'MainController@index');
-Route::group(['prefix' => 'category'], function() {
+Route::group(['prefix' => 'category'], function () {
     Route::get('/{category}', 'CategoryController@showProducts')->name('show_product');
     Route::get('/{category}/{product}', 'ProductController@showSingeProduct')->name('show_single_product');
 });
 
 Route::group(['prefix' => 'cart'], function () {
+    Route::get('/', 'CartController@openCart')->name('open_cart');
     Route::get('/add/{product}', 'CartController@addProduct')->name('add_to_cart');
 });
 
@@ -59,9 +60,11 @@ Route::group(['prefix' => 'admin'], function () {
     });
 
     Route::group(['prefix' => 'products'], function () {
-       Route::get('/', 'Admin\ProductController@index')->name('product_list');
-       Route::get('/{id}', 'Admin\ProductController@editProduct')->name('product_edit');
-       Route::post('/{id}/edit', 'Admin\ProductController@editProductAction')->name('product_edit_action');
+        Route::get('/', 'Admin\ProductController@index')->name('product_list');
+        Route::get('/create', 'Admin\ProductController@createProduct')->name('create_product');
+        Route::post('/create-action', 'Admin\ProductController@createProductAction')->name('product_create_action');
+        Route::get('/{product}', 'Admin\ProductController@editProduct')->name('product_edit');
+        Route::post('/{product}/edit', 'Admin\ProductController@editProductAction')->name('product_edit_action');
     });
 
     Route::group(['prefix' => 'attribute'], function () {
@@ -72,12 +75,16 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/edit-post/{id}', 'Admin\AttributeController@editAttribute')->name('attribute_edit');
         Route::get('/delete-post/{id}', 'Admin\AttributeController@deleteAttribute')->name('attribute_action_delete');
     });
+
+    Route::get('/orders', 'Admin\OrderController@showOrders')->name('order_list');
+    Route::get('/order/{id}', 'Admin\OrderController@showOrder')->name('single_order');
+
 });
 
 Route::get('/picture-delete', 'Admin\CategoryController@deletePicture');
 
 
-
+Route::get('/submit-order', 'CartController@submitOrder')->name('submit_order');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

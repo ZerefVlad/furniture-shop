@@ -22,6 +22,8 @@ class MainController extends Controller
         $this->category_service = $category_service;
     }
 
+
+
     public function index ()
     {
         $categories = $this->category_service->getCategories();
@@ -29,4 +31,8 @@ class MainController extends Controller
         return view('main')
             ->with('categories', $categories);
     }
+
+
 }
+
+

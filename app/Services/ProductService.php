@@ -8,7 +8,7 @@ use App\Models\ImageModel;
 use App\Models\Product;
 use App\Models\Product_discount;
 use Illuminate\Support\Collection;
-use App\Models\Product_attribute;
+use App\Models\ProductAttribute;
 use App\Models\RelatedProduct;
 use Illuminate\Support\Facades\Storage;
 
@@ -29,21 +29,20 @@ class ProductService
         return Product::where('id', '!=', $productId)->get();
     }
 
-    public function createProduct(array $data): void
+    public function createProduct(array $data): Product
     {
-        Product::create($data);
+        $product = Product::create($data);
+
+        return $product;
     }
 
-    public function updateProduct(int $id, array $data)
+    public function updateProduct(Product $product, array $data)
     {
-        $product = Product::find($id);
         $product->update($data);
-
     }
 
-    public function deleteProduct(int $id): void
+    public function deleteProduct(Product $product): void
     {
-        $product = Product::find($id);
         $product->delete();
     }
 
@@ -56,14 +55,14 @@ class ProductService
     public function addOrUpdateAttributes(Product $product, array $attributes): void
     {
         foreach ($attributes as $attribute) {
-            $relation = Product_attribute::where('product_id', $product->id)
+            $relation = ProductAttribute::where('product_id', $product->id)
                 ->where('attribute_id', $attribute['id'])->first();
             if ($relation) {
                 $relation->update([
                     'value' => $attribute['value'],
                 ]);
             } else {
-                Product_attribute::create([
+                ProductAttribute::create([
                     'attribute_id' => $attribute['id'],
                     'value' => $attribute['value'],
                     'product_id' => $product->id,
@@ -84,7 +83,7 @@ class ProductService
             $discount->product_id = $product->id;
             $discount->value = $value;
             $discount->save();
-            $product->discount()->associate($discount);
+            $discount->product()->associate($product);
         }
     }
 
@@ -97,7 +96,7 @@ class ProductService
 
     public function deleteAttribute(Product $product, int $attribute_id): void
     {
-        Product_attribute::where('product_id', $product->id)
+        ProductAttribute::where('product_id', $product->id)
             ->where('attribute_id', $attribute_id)
             ->delete();
     }

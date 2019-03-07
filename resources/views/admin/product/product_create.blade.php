@@ -5,7 +5,7 @@
     $code = $product ? $product->code : '';
     $description = $product ? $product->description : '';
     $active = $product ? $product->active : 0;
-    $url = $product ? route('product_edit_action', ['id' => $product->id]) : route('product_create_action');
+    $url = $product ? route('product_edit_action', ['product' => $product]) : route('product_create_action');
     $discount = $product ? (!$product->discount ? 0 : $product->discount->value) : 0;
     $id = $product ? $product->id : 0;
 @endphp
@@ -52,7 +52,7 @@
 
             <select form="product-update-form"  multiple="multiple" name="categories[]">
                 @foreach($categories as $category)
-                    <option value="{{$category->id}}">{{$category->title}}</option>
+                    <option value="{{$category->id}}" @if (in_array($category->id, $product->getCategoryIds())) selected @endif>{{$category->title}}</option>
                 @endforeach
             </select>
 
@@ -60,14 +60,14 @@
             <div class="attributes">
                 @if ($productAttributes)
                     @foreach($productAttributes as $attribute)
-                        <form id="update-attribute-data-{{$attribute->id}}"></form>
-                        <label for="">{{$attribute->title}}</label>
-                        <input form="update-attribute-data-{{$attribute->id}}" type="text" name="value" @if ($attribute->values->first()) value="{{$attribute->values->first()->value}}" @endif>
-                        <input form="update-attribute-data-{{$attribute->id}}" type="hidden" name="id" value="{{$attribute->id}}">
-                        <input form="update-attribute-data-{{$attribute->id}}" type="hidden" name="product_id" value="{{$product->id}}">
+                        <form id="update-attribute-data-{{$attribute->attribute->id}}"></form>
+                        <label for="">{{$attribute->attribute->title}}</label>
+                        <input form="update-attribute-data-{{$attribute->attribute->id}}" type="text" name="value" value="{{$attribute->value}}">
+                        <input form="update-attribute-data-{{$attribute->attribute->id}}" type="hidden" name="id" value="{{$attribute->attribute->id}}">
+                        <input form="update-attribute-data-{{$attribute->attribute->id}}" type="hidden" name="product_id" value="{{$product->id}}">
 
-                        <button form="update-attribute-data-{{$attribute->id}}" class="update-attribute btn-primary">ОБНОВИТЬ</button>
-                        <button form="update-attribute-data-{{$attribute->id}}" class="btn-danger delete-attribute">Удалить</button>
+                        <button form="update-attribute-data-{{$attribute->attribute->id}}" class="update-attribute btn-primary">ОБНОВИТЬ</button>
+                        <button form="update-attribute-data-{{$attribute->attribute->id}}" class="btn-danger delete-attribute">Удалить</button>
                         <br>
                     @endforeach
                 @endif
@@ -78,7 +78,6 @@
             <input form="product-update-form"  type="button" id="related-prod-add" data-id="{{$id}}" value="Add Related Products"/>
             <div class="related-products">
                 @if ($relatedProducts)
-
                     @foreach($relatedProducts as $relate)
                         <form id="update-product-related-data-{{$relate->id}}"></form>
                         <label for="">{{$relate->relatedProduct->title}}</label>

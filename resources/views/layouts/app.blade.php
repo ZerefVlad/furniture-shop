@@ -24,8 +24,42 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        #main {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #okno {
+            width: 300px;
+            height: 50px;
+            text-align: center;
+            padding: 15px;
+            border: 3px solid #0000cc;
+            border-radius: 10px;
+            color: #0000cc;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+        }
+        #main:target {display: block;}
+    </style>
+
 </head>
 <body>
+
+<a href="#" id="main">
+    <div id="okno">
+        Всплывающее окошко!
+    </div>
+</a>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
@@ -45,13 +79,18 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
 
+
+
+
+
+                        <a href="#main">
                         <li>
                             <i class="material-icons">
                                 shopping_cart
                             </i>
                             <span id="cart-product-count" data-count="0" class="badge-success"></span>
                         </li>
-
+                        </a>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

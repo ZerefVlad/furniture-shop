@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Storage;
  * @property string $code
  * @property string $active
  * @property string $description
+ * @property-read Discount $discount
  */
 class Product extends Model
 {
+    const ATTRIBUTE_PRICE_NAME = 'price';
     protected $fillable = [
         'title',
         'code',
@@ -29,6 +31,42 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class, 'product_categories', 'product_id');
     }
+
+    public function getCategoryIds(): array
+    {
+        $ids = [];
+        foreach ($this->categories as $item) {
+            $ids[] = $item->id;
+        }
+
+        return $ids;
+    }
+
+    public function getPriceWithDiscount(): int
+    {
+        $attributes = $this->getProductAttributes();
+
+        $discount = $this->discount;
+
+        foreach ($attributes as $attribute) {
+            if ($attribute->attribute->title = self::ATTRIBUTE_PRICE_NAME) {
+                if (is_numeric($attribute->value)) {
+                    return $attribute->value - $attribute->value * ($discount ? $discount->value : 0) / 100;
+                }
+            }
+        }
+    }
+
+    public function getMainProductUrl(): ?string
+    {
+        $img = $this->getImages()->first();
+        if ($img) {
+            return $img->url;
+        }
+
+        return null;
+    }
+
 
     public function productAttributes()
     {
@@ -52,7 +90,7 @@ class Product extends Model
             ->where('model_id', $this->id)->get();
     }
 
-    public  function getRelatedProducts(): Collection
+    public function getRelatedProducts(): Collection
     {
         return RelatedProduct::where('main_product_id', $this->id)->get();
     }
@@ -72,13 +110,13 @@ class Product extends Model
     {
         $image = Image::find($data['id']);
         Storage::copy(
-            'products/'.$data['code'].'/'.$image->title.'.png',
-            'products/'.$data['code'].'/'.$data['title'].'.png'
-            );
-        Storage::delete('products/'.$data['code'].'/'.$image->title.'.png');
+            'products/' . $data['code'] . '/' . $image->title . '.png',
+            'products/' . $data['code'] . '/' . $data['title'] . '.png'
+        );
+        Storage::delete('products/' . $data['code'] . '/' . $image->title . '.png');
         $data = array_merge($data,
             [
-                'url' => Storage::url('products/'.$data['code'].'/'.$data['title'].'.png'),
+                'url' => Storage::url('products/' . $data['code'] . '/' . $data['title'] . '.png'),
             ]);
         if ($image) {
             $image->update($data);
@@ -91,14 +129,14 @@ class Product extends Model
     {
         $image = Image::find($imageId);
         if ($image) {
-            Storage::delete('products/'.$this->code.'/'.$image->title.'.png');
+            Storage::delete('products/' . $this->code . '/' . $image->title . '.png');
             $image->delete();
         }
     }
 
     public function updateAttribute(array $data): void
     {
-        $attribute = Product_attribute::where('product_id', $this->id)
+        $attribute = ProductAttribute::where('product_id', $this->id)
             ->where('attribute_id', $data['id'])->first();
 
         if ($attribute) {
@@ -108,11 +146,16 @@ class Product extends Model
         }
     }
 
+    public function getProductAttributes(): Collection
+    {
+        return ProductAttribute::with('attribute')->where('product_id', $this->id)->get();
+    }
+
     public function deleteAttribute(int $attrId)
     {
-        $attribute = Product_attribute::where('product_id', $this->id)
+        $attribute = ProductAttribute::where('product_id', $this->id)
             ->where('attribute_id', $attrId)->first();
-        if($attribute){
+        if ($attribute) {
             $attribute->delete();
         }
     }
@@ -134,7 +177,7 @@ class Product extends Model
     {
         $relateProduct = RelatedProduct::where('main_product_id', $this->id)
             ->where('related_product_id', $data['related_product_id'])->first();
-        if($relateProduct){
+        if ($relateProduct) {
             $relateProduct->delete();
         }
     }

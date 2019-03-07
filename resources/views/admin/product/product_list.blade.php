@@ -6,11 +6,12 @@
         {{--<div class="alert-success">{{Session::get('product_delete_success')}}</div>--}}
     {{--@endif--}}
     <ul>
+        <li><a href="{{route('create_product')}}">Create new Blyadskiy product</a></li>
         @foreach($products as $product)
             <li>
                 {{$product->title}}
 
-                <a href="{{route('product_edit', ['id' => $product->id, 'title' => $product->title])}}">edit</a>
+                <a href="{{route('product_edit', ['product' => $product])}}">edit</a>
                 {{--<a href="{{route('post_action_delete', ['id' => $post->id])}}">delete</a>--}}
 
             </li>

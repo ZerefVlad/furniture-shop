@@ -33,6 +33,7 @@
                 <a href="{{route('post_list')}}">Posts</a>
                 <a href="{{route('attribute_list')}}">Attribute</a>
                 <a href="{{route('product_list')}}">Products</a>
+                <a href="{{route('order_list')}}">Orders</a>
             </div>
         </div>
         <div class="col-md-9">

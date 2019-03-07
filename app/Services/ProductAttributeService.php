@@ -8,7 +8,7 @@
 
 namespace App\Services;
 
-use App\Models\Product_attribute;
+use App\Models\ProductAttribute;
 
 
 

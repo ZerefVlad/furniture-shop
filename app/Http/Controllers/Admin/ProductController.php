@@ -43,26 +43,88 @@ class ProductController extends Controller
         ]);
     }
 
-    public function createProduct(){
-
+    public function createProduct()
+    {
+        return view('admin.product.product_create', [
+            'product' => null,
+            'images' => null,
+            'relatedProducts' => null,
+            'productAttributes' => null,
+            'categories' => $this->categoryService->getCategories(),
+            'attributes' => $this->attributeService->getAttributes(),
+        ]);
     }
 
-    public function createCategory(Request $request)
+    public function createProductAction(Request $request)
     {
-        $this->productService->createProduct($request->all());
-        Session::flash('Product_create_success', 'Product успешно создана');
+        $data = array_merge(
+            $request->all(),
+            [
+                'active' => isset($request->active) ? true : false
+            ]
+        );
+        $product = $this->productService->createProduct($data);
 
-        return back();
+        if ($request->has('pictures')) {
+            foreach ($request->pictures as $key => $picture) {
+                if ($request->get('code') && $request->get('img_alt') && $request->get('img_title')) {
+                    /**
+                     * @var UploadedFile $picture
+                     */
+                    $picture->storeAs('products/' . $request->get('code'), $request->get('img_title')[$key] . '.png');
+
+                    $this->productService->addImage(
+                        $product,
+                        [
+                            'title' => $request->get('img_title')[$key],
+                            'alt' => $request->get('img_alt')[$key],
+                            'code' => $request->get('code'),
+                        ]
+                    );
+                }
+            }
+        }
+
+        $dataAttributes = [];
+        if ($request->get('attrs')) {
+            if ($request->get('attrs_values')) {
+                foreach ($request->attrs as $key => $attrId) {
+                    $dataAttributes[] = [
+                        'id' => $attrId,
+                        'value' => $request->attrs_values[$key]
+                    ];
+                }
+                $this->productService->addOrUpdateAttributes($product, $dataAttributes);
+            }
+        }
+
+        $dataRelatedProducts = [];
+        if ($request->get('relatedProd')) {
+            foreach ($request->get('relatedProd') as $key => $relateProdId) {
+                if ($request->get('relatedProdDiscount')[$key] && $request->get('relatedProdQuantity')[$key]) {
+                    $dataRelatedProducts[] = [
+                        'related_product_id' => $relateProdId,
+                        'discount' => $request->get('relatedProdDiscount')[$key],
+                        'quantity' => $request->get('relatedProdQuantity')[$key],
+                    ];
+                }
+            }
+            $this->productService->addOrUpdateRelatedProduct($product, $dataRelatedProducts);
+        }
+
+        if ($request->get('categories')) {
+            $this->productService->addCategories($product, $request->get('categories'));
+        }
+        $this->productService->addOrUpdateDiscount($product, $request->get('discount_value') ?? 0);
+
+        Session::flash('update', 'Product created successfully');
+        return redirect()->route('product_edit', ['product' => $product]);
     }
 
-    public function editProduct(int $id)
+    public function editProduct(Product $product)
     {
-        /**
-         * @var Product $product
-         */
-        $product = Product::find($id);
         $images = $product->getImages();
-        $productAttributes = $product->attributes;
+        $productAttributes = $product->getProductAttributes();
         $relatedProducts = $product->getRelatedProducts();
 
         return view('admin.product.product_create', [
@@ -80,11 +142,8 @@ class ProductController extends Controller
         return response()->json($this->productService->getRelatedProducts($request->get('product_id')));
     }
 
-    public function editProductAction(int $id, Request $request)
+    public function editProductAction(Product $product, Request $request)
     {
-
-        $product = $this->productService->getProduct($id);
-
         $data = array_merge(
             $request->all(),
             [
@@ -93,42 +152,45 @@ class ProductController extends Controller
         );
         if ($request->has('pictures')) {
             foreach ($request->pictures as $key => $picture) {
-                /**
-                 * @var UploadedFile $picture
-                 */
-                $picture->storeAs('products/' . $request->code, $request->img_title[$key] . '.png');
+                if ($request->get('code') && $request->get('img_alt') && $request->get('img_title')) {
+                    /**
+                     * @var UploadedFile $picture
+                     */
+                    $picture->storeAs('products/' . $request->get('code'), $request->get('img_title')[$key] . '.png');
 
-
-                $this->productService->addImage(
-                    $product,
-                    [
-                        'title' => $request->img_title[$key],
-                        'alt' => $request->img_alt[$key],
-                        'code' => $request->code,
-                    ]
-                );
+                    $this->productService->addImage(
+                        $product,
+                        [
+                            'title' => $request->get('img_title')[$key],
+                            'alt' => $request->get('img_alt')[$key],
+                            'code' => $request->get('code'),
+                        ]
+                    );
+                }
             }
         }
 
         $dataAttributes = [];
-        if ($request->attrs) {
+        if ($request->get('attrs')) {
             foreach ($request->attrs as $key => $attrId) {
-                $dataAttributes[] = [
-                    'id' => $attrId,
-                    'value' => $request->attrs_values[$key]
-                ];
+                if ($request->get('attrs_values')[$key]) {
+                    $dataAttributes[] = [
+                        'id' => $attrId,
+                        'value' => $request->get('attrs_values')[$key]
+                    ];
+                }
             }
             $this->productService->addOrUpdateAttributes($product, $dataAttributes);
         }
 
         $dataRelatedProducts = [];
-        if ($request->relatedProd) {
-            foreach ($request->relatedProd as $key => $relateProdId) {
-                if ($request->relatedProdDiscount[$key] && $request->relatedProdQuantity[$key]) {
+        if ($request->get('relatedProd')) {
+            foreach ($request->get('relatedProd') as $key => $relateProdId) {
+                if ($request->get('relatedProdDiscount')[$key] && $request->get('relatedProdQuantity')[$key]) {
                     $dataRelatedProducts[] = [
                         'related_product_id' => $relateProdId,
-                        'discount' => $request->relatedProdDiscount[$key],
-                        'quantity' => $request->relatedProdQuantity[$key],
+                        'discount' => $request->get('relatedProdDiscount')[$key],
+                        'quantity' => $request->get('relatedProdQuantity')[$key],
                     ];
                 }
             }
@@ -139,7 +201,7 @@ class ProductController extends Controller
             $this->productService->addCategories($product, $request->get('categories'));
         }
 
-        $this->productService->updateProduct($id, $data);
+        $this->productService->updateProduct($product, $data);
 
         $this->productService->addOrUpdateDiscount($product, $request->get('discount_value') ?? 0);
 

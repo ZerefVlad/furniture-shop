@@ -11,9 +11,9 @@ $('#related-prod-add').click(function (event) {
             for (let i=0; i < data.length; i++) {
                 options += '<option value="'+data[i].id+'">'+data[i].title+'</option>';
             }
-            $('.related-products').append('<input form="product-update-form"  name="relatedProd[]" list="main-prod"><datalist id="main-prod">'+options+
-                '</datalist><input form="product-update-form"  type="number" name="relatedProdDiscount[]">' +
-                '<input form="product-update-form"  type="number" name="relatedProdQuantity[]">')
+            $('.related-products').append('<select form="product-update-form"  name="relatedProd[]">'+options+'</select>' +
+                '<input form="product-update-form"  type="number" name="relatedProdDiscount[]">' +
+                '<input form="product-update-form" type="number" name="relatedProdQuantity[]">')
         }
     });
 });
