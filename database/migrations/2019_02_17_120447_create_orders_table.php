@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->json('order_data');
             $table->json('user_data');
-            $table->string('status');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

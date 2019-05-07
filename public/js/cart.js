@@ -60,20 +60,20 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 56);
+/******/ 	return __webpack_require__(__webpack_require__.s = 58);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 56:
+/***/ 58:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(57);
+module.exports = __webpack_require__(59);
 
 
 /***/ }),
 
-/***/ 57:
+/***/ 59:
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
@@ -86,13 +86,16 @@ $(document).ready(function () {
     $('#add_to_cart').click(function (e) {
         var badge = $('#cart-product-count');
         var counter = badge.attr('data-count');
-        var quantity = $('input[name="quantity"]').val();
+        var quantity = $('#kolvo').val();
         var product_id = $('input[name="product_id"]').val();
         var check = true;
 
         counter = parseInt(counter) + parseInt(quantity);
         badge.attr('data-count', parseInt(counter));
         badge.html(parseInt(counter));
+
+        console.log(counter);
+        console.log(quantity);
         $.get({
             url: '/api/cart/add',
             data: {
@@ -102,9 +105,10 @@ $(document).ready(function () {
         });
     });
 
-    $('.delete-product-cart').click(function (event) {
+    $('#delete-product-cart').click(function (event) {
         event.preventDefault();
         var id = event.target.getAttribute('data-id');
+        console.log(event.target);
         $.get({
             url: '/api/cart/delete',
             data: {
@@ -187,11 +191,18 @@ $(document).ready(function () {
         $.get({
             url: '/api/cart/total',
             success: function success(data) {
-                $('#total-price').html('Total Price: ' + data);
+                $('#total-price').html(data);
                 $('#total-price-input').val(data);
             }
         });
     }
+
+    $.get({
+        url: '/api/cart/get-cart',
+        success: function success(data) {
+            $('.wrapper').append(data);
+        }
+    });
 });
 
 /***/ })

@@ -38,7 +38,7 @@ class CategoryService
         $imageData = [
             'title' => $category_data['image_title'],
             'alt' => $category_data['image_alt'],
-            'url' => Storage::url('categories/'.$category_data['image_title'].'.png')
+            'url' => Storage::url('categories/'.$category_data['title'].'/'.$category_data['image_title'].'.png')
         ];
         $category->addImage($imageData);
     }
@@ -55,7 +55,7 @@ class CategoryService
             $imageData = [
                 'title' => $category_data['image_title'],
                 'alt' => $category_data['image_alt'],
-                'url' => Storage::url('categories/'.$category_data['image_title'].'.png')
+                'url' => Storage::url('categories/'.$category_data['title'].'/'.$category_data['image_title'].'.png')
             ];
             $category->updateImage($imageData);
         }

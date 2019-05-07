@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Subscribe;
 use App\Models\User;
 use App\Models\Role;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -75,5 +78,21 @@ class RegisterController extends Controller
             ->attach(Role::where('name', 'customer')->first());
 
         return $user;
+    }
+
+    public function register(Request $request)
+    {
+        if($request->has('subscribe')) {
+            Subscribe::create($request->only('email'));
+        }
+
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
     }
 }

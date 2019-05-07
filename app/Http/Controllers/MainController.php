@@ -24,12 +24,14 @@ class MainController extends Controller
 
 
 
-    public function index ()
+    public function index (Request $request)
     {
         $categories = $this->category_service->getCategories();
+        $user_ip = $request->ip();
 
         return view('main')
-            ->with('categories', $categories);
+            ->with('categories', $categories)
+            ->with('user_ip', $user_ip);
     }
 
 

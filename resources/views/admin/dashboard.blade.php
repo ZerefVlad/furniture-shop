@@ -15,7 +15,7 @@
     <!-- Scripts -->
     {{--<script src="{{ asset('js/app.js') }}" defer></script>--}}
     <script src="{{ asset('js/script.js') }}" defer></script>
-
+    <script src="{{asset('js/comment.js')}}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -34,6 +34,9 @@
                 <a href="{{route('attribute_list')}}">Attribute</a>
                 <a href="{{route('product_list')}}">Products</a>
                 <a href="{{route('order_list')}}">Orders</a>
+                <a href="{{route('main_page_create')}}">Main Page</a>
+                <a href="{{route('comment_list')}}">Comment</a>
+                <a href="{{route('subscribers')}}">Рассылка</a>
             </div>
         </div>
         <div class="col-md-9">

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Mail\ManagerEmail;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -113,7 +116,8 @@ class CartController extends Controller
             }
         }
         $this->session->set('total_price', $totalPrice);
-
+        $this->session->set('single', $products);
+        $this->session->set('multiple', $complexes);
         return view('cart', [
             'products' => $products,
             'complexes' => $complexes,
@@ -139,6 +143,8 @@ class CartController extends Controller
                 $total += $price * $complex['total_quantity'];
             }
         }
+
+        $this->session->set('total', $total);
 
         return response()->json(number_format($total, 2));
     }
@@ -200,12 +206,34 @@ class CartController extends Controller
     {
         $order = new Order();
         $order->order_data = json_encode([
+            'total' => $this->session->get('total_price'),
             'products' => $this->session->get('cart_data_products'),
             'complexes' => $this->session->get('cart_data_complex'),
         ]);
         $order->user_data = json_encode($request->all());
+        $order->user()->associate($request->user());
         $this->session->clear();
         $order->save();
+
+
+
+        foreach (User::all() as $user) {
+            if($user->hasRole('manager')){
+                \Mail::to($user->email)->send(new ManagerEmail($order));
+            }
+
+        }
+
         return back();
+    }
+
+
+
+    public function getCart()
+    {
+        return view('modals.modal-cart')
+            ->with('single', $this->session->get('single'))
+            ->with('multiple', $this->session->get('multiple'))
+            ->with('total', $this->session->get('total_price'));
     }
 }

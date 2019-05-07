@@ -27,3 +27,18 @@ $('#delete-picture').click(function (e) {
         }
     })
 });
+
+$('#delete-picture-post').click(function (e) {
+    e.preventDefault();
+    let id = e.target.getAttribute('data-id');
+
+    $.get({
+        url: '/picture-delete-post',
+        data: {
+            post_id: id,
+        },
+        success: function (data) {
+            window.location.reload();
+        }
+    })
+});

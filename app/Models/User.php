@@ -69,4 +69,15 @@ class User extends Authenticatable
     {
         return null !== $this->roles()->where('name', $role)->first();
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function isSubscribe() : bool
+    {
+
+        return Subscribe::where('email', $this->email)->exists();
+    }
 }

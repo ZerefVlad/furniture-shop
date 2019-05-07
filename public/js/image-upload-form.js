@@ -60,20 +60,20 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 48);
+/******/ 	return __webpack_require__(__webpack_require__.s = 50);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 48:
+/***/ 50:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(49);
+module.exports = __webpack_require__(51);
 
 
 /***/ }),
 
-/***/ 49:
+/***/ 51:
 /***/ (function(module, exports) {
 
 $('#picture-add').click(function (e) {
@@ -82,6 +82,14 @@ $('#picture-add').click(function (e) {
     console.log(counter);
     var div = $('.images').first();
     div.append('<div class="col-md-12">' + '<input form="product-update-form"  type="text" name="img_alt[' + counter + ']">' + '<input form="product-update-form"  type="text" name="img_title[' + counter + ']">' + '<input form="product-update-form"  type="file" name="pictures[' + counter + ']" id="img-' + counter + '" class="img-input">' + '<img src="#" id="loader-' + counter + '" class="load-image" alt="">' + '</div>');
+});
+
+$('#picture-add-main-page').click(function (e) {
+    e.preventDefault();
+    var counter = $('.img-input').length;
+    console.log(counter);
+    var div = $('.images').first();
+    div.append('<div class="col-md-12">' + '<input form="main-page-update-form"  type="text" name="img_alt[' + counter + ']">' + '<input form="main-page-update-form"  type="text" name="img_title[' + counter + ']">' + '<input form="main-page-update-form"  type="file" name="pictures[' + counter + ']" id="img-' + counter + '" class="img-input">' + '<img src="#" id="loader-' + counter + '" class="load-image" alt="">' + '</div>');
 });
 
 $(document).on('change', '.img-input', function (e) {

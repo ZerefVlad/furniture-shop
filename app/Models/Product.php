@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use App\Configurators\ProductIndexConfigurator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
-
+use Laravel\Scout\Searchable;
 /**
  * Class Product
  * @package App\Models
@@ -14,23 +15,39 @@ use Illuminate\Support\Facades\Storage;
  * @property string $code
  * @property string $active
  * @property string $description
+ * @property string $video_id
  * @property-read Discount $discount
  */
 class Product extends Model
 {
-    const ATTRIBUTE_PRICE_NAME = 'price';
-    protected $fillable = [
-        'title',
-        'code',
-        'active',
-        'description',
+    use Searchable;
 
+    const ATTRIBUTE_PRICE_NAME = 'price';
+
+
+    protected $guarded = [
+        'id'
     ];
+
 
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'product_categories', 'product_id');
     }
+
+    public function toSearchableArray()
+    {
+        return [
+            'title' => $this->title,
+            'code' => $this->code,
+        ];
+    }
+
+    public function likes()
+    {
+        return $this->hasOne(Likes::class);
+    }
+
 
     public function getCategoryIds(): array
     {
@@ -55,6 +72,24 @@ class Product extends Model
                 }
             }
         }
+
+        return 0;
+    }
+
+    public function getPriceWithoutDiscount(): int
+    {
+        $attributes = $this->getProductAttributes();
+
+
+        foreach ($attributes as $attribute) {
+            if ($attribute->attribute->title = self::ATTRIBUTE_PRICE_NAME) {
+                if (is_numeric($attribute->value)) {
+                    return $attribute->value;
+                }
+            }
+        }
+
+        return 0;
     }
 
     public function getMainProductUrl(): ?string
@@ -186,4 +221,39 @@ class Product extends Model
     {
         return 'title';
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function addComment(array $data, ?User $user)
+    {
+
+        $comment = new Comment();
+        $comment->text = $data['text'];
+        $comment->rating = $data['rating'];
+        $comment->product()->associate($this);
+        if ($user) {
+            $comment->user()->associate($user);
+        }
+        $comment->save();
+
+        return $comment;
+    }
+
+    public function updateComment(array $data, ?User $user, Comment $comment)
+    {
+
+        $comment->text = $data['text'];
+        $comment->rating = $data['rating'];
+        $comment->product()->associate($this);
+        if ($user) {
+            $comment->user()->associate($user);
+        }
+        $comment->save();
+
+        return $comment;
+    }
+
 }

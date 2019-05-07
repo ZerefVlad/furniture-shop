@@ -44,9 +44,9 @@ class UserController extends Controller
         return back();
     }
 
-    public function editUser($id, UserCreateRequest $request)
+    public function editUser(User $user, UserCreateRequest $request)
     {
-        $this->user_service->editUser($id, $request->all());
+        $this->user_service->editUser($user, $request->all());
         Session::flash('user_edit_success', 'Юхер успешно changed');
 
         return back();

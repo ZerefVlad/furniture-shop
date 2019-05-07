@@ -15,10 +15,22 @@ class OrderController extends Controller
         ]);
     }
 
-    public function showOrder($id)
+    public function showOrder(Order $order)
     {
+        if($order->status === 'pending') {
+            $order->changeStatus('viewed');
+        }
         return view('admin.orders.single_order', [
-            'orders' => Order::find($id),
+            'orders' => $order,
+        ]);
+    }
+
+    public function changeStatus(Order $order, Request $request)
+    {
+        $order->changeStatus($request->get('status'));
+
+        return response()->json([
+            'status updated'
         ]);
     }
 }

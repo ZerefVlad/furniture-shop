@@ -33,8 +33,8 @@ class PostController extends Controller
 
     public function createPost(PostCreateRequest $request)
     {
-
-        $image = $request->file('image')->storeAs('posts',$request->title.'.png');
+        $request->file('image')->storeAs('posts/'.$request->title,$request->image_title.'.png');
+       // $image = $request->file('image')->storeAs('posts',$request->title.'.png');
 
         $this->post_service->createPost($request->all());
         Session::flash('post_create_success', 'Post успешно создан');
@@ -55,7 +55,10 @@ class PostController extends Controller
 
     public function editPost($id, PostCreateRequest $request)
     {
-        $image = $request->file('image')->storeAs('posts',$request->title.'.png');
+        if ($image = $request->has('image')) {
+            $request->file('image')->storeAs('posts/'.$request->title, $request->image_title.'.png');
+        }
+        //$image = $request->file('image')->storeAs('posts',$request->title.'.png');
 
 
         $this->post_service->editPost($id, $request->all());
@@ -68,13 +71,13 @@ class PostController extends Controller
     {
         $post = $id ? $this->post_service->getPost($id) : null;
         $posts = $this->post_service->getPosts();
-        $image = ImageModel::where('model', Post::class)
-            ->where('model_id', $id)->first();
-
-        if ($image) {
-            $image = Image::find($image->image_id);
-        }
-
+//        $image = ImageModel::where('model', Post::class)
+//            ->where('model_id', $id)->first();
+//
+//        if ($image) {
+//            $image = Image::find($image->image_id);
+//        }
+        $image = $post->getImage();
         return view('admin.post.post_create')
             ->with('action', 'edit')
             ->with('id', $id)
@@ -88,14 +91,14 @@ class PostController extends Controller
     public function deletePost($id)
     {
         $this->post_service->deletePost($id);
-        $relation = ImageModel::where('model', Post::class)
-            ->where('model_id', $id)->first();
-        if ($relation) {
-            $image = Image::find($relation->image_id);
-            Storage::delete('posts/'.$image->filename);
-            $relation->delete();
-            $image->delete();
-        }
+//        $relation = ImageModel::where('model', Post::class)
+//            ->where('model_id', $id)->first();
+//        if ($relation) {
+//            $image = Image::find($relation->image_id);
+//            Storage::delete('posts/'.$image->filename);
+//            $relation->delete();
+//            $image->delete();
+//        }
 
         Session::flash('post_delete_success', 'Post успешно deleted');
 
@@ -104,12 +107,14 @@ class PostController extends Controller
 
     public function deletePicture(Request $request)
     {
-        $image = Image::find($request->pictureId);
-        Storage::delete('posts/'.$image->filename);
-        $relation = ImageModel::where('image_id', $request->pictureId)->first();
-        if ($relation) {
-            $relation->delete();
-        }
-        $image->delete();
+//        $image = Image::find($request->pictureId);
+//        Storage::delete('posts/'.$image->filename);
+//        $relation = ImageModel::where('image_id', $request->pictureId)->first();
+//        if ($relation) {
+//            $relation->delete();
+//        }
+//        $image->delete();
+        $post = $this->post_service->getPost($request->post_id);
+        $post->deleteImage();
     }
 }

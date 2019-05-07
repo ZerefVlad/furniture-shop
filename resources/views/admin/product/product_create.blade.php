@@ -44,15 +44,31 @@
                         <input form="update-picture-data-{{$image->id}}" type="hidden" name="product_id" value="{{$product->id}}">
                         <img src="{{$image->url}}" width="300" height="300">
                         <button form="update-picture-data-{{$image->id}}" class="update-img btn-primary">ОБНОВИТЬЬЬЬЬЬ</button>
-                        <button form="update-picture-data-{{$image->id}}" class="btn-danger delete-img">Убрать нахуй</button>
+                        <button form="update-picture-data-{{$image->id}}" class="btn-danger delete-img">Delete</button>
                         <br>
                     @endforeach
                 @endif
             </div>
 
+        <input type="button" id="video-add" value="add-video">
+        <div class="videos">
+            @if ($videos)
+                @foreach($videos as $video)
+                    <div id="select-video-{{$video}}">
+                    <input form="product-update-form" type="text" name="videos[]" value="{{$video}}">
+
+                    <iframe type = "text/html" width = "640" height = "385" src = "http://www.youtube.com/embed/{{$video}}" frameborder = "0" ></iframe>
+
+                    <button form="product-update-form" class="btn-danger delete-video" data-id="{{$video}}">Delete</button>
+                    </div>
+                @endforeach
+            @endif
+
+        </div>
+
             <select form="product-update-form"  multiple="multiple" name="categories[]">
                 @foreach($categories as $category)
-                    <option value="{{$category->id}}" @if (in_array($category->id, $product->getCategoryIds())) selected @endif>{{$category->title}}</option>
+                    <option value="{{$category->id}}" @if ($product && in_array($category->id, $product->getCategoryIds())) selected @endif>{{$category->title}}</option>
                 @endforeach
             </select>
 
@@ -99,6 +115,7 @@
     </div>
     <script src="{{asset('js/image-upload-form.js')}}"></script>
     <script src="{{asset('js/imageloader.js')}}"></script>
+    <script src="{{asset('js/videoloader.js')}}"></script>
     <script src="{{asset('js/attribute-add-form.js')}}"></script>
     <script src="{{asset('js/related-product-add-form.js')}}"></script>
     <script src="{{asset('js/form-updater.js')}}"></script>

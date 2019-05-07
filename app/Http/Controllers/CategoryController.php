@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use App\Services\CategoryService;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
@@ -21,9 +22,13 @@ class CategoryController extends Controller
 
     public function showProducts (Category $category)
     {
-       $products = $category->products;
+       $products = $category->products()->paginate(16);
+
+
+
 
         return view('default.category')
-            ->with('products', $products);
+            ->with('products', $products)
+            ->with('category', $category);
     }
 }

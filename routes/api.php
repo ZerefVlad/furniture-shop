@@ -25,6 +25,10 @@ Route::any('/update-product-attribute', 'Admin\ProductController@updateAttribute
 Route::any('/delete-product-attribute', 'Admin\ProductController@deleteAttributeData');
 Route::any('/update-product-related', 'Admin\ProductController@updateRelateProductData');
 Route::any('/delete-product-related', 'Admin\ProductController@deleteRelateProductData');
+Route::get('/order/change-status/{order}', 'Admin\OrderController@changeStatus');
+//Route::get('/main-page-slider', 'Admin\MainPageController@addPictureSlider');
+
+
 Route::group(['prefix' => 'cart'], function () {
     Route::get('/add', 'CartController@addProduct');
     Route::get('/delete', 'CartController@deleteProduct');
@@ -33,4 +37,9 @@ Route::group(['prefix' => 'cart'], function () {
     Route::get('/delete-complex', 'CartController@deleteComplexPack');
     Route::get('/update-complex-quantity', 'CartController@updateComplexQuantity');
     Route::get('/total', 'CartController@getTotal');
+    Route::get('/get-cart', 'CartController@getCart');
 });
+
+Route::post('/{comment}/delete', 'ProductController@deleteComment');
+
+Route::get('/products/search/{searchText}', 'ProductController@showSearchResults');

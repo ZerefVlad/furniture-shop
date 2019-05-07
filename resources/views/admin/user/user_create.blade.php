@@ -8,7 +8,7 @@
     @if (Session::has('user_create_success'))
         <div class="alert-success">{{Session::get('user_create_success')}}</div>
     @endif
-    <form action="@if ($action === 'edit') {{route('user_edit', ['id' => $id])}} @else {{route('user_create')}}
+    <form action="@if ($action === 'edit') {{route('user_edit', ['user' => $user])}} @else {{route('user_create')}}
     @endif">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
 

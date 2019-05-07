@@ -74,7 +74,7 @@ class AttributeController extends Controller
     {
         $this->attributeService->deleteAttribute($id);
 
-        Session::flash('category_delete_success', 'Category успешно deleted');
+        Session::flash('attribute_delete_success', 'attribute успешно deleted');
 
         return back();
     }

@@ -36,9 +36,15 @@ class PostService
         $imageData = [
             'title' => $post_data['image_title'],
             'alt' => $post_data['image_alt'],
-            'url' => Storage::url('posts/'.$post_data['image_title'].'.png')
+            'url' => Storage::url('posts/'.$post_data['title'].'/'.$post_data['image_title'].'.png')
+
         ];
         $post->addImage($imageData);
+
+//        $imageData = array_merge($imageData, [
+//            'url' => Storage::url('products/'.$imageData['code'].'/'.$imageData['title'].'.png')
+//        ]);
+//        $product->addImage($imageData);
 
 
 
@@ -56,7 +62,8 @@ class PostService
             $imageData = [
                 'title' => $post_data['image_title'],
                 'alt' => $post_data['image_alt'],
-                'url' => Storage::url('posts/'.$post_data['image_title'].'.png')
+                'url' => Storage::url('posts/'.$post_data['title'].'/'.$post_data['image_title'].'.png')
+
             ];
             $post->updateImage($imageData);
         }
@@ -66,6 +73,8 @@ class PostService
 
     public function deletePost(int $post_id)
     {
-        Post::find($post_id)->delete();
+        $post = Post::find($post_id);
+        $post->delete();
+        $post->deleteImage();
     }
 }

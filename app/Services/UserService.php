@@ -59,9 +59,9 @@ class UserService
         return $user;
     }
 
-    public function editUser(int $user_id, array $user_data): void
+    public function editUser(User $user, array $user_data): void
     {
-        $user = User::find($user_id);
+
         $user->update([
             'name' => $user_data['name'],
             'email' => $user_data['email'],

@@ -3,7 +3,9 @@
     @var string $action
     @var App\Models\Post $post
     **/
-
+$image_title = $image ? $image->title : '';
+$image_alt = $image ? $image->alt : '';
+$image_url = $image ? $image->url : '#';
 @endphp
 @extends('admin.dashboard')
 
@@ -29,12 +31,15 @@
 
 
 
-
-        <input type="file" name="image" id="img-input">
-        <img @if ($image) src="{{$image->url}}" width="300" height="300" @else src="#" @endif alt="" id="load-image">
-        @if ($image)
-            <button data-id="{{$image->id}}" id="delete-picture">Delete picture</button>
-        @endif
+        <div class="col-md-3">
+            <input placeholder="title" value="{{$image_title}}" type="text" name="image_title" class="form-control">
+            <input type="text" placeholder="alt" value="{{$image_alt}}" name="image_alt" class="form-control">
+            <input class="form-control-file" type="file" name="image" id="img-input">
+            <img src="{{$image_url}}" width="300" height="300" id="load-image">
+            @if ($image)
+                <button data-id="{{$id}}" id="delete-picture-post">Delete picture</button>
+            @endif
+        </div>
 
         <label for="text_post">Введите text</label>
         <input name="text" id="text_post" type="text" @if ($post) value="{{$post->text}}" @endif >

@@ -48,6 +48,7 @@ class ProductController extends Controller
         return view('admin.product.product_create', [
             'product' => null,
             'images' => null,
+            'videos' => null,
             'relatedProducts' => null,
             'productAttributes' => null,
             'categories' => $this->categoryService->getCategories(),
@@ -58,9 +59,10 @@ class ProductController extends Controller
     public function createProductAction(Request $request)
     {
         $data = array_merge(
-            $request->all(),
+            $request->except(['videos','categories','discount_value','img_alt','img_title','attrs','attrs_values','pictures','relatedProd','relatedProdDiscount','relatedProdQuantity']),
             [
-                'active' => isset($request->active) ? true : false
+                'active' => isset($request->active) ? true : false,
+                'video_id' => json_encode($request->get('videos'))
             ]
         );
         $product = $this->productService->createProduct($data);
@@ -84,6 +86,8 @@ class ProductController extends Controller
                 }
             }
         }
+
+
 
         $dataAttributes = [];
         if ($request->get('attrs')) {
@@ -126,10 +130,11 @@ class ProductController extends Controller
         $images = $product->getImages();
         $productAttributes = $product->getProductAttributes();
         $relatedProducts = $product->getRelatedProducts();
-
+        $videos = json_decode($product->video_id);
         return view('admin.product.product_create', [
             'product' => $product,
             'images' => $images,
+            'videos' => $videos,
             'relatedProducts' => $relatedProducts,
             'productAttributes' => $productAttributes,
             'categories' => $this->categoryService->getCategories(),
@@ -145,11 +150,14 @@ class ProductController extends Controller
     public function editProductAction(Product $product, Request $request)
     {
         $data = array_merge(
-            $request->all(),
+            $request->except(['videos','categories','discount_value','img_alt','img_title','attrs','attrs_values','pictures','relatedProd','relatedProdDiscount','relatedProdQuantity']),
+
             [
-                'active' => isset($request->active) ? true : false
+                'active' => isset($request->active) ? true : false,
+                'video_id' => json_encode($request->get('videos'))
             ]
         );
+
         if ($request->has('pictures')) {
             foreach ($request->pictures as $key => $picture) {
                 if ($request->get('code') && $request->get('img_alt') && $request->get('img_title')) {

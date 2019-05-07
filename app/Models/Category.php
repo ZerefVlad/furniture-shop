@@ -54,23 +54,23 @@ CLASS Category EXTENDS Model
 
     public function updateImage(array $data): void
     {
-       $image = Image::where('model', __CLASS__)
-           ->where('model_id', $this->id)->first();
-       if ($image) {
-           $image->update($data);
-       } else {
-           $this->addImage($data);
-       }
+        $image = Image::where('model', __CLASS__)
+            ->where('model_id', $this->id)->first();
+        if ($image) {
+            $image->update($data);
+        } else {
+            $this->addImage($data);
+        }
     }
 
     public function deleteImage()
     {
-       $image = Image::where('model', __CLASS__)
-           ->where('model_id', $this->id)->first();
-       if ($image) {
-           Storage::delete('categories/'.$this->title.'/'.$image->title.'.png');
-           $image->delete();
-       }
+        $image = Image::where('model', __CLASS__)
+            ->where('model_id', $this->id)->first();
+        if ($image) {
+            Storage::delete('categories/' . $this->title . '/' . $image->title . '.png');
+            $image->delete();
+        }
     }
 
 
@@ -83,4 +83,14 @@ CLASS Category EXTENDS Model
     {
         return 'title';
     }
+
+    public function isParent(): bool
+    {
+        if ($this->parent_id == null) {
+            return true;
+        }
+        return false;
+    }
+
+
 }

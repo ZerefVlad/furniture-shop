@@ -3,7 +3,13 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Likes;
+use App\Models\Order;
 use App\Models\Product;
+use App\Models\Subscribe;
+use App\Models\User;
+use http\Env\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -30,6 +36,13 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
         Route::model('category', Category::class);
         Route::model('product', Product::class);
+        Route::model('order', Order::class);
+        Route::model('comment', Comment::class);
+        Route::model('user', User::class);
+        Route::model('subscribe', Subscribe::class);
+        Route::model('like', Likes::class);
+
+
     }
 
     /**

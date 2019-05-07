@@ -60,20 +60,20 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 46);
+/******/ 	return __webpack_require__(__webpack_require__.s = 48);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 46:
+/***/ 48:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(47);
+module.exports = __webpack_require__(49);
 
 
 /***/ }),
 
-/***/ 47:
+/***/ 49:
 /***/ (function(module, exports) {
 
 $('#img-input').change(function (e) {
@@ -96,6 +96,21 @@ $('#delete-picture').click(function (e) {
         url: '/picture-delete',
         data: {
             category_id: id
+        },
+        success: function success(data) {
+            window.location.reload();
+        }
+    });
+});
+
+$('#delete-picture-post').click(function (e) {
+    e.preventDefault();
+    var id = e.target.getAttribute('data-id');
+
+    $.get({
+        url: '/picture-delete-post',
+        data: {
+            post_id: id
         },
         success: function success(data) {
             window.location.reload();

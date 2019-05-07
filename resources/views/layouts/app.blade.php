@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+@php
+    use App\Models\Category;
+    use App\Models\Product;
+
+
+        $user_ip = request()->ip();
+        /**            * @var app/Models/Category        **/
+        $categories_header = Category::all();
+
+@endphp
+        <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -23,112 +33,387 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 
-    <style>
-        #main {
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        #okno {
-            width: 300px;
-            height: 50px;
-            text-align: center;
-            padding: 15px;
-            border: 3px solid #0000cc;
-            border-radius: 10px;
-            color: #0000cc;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            margin: auto;
-        }
-        #main:target {display: block;}
-    </style>
+<!-- CSS Global -->
+    <link href="{{ asset('js/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('js/plugins/bootstrap-select/css/bootstrap-select.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('js/plugins/fontawesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('js/plugins/prettyphoto/css/prettyPhoto.css')}}" rel="stylesheet">
+    <link href="{{ asset('js/plugins/owl-carousel2/assets/owl.carousel.css')}}" rel="stylesheet">
+    <link href="{{ asset('js/plugins/owl-carousel2/assets/owl.theme.default.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('js/plugins/animate/animate.min.css')}}" rel="stylesheet">
+    <!-- Theme CSS -->
+    <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
+
+    <!-- Head Libs -->
+    <script src="{{ asset('js/plugins/modernizr.custom.js')}}"></script>
+
 
 </head>
 <body>
 
-<a href="#" id="main">
-    <div id="okno">
-        Всплывающее окошко!
-    </div>
-</a>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<div id="app">
+    {{--        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">--}}
+    {{--            <div class="container">--}}
+    {{--                <a class="navbar-brand" href="{{ url('/') }}">--}}
+    {{--                    {{ config('app.name', 'Laravel') }}--}}
+    {{--                </a>--}}
+    {{--                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">--}}
+    {{--                    <span class="navbar-toggler-icon"></span>--}}
+    {{--                </button>--}}
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+    {{--                <div class="collapse navbar-collapse" id="navbarSupportedContent">--}}
+    {{--                    <!-- Left Side Of Navbar -->--}}
+    {{--                    <ul class="navbar-nav mr-auto">--}}
+
+    {{--                    </ul>--}}
+
+    {{--                    <!-- Right Side Of Navbar -->--}}
+    {{--                    <ul class="navbar-nav ml-auto">--}}
+
+
+
+
+
+    {{--                        <a href="#main">--}}
+    {{--                        <li>--}}
+    {{--                            <i class="material-icons">--}}
+    {{--                                shopping_cart--}}
+    {{--                            </i>--}}
+    {{--                            <span id="cart-product-count" data-count="0" class="badge-success"></span>--}}
+    {{--                        </li>--}}
+    {{--                        </a>--}}
+
+                            <!-- Authentication Links -->
+{{--                            @guest--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>--}}
+{{--                                </li>--}}
+{{--                                @if (Route::has('register'))--}}
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
+{{--                                    </li>--}}
+{{--                                @endif--}}
+{{--                            @else--}}
+{{--                                <li class="nav-item dropdown">--}}
+{{--                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
+{{--                                        {{ Auth::user()->name }} <span class="caret"></span>--}}
+{{--                                    </a>--}}
+
+{{--                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">--}}
+{{--                                        <a class="dropdown-item" href="{{ route('logout') }}"--}}
+{{--                                           onclick="event.preventDefault();--}}
+{{--                                                         document.getElementById('logout-form').submit();">--}}
+{{--                                            {{ __('Logout') }}--}}
+{{--                                        </a>--}}
+
+{{--                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
+{{--                                            @csrf--}}
+{{--                                        </form>--}}
+{{--                                    </div>--}}
+{{--                                </li>--}}
+{{--                            @endguest--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </nav>--}}
+
+    <main class="py-4">
+        {{--            @yield('content')--}}
+    </main>
+
+    <!-- WRAPPER -->
+    <div class="wrapper">
+
+        <!-- Popup: Shopping cart items -->
+        <!-- /Popup: Shopping cart items -->
+
+        <!-- Header top bar -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-left">
+                    <ul class="list-inline">
+
+                        <li class="hidden-xs"><a href="about.html">About</a></li>
+                        <li class="hidden-xs"><a href="blog.html">Blog</a></li>
+                        <li class="hidden-xs"><a href="{{route('contact')}}">Contact</a></li>
+                        <li class="hidden-xs"><a href="{{route('faq')}}">FAQ</a></li>
+                        <li class="hidden-xs"><a href="wishlist.html">My Wishlist</a></li>
+
 
                     </ul>
+                </div>
+                <div class="top-bar-right">
+                    <ul class="list-inline">
+                        <!--
+                        <li class="icon-user"><a href="login.html"><img src="assets/img/icon-1.png" alt=""/> <span>Login</span></a></li>
+                        <li class="icon-form"><a href="login.html"><img src="assets/img/icon-2.png" alt=""/> <span>Not a Member? <span class="colored">Sign Up</span></span></a></li>
+                        <li><a href="mailto:support@yourdomain.com"><i class="fa fa-envelope"></i> <span>support@yourdomain.com</span></a></li>
+                         -->
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-
-
-
-
-                        <a href="#main">
-                        <li>
-                            <i class="material-icons">
-                                shopping_cart
-                            </i>
-                            <span id="cart-product-count" data-count="0" class="badge-success"></span>
-                        </li>
-                        </a>
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
+                        <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
                     </ul>
                 </div>
             </div>
-        </nav>
+        </div>
+        <!-- /Header top bar -->
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-wrapper">
+                <div class="container">
+
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="{{route('main-page')}}"><img src="{{asset('storage/static_img/Logo.png')}}" alt="Alka Shop"/></a>
+                    </div>
+                    <!-- /Logo -->
+
+                    <!-- Header search -->
+                    <div class="header-left">
+                        <a id="tophead-text1" href="#">ip({{$user_ip}}) </a>
+                        <p id="tophead-text2"> | </p>
+                        <p id="tophead-text3"> +38 (066) 1234567</p>
+                    </div>
+                    <!-- /Header search -->
+
+                    <!-- Header shopping cart -->
+                    <div class="header-cart">
+                        <div class="header-search">
+                            <input id="search-product" class="form-control" type="text" placeholder="What are you looking?"/>
+                            <button><i class="fa fa-search"></i></button>
+                        </div>
+                        <div class="search-result">
+
+                        </div>
+                        <div class="cart-wrapper">
+                            <a href="{{route('show-likes')}}" class="btn btn-theme-transparent hidden-xs hidden-sm"><i
+                                        class="fa fa-heart"></i></a>
+                            <!--<a href="compare-products.html" class="btn btn-theme-transparent hidden-xs hidden-sm"><i class="fa fa-exchange"></i></a>-->
+                            <a href="#" class="btn btn-theme-transparent" data-toggle="modal" data-target="#popup-cart"><i
+                                        class="fa fa-shopping-cart"></i> <span class="hidden-xs"> </i></a>
+                            <!-- Mobile menu toggle button -->
+                            <a href="#" class="menu-toggle btn btn-theme-transparent"><i class="fa fa-bars"></i></a>
+                            <!-- /Mobile menu toggle button -->
+                            @guest <ul style="float: right; font-size: 12px; margin-top: 3%;">
+                                <li>
+                                <a href="{{ route('login') }}" class="log-in"> <span>Увiйти</span></a></li>
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>--}}
+{{--                                </li>--}}
+                                @if (Route::has('register'))
+{{--                                    <li class="nav-item">--}}
+                                      <li>  <a style="padding: 10%;color: #02bbdb;" href="{{ route('register') }}">Зарееструватися</a></li>
+{{--                                    </li>--}}
+                                @endif</ul>
+                            @else
+
+                                        <a style="float: right;margin-top: 2%;color: #02bbdb;" class="log-in" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="style="float: right;margin-top: 0%;"">
+                                            @csrf
+                                        </form>
+
+                            @endguest
+
+
+                        </div>
+                    </div>
+                    <!-- Header shopping cart -->
+
+                </div>
+            </div>
+            <div class="navigation-wrapper">
+                <div class="container">
+                    <!-- Navigation -->
+                    <nav class="navigation closed clearfix">
+                        <a href="#" class="menu-toggle-close btn"><i class="fa fa-times"></i></a>
+                        <ul class="nav sf-menu">
+
+
+                            @foreach($categories_header as $category)
+                                @if ($category->isParent())
+                                    <li class="megamenu"><a href="#main">{{$category->title}}</a>
+                                        <ul>
+                                            <li class="row">
+
+                                                <div class="col-md-4">
+                                                    <div class="product-list">
+
+                                                        <div class="media">
+                                                            <a class="pull-left media-link"
+                                                               href="{{route('show_product', ['category' => $category])}}">
+                                                                <img width="274px" height="168px" class="media-object"
+                                                                     src="{{$category->getImage() ? $category->getImage()->url : '#'}}"
+                                                                     alt="">
+                                                                <i class="fa fa-plus"></i>
+                                                            </a>
+
+                                                            <div class="media-body">
+                                                                <h4 class="media-heading" id="textmediabody"><a
+                                                                            href="{{route('show_product', ['category' => $category])}}">Вся
+                                                                        категорiя</a></h4>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                @foreach($category->children as $children)
+                                                    <div class="col-md-4">
+                                                        <div class="product-list">
+
+                                                            <div class="media">
+                                                                <a class="pull-left media-link"
+                                                                   href="{{route('show_product', ['category' => $children])}}">
+                                                                    <img width="274px" height="168px"
+                                                                         class="media-object"
+                                                                         src="{{$children->getImage() ? $children->getImage()->url : '#'}}"
+                                                                         alt="">
+                                                                    <i class="fa fa-plus"></i>
+                                                                </a>
+                                                                <div class="media-body">
+                                                                    <h4 class="media-heading" id="textmediabody"><a
+                                                                                href="{{route('show_product', ['category' => $children])}}">{{$children->title}}</a>
+                                                                    </h4>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </li>
+                                        </ul>
+                                    </li>
+
+
+                                @endif
+                            @endforeach
+
+                        </ul>
+                    </nav>
+                    <!-- /Navigation -->
+                </div>
+            </div>
+        </header>
+        <!-- /HEADER -->
+    @yield('content')
+
+
+    <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-widgets">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="widget">
+                                <h4 class="widget-title">About Us</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sollicitudin
+                                    ultrices
+                                    suscipit. Sed commodo vel mauris vel dapibus. Lorem ipsum dolor sit amet,
+                                    consectetur
+                                    adipiscing elit.</p>
+                                <ul class="social-icons">
+                                    <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="widget">
+                                <h4 class="widget-title">News Letter</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <form action="{{route('add_subscriber')}}" method="post" >
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                    <div class="form-group">
+                                        <input class="form-control" name="email" type="text" placeholder="Enter Your Mail"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit"  class="btn btn-theme btn-theme-transparent" value="Отправить">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="widget widget-categories">
+                                <h4 class="widget-title">Information</h4>
+                                <ul>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Delivery Information</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="#">Terms and Conditions</a></li>
+                                    <li><a href="#">Private Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="widget widget-categories">
+                                <h4 class="widget-title">Category</h4>
+                                <ul>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Delivery Information</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="#">Terms and Conditions</a></li>
+                                    <li><a href="#">Private Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="footer-meta">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-sm-6">
+                            <div class="copyright">Copyright 2019 ALKAMEBEL SHOP | All Rights Reserved</div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- /FOOTER -->
+
+        <div id="to-top" class="to-top"><i class="fa fa-angle-up"></i></div>
+
     </div>
-    <script src="{{asset('js/cart.js')}}"></script>
+    <!-- /WRAPPER -->
+
+</div>
+
+
+<script src="{{asset('js/comment.js')}}"></script>
+
+<!-- JS Global -->
+<script src="{{ asset('js/plugins/jquery/jquery-1.11.1.min.js')}}"></script>
+<script src="{{ asset('js/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('js/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
+<script src="{{ asset('js/plugins/superfish/js/superfish.min.js')}}"></script>
+<script src="{{ asset('js/plugins/prettyphoto/js/jquery.prettyPhoto.js')}}"></script>
+<script src="{{ asset('js/plugins/owl-carousel2/owl.carousel.js')}}"></script>
+<script src="{{ asset('js/plugins/jquery.sticky.min.js')}}"></script>
+<script src="{{ asset('js/plugins/jquery.easing.min.js')}}"></script>
+<script src="{{ asset('js/plugins/jquery.smoothscroll.min.js')}}"></script>
+<script src="{{ asset('js/plugins/smooth-scrollbar.min.js')}}"></script>
+<script src="{{asset('js/cart.js')}}"></script>
+<script src="{{asset('js/search.js')}}"></script>
+<!-- JS Page Level -->
+<script src="{{asset('js/theme.js')}}"></script>
 </body>
 </html>

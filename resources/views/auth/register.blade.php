@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header" style="margin-bottom: 40px; margin-left:62%">Реестрация</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -60,6 +60,9 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+                        <label for="subscribe">Оформити пiдписку: </label>
+
+                        <input type="checkbox" checked="checked" name="subscribe" >
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

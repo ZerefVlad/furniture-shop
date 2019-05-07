@@ -10,7 +10,7 @@ $(document).ready(function () {
     $('#add_to_cart').click(function (e) {
         let badge = $('#cart-product-count');
         let counter = badge.attr('data-count');
-        let quantity = $('input[name="quantity"]').val();
+        let quantity = $('#kolvo').val();
         let product_id = $('input[name="product_id"]').val();
         let check = true;
 
@@ -18,6 +18,9 @@ $(document).ready(function () {
         counter = parseInt(counter) + parseInt(quantity);
         badge.attr('data-count', parseInt(counter));
         badge.html(parseInt(counter));
+
+        console.log(counter);
+        console.log(quantity);
         $.get({
             url: '/api/cart/add',
             data: {
@@ -27,9 +30,10 @@ $(document).ready(function () {
         });
     });
 
-    $('.delete-product-cart').click(function (event) {
+    $('#delete-product-cart').click(function (event) {
         event.preventDefault();
         let id = event.target.getAttribute('data-id');
+        console.log(event.target);
         $.get({
             url: '/api/cart/delete',
             data: {
@@ -113,10 +117,17 @@ $(document).ready(function () {
         $.get({
             url: '/api/cart/total',
             success: (data) => {
-                $('#total-price').html('Total Price: ' + data);
+                $('#total-price').html(data);
                 $('#total-price-input').val(data);
             }
         })
     }
+
+    $.get({
+        url: '/api/cart/get-cart',
+        success: function (data) {
+            $('.wrapper').append(data)
+        }
+    })
 });
 
