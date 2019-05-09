@@ -5,10 +5,12 @@ $('#picture-add').click(function (e) {
     let div = $('.images').first();
     div.append(
         '<div class="col-md-12">' +
-        '<input form="product-update-form"  type="text" name="img_alt['+counter+']">' +
-        '<input form="product-update-form"  type="text" name="img_title['+counter+']">' +
         '<input form="product-update-form"  type="file" name="pictures['+counter+']" id="img-'+counter+'" class="img-input">' +
         '<img src="#" id="loader-'+counter+'" class="load-image" alt="">' +
+        '<input form="product-update-form"  type="text" name="img_alt['+counter+']">' +
+        '<input form="product-update-form"  type="text" name="img_title['+counter+']">' +
+
+
         '</div>'
     );
 });

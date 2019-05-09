@@ -15,7 +15,7 @@ $('#video-add').click(function (e) {
         $('#video-clear-'+clr).html();
         $('#video-clear-'+clr).html(
             '<div class="col-md-12">' +
-            '<iframe type = "text/html" width = "640" height = "385" src = "http://www.youtube.com/embed/'+c.target.value+'" frameborder = "0" >' + '< /iframe>'
+            '<iframe type = "text/html" width = "300px" height = "150px" src = "http://www.youtube.com/embed/'+c.target.value+'" frameborder = "0" >' + '< /iframe>'
             +'</div>'
         );
     });

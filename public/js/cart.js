@@ -88,19 +88,19 @@ $(document).ready(function () {
         var counter = badge.attr('data-count');
         var quantity = $('#kolvo').val();
         var product_id = $('input[name="product_id"]').val();
+        var color = $('input[name="color"]').val();
         var check = true;
 
         counter = parseInt(counter) + parseInt(quantity);
         badge.attr('data-count', parseInt(counter));
         badge.html(parseInt(counter));
 
-        console.log(counter);
-        console.log(quantity);
         $.get({
             url: '/api/cart/add',
             data: {
                 id: product_id,
-                quantity: quantity
+                quantity: quantity,
+                color: color
             }
         });
     });
@@ -202,6 +202,11 @@ $(document).ready(function () {
         success: function success(data) {
             $('.wrapper').append(data);
         }
+    });
+
+    $('.colors').click(function (e) {
+        var colorId = e.target.getAttribute('data-color');
+        $('input[name="color"]').val(colorId);
     });
 });
 

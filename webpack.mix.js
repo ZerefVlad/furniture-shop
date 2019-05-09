@@ -21,6 +21,8 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/form-updater.js', 'public/js')
     .js('resources/js/cart.js', 'public/js')
     .js('resources/js/videoloader.js', 'public/js')
+    .js('resources/js/slides.js', 'public/js')
+    .js('resources/js/category.js', 'public/js')
 
     // .js('resources/plugins/modernizr.custom.js', 'public/js')
     // .js('resources/plugins/iesupport/html5shiv.js', 'public/js')

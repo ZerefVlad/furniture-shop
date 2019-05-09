@@ -35,7 +35,63 @@
     <!-- Styles -->
 {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 
-<!-- CSS Global -->
+    <style >
+        .slide {
+            font-size: 40px;
+            padding: 40px;
+            box-sizing: border-box;
+            background: #FFFFFF;
+
+            color: #fff;
+        }
+
+        .slide:nth-of-type {
+            background: #FFFFFF;
+        }
+        /*.slide:nth-of-type(2) {*/
+        /*    background: orange;*/
+        /*}*/
+        /*.slide:nth-of-type(3) {*/
+        /*    background: green;*/
+        /*}*/
+        /*.slide:nth-of-type(4) {*/
+        /*    background: blue;*/
+        /*}*/
+        /*.slide:nth-of-type(5) {*/
+        /*    background: purple;*/
+        /*}*/
+
+        #slides {
+            position: relative;
+            height: 500px;
+            padding: 0px;
+            margin: 0px;
+            list-style-type: none;
+        }
+
+        .slide {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: 1;
+
+            -webkit-transition: opacity 1s;
+            -moz-transition: opacity 1s;
+            -o-transition: opacity 1s;
+            transition: opacity 1s;
+        }
+
+        .showing {
+            opacity: 1;
+            z-index: 2;
+        }
+    </style>
+
+
+    <!-- CSS Global -->
     <link href="{{ asset('js/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{ asset('js/plugins/bootstrap-select/css/bootstrap-select.min.css')}}" rel="stylesheet">
     <link href="{{ asset('js/plugins/fontawesome/css/font-awesome.min.css')}}" rel="stylesheet">
@@ -45,9 +101,18 @@
     <link href="{{ asset('js/plugins/animate/animate.min.css')}}" rel="stylesheet">
     <!-- Theme CSS -->
     <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/slider.css') }}" rel="stylesheet">
 
     <!-- Head Libs -->
     <script src="{{ asset('js/plugins/modernizr.custom.js')}}"></script>
+
+
+    <script src="{{asset('js/slides.js')}}"></script>
+
+<script>
+
+
+</script>
 
 
 </head>
@@ -135,11 +200,11 @@
                 <div class="top-bar-left">
                     <ul class="list-inline">
 
-                        <li class="hidden-xs"><a href="about.html">About</a></li>
-                        <li class="hidden-xs"><a href="blog.html">Blog</a></li>
+                        <li class="hidden-xs"><a href="{{route('about')}}">About</a></li>
+                        <li class="hidden-xs"><a href="{{route('show-posts')}}">Blog</a></li>
                         <li class="hidden-xs"><a href="{{route('contact')}}">Contact</a></li>
                         <li class="hidden-xs"><a href="{{route('faq')}}">FAQ</a></li>
-                        <li class="hidden-xs"><a href="wishlist.html">My Wishlist</a></li>
+
 
 
                     </ul>
@@ -175,15 +240,22 @@
 
                     <!-- Header search -->
                     <div class="header-left">
-                        <a id="tophead-text1" href="#">ip({{$user_ip}}) </a>
-                        <p id="tophead-text2"> | </p>
-                        <p id="tophead-text3"> +38 (066) 1234567</p>
+                        <div style="position: relative;float: left;     margin-top: -4%;">
+                            <a id="tophead-text1"  style="margin-bottom: 2%" href="#">ip({{$user_ip}}) </a>
+                            <p id="tophead-text2"> | </p>
+                        </div>
+
+                        <div style="position: relative;float: left">
+                            <p  style="margin: 0 0 5px 20px;"> +38 (066) 1234567</p>
+                            <p style="margin: 0 0 5px 20px;"> +38 (066) 1234567</p>
+                        </div>
+
                     </div>
                     <!-- /Header search -->
 
                     <!-- Header shopping cart -->
                     <div class="header-cart">
-                        <div class="header-search">
+                        <div class="header-search" style="    top: 0px;    position: absolute;    right: 95%;   width: 270px;    max-width: 50%;">
                             <input id="search-product" class="form-control" type="text" placeholder="What are you looking?"/>
                             <button><i class="fa fa-search"></i></button>
                         </div>
@@ -195,7 +267,7 @@
                                         class="fa fa-heart"></i></a>
                             <!--<a href="compare-products.html" class="btn btn-theme-transparent hidden-xs hidden-sm"><i class="fa fa-exchange"></i></a>-->
                             <a href="#" class="btn btn-theme-transparent" data-toggle="modal" data-target="#popup-cart"><i
-                                        class="fa fa-shopping-cart"></i> <span class="hidden-xs"> </i></a>
+                                        class="fa fa-shopping-cart"></i> <span id="cart-product-count" data-count="0" class="badge-success">1</span> </i> </a>
                             <!-- Mobile menu toggle button -->
                             <a href="#" class="menu-toggle btn btn-theme-transparent"><i class="fa fa-bars"></i></a>
                             <!-- /Mobile menu toggle button -->
@@ -212,13 +284,17 @@
                                 @endif</ul>
                             @else
 
-                                        <a style="float: right;margin-top: 2%;color: #02bbdb;" class="log-in" href="{{ route('logout') }}"
-                                           onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
+                                <ul style="float: right; font-size: 12px; margin-top: 3%;">
+                                    <li>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="style="float: right;margin-top: 0%;"">
+                                         <a style="color: #02bbdb;    padding: 6px 10px;" class="log-in" href="{{ route('account') }}"  >
+                                            Особистий кабiнет
+                                         </a>
+                                    </li>
+                                    <li>  <a style="    padding: 0% 40%;color: #02bbdb;" href="{{ route('logout') }} "onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Вийти</a></li>
+                                </ul>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="style=float: right;margin-top: 0%;">
                                             @csrf
                                         </form>
 
@@ -241,7 +317,7 @@
 
                             @foreach($categories_header as $category)
                                 @if ($category->isParent())
-                                    <li class="megamenu"><a href="#main">{{$category->title}}</a>
+                                    <li class="megamenu"><a href="#main" style="color: #02bbdb;"> {{$category->title}}</a>
                                         <ul>
                                             <li class="row">
 
@@ -401,19 +477,22 @@
 <script src="{{asset('js/comment.js')}}"></script>
 
 <!-- JS Global -->
-<script src="{{ asset('js/plugins/jquery/jquery-1.11.1.min.js')}}"></script>
-<script src="{{ asset('js/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{ asset('js/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-<script src="{{ asset('js/plugins/superfish/js/superfish.min.js')}}"></script>
-<script src="{{ asset('js/plugins/prettyphoto/js/jquery.prettyPhoto.js')}}"></script>
-<script src="{{ asset('js/plugins/owl-carousel2/owl.carousel.js')}}"></script>
-<script src="{{ asset('js/plugins/jquery.sticky.min.js')}}"></script>
-<script src="{{ asset('js/plugins/jquery.easing.min.js')}}"></script>
-<script src="{{ asset('js/plugins/jquery.smoothscroll.min.js')}}"></script>
-<script src="{{ asset('js/plugins/smooth-scrollbar.min.js')}}"></script>
+{{--<script src="{{ asset('js/plugins/jquery/jquery-1.11.1.js')}}"></script>--}}
+<script src="{{ asset('js/plugins/bootstrap/js/bootstrap.js')}}"></script>
+<script src="{{ asset('js/plugins/bootstrap-select/js/bootstrap-select.js')}}"></script>
+{{--<script src="{{ asset('js/plugins/superfish/js/superfish.min.js')}}"></script>--}}
+{{--<script src="{{ asset('js/plugins/prettyphoto/js/jquery.prettyPhoto.js')}}"></script>--}}
+{{--<script src="{{ asset('js/plugins/owl-carousel2/owl.carousel.js')}}"></script>--}}
+{{--<script src="{{ asset('js/plugins/jquery.sticky.min.js')}}"></script>--}}
+{{--<script src="{{ asset('js/plugins/jquery.easing.min.js')}}"></script>--}}
+{{--<script src="{{ asset('js/plugins/jquery.smoothscroll.min.js')}}"></script>--}}
+{{--<script src="{{ asset('js/plugins/smooth-scrollbar.min.js')}}"></script>--}}
+
+
 <script src="{{asset('js/cart.js')}}"></script>
 <script src="{{asset('js/search.js')}}"></script>
+
 <!-- JS Page Level -->
-<script src="{{asset('js/theme.js')}}"></script>
+{{--<script src="{{asset('js/theme.js')}}"></script>--}}
 </body>
 </html>

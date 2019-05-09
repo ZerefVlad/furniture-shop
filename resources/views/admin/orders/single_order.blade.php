@@ -1,11 +1,12 @@
 @extends('admin.dashboard')
 @php
 
-@endphp
+        @endphp
 @section ('content')
     @if ($orders->getProductObjects())
         @foreach($orders->getProductObjects() as $product)
             {{$product['product']->title}}
+            <img src="{{$product['color'] ? $product['color']->getImage()->url : ''}}" alt="">
             <img width="300" height="200" src="{{$product['product']->getMainProductUrl()}}">
         @endforeach
     @endif
@@ -19,17 +20,19 @@
     <h3>{{$orders->status}}</h3>
 
     <select class="form-control" name="status" id="change-status-order-select">
-        <option value="processing"@if($orders->status == 'processing') selected @endif>
+        <option value="processing" @if($orders->status == 'processing') selected @endif>
             В обработке
         </option>
-        <option value="ready"@if($orders->status == 'ready') selected @endif>
+        <option value="ready" @if($orders->status == 'ready') selected @endif>
             Готов
         </option>
-        <option value="canceled"@if($orders->status == 'canceled') selected @endif>
+        <option value="canceled" @if($orders->status == 'canceled') selected @endif>
             Отменен
         </option>
     </select>
-    <button id="change-status-order" data-id = "{{$orders->id}}"  class="change-status-order btn btn-dark">изменить статус заказа</button>
+    <button id="change-status-order" data-id="{{$orders->id}}" class="change-status-order btn btn-dark">изменить статус
+        заказа
+    </button>
 
 
 

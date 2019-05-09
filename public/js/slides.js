@@ -60,16 +60,34 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 66);
+/******/ 	return __webpack_require__(__webpack_require__.s = 62);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 66:
+/***/ 62:
 /***/ (function(module, exports, __webpack_require__) {
 
-(function webpackMissingModule() { throw new Error("Cannot find module \"/var/www/ furniture-shop/resources/plugins/bootstrap/js/bootstrap.min.js\""); }());
+module.exports = __webpack_require__(63);
 
+
+/***/ }),
+
+/***/ 63:
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+
+    var slides = document.querySelectorAll('#slides .slide');
+    var currentSlide = 0;
+    var slideInterval = setInterval(nextSlide, 15000);
+
+    function nextSlide() {
+        slides[currentSlide].className = 'slide';
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].className = 'slide showing';
+    }
+});
 
 /***/ })
 

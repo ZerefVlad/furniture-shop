@@ -76,6 +76,11 @@ class Product extends Model
         return 0;
     }
 
+    public function colors()
+    {
+        return $this->belongsToMany(ProductColor::class);
+    }
+
     public function getPriceWithoutDiscount(): int
     {
         $attributes = $this->getProductAttributes();
@@ -256,4 +261,14 @@ class Product extends Model
         return $comment;
     }
 
+
+    public function getAverageScore(): int
+    {
+       $rating = 0;
+       foreach ($this->comments as $comment) {
+           $rating += $comment->rating;
+       }
+
+       return count($this->comments) > 0 ? $rating/count($this->comments): 0;
+    }
 }

@@ -626,8 +626,8 @@ textarea:focus:-ms-input-placeholder {
   color: #232323;
 }
 .btn-theme-transparent:hover {
-  background-color: #232323;
-  border-color: #232323;
+  background-color: #02bbdb;
+  border-color: #02bbdb;
   color: #ffffff;
 }
 .btn-theme-dark,

@@ -19,4 +19,9 @@ class DashboardController extends Controller
         return view('admin.dashboard');
     }
 
+    public function showAdminPage()
+    {
+        return view('admin.admin-page');
+    }
+
 }

@@ -16,7 +16,6 @@ class ProductController extends Controller
 {
     public function showSingeProduct(Category $category, Product $product, Request $request)
     {
-
       if (auth()->guest()) {
           if (!\Session::has('hash')) {
               \Session::put('hash', \Hash::make(md5('pidoras')));
@@ -119,4 +118,6 @@ class ProductController extends Controller
 
         return view('modals.search')->with('products', $searchedProducts);
     }
+
+
 }

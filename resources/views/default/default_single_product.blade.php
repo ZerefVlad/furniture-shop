@@ -25,24 +25,42 @@
 
                         </div>
 
-                        <div class="owl-carousel img-carousel">
-                            <div class="item">
+                        <div class="container full-width">
 
-                                <a href="assets/img/preview/shop/product-1-big.jpg" data-gal="prettyPhoto"><img
-                                            class="img-responsive" src="assets/img/image_9.jpg" alt=""/></a></div>
-                            <div class="item">
+                            <div class="main-slider">
 
-                                <a href="assets/img/preview/shop/product-1-big.jpg" data-gal="prettyPhoto"><img
-                                            class="img-responsive" src="assets/img/3-layers.jpg" alt=""/></a></div>
-                            <div class="item">
 
-                                <a href="assets/img/preview/shop/product-1-big.jpg" data-gal="prettyPhoto"><img
-                                            class="img-responsive" src="assets/img/3-layers.jpg" alt=""/></a></div>
+                                <ul id="slides">
+                                    <li class="slide showing">
+                                        <div class="container">
+                                            <img style="position: absolute;    width: 100%;    height: 100%;    top: 0;    left: 0;" src="{{$product->getMainProductUrl()}}">
+                                        </div>
+
+
+
+                                    </li>
+                                    @foreach($imgs as $img)
+                                    <li >
+
+                                            @if($img->url != $product->getMainProductUrl())
+                                                <img class="slide" style="position: absolute;    width: 100%;    height: 100%;    top: 0;    left: 0;" src="{{$img->url}}">
+                                            @endif
+
+                                    </li>
+                                    @endforeach
+                                    {{--                    <li class="slide">Slide 3</li>--}}
+                                    {{--                    <li class="slide">Slide 4</li>--}}
+                                    {{--                    <li class="slide">Slide 5</li>--}}
+                                </ul>
+                            </div>
                         </div>
 
+
                     </div>
+                    <div class="container">
                     <form class="content">
                         <div class="product-price">{{$product->getPriceWithDiscount()}} грн.</div>
+
                         <h2 class="product-title">{{$product->title}}</h2>
                         <div class="product-code">Code tovara: {{$product->code}}</div>
                         <div class="product-rating clearfix">
@@ -53,10 +71,20 @@
                                 --><span class="star active"></span><!--
                                 --><span class="star active"></span>
                             </div>
-                            <a class="reviews" href="#">(5.0 - 0 users)</a>
+                            <a class="reviews" href="#">({{$product->getAverageScore()}} - {{count($product->comments)}} users)</a>
                         </div>
-                        <!--  <h3 style="color: #333333;  font-family: Roboto;  font-size: 22px;  font-weight: 500;">Оберіть колір</h3>-->
+                        <h3 style="color: #333333;  font-family: Roboto;  font-size: 22px;  font-weight: 500;">Оберіть колір</h3>
                         <img src="{{asset('storage/static_img/16-layers.png')}}">
+
+                        <br>
+                        <input type="hidden" value="{{$product->colors->first() ? $product->colors()->first()->id : 0}}" name="color">
+                        @foreach($product->colors as $color)
+                            <div class="colors" style="width:500px;">
+                                <img data-color="{{$color->id}}" src="{{$color->getImage()->url}}" alt="">
+                                <p style="margin-left:4%;">{{$color->title}}</p>
+                            </div>
+
+                        @endforeach
 
 
                         <h3 style="color: #333333; font-family: Roboto;font-size: 22px;font-weight: 500;">
@@ -69,7 +97,8 @@
                                 <input form="add-to-cart-form" type="hidden" name="product_id" value="{{$product->id}}">
 
 
-                                <input class="form-control qty" id="kolvo" form="add-to-cart-form" type="number" name="quantity" value="1"
+                                <input class="form-control qty" id="kolvo" form="add-to-cart-form" type="number"
+                                       name="quantity" value="1"
                                        min="1" max="99">
 
                                 <!-- <button class="btn"><i class="fa fa-plus"></i></button>
@@ -81,7 +110,7 @@
 
                         </div>
 
-
+                    </div>
                         <!-- <div class="product-availability">Availability: <strong>In stock</strong> 21 Item(s)</div> -->
                         <hr class="page-divider small"/>
 
@@ -108,13 +137,12 @@
                                         <div class="tab-pane fade " id="complect">
                                             @foreach($relatedProducts as $relatedProduct)
                                                 <form id="related-product-cart-{{$relatedProduct->id}}"></form>
-                                                <p>Купи комплект, жадоба:</p>
-                                                <p>Количество хуйни: {{$relatedProduct->quantity}}</p>
-                                                <p>Скидочка: {{$relatedProduct->discount}}</p>
-                                                <p>Хоть название
-                                                    прочитай: {{$relatedProduct->relatedProduct->title}}</p>
 
-                                                <p>а цена будет : {{$price = $product->getPriceWithDiscount() + ($relatedProduct->relatedProduct->getPriceWithDiscount() -
+                                                <p>Количество доп товара в комплекте: {{$relatedProduct->quantity}}</p>
+                                                <p>Скидка на доп товар: {{$relatedProduct->discount}}</p>
+                                                <p>Название доп товар: {{$relatedProduct->relatedProduct->title}}</p>
+
+                                                <p> цена : {{$price = $product->getPriceWithDiscount() + ($relatedProduct->relatedProduct->getPriceWithDiscount() -
                                                                    $relatedProduct->relatedProduct->getPriceWithDiscount() * ($relatedProduct->discount/100)) * $relatedProduct->quantity }}</p>
 
                                                 <input form="related-product-cart-{{$relatedProduct->id}}" type="hidden"
@@ -133,7 +161,7 @@
                                                        name="product_id"
                                                        value="{{$product->id}}">
                                                 <button data-id="{{$relatedProduct->id}}"
-                                                        class="related-product-add btn btn-dark">Купить бомж-комплект
+                                                        class="related-product-add btn btn-dark">Купить комплект
                                                 </button>
 
 
@@ -167,7 +195,10 @@
                                                         <div id="select-video-{{$video}}">
 
 
-                                                            <iframe style="padding-top: 40px;" type = "text/html" width = "640" height = "385" src = "http://www.youtube.com/embed/{{$video}}" frameborder = "0" ></iframe>
+                                                            <iframe style="padding-top: 40px;" type="text/html"
+                                                                    width="640" height="385"
+                                                                    src="http://www.youtube.com/embed/{{$video}}"
+                                                                    frameborder="0"></iframe>
 
 
                                                         </div>
@@ -234,10 +265,12 @@
                                                                 {{--                                                                    <i class="fa fa-flag"></i>--}}
                                                                 {{--                                                                </span>--}}
                                                             </span>
+                                                                <p>{{$comment->rating}}</p>
                                                             </p>
 
                                                             <p id="text-{{$comment->id}}"
-                                                               class="comment-text">{{$comment->text}}</p>
+                                                               class="comment-text"
+                                                               style="word-wrap: break-word;">{{$comment->text}}</p>
 
 
                                                         </div>
@@ -285,7 +318,7 @@
                                                 </div>
 
                                                 <input form="add-comment-to-form" type="number" name="rating" min="0"
-                                                       max="5" value="5" style="display: none">
+                                                       max="5" value="5" style="">
                                                 <div class="form-group">
                                                     <button form="add-comment-to-form"
                                                             type="submit"
@@ -298,9 +331,7 @@
                 <!-- // -->
 
             </div>
-    </div>
-    </div>
-    </div>
+
     </section>
     <!-- /PAGE -->
 
@@ -326,7 +357,6 @@
 {{--                <input form="add-to-cart-form" type="hidden" name="product_id" value="{{$product->id}}">--}}
 {{--                <input form="add-to-cart-form" type="number" name="quantity" value="1" min="1" max="99">--}}
 {{--                <button id="add_to_cart" class="btn btn-success">add to cart blyat pizdec nahuy</button>--}}
-
 
 
 {{--@foreach($relatedProducts as $relatedProduct)--}}

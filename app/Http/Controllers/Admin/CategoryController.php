@@ -53,31 +53,29 @@ class CategoryController extends Controller
             ->with('categories', $categories);
     }
 
-    public function editCategory($id, CreateCategoryRequest $request)
+    public function editCategory(Category $category, CreateCategoryRequest $request)
     {
         if ($image = $request->has('image')) {
             $request->file('image')->storeAs('categories/'.$request->title, $request->image_title.'.png');
         }
 
         $this->category_service->editCategory(
-            $this->category_service->getCategory($id),
+            $category,
             $request->all()
         );
         Session::flash('category_edit_success', 'Category успешно changed');
 
-        return back();
+        return redirect()->route('category_action_edit', ['category' => $category]);
     }
 
-    public function  categoryActionEdit($id, Request $request)
+    public function  categoryActionEdit(Category $category, Request $request)
     {
-        $category = $id ? $this->category_service->getCategory($id) : null;
         $categories = $this->category_service->getCategories();
 
         $image = $category->getImage();
 
         return view('admin.category.category_create')
             ->with('action', 'edit')
-            ->with('id', $id)
             ->with('image', $image)
             ->with('category', $category)
             ->with('categories', $categories);
@@ -85,18 +83,17 @@ class CategoryController extends Controller
 
 
 
-    public function deleteCategory($id)
+    public function deleteCategory(Category $category)
     {
-        $this->category_service->deleteCategory($id);
-
+        $category->delete();
         Session::flash('category_delete_success', 'Category успешно deleted');
 
         return back();
     }
 
-    public function deletePicture(Request $request)
+    public function deletePicture(Category $category)
     {
-        $category = $this->category_service->getCategory($request->category_id);
         $category->deleteImage();
+        return back();
     }
 }

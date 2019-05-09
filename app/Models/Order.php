@@ -47,10 +47,17 @@ class Order extends Model
         $products = [];
         if($this->getProducts()) {
             foreach ($this->getProducts() as $product) {
-                $products[] = [
-                    'product' => Product::find($product->id),
-                    'quantity' => $product->quantity,
-                ];
+                try {
+                    $products[] = [
+                        'product' => Product::find($product->id),
+                        'quantity' => $product->quantity,
+                        'color' => ProductColor::find($product->color ? $product->color : 0)
+                    ];
+                }
+                catch (\Exception $exception) {
+                    dd($product);
+                }
+
             }
         }
         return $products;

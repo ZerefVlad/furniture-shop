@@ -12,6 +12,7 @@ $(document).ready(function () {
         let counter = badge.attr('data-count');
         let quantity = $('#kolvo').val();
         let product_id = $('input[name="product_id"]').val();
+        let color = $('input[name="color"]').val();
         let check = true;
 
 
@@ -19,13 +20,12 @@ $(document).ready(function () {
         badge.attr('data-count', parseInt(counter));
         badge.html(parseInt(counter));
 
-        console.log(counter);
-        console.log(quantity);
         $.get({
             url: '/api/cart/add',
             data: {
                 id: product_id,
-                quantity: quantity
+                quantity: quantity,
+                color: color,
             },
         });
     });
@@ -128,6 +128,11 @@ $(document).ready(function () {
         success: function (data) {
             $('.wrapper').append(data)
         }
+    });
+
+    $('.colors').click(function (e) {
+        let colorId = e.target.getAttribute('data-color');
+        $('input[name="color"]').val(colorId);
     })
 });
 

@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Mail\ManagerEmail;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\ProductColor;
 use App\Models\User;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
@@ -33,6 +34,7 @@ class CartController extends Controller
             foreach ($storedData as $key => $item) {
                 if ($item['id'] == $data['id']) {
                     $item['quantity'] += $data['quantity'];
+                    $item['color'] = ProductColor::find($data['color']);
                     $product = $this->productService->getProduct($data['id']);
                     $item['price'] = $product->getPriceWithDiscount();
                     $item['discount'] = $product->discount ? $product->discount->value : 0;
@@ -93,7 +95,8 @@ class CartController extends Controller
                     'product' => $product,
                     'quantity' => $cartItem['quantity'],
                     'price' => $price,
-                    'discount' => $product->discount->value,
+                    'color' => ProductColor::find($cartItem['color']),
+                    'discount' => $product->discount ? $product->discount->value : 0,
                 ];
                 $totalPrice += $price;
             }

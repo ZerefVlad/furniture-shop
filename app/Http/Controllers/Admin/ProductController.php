@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Product;
+use App\Models\ProductColor;
 use App\Services\AttributeService;
 use App\Services\CategoryService;
 use App\Services\ProductService;
@@ -53,20 +54,29 @@ class ProductController extends Controller
             'productAttributes' => null,
             'categories' => $this->categoryService->getCategories(),
             'attributes' => $this->attributeService->getAttributes(),
+            'colors' => ProductColor::all(),
+            'selectedColorIds', [],
         ]);
     }
 
     public function createProductAction(Request $request)
     {
         $data = array_merge(
-            $request->except(['videos','categories','discount_value','img_alt','img_title','attrs','attrs_values','pictures','relatedProd','relatedProdDiscount','relatedProdQuantity']),
+            $request->except(['colors', 'price', 'videos', 'categories', 'discount_value', 'img_alt', 'img_title', 'attrs', 'attrs_values', 'pictures', 'relatedProd', 'relatedProdDiscount', 'relatedProdQuantity']),
             [
                 'active' => isset($request->active) ? true : false,
                 'video_id' => json_encode($request->get('videos'))
             ]
         );
         $product = $this->productService->createProduct($data);
+        if ($request->has('colors')) {
+            $product->colors()->detach();
 
+            foreach ($request->colors as $color) {
+
+                $product->colors()->attach(ProductColor::find($color));
+            }
+        }
         if ($request->has('pictures')) {
             foreach ($request->pictures as $key => $picture) {
                 if ($request->get('code') && $request->get('img_alt') && $request->get('img_title')) {
@@ -88,7 +98,6 @@ class ProductController extends Controller
         }
 
 
-
         $dataAttributes = [];
         if ($request->get('attrs')) {
             if ($request->get('attrs_values')) {
@@ -100,6 +109,15 @@ class ProductController extends Controller
                 }
                 $this->productService->addOrUpdateAttributes($product, $dataAttributes);
             }
+        }
+
+        if ($request->has('price')) {
+            $this->productService->addOrUpdateAttributes($product, [
+                [
+                    'id' => 1,
+                    'value' => $request->get('price') ?? 0,
+                ]
+            ]);
         }
 
         $dataRelatedProducts = [];
@@ -127,6 +145,12 @@ class ProductController extends Controller
 
     public function editProduct(Product $product)
     {
+        $selectedColors = $product->colors;
+        $selectedColorIds = [];
+        foreach ($selectedColors as $color) {
+            $selectedColorIds[] = $color->id;
+        }
+
         $images = $product->getImages();
         $productAttributes = $product->getProductAttributes();
         $relatedProducts = $product->getRelatedProducts();
@@ -139,6 +163,8 @@ class ProductController extends Controller
             'productAttributes' => $productAttributes,
             'categories' => $this->categoryService->getCategories(),
             'attributes' => $this->attributeService->getAttributes(),
+            'colors' => ProductColor::all(),
+            'selectedColorIds', $selectedColorIds,
         ]);
     }
 
@@ -150,13 +176,21 @@ class ProductController extends Controller
     public function editProductAction(Product $product, Request $request)
     {
         $data = array_merge(
-            $request->except(['videos','categories','discount_value','img_alt','img_title','attrs','attrs_values','pictures','relatedProd','relatedProdDiscount','relatedProdQuantity']),
+            $request->except(['colors','price', 'videos', 'categories', 'discount_value', 'img_alt', 'img_title', 'attrs', 'attrs_values', 'pictures', 'relatedProd', 'relatedProdDiscount', 'relatedProdQuantity']),
 
             [
                 'active' => isset($request->active) ? true : false,
                 'video_id' => json_encode($request->get('videos'))
             ]
         );
+
+        if ($request->has('colors')) {
+            $product->colors()->detach();
+            foreach ($request->colors as $color) {
+
+                $product->colors()->attach(ProductColor::find($color));
+            }
+        }
 
         if ($request->has('pictures')) {
             foreach ($request->pictures as $key => $picture) {
@@ -190,7 +224,14 @@ class ProductController extends Controller
             }
             $this->productService->addOrUpdateAttributes($product, $dataAttributes);
         }
-
+        if ($request->has('price')) {
+            $this->productService->addOrUpdateAttributes($product, [
+                [
+                    'id' => 1,
+                    'value' => $request->get('price') ?? 0,
+                ]
+            ]);
+        }
         $dataRelatedProducts = [];
         if ($request->get('relatedProd')) {
             foreach ($request->get('relatedProd') as $key => $relateProdId) {
@@ -214,7 +255,13 @@ class ProductController extends Controller
         $this->productService->addOrUpdateDiscount($product, $request->get('discount_value') ?? 0);
 
         Session::flash('update', 'Successfully update');
-        return back();
+        return redirect()->route('product_edit', ['product' => $product]);
+    }
+
+    public function deleteProduct(Product $product)
+    {
+        $product->delete();
+        return redirect()->route('product_list');
     }
 
     public function updateImageData(Request $request)

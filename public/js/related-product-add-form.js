@@ -89,7 +89,7 @@ $('#related-prod-add').click(function (event) {
             for (var i = 0; i < data.length; i++) {
                 options += '<option value="' + data[i].id + '">' + data[i].title + '</option>';
             }
-            $('.related-products').append('<select form="product-update-form"  name="relatedProd[]">' + options + '</select>' + '<input form="product-update-form"  type="number" name="relatedProdDiscount[]">' + '<input form="product-update-form" type="number" name="relatedProdQuantity[]">');
+            $('.related-products').append('<p><select form="product-update-form"  name="relatedProd[]">' + options + '</select></p>' + '                                        <label class="form-check-label" for="" style="margin-right: 30px">Скидка на дополнительный товар</label>' + '<input form="product-update-form"  type="number" name="relatedProdDiscount[]">' + '                                        <label class="form-check-label" for="" style="margin-right: 30px">Количество дополнительного товарa</label>' + '<input form="product-update-form" type="number" name="relatedProdQuantity[]">');
         }
     });
 });

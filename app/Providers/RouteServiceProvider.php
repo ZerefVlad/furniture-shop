@@ -6,7 +6,9 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Likes;
 use App\Models\Order;
+use App\Models\Post;
 use App\Models\Product;
+use App\Models\ProductColor;
 use App\Models\Subscribe;
 use App\Models\User;
 use http\Env\Request;
@@ -38,9 +40,11 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('product', Product::class);
         Route::model('order', Order::class);
         Route::model('comment', Comment::class);
+        Route::model('post', Post::class);
         Route::model('user', User::class);
         Route::model('subscribe', Subscribe::class);
         Route::model('like', Likes::class);
+        Route::model('color', ProductColor::class);
 
 
     }

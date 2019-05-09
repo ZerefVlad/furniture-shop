@@ -84,7 +84,9 @@ $('#attribute-add').click(function (event) {
         success: function success(data) {
             var options = '';
             for (var i = 0; i < data.length; i++) {
-                options += '<option value="' + data[i].id + '">' + data[i].title + '</option>';
+                if (data[i].id != 1) {
+                    options += '<option value="' + data[i].id + '">' + data[i].title + '</option>';
+                }
             }
             $('.attributes').append('<select form="product-update-form"  name="attrs[]">' + options + '</select>' + '<input form="product-update-form"  type="text" name="attrs_values[]">');
         }

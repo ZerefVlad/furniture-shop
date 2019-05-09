@@ -10,10 +10,10 @@
                                                                alt=""></a>
                             <p class="pull-right item-price">{{$singleProduct['product']->getPriceWithDiscount()*$singleProduct['quantity']}} грн.</p>
                             <div class="media-body">
-                                <h4 class="media-heading item-title"><a href="#">
+                                <h4 class="media-heading item-title">Назва товару: <a href="#">
                                         {{$singleProduct['product']->title}}
                                     </a></h4>
-                                <p class="item-desc">{{$singleProduct['product']->code}}</p>
+                                <p class="item-desc">Код товару: {{$singleProduct['product']->code}}</p>
                             </div>
                         </div>
                     @endforeach
@@ -21,15 +21,14 @@
                     <div class="media">
                         <p class="pull-right item-price">{{$total}}</p>
                         <div class="media-body">
-                            <h4 class="media-heading item-title summary">Subtotal</h4>
+                            <h4 class="media-heading item-title summary">Загальна сумма:</h4>
                         </div>
                     </div>
                     <div class="media">
                         <div class="media-body">
                             <div>
-                                <a href="#" class="btn btn-theme btn-theme-dark" data-dismiss="modal">Close</a><!--
-                                    --><a href="shopping-cart.html"
-                                          class="btn btn-theme btn-theme-transparent btn-call-checkout">Checkout</a>
+                                <a href="#" class="btn btn-theme btn-theme-dark" data-dismiss="modal">Закрити</a><!--
+                                    --><a href="{{route('open_cart')}}" class="btn btn-theme btn-theme-transparent btn-call-checkout">До кошику</a>
                             </div>
                         </div>
                     </div>

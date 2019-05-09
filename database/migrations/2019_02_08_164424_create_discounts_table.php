@@ -17,7 +17,7 @@ class CreateDiscountsTable extends Migration
             $table->increments('id');
             $table->integer('value');
             $table->unsignedInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }
