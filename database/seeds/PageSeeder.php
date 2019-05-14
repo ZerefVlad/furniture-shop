@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\MainPage as Page;
 use Illuminate\Database\Seeder;
+use App\Models\MainPage;
 
-class MainPageSeeder extends Seeder
+class PageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class MainPageSeeder extends Seeder
      */
     public function run()
     {
-        $main = new Page();
+        $main = new MainPage();
         $main->block1 = json_encode([]);
         $main->block2 = json_encode([]);
         $main->block3 = json_encode([]);
