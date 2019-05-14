@@ -3,7 +3,8 @@
 use Illuminate\Database\Seeder;
 
 use App\Models\MainPage as Page;
-class MainPage extends Seeder
+
+class MainPageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
