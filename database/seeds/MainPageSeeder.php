@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
-
 use App\Models\MainPage as Page;
+use Illuminate\Database\Seeder;
 
 class MainPageSeeder extends Seeder
 {
