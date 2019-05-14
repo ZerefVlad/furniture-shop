@@ -6,10 +6,13 @@
     "/js/search.js": "/js/search.js",
     "/js/script.js": "/js/script.js",
     "/js/related-product-add-form.js": "/js/related-product-add-form.js",
+    "/js/main-page-builder.js": "/js/main-page-builder.js",
     "/js/imageloader.js": "/js/imageloader.js",
     "/js/image-upload-form.js": "/js/image-upload-form.js",
     "/js/form-updater.js": "/js/form-updater.js",
     "/js/comment.js": "/js/comment.js",
+    "/js/category.js": "/js/category.js",
     "/js/cart.js": "/js/cart.js",
+    "/js/callback.js": "/js/callback.js",
     "/js/attribute-add-form.js": "/js/attribute-add-form.js"
 }

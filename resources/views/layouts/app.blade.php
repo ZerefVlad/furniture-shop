@@ -36,58 +36,7 @@
 {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 
     <style >
-        .slide {
-            font-size: 40px;
-            padding: 40px;
-            box-sizing: border-box;
-            background: #FFFFFF;
 
-            color: #fff;
-        }
-
-        .slide:nth-of-type {
-            background: #FFFFFF;
-        }
-        /*.slide:nth-of-type(2) {*/
-        /*    background: orange;*/
-        /*}*/
-        /*.slide:nth-of-type(3) {*/
-        /*    background: green;*/
-        /*}*/
-        /*.slide:nth-of-type(4) {*/
-        /*    background: blue;*/
-        /*}*/
-        /*.slide:nth-of-type(5) {*/
-        /*    background: purple;*/
-        /*}*/
-
-        #slides {
-            position: relative;
-            height: 500px;
-            padding: 0px;
-            margin: 0px;
-            list-style-type: none;
-        }
-
-        .slide {
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            z-index: 1;
-
-            -webkit-transition: opacity 1s;
-            -moz-transition: opacity 1s;
-            -o-transition: opacity 1s;
-            transition: opacity 1s;
-        }
-
-        .showing {
-            opacity: 1;
-            z-index: 2;
-        }
     </style>
 
 
@@ -256,18 +205,26 @@
                     <!-- Header shopping cart -->
                     <div class="header-cart">
                         <div class="header-search" style="    top: 0px;    position: absolute;    right: 95%;   width: 270px;    max-width: 50%;">
-                            <input id="search-product" class="form-control" type="text" placeholder="What are you looking?"/>
-                            <button><i class="fa fa-search"></i></button>
+                            <input id="search-product" class="form-control" type="text" placeholder="Пошук"/>
+                            <button><i class="fa fa-search" style="    color: rgb(2, 187, 219);"></i></button>
                         </div>
-                        <div class="search-result">
+                        <div class="search-result" style="
+    position: absolute;
+        top: 60%;
+    right: 40%;
+    z-index: 1024;
+    background-color: #fff;
+    width: 155%;
+    border-radius: 2px;
+    box-sizing: border-box;">
 
                         </div>
                         <div class="cart-wrapper">
                             <a href="{{route('show-likes')}}" class="btn btn-theme-transparent hidden-xs hidden-sm"><i
-                                        class="fa fa-heart"></i></a>
+                                        class="fa fa-heart" style="    color: rgb(2, 187, 219);"></i></a>
                             <!--<a href="compare-products.html" class="btn btn-theme-transparent hidden-xs hidden-sm"><i class="fa fa-exchange"></i></a>-->
                             <a href="#" class="btn btn-theme-transparent" data-toggle="modal" data-target="#popup-cart"><i
-                                        class="fa fa-shopping-cart"></i> <span id="cart-product-count" data-count="0" class="badge-success">1</span> </i> </a>
+                                        class="fa fa-shopping-cart" style="    color: rgb(2, 187, 219);"></i> <span id="cart-product-count" class="badge-success" style="    color: rgb(2, 187, 219);"></span> </i> </a>
                             <!-- Mobile menu toggle button -->
                             <a href="#" class="menu-toggle btn btn-theme-transparent"><i class="fa fa-bars"></i></a>
                             <!-- /Mobile menu toggle button -->
@@ -477,7 +434,7 @@
 <script src="{{asset('js/comment.js')}}"></script>
 
 <!-- JS Global -->
-{{--<script src="{{ asset('js/plugins/jquery/jquery-1.11.1.js')}}"></script>--}}
+<script src="{{ asset('js/plugins/jquery/jquery-1.11.1.js')}}"></script>
 <script src="{{ asset('js/plugins/bootstrap/js/bootstrap.js')}}"></script>
 <script src="{{ asset('js/plugins/bootstrap-select/js/bootstrap-select.js')}}"></script>
 {{--<script src="{{ asset('js/plugins/superfish/js/superfish.min.js')}}"></script>--}}
@@ -491,6 +448,7 @@
 
 <script src="{{asset('js/cart.js')}}"></script>
 <script src="{{asset('js/search.js')}}"></script>
+<script src="{{asset('js/callback.js')}}"></script>
 
 <!-- JS Page Level -->
 {{--<script src="{{asset('js/theme.js')}}"></script>--}}

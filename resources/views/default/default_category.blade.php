@@ -3,24 +3,42 @@
 
 @endphp
 
+
 @extends('layouts.app')
 
 @section('content')
+
+
+
+
 {{--    {{$views[0]->product->getMainProductUrl()}}--}}
     <!-- CONTENT AREA -->
     <div class="content-area">
 
         <!-- BREADCRUMBS -->
-        <section class="page-section breadcrumbs">
+        <section class="page-section breadcrumbs" style="box-shadow: 0 1px 1px rgba(0, 0, 0, 0.16)">
             <div class="container">
-                <div class="page-header">
-                    <h1>Category Page</h1>
+{{--                <div class="page-header">--}}
+{{--                    <h1>Category Page</h1>--}}
+{{--                </div>--}}
+{{--                <ul class="breadcrumb">--}}
+{{--                    <li><a href="#">Home</a></li>--}}
+{{--                    <li><a href="#">Shop</a></li>--}}
+{{--                    <li class="active">Category Grid View Page With Left Sidebar</li>--}}
+{{--                </ul>--}}
+                <div class="demo">
+                    <input class="hide" id="hd-1" type="checkbox">
+                    <label for="hd-1">Фiльтри      <i class="fa fa-angle-down"></i></label>
+                    <div>
+                        @include('default.filters', [
+                               'filters' => $filters,
+                               'filtersData' => $filtersData,
+                               'category' => $category,
+                               'filterRequest' => $filter,
+                           ])
+                    </div>
+
                 </div>
-                <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li class="active">Category Grid View Page With Left Sidebar</li>
-                </ul>
             </div>
         </section>
         <!-- /BREADCRUMBS -->
@@ -28,7 +46,7 @@
         <!-- PAGE WITH SIDEBAR -->
         <section class="page-section with-sidebar">
             <div class="container">
-                <div class="row">
+
                     <!-- SIDEBAR -->
 
                     <!-- /SIDEBAR -->
@@ -137,7 +155,7 @@
                                                     <a style="color: #ffffff; background-color: #1c94c4" class="btn btn-theme btn-theme-transparent btn-wish-list" href="{{route("delete_like", ['likes' => $product->likes()->first()])}}"><i
                                                                 class="fa fa-heart"></i></a>
                                                 @endif
-                                            <a class="btn btn-theme btn-theme-transparent btn-wish-list" href="#">Детальныше</a>
+                                            <a class="btn btn-theme btn-theme-transparent btn-wish-list" href="{{route('show_single_product', [ 'product' => $product, 'category' => $product->categories->first()])}}">Детальныше</a>
 {{--                                                @if(!$product->likes()->first())--}}
 {{--                                                <a class="btn btn-theme btn-theme-transparent btn-icon-left" href="{{route("add_to_like", ['product' => $product,'category' => $product->categories->first()])}}">До лайку</a>--}}
 {{--                                                @else--}}
@@ -208,7 +226,7 @@
                     </div>
                     <!-- /CONTENT -->
 
-                </div>
+
             </div>
         </section>
         <!-- /PAGE WITH SIDEBAR -->

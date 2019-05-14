@@ -34,7 +34,7 @@
                     <h2 class="block-title"><span>Contact Form</span></h2>
 
                     <!-- Contact form -->
-                    <form name="contact-form" method="post" action="#" class="contact-form" id="contact-form">
+                    <form name="contact-form" method="get" action="{{route('callback-send')}}" class="contact-form" id="contact-form">
 
                         <div class="outer required" >
                             <div class="form-group af-inner">
@@ -45,7 +45,7 @@
                                        class="form-control placeholder"/>
                             </div>
                         </div>
-
+                        <input type="hidden" name="type" value="contact">
                         <div class="outer required">
                             <div class="form-group af-inner">
                                 <label class="sr-only" for="email">Email</label>
@@ -60,7 +60,7 @@
                             <div class="form-group af-inner">
                                 <label class="sr-only" for="subject">Phone</label>
                                 <input style="border-radius: 5px;border: 1px solid #c1c1c1;background-color:#f3f3f3;"
-                                       type="number" name="subject" id="subject" placeholder="Subject" value="" size="30"
+                                       type="text" name="phone" id="subject" placeholder="Phone" value="" size="30"
                                        data-toggle="tooltip" title="Subject is required"
                                        class="form-control placeholder"/>
                             </div>

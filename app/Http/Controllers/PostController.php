@@ -11,9 +11,10 @@ class PostController extends Controller
 {
 
 
-    public function showPosts()
+    public function showPosts(Post $post)
     {
         $posts = Post::all();
+        $posts = Post::paginate(6);
         return view('blog.blog_list', [
             'posts' => $posts,
             ]);

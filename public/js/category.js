@@ -60,39 +60,51 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 70);
+/******/ 	return __webpack_require__(__webpack_require__.s = 64);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 70:
+/***/ 64:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(71);
+module.exports = __webpack_require__(65);
 
 
 /***/ }),
 
-/***/ 71:
+/***/ 65:
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-    $('#search-product').keyup(function (e) {
-        var search = e.target.value;
-        var searchDiv = $('.search-result');
+    var type = $('#type-selector').val();
+    var id = $('#type-selector').attr('data-id');
+    getCats(type, id);
 
-        $.get({
-            url: '/api/products/search/' + search,
-            success: function success(data) {
-                console.log(data);
-                searchDiv.html('');
-                searchDiv.html(data);
-            }
-        }).fail(function () {
-            searchDiv.html('');
-        });
+    $('#type-selector').change(function () {
+        var type = $('#type-selector').val();
+        getCats(type, id);
     });
 });
+
+function getCats(type, id) {
+    $.get({
+        url: '/api/categories/' + type,
+        data: {
+            categoryId: id
+        },
+        success: function success(data) {
+            $('#parents').html('<option value="0">Без родителя</option>');
+            for (var i = 0; i < data.categories.length; i++) {
+                if (data.selected && data.categories[i].id === data.selected.id) {
+                    $('#parents').append('<option value="' + data.categories[i].id + '" selected >' + data.categories[i].title + '</option>');
+                } else {
+                    $('#parents').append('<option value="' + data.categories[i].id + '">' + data.categories[i].title + '</option>');
+                }
+            }
+        }
+    });
+}
 
 /***/ })
 

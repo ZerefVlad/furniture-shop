@@ -85,6 +85,7 @@ class CartController extends Controller
     public function openCart()
     {
         $totalPrice = 0;
+        $totalCount = 0;
         $products = [];
         $complexes = [];
         if ($this->session->has('cart_data_products')) {
@@ -99,6 +100,7 @@ class CartController extends Controller
                     'discount' => $product->discount ? $product->discount->value : 0,
                 ];
                 $totalPrice += $price;
+                $totalCount += $cartItem['quantity'];
             }
         }
         if ($this->session->has('cart_data_complex')) {
@@ -115,10 +117,12 @@ class CartController extends Controller
                     'complex_id' => $complex['complex_id'],
                     'total_quantity' => $complex['total_quantity'],
                 ];
+                $totalCount += $complex['total_quantity'];
                 $totalPrice += $price * $complex['total_quantity'];
             }
         }
         $this->session->set('total_price', $totalPrice);
+        $this->session->set('total_count', $totalCount);
         $this->session->set('single', $products);
         $this->session->set('multiple', $complexes);
         return view('cart', [
@@ -168,6 +172,11 @@ class CartController extends Controller
             $cart[] = array_merge($request->all(), ['total_quantity' => 1]);
         }
         $this->session->set('cart_data_complex', $cart);
+    }
+
+    public function getCartItemsCount()
+    {
+        return $this->session->get('total_count') ?? 0;
     }
 
     public function deleteComplexPack(Request $request)

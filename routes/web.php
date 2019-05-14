@@ -53,6 +53,12 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/comments', 'Admin\CommentController@index')->name('comment_list');
     Route::get('/comments/reply', 'Admin\CommentController@replyComment')->name('comment_reply');
 
+    Route::get('/filters', 'Admin\FilterCoroller@index')->name('filter');
+    Route::get('/filters/add', 'Admin\FilterCoroller@create')->name('create-filter');
+    Route::get('/filters/{filter}/delete', 'Admin\FilterCoroller@delete')->name('delete-filter');
+
+
+
 
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', 'Admin\UserController@index')->name('user_list');
@@ -118,7 +124,13 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/order/{order}', 'Admin\OrderController@showOrder')->name('single_order');
 
     Route::get('/main-page', 'Admin\MainPageController@show')->name('main_page_create');
-    Route::post('/main-page-slider', 'Admin\MainPageController@addPictureSlider')->name('addPictureSlider');
+    Route::post('/main-page/block-1', 'Admin\MainPageController@addFirstBlock')->name('first-block');
+    Route::post('/main-page/block-2', 'Admin\MainPageController@addSecondBlock')->name('second-block');
+    Route::post('/main-page/block-3', 'Admin\MainPageController@addThirdBlock')->name('third-block');
+
+    Route::get('/callback', 'Admin\CallbackController@index')->name('callback');
+    Route::get('/callback/send', 'CallbackController@send')->name('callback-send');
+
 
 });
 

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Scout\Searchable;
+
 /**
  * Class Product
  * @package App\Models
@@ -111,6 +112,13 @@ class Product extends Model
     public function productAttributes()
     {
         return $this->belongsToMany(Attribute::class, 'product_attributes', 'product_id');
+    }
+
+    public function getAttributeById(int $id): ?string
+    {
+        return $this->productAttributes()->where('attributes.id', $id)->distinct()->first(['value'])
+            ? $this->productAttributes()->where('attributes.id', $id)->distinct()->first(['value'])->value
+            : null;
     }
 
     public function discount()
@@ -264,11 +272,41 @@ class Product extends Model
 
     public function getAverageScore(): int
     {
-       $rating = 0;
-       foreach ($this->comments as $comment) {
-           $rating += $comment->rating;
-       }
+        $rating = 0;
+        foreach ($this->comments as $comment) {
+            $rating += $comment->rating;
+        }
 
-       return count($this->comments) > 0 ? $rating/count($this->comments): 0;
+        return count($this->comments) > 0 ? $rating / count($this->comments) : 0;
+    }
+
+    public function applyFilters(array $filters): bool
+    {
+        foreach ($filters as $key => $value) {
+            $filter = Filter::find($key);
+            $attribute = $this->getAttributeById($filter->attribute->id);
+            if (!$attribute) {
+                return false;
+            }
+            if ($filter->type === 'equal') {
+                $check = false;
+                foreach ($value as $valueEqual) {
+
+                    if ($attribute === $valueEqual) {
+                        $check = true;
+                    }
+                }
+                if (!$check) {
+                    return false;
+                }
+            } else {
+
+                if ($attribute < $value['min'] || $attribute > $value['max']) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 }

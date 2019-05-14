@@ -60,37 +60,29 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 70);
+/******/ 	return __webpack_require__(__webpack_require__.s = 66);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 70:
+/***/ 66:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(71);
+module.exports = __webpack_require__(67);
 
 
 /***/ }),
 
-/***/ 71:
+/***/ 67:
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-    $('#search-product').keyup(function (e) {
-        var search = e.target.value;
-        var searchDiv = $('.search-result');
+    $('#add-text-slide').click(function () {
+        $('.text-slides').append('<p>Титулка</p>' + '<input form="block1-form" name="title[]" required type="text">' + '<p>Описание</p>' + '<textarea required form="block1-form" name="description[]"></textarea>' + '<p>Url</p>' + '<input form="block1-form" name="url[]" type="text">' + '<input form="block1-form" name="image[]" type="file" required>');
+    });
 
-        $.get({
-            url: '/api/products/search/' + search,
-            success: function success(data) {
-                console.log(data);
-                searchDiv.html('');
-                searchDiv.html(data);
-            }
-        }).fail(function () {
-            searchDiv.html('');
-        });
+    $('#add-video-slide').click(function () {
+        $('.video-slides').append('<input name="video[]" type="text" form="block1-form">');
     });
 });
 

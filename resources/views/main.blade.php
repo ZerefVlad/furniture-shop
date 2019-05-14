@@ -5,57 +5,69 @@
     <!-- CONTENT AREA -->
 
 
-    <section class="page-section no-padding slider"  style="background-color: #f3f3f3;">
+    <section class="page-section no-padding slider" style="background-color: #f3f3f3;">
         <div class="container full-width">
 
             <div class="main-slider">
 
+ <span class="pre" style="    position: absolute;
+        top: 265px;
+    left: 150px;
+    font-size: 80px;
+    color: rgb(2, 187, 219);"><i class="fa fa-angle-left"></i></span>
+                <span class="nex" style="    position: absolute;
+        top: 265px;
+    right: 127px;
+    font-size: 80px;
+    color: rgb(2, 187, 219);"><i class="fa fa-angle-right"></i></span>
 
                 <ul id="slides">
-                    <li class="slide showing">
-                        <div class="item slide1 dark alt">
-
-                            <div class="caption">
-                                <div class="container">
-                                    <div class="div-table">
-                                        <div class="div-cell">
-                                            <div class="caption-content">
-                                                <h2 class="caption-title" style=" color: #333333;">But I must explain to
-                                                    you how all this mistaken idea of denouncing pleasure and praising
-                                                    pain.</h2>
-                                                <h3 class="caption-text" style=" color: #333333;">Lorem ipsum dolor sit
-                                                    amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                                                    invidunt ut labore et dolore magna aliquyam.</h3>
-                                                <p class="caption-text">
-                                                    <a class="btn btnslider" href="#">Детальніше</a>
-                                                </p>
+                    @foreach($textSlides as $slide)
+                        <li class="slide showing">
+                            <div class="item slide1 dark alt">
+                                <div class="caption">
+                                    <div class="container" style="background-color: rgb(243, 243, 243);">
+                                        <div class="div-table">
+                                            <div class="div-cell">
+                                                <div class="caption-content"
+                                                     style="background-color: rgb(243, 243, 243);">
+                                                    <h2 class="caption-title"
+                                                        style=" color: #333333;">{{$slide->title}}</h2>
+                                                    <h3 class="caption-text"
+                                                        style=" color: #333333;">{{$slide->description}}</h3>
+                                                    <p class="caption-text">
+                                                        <a class="btn btnslider" href="{{$slide->url}}">Детальніше</a>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <img style="width: 516px; height: 388px;     position: absolute;    top: 0;  right: 0;"
-                                     src="{{asset('storage/static_img/blog3.jpg')}}" alt=""/>
-                            </div>
-                        </div>
-
-                    </li>
-                    <li class="slide">
-                        <div class="item slide3 dark">
-
-                            <div class="caption">
-                                <div class="container">
-                                    <iframe width="90%" height="100%"
-
-                                            src="https://www.youtube.com/embed/tqGPIvIZo3I" frameborder="0"
-                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen></iframe>
+                                    <img style="width: 516px; height: 388px;     position: absolute;    top: 0;  right: 0;"
+                                         src="{{$slide->image}}" alt=""/>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-{{--                    <li class="slide">Slide 3</li>--}}
-{{--                    <li class="slide">Slide 4</li>--}}
-{{--                    <li class="slide">Slide 5</li>--}}
+                        </li>
+
+                    @endforeach
+                    @foreach($videoSlides as $slide)
+                        <li class="slide showing">
+                            <div class="item slide3 dark">
+
+                                <div class="caption">
+                                    <div class="container" style="background-color: rgb(243, 243, 243);">
+                                        <iframe width="90%" height="100%"
+
+                                                src="https://www.youtube.com/embed/{{$slide}}" frameborder="0"
+                                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                    {{--                    <li class="slide">Slide 3</li>--}}
+                    {{--                    <li class="slide">Slide 4</li>--}}
+                    {{--                    <li class="slide">Slide 5</li>--}}
                 </ul>
             </div>
         </div>
@@ -215,24 +227,18 @@
                      font-family: Montserrat;
                      font-size: 21px;
                      font-weight: 600;
-                     letter-spacing: 0.84px;">Диван "Імперия ІІ" (Україна)</h2>
+                     letter-spacing: 0.84px;">{{$block2->title}}</h2>
                 <h3 class="caption-text" style="
                      color: #5e6471;
                      font-family: Lato;
                      font-size: 18px;
                      font-weight: 400;
-">Де ж як не на дивані приємно відпочити після насиченого дня?
-                    На цьому предметі інтер'єру лежить велика відповідальність - він повинен бути неймовірно
-                    зручним! Ви тільки подивіться на ці м'які закруглені боковини - ніякого ризику напоротися
-                    головою на гострі кути. Ви можете повністю розслабитися і відпочити, не думаючи ні про що
-                    зайвому.
-                    Спецiальна пропозицiя для цього товару:
-                    При покупцi дивану "Iмперiя II" ми надаємо знижку для столу "Flower"!</h3>
+">{{$block2->description}}</h3>
                 <h2 class="caption-title" style="color: #333333;
                      font-family: Montserrat;
                      font-size: 21px;
                      font-weight: 600;
-                     letter-spacing: 0.84px;">Диван "Імперия ІІ" (Україна)</h2>
+                     letter-spacing: 0.84px;">{{$block2->title2}}</h2>
 
                 <h3 class="caption-text" style="
                      color: #5e6471;
@@ -241,19 +247,16 @@
                      font-weight: 400;
 ">
 
-                    Справжнє диво сучасного дизайну. Незважаючи на уявну компактність, стіл може розкладатися,
-                    завдяки бічним висувним "крильцям". Також є нижня полиця. Стільниця виконана з скла з
-                    візерунками. Колір малюнка надається на вибір: сніжно-білий або кремовий. Ніжки металеві
-                    хромовані. Ця модель припаде до душі любителям хай-тека.</h3>
+                    {{$block2->description2}}</h3>
                 <p class="caption-text">
-                    <a class="btn btnslider" href="#">Детальніше</a>
+                    <a class="btn btnslider" href="{{$block2->url}}">Детальнiше</a>
                 </p>
             </div>
             <div style="position: relative;">
                 <img style="width: 516px; height: 388px; position: absolute;right: 0;z-index: 0;"
-                     src="{{asset('storage/static_img/bed.jpg')}}" alt=""/>
+                     src="{{$block2->image}}" alt=""/>
                 <img style="width: 126px; height: 125px; position: absolute;    right: 400px;;z-index:1;"
-                     src="{{asset('storage/static_img/dop_tov.jpg')}}" alt=""/>
+                     src="{{$block2->image2}}" alt=""/>
 
             </div>
 
@@ -261,6 +264,15 @@
         </div>
     </section>
     <!-- /PAGE -->
+    <section class="page-section">
+        <div class="container">
+            <iframe width="90%" height="100%"
+
+                    src="https://www.youtube.com/embed/{{$block3->video}}" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+    </section>
 
     <!-- PAGE -->
     <section class="page-section">

@@ -55,7 +55,7 @@ class Order extends Model
                     ];
                 }
                 catch (\Exception $exception) {
-                    dd($product);
+                    //dd($product);
                 }
 
             }

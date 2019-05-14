@@ -114,9 +114,10 @@ font-weight: 600;margin: 30px;padding-bottom: 20px">Список товарів<
                                     <td class="description">
                                         <h4 style="color: #333333;font-family: Roboto;font-size: 22px;font-weight: 500;"><a href="{{route('show_single_product', ['product' => $product['product'],        'category' => $product['product']->categories->first(),
                                                              ])}}">{{$product['product']->title}}</a></h4>
-                                        <p style="color: #9e9e9e;font-family: Roboto;font-size: 18px;font-weight: 400;">Код товару: {{$product['product']->code}}}</p>
+                                        <p style="color: #9e9e9e;font-family: Roboto;font-size: 18px;font-weight: 400;">Код товару: {{$product['product']->code}}</p>
                                     </td>
-                                    <td><img style="margin-top: 30%"  src="{{$product['color'] ? $product['color']->getImage()->url : ''}}" alt=""></td>
+{{--@php( dd($product['color']))--}}
+                                    <td><img style="margin-top: 30%"  src="{{$product['color'] ? $product['color']->first()->getImage()->url : ''}}" alt=""></td>
                                     <td class="quantity">x{{$product['quantity']}}</td>
 
                                     <td class="total" style="padding-right: 50px">
@@ -124,7 +125,7 @@ font-weight: 600;margin: 30px;padding-bottom: 20px">Список товарів<
                                             грн</p>
                                         <p class="skidka"
                                            style="color: #9e9e9e;font-family: Roboto;font-size: 18px;font-weight: 400;">
-                                            Скидка: {{$product['discount']}}% </p>
+                                            Знижка: {{$product['discount']}}% </p>
 
 
                                     </td>
@@ -145,23 +146,25 @@ font-weight: 600;margin: 30px;padding-bottom: 20px">Список товарів<
                                                     src="{{$complex['product']->getMainProductUrl()}}" alt=""/></a></td>
 
                                     <td class="description">
-                                        <h4 style="color: #333333;font-family: Roboto;font-size: 22px;font-weight: 500;">Назва основного товару: {{$complex['related_product']->title}}</h4>
-                                        <p style="color: #9e9e9e;font-family: Roboto;font-size: 18px;font-weight: 400;">Код основного товару: {{$complex['product']->code}}}</p>
-                                        <p style="color: #333333;font-family: Roboto;font-size: 22px;font-weight: 500;">{{$complex['price']}}
+                                        <h4 style="color: #333333;font-family: Roboto;font-size: 22px;font-weight: 500;">Назва основного товару: {{$complex['product']->title}}</h4>
+                                        <p style="color: #9e9e9e;font-family: Roboto;font-size: 18px;font-weight: 400;">Код основного товару: {{$complex['product']->code}}</p>
+                                        <p style="color: #333333;font-family: Roboto;font-size: 22px;font-weight: 500;">{{$complex['product']->getPriceWithDiscount()}}
                                             грн</p>
                                         <p class="skidka"
                                            style="color: #9e9e9e;font-family: Roboto;font-size: 18px;font-weight: 400;">
-                                            Знижка: {{$complex['discount']}}% </p>
+                                            Знижка: {{$complex['product']->discount->value}}% </p>
                                     </td>
 
                                     <td class="image"><a class="media-link" href="#"><i class="fa fa-plus"></i><img
                                                     width="200" height="150"
-                                                    src="{{$complex['related_product']->getMainProductUrl()}}" alt=""/></a></td>
+                                                    src="{{$complex['related_product']->getMainProductUrl()}}" alt=""/></a>
+                                        <p>кiлькiсть додаткового товару: {{$complex['quantity']}} шт.</p>
+                                    </td>
 
                                     <td class="total" style="padding-right: 50px">
-                                        <h4 style="color: #333333;font-family: Roboto;font-size: 22px;font-weight: 500;">Назва додаткового товару{{$complex['related_product']->title}}</h4>
-                                        <p style="color: #9e9e9e;font-family: Roboto;font-size: 18px;font-weight: 400;">Код додаткового товару: {{$complex['product']->code}}}</p>
-                                        <p style="color: #333333;font-family: Roboto;font-size: 22px;font-weight: 500;">Price: {{ ($complex['related_product']->getPriceWithDiscount() - $complex['related_product']->getPriceWithDiscount()* $complex['discount']/100) * $complex['quantity'] }}
+                                        <h4 style="color: #333333;font-family: Roboto;font-size: 22px;font-weight: 500;">Назва додаткового товару: {{$complex['related_product']->title}}</h4>
+                                        <p style="color: #9e9e9e;font-family: Roboto;font-size: 18px;font-weight: 400;">Код додаткового товару: {{$complex['related_product']->code}}</p>
+                                        <p style="color: #333333;font-family: Roboto;font-size: 22px;font-weight: 500;">Цiна: {{ ($complex['related_product']->getPriceWithDiscount() - $complex['related_product']->getPriceWithDiscount()* $complex['discount']/100) * $complex['quantity'] }}
                                             грн</p>
                                         <p class="skidka"
                                            style="color: #9e9e9e;font-family: Roboto;font-size: 18px;font-weight: 400;">
@@ -172,16 +175,15 @@ font-weight: 600;margin: 30px;padding-bottom: 20px">Список товарів<
                                     </td>
 
                                     <td >
-                                        <p>кiлькiсть додаткового товару: {{$complex['quantity']}}</p>
+
                                         <p class="complex_price">Цiна комплекту: {{$complex['price'] * $complex['total_quantity']}}</p>
                                         <label> К-сть комплектiв: </label>
                                         <input type="number" class="quantity-complex-cart" data-id="{{$complex['complex_id']}}" required min="1"
                                                max="99" value="{{$complex['total_quantity']}}">
 
                                     </td>
-
                                     <td style="padding-top: 5%;">
-                                        <button  id="delete-product-cart">
+                                        <button  id="delete-complex-cart">
                                             <i data-id="{{$complex['complex_id']}}" class="fa fa-close" style="color:#e21e1e;font-size: 30px;"></i>
                                         </button>
                                     </td>
@@ -190,6 +192,7 @@ font-weight: 600;margin: 30px;padding-bottom: 20px">Список товарів<
 
 
                                 </tr>
+
                             @endforeach
 
 

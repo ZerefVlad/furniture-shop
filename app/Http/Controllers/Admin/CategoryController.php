@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\CreateCategoryRequest;
+use App\Models\Filter;
 use App\Models\Image;
 use App\Models\ImageModel;
 use App\Services\CategoryService;
@@ -36,7 +37,13 @@ class CategoryController extends Controller
     {
         $request->file('image')->storeAs('categories/'.$request->title,$request->image_title.'.png');
 
-        $this->category_service->createCategory($request->all());
+        $this->category_service->createCategory($request->except('filters'));
+        if ($request->has('filters')) {
+            $category->filters()->detach();
+            foreach ($request->get('filters') as $filter) {
+                $category->filters()->attach(Filter::find($filter));
+            }
+        }
         Session::flash('category_create_success', 'Категория успешно создана');
 
         return back();
@@ -50,6 +57,7 @@ class CategoryController extends Controller
             ->with('action', 'create')
             ->with('category', null)
             ->with('image', null)
+            ->with('filters', Filter::all())
             ->with('categories', $categories);
     }
 
@@ -59,9 +67,16 @@ class CategoryController extends Controller
             $request->file('image')->storeAs('categories/'.$request->title, $request->image_title.'.png');
         }
 
+        if ($request->has('filters')) {
+            $category->filters()->detach();
+            foreach ($request->get('filters') as $filter) {
+                $category->filters()->attach(Filter::find($filter));
+            }
+        }
+
         $this->category_service->editCategory(
             $category,
-            $request->all()
+            $request->except('filters')
         );
         Session::flash('category_edit_success', 'Category успешно changed');
 
@@ -78,6 +93,7 @@ class CategoryController extends Controller
             ->with('action', 'edit')
             ->with('image', $image)
             ->with('category', $category)
+            ->with('filters', Filter::all())
             ->with('categories', $categories);
     }
 

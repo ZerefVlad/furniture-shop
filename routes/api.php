@@ -38,8 +38,10 @@ Route::group(['prefix' => 'cart'], function () {
     Route::get('/update-complex-quantity', 'CartController@updateComplexQuantity');
     Route::get('/total', 'CartController@getTotal');
     Route::get('/get-cart', 'CartController@getCart');
+    Route::get('/get-items-count', 'CartController@getCartItemsCount');
 });
 
 Route::post('/{comment}/delete', 'ProductController@deleteComment');
 
 Route::get('/products/search/{searchText}', 'ProductController@showSearchResults');
+Route::get('/categories/{type}', 'CategoryController@getCategories');

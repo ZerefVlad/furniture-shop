@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Filter;
 use App\Models\Likes;
 use App\Models\Order;
 use App\Models\Post;
@@ -45,6 +46,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('subscribe', Subscribe::class);
         Route::model('like', Likes::class);
         Route::model('color', ProductColor::class);
+        Route::model('filter', Filter::class);
 
 
     }

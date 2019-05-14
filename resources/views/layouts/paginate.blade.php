@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-<div class="pagination-wrapper">
+<div class="pagination-wrapper" style="    text-align: center;">
 
     <ul class="pagination">
         @if ($paginator->onFirstPage())

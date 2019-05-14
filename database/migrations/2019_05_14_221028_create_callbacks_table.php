@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMainPagesTable extends Migration
+class CreateCallbacksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateMainPagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('main_pages', function (Blueprint $table) {
+        Schema::create('callbacks', function (Blueprint $table) {
             $table->increments('id');
-            $table->json('block1');
-            $table->json('block2');
-            $table->json('block3');
+            $table->json('callback');
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateMainPagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('main_pages');
+        Schema::dropIfExists('callbacks');
     }
 }

@@ -25,6 +25,11 @@ CLASS Category EXTENDS Model
         'type',
     ];
 
+    public function filters()
+    {
+        return $this->belongsToMany(Filter::class);
+    }
+
     public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id');

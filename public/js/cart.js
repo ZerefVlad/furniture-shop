@@ -101,6 +101,9 @@ $(document).ready(function () {
                 id: product_id,
                 quantity: quantity,
                 color: color
+            },
+            success: function success() {
+                window.location.replace('/cart');
             }
         });
     });
@@ -168,11 +171,15 @@ $(document).ready(function () {
         console.log(form);
         $.get({
             url: '/api/cart/add-complex',
-            data: form.serialize()
+            data: form.serialize(),
+
+            success: function success() {
+                window.location.replace('/cart');
+            }
         });
     });
 
-    $('.delete-complex-cart').click(function (event) {
+    $('#delete-complex-cart').click(function (event) {
         event.preventDefault();
         var id = event.target.getAttribute('data-id');
         $.get({
@@ -204,9 +211,39 @@ $(document).ready(function () {
         }
     });
 
+    $.get({
+        url: '/api/cart/get-items-count',
+        success: function success(data) {
+            $('#cart-product-count').html(data);
+        }
+    });
+
+    // $('#callme').click(function (e) {
+    //     e.preventDefault();
+    //
+    //
+    //     let product_id = $('input[name="product_id"]').val();
+    //
+    //     $.get({
+    //         url: '/api/cart/add',
+    //         data: {
+    //             id: product_id,
+    //
+    //         },
+    //     });
+    //
+    //
+    // });
+
+
     $('.colors').click(function (e) {
         var colorId = e.target.getAttribute('data-color');
         $('input[name="color"]').val(colorId);
+    });
+
+    $('.select_colors').click(function (e) {
+        e.target.classList.remove('select_color');
+        e.target.classList.add('select_color');
     });
 });
 
