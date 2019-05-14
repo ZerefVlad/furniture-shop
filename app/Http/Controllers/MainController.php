@@ -24,6 +24,14 @@ class MainController extends Controller
     {
         $this->category_service = $category_service;
         $this->main = MainPage::first();
+        if (!$this->main) {
+            $main = new MainPage();
+            $main->block1 = json_encode([]);
+            $main->block2 = json_encode([]);
+            $main->block3 = json_encode([]);
+            $main->save();
+            $this->main = $main;
+        }
     }
 
 
@@ -34,8 +42,8 @@ class MainController extends Controller
         $user_ip = $request->ip();
 
         $block1 = json_decode($this->main->block1);
-        $textSlides = $block1->textSlides;
-        $videoSlides = $block1->videoSlides;
+        $textSlides = isset($block1->textSlides) ? $block1->textSlides : null;
+        $videoSlides = isset($block1->videoSlides) ? $block1->videoSlides : null;
 
         $block2 = json_decode($this->main->block2);
 

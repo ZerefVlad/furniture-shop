@@ -22,49 +22,54 @@
     color: rgb(2, 187, 219);"><i class="fa fa-angle-right"></i></span>
 
                 <ul id="slides">
-                    @foreach($textSlides as $slide)
-                        <li class="slide showing">
-                            <div class="item slide1 dark alt">
-                                <div class="caption">
-                                    <div class="container" style="background-color: rgb(243, 243, 243);">
-                                        <div class="div-table">
-                                            <div class="div-cell">
-                                                <div class="caption-content"
-                                                     style="background-color: rgb(243, 243, 243);">
-                                                    <h2 class="caption-title"
-                                                        style=" color: #333333;">{{$slide->title}}</h2>
-                                                    <h3 class="caption-text"
-                                                        style=" color: #333333;">{{$slide->description}}</h3>
-                                                    <p class="caption-text">
-                                                        <a class="btn btnslider" href="{{$slide->url}}">Детальніше</a>
-                                                    </p>
+                    @if ($textSlides)
+                        @foreach($textSlides as $slide)
+                            <li class="slide showing">
+                                <div class="item slide1 dark alt">
+                                    <div class="caption">
+                                        <div class="container" style="background-color: rgb(243, 243, 243);">
+                                            <div class="div-table">
+                                                <div class="div-cell">
+                                                    <div class="caption-content"
+                                                        style="background-color: rgb(243, 243, 243);">
+                                                        <h2 class="caption-title"
+                                                            style=" color: #333333;">{{$slide->title}}</h2>
+                                                        <h3 class="caption-text"
+                                                            style=" color: #333333;">{{$slide->description}}</h3>
+                                                        <p class="caption-text">
+                                                            <a class="btn btnslider"
+                                                                href="{{$slide->url}}">Детальніше</a>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <img style="width: 516px; height: 388px;     position: absolute;    top: 0;  right: 0;"
+                                            src="{{$slide->image}}" alt="" />
                                     </div>
-                                    <img style="width: 516px; height: 388px;     position: absolute;    top: 0;  right: 0;"
-                                         src="{{$slide->image}}" alt=""/>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
 
-                    @endforeach
-                    @foreach($videoSlides as $slide)
-                        <li class="slide showing">
-                            <div class="item slide3 dark">
+                        @endforeach
+                    @endif
+                    @if ($videoSlides)
+                        @foreach($videoSlides as $slide)
+                            <li class="slide showing">
+                                <div class="item slide3 dark">
 
-                                <div class="caption">
-                                    <div class="container" style="background-color: rgb(243, 243, 243);">
-                                        <iframe width="90%" height="100%"
+                                    <div class="caption">
+                                        <div class="container" style="background-color: rgb(243, 243, 243);">
+                                            <iframe width="90%" height="100%"
 
                                                 src="https://www.youtube.com/embed/{{$slide}}" frameborder="0"
                                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                                 allowfullscreen></iframe>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-                    @endforeach
+                            </li>
+                        @endforeach
+                    @endif
                     {{--                    <li class="slide">Slide 3</li>--}}
                     {{--                    <li class="slide">Slide 4</li>--}}
                     {{--                    <li class="slide">Slide 5</li>--}}
@@ -98,8 +103,8 @@
                             <div class="thumbnail no-border no-padding">
                                 <div class="media">
                                     <a class="media-link" data-gal="prettyPhoto"
-                                       href="{{asset('storage/static_img/apartment.jpg')}}">
-                                        <img src="{{asset('storage/static_img/apartment.jpg')}}" alt=""/>
+                                        href="{{asset('storage/static_img/apartment.jpg')}}">
+                                        <img src="{{asset('storage/static_img/apartment.jpg')}}" alt="" />
 
                                     </a>
                                 </div>
@@ -113,11 +118,11 @@
                                     </div>
                                     <div class="buttons">
                                         <a class="btn btn-theme btn-theme-transparent btn-wish-list" href="#"><i
-                                                    class="fa fa-heart"></i></a><!--
+                                                class="fa fa-heart"></i></a><!--
                                             --><a class="btn btn-theme btn-theme-transparent btn-icon-left" href="#"><i
-                                                    class="fa fa-shopping-cart"></i>Add to Cart</a><!--
+                                                class="fa fa-shopping-cart"></i>Add to Cart</a><!--
                                             --><a class="btn btn-theme btn-theme-transparent btn-compare" href="#"><i
-                                                    class="fa fa-exchange"></i></a>
+                                                class="fa fa-exchange"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +131,7 @@
                             <div class="thumbnail no-border no-padding">
                                 <div class="media">
                                     <a class="media-link" data-gal="prettyPhoto" href="assets/img/apartment.jpg">
-                                        <img src="{{asset('storage/static_img/apartment.jpg')}}" alt=""/>
+                                        <img src="{{asset('storage/static_img/apartment.jpg')}}" alt="" />
 
                                     </a>
                                 </div>
@@ -140,11 +145,11 @@
                                     </div>
                                     <div class="buttons">
                                         <a class="btn btn-theme btn-theme-transparent btn-wish-list" href="#"><i
-                                                    class="fa fa-heart"></i></a><!--
+                                                class="fa fa-heart"></i></a><!--
                                             --><a class="btn btn-theme btn-theme-transparent btn-icon-left" href="#"><i
-                                                    class="fa fa-shopping-cart"></i>Add to Cart</a><!--
+                                                class="fa fa-shopping-cart"></i>Add to Cart</a><!--
                                             --><a class="btn btn-theme btn-theme-transparent btn-compare" href="#"><i
-                                                    class="fa fa-exchange"></i></a>
+                                                class="fa fa-exchange"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -153,7 +158,7 @@
                             <div class="thumbnail no-border no-padding">
                                 <div class="media">
                                     <a class="media-link" data-gal="prettyPhoto" href="assets/img/apartment2.jpg">
-                                        <img src="{{asset('storage/static_img/apartment.jpg')}}" alt=""/>
+                                        <img src="{{asset('storage/static_img/apartment.jpg')}}" alt="" />
 
                                     </a>
                                 </div>
@@ -167,11 +172,11 @@
                                     </div>
                                     <div class="buttons">
                                         <a class="btn btn-theme btn-theme-transparent btn-wish-list" href="#"><i
-                                                    class="fa fa-heart"></i></a><!--
+                                                class="fa fa-heart"></i></a><!--
                                             --><a class="btn btn-theme btn-theme-transparent btn-icon-left" href="#"><i
-                                                    class="fa fa-shopping-cart"></i>Add to Cart</a><!--
+                                                class="fa fa-shopping-cart"></i>Add to Cart</a><!--
                                             --><a class="btn btn-theme btn-theme-transparent btn-compare" href="#"><i
-                                                    class="fa fa-exchange"></i></a>
+                                                class="fa fa-exchange"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -180,7 +185,7 @@
                             <div class="thumbnail no-border no-padding">
                                 <div class="media">
                                     <a class="media-link" data-gal="prettyPhoto" href="assets/img/apartment2.jpg">
-                                        <img src="{{asset('storage/static_img/apartment.jpg')}}" alt=""/>
+                                        <img src="{{asset('storage/static_img/apartment.jpg')}}" alt="" />
 
                                     </a>
                                 </div>
@@ -194,11 +199,11 @@
                                     </div>
                                     <div class="buttons">
                                         <a class="btn btn-theme btn-theme-transparent btn-wish-list" href="#"><i
-                                                    class="fa fa-heart"></i></a><!--
+                                                class="fa fa-heart"></i></a><!--
                                             --><a class="btn btn-theme btn-theme-transparent btn-icon-left" href="#"><i
-                                                    class="fa fa-shopping-cart"></i>Add to Cart</a><!--
+                                                class="fa fa-shopping-cart"></i>Add to Cart</a><!--
                                             --><a class="btn btn-theme btn-theme-transparent btn-compare" href="#"><i
-                                                    class="fa fa-exchange"></i></a>
+                                                class="fa fa-exchange"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -227,18 +232,18 @@
                      font-family: Montserrat;
                      font-size: 21px;
                      font-weight: 600;
-                     letter-spacing: 0.84px;">{{$block2->title}}</h2>
+                     letter-spacing: 0.84px;">{{isset($block2->title) ? $block2->title: ''}}</h2>
                 <h3 class="caption-text" style="
                      color: #5e6471;
                      font-family: Lato;
                      font-size: 18px;
                      font-weight: 400;
-">{{$block2->description}}</h3>
+">{{isset($block2->description) ? $block2->description: ''}}</h3>
                 <h2 class="caption-title" style="color: #333333;
                      font-family: Montserrat;
                      font-size: 21px;
                      font-weight: 600;
-                     letter-spacing: 0.84px;">{{$block2->title2}}</h2>
+                     letter-spacing: 0.84px;">{{isset($block2->title2) ? $block2->title2: ''}}</h2>
 
                 <h3 class="caption-text" style="
                      color: #5e6471;
@@ -247,16 +252,16 @@
                      font-weight: 400;
 ">
 
-                    {{$block2->description2}}</h3>
+                    {{isset($block2->description2) ? $block2->description2: ''}}</h3>
                 <p class="caption-text">
-                    <a class="btn btnslider" href="{{$block2->url}}">Детальнiше</a>
+                    <a class="btn btnslider" href="{{isset($block2->url) ? $block2->url: ''}}">Детальнiше</a>
                 </p>
             </div>
             <div style="position: relative;">
                 <img style="width: 516px; height: 388px; position: absolute;right: 0;z-index: 0;"
-                     src="{{$block2->image}}" alt=""/>
+                    src="{{isset($block2->image) ? $block2->image: ''}}" alt="" />
                 <img style="width: 126px; height: 125px; position: absolute;    right: 400px;;z-index:1;"
-                     src="{{$block2->image2}}" alt=""/>
+                    src="{{isset($block2->image2) ? $block2->image2: ''}}" alt="" />
 
             </div>
 
@@ -268,9 +273,9 @@
         <div class="container">
             <iframe width="90%" height="100%"
 
-                    src="https://www.youtube.com/embed/{{$block3->video}}" frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+                src="https://www.youtube.com/embed/{{isset($block3->video) ? $block3->video: ''}}" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
         </div>
     </section>
 
