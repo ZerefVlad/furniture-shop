@@ -35,7 +35,7 @@
                                                         <h2 class="caption-title"
                                                             style=" color: #333333;">{{$slide->title}}</h2>
                                                         <h3 class="caption-text"
-                                                            style=" color: #333333;">{{$slide->description}}</h3>
+                                                            style=" color: #333333;word-break: break-all">{{$slide->description}}</h3>
                                                         <p class="caption-text">
                                                             <a class="btn btnslider"
                                                                 href="{{$slide->url}}">Детальніше</a>

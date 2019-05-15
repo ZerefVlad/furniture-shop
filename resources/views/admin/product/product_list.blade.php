@@ -36,11 +36,11 @@
                     <tbody>
                     @foreach($products as $product)
                         <tr>
-                            <td> <img width=200px" height="200px" src="{{$product->getImages()->first() ? $product->getImages()->first()->url : '#'}}"> </td>
-                            <td> {{$product->title}}</td>
-                            <td> {{$product->getPriceWithDiscount()}} грн.</td>
-                            <td><a href="{{route('product_edit', ['product' => $product])}}">Изменить</a></td>
-                            <td> <a style="    color: #eb1717;" href="{{route('product_delete', ['product' => $product])}}">Удалить</a></td>
+                            <td > <img width=200px" height="200px" src="{{$product->getImages()->first() ? $product->getImages()->first()->url : '#'}}"> </td>
+                            <td style="vertical-align: middle;"> {{$product->title}}</td>
+                            <td style="vertical-align: middle;"> {{$product->getPriceWithDiscount()}} грн.</td>
+                            <td style="vertical-align: middle;"><a href="{{route('product_edit', ['product' => $product])}}">Изменить</a></td>
+                            <td style="vertical-align: middle;"> <a style="    color: #eb1717;" href="{{route('product_delete', ['product' => $product])}}">Удалить</a></td>
 
                         </tr>
                     </tbody>
