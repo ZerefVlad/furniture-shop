@@ -90,33 +90,34 @@
     left: 150px;
     font-size: 80px;
     color: rgb(2, 187, 219);"><i class="fa fa-angle-left"></i></span>
-                                <span class="nex" style="    position: absolute;
-        top: 265px;
-    right: 150px;
-    font-size: 80px;
-    color: rgb(2, 187, 219);"><i class="fa fa-angle-right"></i></span>
+                                <span class="nex" style="    position: absolute;top: 265px;right: 130px;font-size: 80px;color: rgb(2, 187, 219);"><i class="fa fa-angle-right"></i></span>
 
                                 <ul id="slides">
 
 
-                                    <li class="slide showing">
+                                    <li class="slide showing" style="text-align: center">
                                         <div class="container">
-                                            <img style="position: absolute;    width: 100%;    height: 100%;    top: 0;    left: 0;"
+                                            <img style="max-width: 100%; max-height: 500px"
                                                  src="{{$product->getMainProductUrl()}}">
                                         </div>
 
 
                                     </li>
                                     @foreach($imgs as $img)
-                                        <li>
+
 
                                             @if($img->url != $product->getMainProductUrl())
-                                                <img class="slide"
-                                                     style="position: absolute;    width: 100%;    height: 100%;    top: 0;    left: 0;"
-                                                     src="{{$img->url}}">
+                                            <li class="slide " style="text-align: center">
+                                                <div class="container">
+                                                    <img style="max-width: 100%; max-height: 500px;"
+                                                         src="{{$img->url}}">
+                                                </div>
+
+
+                                            </li>
                                             @endif
 
-                                        </li>
+
                                     @endforeach
                                     {{--                    <li class="slide">Slide 3</li>--}}
                                     {{--                    <li class="slide">Slide 4</li>--}}

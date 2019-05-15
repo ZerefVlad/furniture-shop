@@ -133,14 +133,47 @@
         </div>
     </section>
     <!-- /PAGE -->
+    <section class="page-section color">
+        <div class="container">
 
+            <div class="row">
+                <h1 style="margin-top: 50px">Назва 1</h1>
+                <p><img style="float: right; max-height: 200px; margin-left: 50px;margin-bottom:20px" src="{{asset('storage/static_img/apartment.jpg')}}">
+                    В наших секретных лабораториях в рамках проекта &laquo;Пандора&raquo; разрабатывалось
+                    психотропное оружие. В результате неудачного эксперимента большинство ученых, работавших
+                    над прибором, подверглись воздействию психотропного излучения, и они, находясь в состоянии
+                    аффекта, растащили прототип по деталям. Возможно, наши ученые до сих пор находятся в
+                    состоянии аффекта</p>
+            </div>
+
+            <div class="row">
+                <h1>Назва 1</h1>
+                <p><img style="float: right; max-height: 200px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/apartment.jpg')}}">
+                    В наших секретных лабораториях в рамках проекта &laquo;Пандора&raquo; разрабатывалось
+                    психотропное оружие. В результате неудачного эксперимента большинство ученых, работавших
+                    над прибором, подверглись воздействию психотропного излучения, и они, находясь в состоянии
+                    аффекта, растащили прототип по деталям. Возможно, наши ученые до сих пор находятся в
+                    состоянии аффекта</p>
+            </div>
+
+            <div class="row">
+                <h1>Назва 1</h1>
+                <p><img style="float: right; max-height: 200px; margin-left: 50px;margin-bottom:20px" src="{{asset('storage/static_img/apartment.jpg')}}">
+                    В наших секретных лабораториях в рамках проекта &laquo;Пандора&raquo; разрабатывалось
+                    психотропное оружие. В результате неудачного эксперимента большинство ученых, работавших
+                    над прибором, подверглись воздействию психотропного излучения, и они, находясь в состоянии
+                    аффекта, растащили прототип по деталям. Возможно, наши ученые до сих пор находятся в
+                    состоянии аффекта</p>
+            </div>
+        </div>
+    </section>
     <!-- PAGE -->
     <section class="page-section no-padding no-bottom-space" style="padding-top: 0;">
         <div class="container full-width">
 
             <!-- Google map -->
             <div class="google-map">
-                <div id="map-canvas"></div>
+                <iframe src="https://www.google.com/maps/embed?pb=" width="1100" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
             <!-- /Google map -->
 

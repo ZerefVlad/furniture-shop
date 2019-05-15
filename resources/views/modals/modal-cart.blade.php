@@ -61,7 +61,7 @@
                     @endforeach
 
                     <div class="media">
-                        <p class="pull-right item-price">{{$total}}</p>
+                        <p class="pull-right item-price">{{$total}} грн.</p>
                         <div class="media-body">
                             <h4 class="media-heading item-title summary">Загальна сумма:</h4>
                         </div>

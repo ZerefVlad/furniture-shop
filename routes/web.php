@@ -150,7 +150,9 @@ Route::get('/contact', function() {
 Route::get('/posts', 'PostController@showPosts')->name('show-posts');
 Route::get('/posts/{post}', 'PostController@showPost')->name('show-post');
 
-Route::get('/faq', 'HomeController@index')->name('faq');
+Route::get('/faq', function() {
+    return view('faq');
+})->name('faq');
 
 Route::get('/about', function() {
     return view('about');

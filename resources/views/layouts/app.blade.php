@@ -31,7 +31,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Breston</title>
 
     <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -39,6 +39,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
             crossorigin="anonymous"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <link rel="icon" href="{{asset('storage/static_img/Logo.png')}}" type="images/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -163,10 +164,10 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                 <div class="top-bar-left">
                     <ul class="list-inline">
 
-                        <li class="hidden-xs"><a href="{{route('about')}}">About</a></li>
-                        <li class="hidden-xs"><a href="{{route('show-posts')}}">Blog</a></li>
-                        <li class="hidden-xs"><a href="{{route('contact')}}">Contact</a></li>
-                        <li class="hidden-xs"><a href="{{route('faq')}}">FAQ</a></li>
+                        <li class="hidden-xs"><a href="{{route('about')}}">Про нас</a></li>
+                        <li class="hidden-xs"><a href="{{route('show-posts')}}">Блог</a></li>
+                        <li class="hidden-xs"><a href="{{route('contact')}}">Контакти</a></li>
+                        <li class="hidden-xs"><a href="{{route('faq')}}">Популярнi питання</a></li>
 
 
 
