@@ -11,11 +11,12 @@
 
 $result = 'Kyiv';
 $ip_data = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=".$user_ip));
-dd($ip_data);
 if($ip_data && $ip_data->geoplugin_countryName != null)
 {
     $result = $ip_data->geoplugin_city;
-    if($result){dd($result);}
+    if(!$result) {
+        $result = 'Kyiv';
+    }
 }
 
 
@@ -203,7 +204,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                     <!-- Header search -->
                     <div class="header-left">
                         <div style="position: relative;float: left;     margin-top: -4%;">
-                            <a id="tophead-text1"  style="margin-bottom: 2%" href="#">ip({{$result}}) </a>
+                            <a id="tophead-text1"  style="margin-bottom: 2%" href="#">{{$result}}</a>
                             <p id="tophead-text2"> | </p>
                         </div>
 
