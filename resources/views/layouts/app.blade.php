@@ -428,7 +428,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                     <div class="row">
 
                         <div class="col-sm-6">
-                            <div class="copyright">Copyright 2019 ALKAMEBEL SHOP | All Rights Reserved</div>
+                            <div class="copyright">Copyright 2019 Breston SHOP | All Rights Reserved</div>
                         </div>
 
 

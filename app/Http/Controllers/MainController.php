@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Image;
 use App\Models\ImageModel;
 use App\Models\MainPage;
+use App\Models\Post;
 use App\Models\Product;
 use App\Services\CategoryService;
 use App\Models\Category;
@@ -48,7 +49,8 @@ class MainController extends Controller
         $block2 = json_decode($this->main->block2);
 
         $block3 = json_decode($this->main->block3);
-        //Product::skip(0)->take(3)->get();
+        $products = Product::skip(0)->latest('created_at')->take(4)->get();
+        $posts = Post::skip(0)->latest('created_at')->take(3)->get();
 
         return view('main')
             ->with('categories', $categories)
@@ -57,6 +59,8 @@ class MainController extends Controller
             ->with('videoSlides', $videoSlides)
             ->with('block2', $block2)
             ->with('block3', $block3)
+            ->with('products', $products)
+            ->with('posts', $posts)
             ;
     }
 

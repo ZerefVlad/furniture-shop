@@ -60,10 +60,11 @@
 {{--                    </div>--}}
 {{--                </div>--}}
                 @foreach($posts as $post)
-                <div class="post-wrap">
+                <div >
 
-                    <div class="caption-content" style="position: relative;float:left;width: 50%; margin-top: 100px;">
-                         <h2 class="caption-title"
+                    <div class="caption-content col-md-12" style="margin-bottom: 50px">
+                        <div style="float: left;width: 50%">
+                        <h2 class="caption-title"
                             style="color: #02bbdb;font-family: Montserrat;font-size: 28px;font-weight: 500;line-height: 30px; text-transform: uppercase;">
                                 {{$post->title}}</h2>
                         <h3 class="caption-text" style=" color: #31353d;font-family: Montserrat;font-size: 14px;font-weight: 400;
@@ -72,13 +73,11 @@
                         <p class="caption-text">
                             <a class="btn btnslider" href="{{route('show-post', ['post' => $post])}}" style="border-radius: 29px;">Детальніше</a>
                         </p>
-                    </div>
-                    <div style="position: relative;">
-                        <img style="max-width: 440px; max-height: 510px;float:right;margin-top: 50px; "
+                        </div>
+                        <img style="max-width: 440px; max-height: 510px;margin-top: 50px; float: right"
                              src="{{$post->getImage() ? $post->getImage()->url : '#'}}" alt=""/>
-
-
                     </div>
+
                 </div>
                 @endforeach
             </div>

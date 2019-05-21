@@ -16,6 +16,7 @@
     <div class="content-area">
 
         <!-- BREADCRUMBS -->
+
         <section class="page-section breadcrumbs" style="box-shadow: 0 1px 1px rgba(0, 0, 0, 0.16)">
             <div class="container">
 {{--                <div class="page-header">--}}
@@ -126,7 +127,7 @@
                             @foreach($products as $product)
                                 <div class="col-md-3 col-sm-6">
                                     <div class="thumbnail no-border no-padding">
-                                        <div class="media">
+                                        <div class="media" style="width: 270px;height: 330px;display: table-cell;vertical-align: middle; text-align: center;">
                                             <a class="media-link" href="#">
                                                 <img style="max-width: 270px; max-height: 330px; height: 100%;"
                                                      src="{{$product->getImages()->first() ? $product->getImages()->first()->url : '#'}}"
@@ -144,7 +145,9 @@
 
                                             <div class="price">
                                                 <ins>{{$product->getPriceWithDiscount()}} грн.</ins>
+                                                @if($product->discount->value != '0')
                                                 <del>{{$product->getPriceWithoutDiscount()}}грн.</del>
+                                                    @endif
                                             </div>
                                             <div class="buttons">
 
