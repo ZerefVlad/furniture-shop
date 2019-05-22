@@ -32,7 +32,7 @@
                 <i class="fas fa-bars"></i>
             </button>
 
-            <div class="collapse navbar-collapse" id="mainMenu" style="margin-left: -200px;">
+            <div class="collapse navbar-collapse" id="mainMenu" style="">
 
 
                 <ul class="navbar-nav ml-auto  mt-lg-0">

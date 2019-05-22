@@ -270,13 +270,44 @@
         </div>
     </section>
     <!-- PAGE -->
+
+    <div id="map_canvas" style="width: 100%; height: 400px;"></div>
+    </div>
     <section class="page-section no-padding no-bottom-space" style="padding-top: 0;">
         <div class="container full-width">
 
+
+
+
+<script>
+
+    var map, markers;
+
+    function initMap() {
+
+        var centerKiev = {
+            lat:50.45466,
+            lng:30.5238
+        };
+
+        var mapOptions = {
+            center:centerKiev,
+            scrollwheel:false,
+            zoom:10
+        };
+
+        map = new google.maps.Map(document.getElementById('map_canvas'),mapOptions);
+
+
+    }
+</script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtdz9A-0JPgNF8pumJDPDz8dG9rX18Tpw&callback=initMap"
+                    type="text/javascript"></script>
+
             <!-- Google map -->
-            <div class="google-map">
-                <iframe src="https://www.google.com/maps/embed?pb=" width="1100" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
-            </div>
+{{--            <div class="google-map">--}}
+{{--                <iframe src="https://www.google.com/maps/embed?pb=" width="1100" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>--}}
+{{--            </div>--}}
             <!-- /Google map -->
 
         </div>

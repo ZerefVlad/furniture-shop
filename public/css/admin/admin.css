@@ -440,7 +440,7 @@ body {
       .header .header-navbar .nav-link, .header .header-navbar .logout {
         color: #0159a1;
         font-family: Montserrat;
-        font-size: 18px;
+        font-size: 14px;
         font-weight: 400;
         padding: 20px 10px; }
         .header .header-navbar .nav-link:hover, .header .header-navbar .logout:hover {
