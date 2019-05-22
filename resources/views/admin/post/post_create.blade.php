@@ -35,7 +35,7 @@ $image_url = $image ? $image->url : '#';
 
                         <li class="list-item col-md-6">
                             <label for="title_post">Введите название</label>
-                            <input name="title" id="title_post" type="text" @if ($post) value="{{$post->title}}" @endif >
+                            <input name="title" id="title_post" type="text" @if ($post) value="{{$post->title}}" @endif required>
                         </li>
                         <li class="list-item col-md-12">
                             <label for="active_category">Активность поста</label>
@@ -45,7 +45,7 @@ $image_url = $image ? $image->url : '#';
 
                         <li class="list-item col-md-12" style="margin-left: 4%">
                             <label for="text_post">Введите текст</label>
-                            <textarea rows="10" cols="45" name="text" id="text_post" type="text"  >@if ($post) {{$post->text}} @endif</textarea>
+                            <textarea rows="10" cols="45" name="text" id="text_post" type="text" required >@if ($post) {{$post->text}} @endif</textarea>
                         </li>
 
 

@@ -34,7 +34,7 @@ font-weight: 900;
 margin-top: 30px;"> Информация о покупателе</h3>
                         <div class="col-md-4" style="background-color:#383940 ">
                             <div class="form-group"><p><input class="form-control" type="text" name="first_name"
-                                                              id="first_name" placeholder="Имя">
+                                                              id="first_name" placeholder="Имя" required>
                                 <p></div>
                         </div>
                         <div class="col-md-4">
@@ -43,11 +43,11 @@ margin-top: 30px;"> Информация о покупателе</h3>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group"><input class="form-control" type="text" name="second_name"
-                                                           id="second_name" placeholder="Фамилия"></div>
+                                                           id="second_name" placeholder="Фамилия" required></div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group"><input class="form-control" type="text" name="address" id="address"
-                                                           placeholder="Аддресс"></div>
+                                                           placeholder="Аддресс" required></div>
                         </div>
                         {{--                        <div class="col-md-6">--}}
                         {{--                            <div class="form-group selectpicker-wrapper">--}}
@@ -76,11 +76,11 @@ margin-top: 30px;"> Информация о покупателе</h3>
                         {{--                        </div>--}}
                         <div class="col-md-6">
                             <div class="form-group"><input class="form-control" type="email" name="email" id="email"
-                                                           placeholder="Email"></div>
+                                                           placeholder="Email" required></div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group"><input class="form-control" type="text" name="mobile" id="mobile"
-                                                           placeholder="Номер мобильного"></div>
+                                                           placeholder="Номер мобильного" required></div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group"><textarea class="form-control"

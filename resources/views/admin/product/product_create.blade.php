@@ -72,29 +72,41 @@
                         <li class="list-item col-md-6">
                             <label class="col-form-label" for="title">Название товара</label>
                             <input form="product-update-form" type="text" name="title" value="{{$title}}"
-                                   class="form-control">
+                                   class="form-control" required>
                         </li>
                         <li class="list-item col-md-6">
                             <label class="col-form-label" for="code">Код</label>
                             <input form="product-update-form" type="text" name="code" value="{{$code}}"
-                                   class="form-control">
+                                   class="form-control" required>
 
+                        </li>
+
+                        <li class="list-item col-md-4">
+                            <label class="col-form-label" for="title">Meta title:               </label>
+                            <input form="product-update-form" type="text" name="meta_title" value="{{$product->meta_title}}"
+                                   class="form-control">
+                        </li>
+
+                        <li class="list-item col-md-8">
+                            <label class="col-form-label" for="title">Meta description:</label>
+                            <input form="product-update-form" type="text" name="meta_description" value="{{$product->meta_description}}"
+                                   class="form-control">
                         </li>
 
                         <li class="list-item col-md-12">
                             <label class="col-form-label" for="description" style="margin-right: 25px">Описание</label>
                             <textarea form="product-update-form" name="description" id="" cols="30" rows="5"
-                                      class="form-control">
+                                      class="form-control" required>
                                  {{$description}}
                             </textarea>
                         </li>
 
 
-                        <li class="list-item col-md-6">
+                        <li class="list-item col-md-3">
                             <label class="form-check-label" for="" style="margin-right: 30px">Цена: </label>
 
 
-                            <input form="product-update-form" name="price" value="{{$price}}">
+                            <input form="product-update-form" name="price" value="{{$price}}" style="width: 80px" required>грн.
                             {{--                                    <input style=" width:100px;" form="update-attribute-data-{{$attribute->attribute->id}}" type="text" name="value" value="{{$attribute->value}}">--}}
                             {{--                                    <input form="update-attribute-data-{{$attribute->attribute->id}}" type="hidden" name="id" value="{{$attribute->attribute->id}}">--}}
                             {{--                                    <input form="update-attribute-data-{{$attribute->attribute->id}}" type="hidden" name="product_id" value="{{$product->id}}">--}}
@@ -105,14 +117,20 @@
 
                         </li>
 
-                        <li class="list-item col-md-6">
+                        <li class="list-item col-md-3">
+                            <label class="form-check-label" for="" style="margin-right: 30px">Скидка на товар</label>
+                            <input form="product-update-form" type="number" name="discount_value" value="{{$discount}}"
+                                   min="0" max="100" style="width: 50px">%
+                        </li>
+
+                        <li class="list-item col-md-3">
                             <label class="form-check-label" for="">Активность товара</label>
                             <input form="product-update-form" class="form-control form-check" type="checkbox" name="active"
                                    value="{{$active}}"
                                    @if ($active) checked="checked" @endif>
                         </li>
 
-                        <li class="list-item col-md-6">
+                        <li class="list-item col-md-3">
                             <label class="form-check-label" for="" style="margin-right: 30px">Категория товара</label>
                             <select form="product-update-form" multiple="multiple" name="categories[]">
                                 @foreach($categories as $category)
@@ -122,11 +140,7 @@
                             </select>
                         </li>
 
-                        <li class="list-item col-md-6">
-                            <label class="form-check-label" for="" style="margin-right: 30px">Скидка на товар</label>
-                            <input form="product-update-form" type="number" name="discount_value" value="{{$discount}}"
-                                   min="0" max="100">
-                        </li>
+
                     </ul>
                 </div>
                 <div class="tab-pane fade" id="product-media" role="tabpanel" aria-labelledby="history-tab">

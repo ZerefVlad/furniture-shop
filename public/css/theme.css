@@ -95,7 +95,7 @@
   font-size: 10px;
 }
 .spinner > div {
-  background-color: #00b16a;
+  background-color: #02bbdb;
   height: 100%;
   width: 20px;
   display: inline-block;
@@ -248,7 +248,8 @@ h3,
 h4,
 h5,
 h6 {
-  color: #00b16a;
+  color: #02bbdb;
+
 }
 .image h1,
 .image h2,
@@ -317,7 +318,7 @@ a:focus {
   text-decoration: none;
 }
 a {
-  color: #00b16a;
+  color: #02bbdb;
 }
 a:hover,
 a:active,
@@ -330,7 +331,7 @@ a:focus {
 .footer a:hover,
 .footer a:active,
 .footer a:focus {
-  color: #00b16a;
+  color: #02bbdb;
 }
 p {
   margin-bottom: 20px;
@@ -464,7 +465,7 @@ ol.list-check li + li {
   z-index: 20;
 }
 .block-title.alt .fa.color {
-  background-color: #00b16a;
+  background-color: #02bbdb;
 }
 .text-lg {
   text-transform: uppercase;
@@ -486,7 +487,7 @@ ol.list-check li + li {
   color: #232323;
 }
 .text-color {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .drop-cap {
   display: block;
@@ -494,12 +495,12 @@ ol.list-check li + li {
   font-size: 44px;
   line-height: 37px;
   margin: 0 10px 0 0;
-  color: #00b16a;
+  color: #02bbdb;
 }
 /* Blockquote
 /* -------------------------------------------------------------------------- */
 blockquote {
-  background-color: #00b16a;
+  background-color: #02bbdb;
   border: none;
   color: #ffffff;
 }
@@ -593,7 +594,7 @@ textarea:focus:-ms-input-placeholder {
 .btn-theme {
   color: #ffffff;
   border-width: 3px;
-  background-color: #00b16a;
+  background-color: #02bbdb;
 
   padding: 12px 20px;
   font-size: 14px;
@@ -639,8 +640,8 @@ textarea:focus:-ms-input-placeholder {
   color: #ffffff;
 }
 .btn-theme-dark:hover {
-  background-color: #00b16a;
-  border-color: #00b16a;
+  background-color: #02bbdb;
+  border-color: #02bbdb;
   color: #ffffff;
 }
 .btn-theme-xs {
@@ -697,7 +698,7 @@ textarea:focus:-ms-input-placeholder {
 a:hover .btn-play,
 .btn-play:hover {
   background-color: #ffffff;
-  color: #00b16a;
+  color: #02bbdb;
 }
 .btn-title-more {
   float: right;
@@ -995,10 +996,10 @@ input[type=checkbox] {
   border-bottom: solid 1px #ffffff;
 }
 .top-bar ul a:hover .fa {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .top-bar ul a span.colored {
-  color: #00b16a;
+  color: #02bbdb;
   margin-left: 5px;
 }
 @media (max-width: 991px) {
@@ -1517,7 +1518,7 @@ input[type=checkbox] {
 .sf-arrows > li > .sf-with-ul:focus:after,
 .sf-arrows > li:hover > .sf-with-ul:after,
 .sf-arrows > .sfHover > .sf-with-ul:after {
-  border-top-color: #00b16a;
+  border-top-color: #02bbdb;
 }
 /* ARROW RIGHT */
 .sf-arrows ul .sf-with-ul:after {
@@ -1529,7 +1530,7 @@ input[type=checkbox] {
 .sf-arrows ul li > .sf-with-ul:focus:after,
 .sf-arrows ul li:hover > .sf-with-ul:after,
 .sf-arrows ul .sfHover > .sf-with-ul:after {
-  border-left-color: #00b16a;
+  border-left-color: #02bbdb;
 }
 .sf-menu li li:hover,
 .sf-menu li li.sfHover,
@@ -1591,7 +1592,7 @@ input[type=checkbox] {
   padding-left: 0;
 }
 .sf-menu li.megamenu ul a:hover {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .sf-menu li.megamenu p {
   margin-bottom: 10px;
@@ -1604,7 +1605,7 @@ input[type=checkbox] {
   color: #232323;
 }
 .sf-menu li.sale a {
-  background-color: #00b16a;
+  background-color: #02bbdb;
   color: #ffffff;
 }
 .menu-toggle {
@@ -1676,7 +1677,7 @@ input[type=checkbox] {
   }
   .sf-menu > li > a:hover {
     background-color: #ffffff !important;
-    color: #00b16a;
+    color: #02bbdb;
   }
   .sf-menu li.megamenu {
     color: #ffffff;
@@ -2034,8 +2035,8 @@ input[type=checkbox] {
   color: #ffffff;
 }
 .main-slider .btn-theme:hover {
-  border-color: #00b16a;
-  background-color: #00b16a;
+  border-color: #02bbdb;
+  background-color: #02bbdb;
   color: #ffffff;
 }
 .main-slider .alt .caption-content {
@@ -2283,8 +2284,8 @@ input[type=checkbox] {
   font-weight: 400;
 }
 .main-slider .dark .caption-text .btn-theme:hover {
-  background-color: #00b16a;
-  border-color: #00b16a;
+  background-color: #02bbdb;
+  border-color: #02bbdb;
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .main-slider .sub .caption > .container {
@@ -2537,7 +2538,7 @@ input[type=checkbox] {
   font-weight: 700;
   line-height: 1;
   text-transform: uppercase;
-  color: #00b16a;
+  color: #02bbdb;
 }
 .coming-soon .main-slider .page .countdown-period {
   font-size: 14px;
@@ -2857,7 +2858,7 @@ input[type=checkbox] {
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
-  border-color: #00b16a;
+  border-color: #02bbdb;
   background-color: #02bbdb;
   color: #ffffff;
 }
@@ -2887,7 +2888,7 @@ input[type=checkbox] {
   padding: 15px;
   position: relative;
   text-align: center;
-  background-color: #00b16a;
+  background-color: #02bbdb;
   color: #ffffff;
 }
 .message-box h2 {
@@ -3226,7 +3227,7 @@ input[type=checkbox] {
   line-height: 1;
 }
 .post-title a:hover {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .post-meta {
   color: #232323;
@@ -3238,7 +3239,7 @@ input[type=checkbox] {
   color: #232323;
 }
 .post-meta a:hover {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .post-read-more {
   display: block;
@@ -3261,7 +3262,7 @@ input[type=checkbox] {
   color: #232323;
 }
 .about-the-author .media-heading a:hover {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .about-the-author .media-object {
   margin-right: 15px;
@@ -3365,7 +3366,7 @@ input[type=checkbox] {
   font-weight: 900;
   line-height: 18px;
   margin-bottom: 7px;
-  color: #00b16a;
+  color: #02bbdb;
 }
 .recent-post .media-heading {
   font-size: 18px;
@@ -3489,7 +3490,7 @@ input[type=checkbox] {
   color: #232323;
 }
 .widget .recent-post .media-meta a:hover {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .widget .recent-post .media-heading {
   margin-top: 10px;
@@ -3551,7 +3552,7 @@ input[type=checkbox] {
   color: #232323;
 }
 .comment-author a:hover {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .comment-date {
   float: right;
@@ -3561,7 +3562,7 @@ input[type=checkbox] {
   color: #a5abb7;
 }
 .comment-date .fa {
-  color: #00b16a;
+  color: #02bbdb;
   margin-left: 10px;
 }
 .comment-text {
@@ -3815,7 +3816,7 @@ input[type=checkbox] {
   font-weight: 500;
 }
 .caption-title a:hover {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .icon-view {
   width: 80px;
@@ -4008,8 +4009,8 @@ input[type=checkbox] {
   background-color: #232323;
 }
 .thumbnail.thumbnail-banner .btn-theme:hover {
-  background-color: #00b16a;
-  border-color: #00b16a;
+  background-color: #02bbdb;
+  border-color: #02bbdb;
 }
 .thumbnail.thumbnail-banner.size-1x1 {
   height: 170px;
@@ -4515,13 +4516,13 @@ input[type=checkbox] {
 }
 .product-single .reviews:hover,
 .product-single .add-review:hover {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .product-single .product-availability {
   color: #232323;
 }
 .product-single .product-availability strong {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .product-single .product-text {
   font-size: 14px;
@@ -4659,7 +4660,7 @@ input[type=checkbox] {
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
-  background-color: #00b16a;
+  background-color: #02bbdb;
 }
 /* Products list view
 /* ========================================================================== */
@@ -4677,7 +4678,7 @@ input[type=checkbox] {
   color: #232323;
 }
 .products.list .thumbnail .reviews:hover {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .products.list .thumbnail .overflowed {
   margin-top: 5px;
@@ -4686,7 +4687,7 @@ input[type=checkbox] {
   float: left;
 }
 .products.list .thumbnail .availability strong {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .products.list .thumbnail .price {
   float: right;
@@ -5217,7 +5218,7 @@ input[type=checkbox] {
   font-weight: 700;
   line-height: 1;
   text-transform: uppercase;
-  color: #00b16a;
+  color: #02bbdb;
 }
 .widget.widget-shop-deals .countdown-period {
   font-size: 14px;
@@ -5248,8 +5249,8 @@ input[type=checkbox] {
 .widget.widget-tabs .nav-justified > li.active > a,
 .widget.widget-tabs .nav-justified > li > a:hover,
 .widget.widget-tabs .nav-justified > li > a:focus {
-  border-color: #00b16a;
-  background-color: #00b16a;
+  border-color: #02bbdb;
+  background-color: #02bbdb;
   color: #ffffff;
 }
 .widget.widget-tabs .tab-content {
@@ -5397,7 +5398,7 @@ input[type=checkbox] {
   color: #232323;
 }
 .widget.shop-categories ul a:hover {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .widget.shop-categories ul a .count {
   float: right;
@@ -5506,7 +5507,7 @@ input[type=checkbox] {
   transition: all 0.4s ease-in-out;
 }
 .widget-flickr-feed ul a:hover {
-  border-color: #00b16a;
+  border-color: #02bbdb;
 }
 .widget-flickr-feed ul a:hover:before {
   background-color: rgba(0, 177, 106, 0.7);
@@ -5539,7 +5540,7 @@ input[type=checkbox] {
 /* ========================================================================== */
 /* ========================================================================== */
 .recent-tweets .media .fa {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .recent-tweets .media p {
   margin-bottom: 0;
@@ -5744,7 +5745,7 @@ input[type=checkbox] {
 .product-list .price ins {
   padding-right: 5px;
   text-decoration: none;
-  color: #00b16a;
+  color: #02bbdb;
 }
 .product-list .rating {
   font-size: 14px;
@@ -5854,7 +5855,7 @@ input[type=checkbox] {
   padding: 6px;
 }
 .shop-sorting .col-sm-4 .btn-theme:hover {
-  background-color: #00b16a;
+  background-color: #02bbdb;
 }
 /* Shopping cart form, sign in ...
 /* ========================================================================== */
@@ -5995,7 +5996,7 @@ input[type=checkbox] {
   color: #232323;
 }
 .orders td.description h4 a:hover {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .orders td.add {
   vertical-align: middle;
@@ -6012,7 +6013,7 @@ input[type=checkbox] {
   color: #a5abb7;
 }
 .orders td.total a:hover {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .orders .media-link {
   padding: 0;
@@ -6131,7 +6132,7 @@ input[type=checkbox] {
   color: #232323;
 }
 .wishlist td.description h4 a:hover {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .wishlist td.add {
   vertical-align: middle;
@@ -6157,7 +6158,7 @@ input[type=checkbox] {
   color: #232323;
 }
 .wishlist td.total a:hover {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .wishlist td.total a .fa-close:before {
   font-family: 'Lato', sans-serif;
@@ -6446,7 +6447,7 @@ input[type=checkbox] {
 }
 .compare-products .product h4:hover,
 .compare-products .product h4 a:hover {
-  color: #00b16a;
+  color: #02bbdb;
 }
 .compare-products .rating {
   float: left;
@@ -6593,8 +6594,8 @@ input[type=checkbox] {
   margin-left: 15px;
   margin-right: 15px;
   padding: 10px 15px;
-  border-color: #00b16a;
-  background-color: #00b16a;
+  border-color: #02bbdb;
+  background-color: #02bbdb;
   color: #ffffff;
 }
 #contact-form .tooltip {
@@ -6676,8 +6677,8 @@ input[type=checkbox] {
 }
 .to-top:hover {
   background-color: #ffffff;
-  border-color: #00b16a;
-  color: #00b16a;
+  border-color: #02bbdb;
+  color: #02bbdb;
 }
 /* 6.0 */
 /* Helper classes

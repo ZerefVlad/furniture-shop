@@ -33,7 +33,7 @@
 
                         <li class="list-item col-md-6">
                             <label for="title_attribute">Введите название</label>
-                            <input name="title" id="title_attribute" type="text" @if ($attribute) value="{{$attribute->title}}" @endif >
+                            <input name="title" id="title_attribute" type="text" @if ($attribute) value="{{$attribute->title}}" @endif required>
                         </li>
 
                     </ul>

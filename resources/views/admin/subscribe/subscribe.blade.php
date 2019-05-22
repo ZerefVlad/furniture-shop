@@ -36,9 +36,9 @@
         <form  method="post" enctype="multipart/form-data" action="{{route('email_sender')}}">
             {{csrf_field()}}
         <div class="users-balance">
-            <div class="balance-title">Титулка письма: </div> <input style="width: 80%" type="text" name="title" value="{{old('title')}}">
+            <div class="balance-title">Титулка письма: </div> <input style="width: 80%" type="text" name="title" value="{{old('title')}}" required>
             <div class="balance-title">Текст письма: </div>
-            <textarea type="text" rows="20" cols="40" style="max-width: 80%" name="text" value="{{old('text')}}"></textarea>
+            <textarea type="text" rows="20" cols="40" style="max-width: 80%" name="text" value="{{old('text')}}" required></textarea>
 
             <input name="attachment" type="file">
             <input type="submit" class="get-cash" value="Разослать письмо">

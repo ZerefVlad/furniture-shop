@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('code');
             $table->boolean('active');
             $table->text('description');
-            $table->string('tag')->nullable();
-            $table->string('meta_tag')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->string('meta_title')->nullable();
             $table->timestamps();
         });
     }

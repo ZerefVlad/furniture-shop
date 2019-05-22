@@ -16,7 +16,7 @@
     <div class="content-area">
 
         <!-- BREADCRUMBS -->
-
+        @if($filters->count() != 0)
         <section class="page-section breadcrumbs" style="box-shadow: 0 1px 1px rgba(0, 0, 0, 0.16)">
             <div class="container">
 {{--                <div class="page-header">--}}
@@ -43,7 +43,7 @@
             </div>
         </section>
         <!-- /BREADCRUMBS -->
-
+@endif
         <!-- PAGE WITH SIDEBAR -->
         <section class="page-section with-sidebar">
             <div class="container">
@@ -171,40 +171,49 @@
                             @endforeach
                             @foreach($category->children as $children)
                             @foreach($children->products as $product)
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="thumbnail no-border no-padding">
-                                        <div class="media">
-                                            <a class="media-link" href="#">
-                                                <img style="width: 270px; height: 330px;"
-                                                     src="{{$product->getImages()->first() ? $product->getImages()->first()->url : '#'}}"
-                                                     alt=""/>
-                                                <span class="icon-view">
+                                    <div class="col-md-3 col-sm-6">
+                                        <div class="thumbnail no-border no-padding">
+                                            <div class="media" style="width: 270px;height: 330px;display: table-cell;vertical-align: middle; text-align: center;">
+                                                <a class="media-link" href="#">
+                                                    <img style="max-width: 270px; max-height: 330px; height: 100%;"
+                                                         src="{{$product->getImages()->first() ? $product->getImages()->first()->url : '#'}}"
+                                                         alt=""/>
+                                                    <span class="icon-view">
                                                         <strong><i class="fa fa-eye"></i></strong>
                                                 </span>
-                                            </a>
-                                        </div>
-                                        <div class="caption text-center">
-                                            <a href="{{route('show_single_product', [ 'product' => $product, 'category' => $product->categories->first()])}}">
-                                                <h4 class="caption-title prodcateegorytitle">{{$product->title}}r</h4>
-                                            </a>
-
-
-                                            <div class="price">
-                                                <ins>{{$product->getPriceWithDiscount()}} грн.</ins>
-                                                <del>{{$product->getPriceWithoutDiscount()}}</del>
+                                                </a>
                                             </div>
-                                            <div class="buttons">
+                                            <div class="caption text-center">
+                                                <a href="{{route('show_single_product', [ 'product' => $product, 'category' => $product->categories->first()])}}">
+                                                    <h4 class="caption-title prodcateegorytitle">{{$product->title}}r</h4>
+                                                </a>
 
-                                                <a class="btn btn-theme btn-theme-transparent btn-icon-left" href="#"><i class="fa fa-shopping-cart"></i>До кошику</a>
-                                                @if(!$product->likes()->first())
-                                                    <a class="btn btn-theme btn-theme-transparent btn-icon-left" href="{{route("add_to_like", ['product' => $product,'category' => $product->categories->first()])}}">До лайку</a>
-                                                @else
-                                                    <a class="btn btn-theme btn-theme-transparent btn-icon-left" href="{{route("delete_like", ['likes' => $product->likes()->first()])}}">Delete лайку</a>
-                                                @endif
+
+                                                <div class="price">
+                                                    <ins>{{$product->getPriceWithDiscount()}} грн.</ins>
+                                                    @if($product->discount->value != '0')
+                                                        <del>{{$product->getPriceWithoutDiscount()}}грн.</del>
+                                                    @endif
+                                                </div>
+                                                <div class="buttons">
+
+                                                    @if(!$product->likes()->first())
+                                                        <a class="btn btn-theme btn-theme-transparent btn-wish-list" href="{{route("add_to_like", ['product' => $product,'category' => $product->categories->first()])}}"><i
+                                                                    style="color: #02bbdb;" class="fa fa-heart"></i></a>
+                                                    @else
+                                                        <a style="color: #ffffff; background-color: #1c94c4" class="btn btn-theme btn-theme-transparent btn-wish-list" href="{{route("delete_like", ['likes' => $product->likes()->first()])}}"><i
+                                                                    class="fa fa-heart"></i></a>
+                                                    @endif
+                                                    <a class="btn btn-theme btn-theme-transparent btn-wish-list" href="{{route('show_single_product', [ 'product' => $product, 'category' => $product->categories->first()])}}">Детальныше</a>
+                                                    {{--                                                @if(!$product->likes()->first())--}}
+                                                    {{--                                                <a class="btn btn-theme btn-theme-transparent btn-icon-left" href="{{route("add_to_like", ['product' => $product,'category' => $product->categories->first()])}}">До лайку</a>--}}
+                                                    {{--                                                @else--}}
+                                                    {{--                                                <a class="btn btn-theme btn-theme-transparent btn-icon-left" href="{{route("delete_like", ['likes' => $product->likes()->first()])}}">Delete лайку</a>--}}
+                                                    {{--                                                @endif--}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                             @endforeach
                             @endforeach
 

@@ -9,8 +9,8 @@
           id="create-color-form">
         {{csrf_field()}}
     </form>
-    <input form="create-color-form" type="file" name="img">
-    <input form="create-color-form" type="text" name="title">
+    <input form="create-color-form" type="file" name="img" >
+    <input form="create-color-form" type="text" name="title" required>
     <input form="create-color-form" type="submit" value="Create">
 
     @foreach($colors as $color)

@@ -13,7 +13,7 @@
     <section class="page-section breadcrumbs">
         <div class="container">
             <div class="page-header">
-                <h1 style="color: #333333;font-family: Montserrat;font-size: 47px;font-weight: 900;line-height: 50px;text-transform: uppercase;">Contact</h1>
+                <h1 style="color: #333333;font-family: Montserrat;font-size: 47px;font-weight: 900;line-height: 50px;text-transform: uppercase;">Контакти</h1>
             </div>
             <p style="color: #252424;font-family: Montserrat;font-size: 18px;font-weight: 400;"> Lorem ipsum dolor sit amet,    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 
@@ -29,9 +29,9 @@
 
 
 
-                <div class="col-md-8 text-left">
+                <div class="col-md-12 text-left">
 
-                    <h2 class="block-title"><span>Contact Form</span></h2>
+                    <h2 class="block-title"><span>Форма зворотнього зв'язку</span></h2>
 
                     <!-- Contact form -->
                     <form name="contact-form" method="get" action="{{route('callback-send')}}" class="contact-form" id="contact-form">
@@ -42,7 +42,7 @@
                                 <input style="border-radius: 5px;border: 1px solid #c1c1c1;background-color:#f3f3f3;"
                                        type="text" name="name" id="name" placeholder="Name" value="" size="30"
                                        data-toggle="tooltip" title="Name is required"
-                                       class="form-control placeholder"/>
+                                       class="form-control placeholder" required/>
                             </div>
                         </div>
                         <input type="hidden" name="type" value="contact">
@@ -52,7 +52,7 @@
                                 <input style="border-radius: 5px;border: 1px solid #c1c1c1;background-color:#f3f3f3;"
                                        type="email" name="email" id="email" placeholder="Email" value="" size="30"
                                        data-toggle="tooltip" title="Email is required"
-                                       class="form-control placeholder"/>
+                                       class="form-control placeholder" required/>
                             </div>
                         </div>
 
@@ -62,7 +62,7 @@
                                 <input style="border-radius: 5px;border: 1px solid #c1c1c1;background-color:#f3f3f3;"
                                        type="text" name="phone" id="subject" placeholder="Phone" value="" size="30"
                                        data-toggle="tooltip" title="Subject is required"
-                                       class="form-control placeholder"/>
+                                       class="form-control placeholder" required/>
                             </div>
                         </div>
 
@@ -85,48 +85,7 @@
 
                 </div>
 
-                <div class="col-md-4">
-                    <div class="contact-info">
 
-                        <h2 class="block-title" ><span>Contact Us</span></h2>
-
-                        <div class="media-list">
-                            <div class="media">
-                                <i class="pull-left fa fa-home" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
-                                <div class="media-body" >
-                                    <strong>Address:</strong><br>
-                                    987 Main st. New York, NY, 00001, U.S.A
-                                </div>
-                            </div>
-                            <div class="media">
-                                <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
-                                <div class="media-body">
-                                    <strong>Telephone:</strong><br>
-                                    (012) 345-7689
-                                </div>
-                            </div>
-                            <div class="media">
-                                <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
-                                <div class="media-body">
-                                    <strong>Telephone:</strong><br>
-                                    (012) 345-7689
-                                </div>
-                            </div>
-                            <div class="media">
-                                <i class="pull-left fa fa-envelope-o" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
-                                <div class="media-body">
-                                    <strong>Fax:</strong><br>
-                                    0123456789
-                                </div>
-                            </div>
-
-
-
-
-                        </div>
-
-                    </div>
-                </div>
 
             </div>
 
@@ -137,33 +96,176 @@
         <div class="container">
 
             <div class="row">
-                <h1 style="margin-top: 50px">Назва 1</h1>
-                <p><img style="float: right; max-height: 200px; margin-left: 50px;margin-bottom:20px" src="{{asset('storage/static_img/apartment.jpg')}}">
-                    В наших секретных лабораториях в рамках проекта &laquo;Пандора&raquo; разрабатывалось
-                    психотропное оружие. В результате неудачного эксперимента большинство ученых, работавших
-                    над прибором, подверглись воздействию психотропного излучения, и они, находясь в состоянии
-                    аффекта, растащили прототип по деталям. Возможно, наши ученые до сих пор находятся в
-                    состоянии аффекта</p>
+                <div class="col-md-4">
+                    <div class="contact-info">
+
+                        <h2 class="block-title" ><span>С.Проліски вул. Броварська, 2А, ТЦ "FOZZY"</span></h2>
+
+                        <div class="media-list">
+                            <div class="media">
+                                <i class="pull-left fa fa-home" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body" >
+                                    <strong>Адреса:</strong><br>
+                                  Україна, с.Проліски, вул. Броварська, 2А, ТЦ "FOZZY"
+                                </div>
+                            </div>
+
+                            <div class="media">
+                                <i class="pull-left fa fa-clock-o" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body" >
+                                    <strong>Графік роботи:</strong><br>
+                                  Пн-Нд: 10<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span > - 19<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>Телефон:</strong><br>
+                                    (012) 345-7689
+                                </div>
+                            </div>
+                            <div class="media">
+                                <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>Телефон:</strong><br>
+                                    (012) 345-7689
+                                </div>
+                            </div>
+                            <div class="media">
+                                <i class="pull-left fa fa-envelope-o" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>E-mail:</strong><br>
+                                    brestonua@gmail.com
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+                <img style="float: right; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/apartment.jpg')}}">
+                <img style="float: right; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/apartment.jpg')}}">
+                </div>
             </div>
 
             <div class="row">
-                <h1>Назва 1</h1>
-                <p><img style="float: right; max-height: 200px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/apartment.jpg')}}">
-                    В наших секретных лабораториях в рамках проекта &laquo;Пандора&raquo; разрабатывалось
-                    психотропное оружие. В результате неудачного эксперимента большинство ученых, работавших
-                    над прибором, подверглись воздействию психотропного излучения, и они, находясь в состоянии
-                    аффекта, растащили прототип по деталям. Возможно, наши ученые до сих пор находятся в
-                    состоянии аффекта</p>
+                <div class="col-md-4">
+                    <div class="contact-info">
+
+                        <h2 class="block-title" ><span>М. БРОВАРЫ, BУЛ КИЇВСЬКА 152 (2 ПОВЕРХ)</span></h2>
+
+                        <div class="media-list">
+                            <div class="media">
+                                <i class="pull-left fa fa-home" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body" >
+                                    <strong>Адреса:</strong><br>
+                                    Україна,  КиЇвська обл., м.Бровары, вул. КиЇвска 152 (2 поверх)
+                                </div>
+                            </div>
+
+                            <div class="media">
+                                <i class="pull-left fa fa-clock-o" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body" >
+                                    <strong>Графік роботи:</strong><br>
+                                    Пн-Нд: 10<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span > - 19<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>Телефон:</strong><br>
+                                    (012) 345-7689
+                                </div>
+                            </div>
+                            <div class="media">
+                                <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>Телефон:</strong><br>
+                                    (012) 345-7689
+                                </div>
+                            </div>
+                            <div class="media">
+                                <i class="pull-left fa fa-envelope-o" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>E-mail:</strong><br>
+                                    brestonua@gmail.com
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <img style="float: right; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/apartment.jpg')}}">
+                    <img style="float: right; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/apartment.jpg')}}">
+                </div>
             </div>
 
             <div class="row">
-                <h1>Назва 1</h1>
-                <p><img style="float: right; max-height: 200px; margin-left: 50px;margin-bottom:20px" src="{{asset('storage/static_img/apartment.jpg')}}">
-                    В наших секретных лабораториях в рамках проекта &laquo;Пандора&raquo; разрабатывалось
-                    психотропное оружие. В результате неудачного эксперимента большинство ученых, работавших
-                    над прибором, подверглись воздействию психотропного излучения, и они, находясь в состоянии
-                    аффекта, растащили прототип по деталям. Возможно, наши ученые до сих пор находятся в
-                    состоянии аффекта</p>
+                <div class="col-md-4">
+                    <div class="contact-info">
+
+                        <h2 class="block-title" ><span> М. БРОВАРЫ ИУЛ ОНІКІЄНКА 20/2</span></h2>
+
+                        <div class="media-list">
+                            <div class="media">
+                                <i class="pull-left fa fa-home" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body" >
+                                    <strong>Адреса:</strong><br>
+                                    Украина, Київска обл., м.Бровары, вул. Олега Онікієнка 20/2
+
+
+                                </div>
+                            </div>
+
+                            <div class="media">
+                                <i class="pull-left fa fa-clock-o" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body" >
+                                    <strong>Графік роботи:</strong><br>
+                                    Пн-Нд: 10<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span > - 20<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>Телефон:</strong><br>
+                                    (012) 345-7689
+                                </div>
+                            </div>
+                            <div class="media">
+                                <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>Телефон:</strong><br>
+                                    (012) 345-7689
+                                </div>
+                            </div>
+                            <div class="media">
+                                <i class="pull-left fa fa-envelope-o" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>E-mail:</strong><br>
+                                    brestonua@gmail.com
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <img style="float: right; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/apartment.jpg')}}">
+                    <img style="float: right; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/apartment.jpg')}}">
+                </div>
             </div>
         </div>
     </section>

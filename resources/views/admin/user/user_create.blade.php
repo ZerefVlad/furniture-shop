@@ -20,13 +20,13 @@
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <ul class="data-list">
                         <li class="list-item">
-                            <i class="fas fa-user"></i><input class="change-input user-name" name="name" id="name_user" type="text" @if ($user) value="{{$user->name}}" @else value="Введите имя" @endif >
+                            <i class="fas fa-user"></i><input class="change-input user-name" name="name" id="name_user" type="text" @if ($user) value="{{$user->name}}" @else value="Введите имя" @endif  required>
                         </li>
                         <li class="list-item">
-                            <i class="fas fa-user"></i><input class="change-input user-name" name="surname" id="surname_user" type="text" @if ($user) value="{{$user->surname}}" @else value="Введите фамилию" @endif>
+                            <i class="fas fa-user"></i><input class="change-input user-name" name="surname" id="surname_user" type="text" @if ($user) value="{{$user->surname}}" @else value="Введите фамилию" @endif required>
                         </li>
                         <li class="list-item">
-                            <i class="fas fa-envelope"></i><input class="change-input user-mail" name="email" id="email_user" type="email" @if ($user) value="{{$user->email}}" @else value="Введите email" @endif>
+                            <i class="fas fa-envelope"></i><input class="change-input user-mail" name="email" id="email_user" type="email" @if ($user) value="{{$user->email}}" @else value="Введите email" @endif required>
                         </li>
                         <li class="list-item">
                             <i class="fas fa-envelope"></i><input class="change-input user-password" name="password" id="password_user" type="text"  value="Введите пароль">

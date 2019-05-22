@@ -15,7 +15,8 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     protected $guarded = [
-        'id'
+        'id',
+        'parent_id'
     ];
 
     public function product()
@@ -58,5 +59,23 @@ class Comment extends Model
         $comment->parent_id = $data['parent_id'];
 
         return $comment;
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Comment::class, 'parent_id');
+    }
+
+    public function isParent(): bool
+    {
+        if ($this->parent_id == null) {
+            return true;
+        }
+        return false;
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Comment::class, 'parent_id');
     }
 }

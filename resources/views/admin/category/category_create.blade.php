@@ -40,12 +40,12 @@ $image_url = $image ? $image->url : '#';
                         <li class="list-item col-md-6">
                             <label for="title_category">Введите название</label>
                             <input class="form-control change-input" name="title" id="title_category" type="text"
-                                   value="{{$title}}">
+                                   value="{{$title}}" required>
                         </li>
                         <li class="list-item col-md-6">
                             <label for="code_category">Введите код</label>
                             <input class="form-control change-input" name="code" id="code_category" type="text"
-                                   value="{{$code}}">
+                                   value="{{$code}}" required>
                         </li>
 
                         <li class="list-item col-md-6">

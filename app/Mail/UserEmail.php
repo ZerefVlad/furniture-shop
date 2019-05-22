@@ -29,7 +29,7 @@ class UserEmail extends Mailable
      */
     public function build()
     {
-        $this->from('huy@huy.com');
+        $this->from('brestonua@gmail.com');
         $this->subject($this->data[0]['title']);
         return $this->view('emails.subscribers')->with('data', $this->data[0]);
     }

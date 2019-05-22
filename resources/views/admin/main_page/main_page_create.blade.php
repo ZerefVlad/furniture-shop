@@ -45,12 +45,15 @@
             <form  class="change-form " method="post" action="{{route('first-block')}}" enctype="multipart/form-data" id="block1-form">        {{csrf_field()}}</form>
                 <ul class="data-list">
                     <li class="list-item">
-                        <button id="add-text-slide">Додати слайд</button>
-                        <div class="text-slides"></div>
+                        <button id="add-text-slide" " >Додати слайд</button>
+
+
+                        <div class="text-slides">
+                        </div>
 
                     </li>
                     <li class="list-item">
-                        <button id="add-video-slide">Додати вiдео</button>
+                        <button id="add-video-slide" >Додати вiдео</button>
                         <div class="video-slides"></div>
 
 
@@ -59,7 +62,7 @@
                 </ul>
                 <div class="button-group">
 
-                    <input type="submit" form="block1-form" value="Зберегти" style="width: 150px;    -webkit-border-radius: 21px;    border-radius: 21px;
+                    <input   id="bl1" type="submit" form="block1-form" value="Зберегти" style="width: 150px;    -webkit-border-radius: 21px;    border-radius: 21px;
                                 background-color: #09b81b; color: #ffffff; padding: 10px; font-family: Montserrat; font-size: 14px;
                                 font-weight: 600; line-height: 1;">
                 </div>

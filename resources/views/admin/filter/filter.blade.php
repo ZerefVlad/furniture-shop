@@ -27,7 +27,7 @@
             <form action="{{route('create-filter')}}" class="change-form">
                 <ul class="data-list">
                 <li class="list-item">
-                <input class="change-input user-mail" type="text" value="Введiть назву фiльтру" name="title">
+                <input class="change-input user-mail" type="text" value="Введiть назву фiльтру" name="title" required>
                 </li>
                     <li class="list-item">
                         <p>Оберiть атрибут: </p>

@@ -202,11 +202,11 @@
                         <form action="{{route('callback-send')}}">
 
                             <lable class="col-md-12" style="margin-top: 10px">Ваше iм'я</lable>
-                            <input class="col-md-12" name="name" type="text" placeholder="Ваше iм'я">
+                            <input class="col-md-12" name="name" type="text" placeholder="Ваше iм'я" required>
                             <input type="hidden" value="{{$product->id}}" name="product">
                             <input type="hidden" name="type" value="product">
 
-                            <lable class="col-md-12 " style="margin-top: 10px">Номер телефону</lable>
+                            <lable class="col-md-12 " style="margin-top: 10px" required>Номер телефону</lable>
                             <input class="col-md-12" name="phone" type="text" placeholder="Номер телефону">
 
                             <input class="col-md-12 "

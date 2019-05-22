@@ -219,12 +219,12 @@
                         <form action="{{route('callback-send')}}">
 
                             <lable class="col-md-12" style="margin-top: 10px">Ваше iм'я</lable>
-                            <input class="col-md-12" name="name" type="text" placeholder="Ваше iм'я">
+                            <input class="col-md-12" name="name" type="text" placeholder="Ваше iм'я" required>
                             <input type="hidden" value="{{$product->id}}" name="product">
                             <input type="hidden" name="type" value="product">
 
                             <lable class="col-md-12 " style="margin-top: 10px">Номер телефону</lable>
-                            <input class="col-md-12" name="phone" type="text" placeholder="Номер телефону">
+                            <input class="col-md-12" name="phone" type="text" placeholder="Номер телефону" required>
 
                             <input class="col-md-12 "
                                    style=" width: 50%;height: 35px;margin-left: 23%;margin-top: 10%;color: #FFFFFF;max-width: 100%; box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2); border-radius: 10px;background-color: #4abf0c;"
@@ -425,7 +425,47 @@
 
 
                                         <div class="comments">
+
+                                            <div class="comments-form">
+                                                <h4 class="block-title">Додати коментар</h4>
+                                                <form id="add-comment-to-form"
+                                                      action="{{route('add_comment',['category' => $category, 'product' => $product])}}"
+                                                      method="post" name="comments-form" id="comments-form"></form>
+                                                <input type="hidden" form="add-comment-to-form" name="_token"
+                                                       value="{{csrf_token()}}">
+                                                {{--                                                    <div class="form-group"><input type="text"--}}
+                                                {{--                                                                                   placeholder="Your name and surname"--}}
+                                                {{--                                                                                   class="form-control"--}}
+                                                {{--                                                                                   title="comments-form-name"--}}
+                                                {{--                                                                                   name="comments-form-name"></div>--}}
+                                                {{--                                                    <div class="form-group"><input type="text"--}}
+                                                {{--                                                                                   placeholder="Your email adress"--}}
+                                                {{--                                                                                   class="form-control"--}}
+                                                {{--                                                                                   title="comments-form-email"--}}
+                                                {{--                                                                                   name="comments-formemail"></div>--}}
+                                                <div class="form-group"><textarea form="add-comment-to-form" name="text"
+                                                                                  placeholder="Your message"
+                                                                                  class="form-control"
+                                                                                  title="comments-form-comments"
+
+                                                                                  rows="6">Введите коммент</textarea>
+                                                </div>
+
+                                                <input form="add-comment-to-form" type="number" name="rating" min="0"
+                                                       max="5" value="5" style="">
+                                                <div class="form-group">
+                                                    <button form="add-comment-to-form"
+                                                            type="submit"
+                                                            class="btn btn-theme btn-theme-transparent btn-icon-left"
+                                                            id="submit"><i class="fa fa-comment"></i> Надiслати
+                                                    </button>
+                                                </div>
+                                                </form>
+                                            </div>
+
                                             @foreach($product->comments as $comment)
+                                                @if($comment->isParent())
+
                                                 <div class="media comment" id="comment-{{$comment->id}}">
 
                                                     <div class="media-body">
@@ -465,6 +505,50 @@
 
                                                     </div>
                                                 </div>
+                                                    @foreach($comment->children as $children)
+                                                        <div class="media comment" id="comment-{{$comment->id}}" style="width: 80%">
+
+                                                            <div class="media-body">
+                                                                <h4>Вiдповiдь Адмiнiстратора</h4>
+
+                                                            @if ($children->user && auth()->user() && ($children->user->id === auth()->user()->id || auth()->user()->id === 1))
+                                                                    <button data-id="{{$children->id}}"
+                                                                            data-category-name="{{$children->title}}"
+                                                                            data-product-name="{{$children->title}}"
+                                                                            form="update-comment-to-form"
+                                                                            class="comment-update btn btn-success"
+                                                                    >
+                                                                        Редактировать коммент
+                                                                    </button>
+
+                                                                    <button data-id="{{$children->id}}"
+
+                                                                            form="delete-comment-to-form"
+                                                                            class="comment-delete btn btn-success"
+                                                                    >
+                                                                        Удалить коммент
+                                                                    </button>
+                                                                @endif
+                                                                <p class="comment-meta">
+                                                            <span class="comment-author">
+                                                                <a href="#">{{$children->user ? $children->user->name : "Guest"}}</a>
+{{--                                                                <span class="comment-date" >--}}
+                                                                {{--                                                                    26 days ago--}}
+                                                                {{--                                                                    <i class="fa fa-flag"></i>--}}
+                                                                {{--                                                                </span>--}}
+                                                            </span>
+                                                                <p>{{$children->rating}}</p>
+                                                                </p>
+
+                                                                <p id="text-{{$children->id}}"
+                                                                   class="comment-text"
+                                                                   style="word-wrap: break-word;">{{$children->text}}</p>
+
+
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                @endif
                                             @endforeach
                                         </div>
 
@@ -482,42 +566,7 @@
                                         {{--                                                <button form="add-comment-to-form" class="comment-add btn btn-green">Отправить коммент</button>--}}
 
 
-                                        <div class="comments-form">
-                                            <h4 class="block-title">Додати коментар</h4>
-                                            <form id="add-comment-to-form"
-                                                  action="{{route('add_comment',['category' => $category, 'product' => $product])}}"
-                                                  method="post" name="comments-form" id="comments-form"></form>
-                                            <input type="hidden" form="add-comment-to-form" name="_token"
-                                                   value="{{csrf_token()}}">
-                                            {{--                                                    <div class="form-group"><input type="text"--}}
-                                            {{--                                                                                   placeholder="Your name and surname"--}}
-                                            {{--                                                                                   class="form-control"--}}
-                                            {{--                                                                                   title="comments-form-name"--}}
-                                            {{--                                                                                   name="comments-form-name"></div>--}}
-                                            {{--                                                    <div class="form-group"><input type="text"--}}
-                                            {{--                                                                                   placeholder="Your email adress"--}}
-                                            {{--                                                                                   class="form-control"--}}
-                                            {{--                                                                                   title="comments-form-email"--}}
-                                            {{--                                                                                   name="comments-formemail"></div>--}}
-                                            <div class="form-group"><textarea form="add-comment-to-form" name="text"
-                                                                              placeholder="Your message"
-                                                                              class="form-control"
-                                                                              title="comments-form-comments"
 
-                                                                              rows="6">Введите коммент</textarea>
-                                            </div>
-
-                                            <input form="add-comment-to-form" type="number" name="rating" min="0"
-                                                   max="5" value="5" style="">
-                                            <div class="form-group">
-                                                <button form="add-comment-to-form"
-                                                        type="submit"
-                                                        class="btn btn-theme btn-theme-transparent btn-icon-left"
-                                                        id="submit"><i class="fa fa-comment"></i> Надiслати
-                                                </button>
-                                            </div>
-                                            </form>
-                                        </div>
                                         <!-- // -->
 
                                     </div>

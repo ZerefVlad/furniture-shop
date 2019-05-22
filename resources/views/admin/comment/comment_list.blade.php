@@ -30,6 +30,7 @@
                     </thead>
                     <tbody>
                     @foreach($comments as $comment)
+                        @if($comment->isParent())
                         <tr id="comment-{{$comment->id}}">
                             <td>{{$comment->user ? $comment->user->name : "Guest"}} </td>
                             <td style="word-wrap: break-word;" id="prodtitle-{{$comment->id}}">{{$comment->product->title}} </td>
@@ -44,7 +45,7 @@
                                 <input type="hidden" form="reply-comment-to-form-{{$comment->id}}" name="parent_id" value="{{$comment->id}}">
                                 <input type="hidden" form="reply-comment-to-form-{{$comment->id}}" name="product_id" value="{{$comment->product->id}}"><input form="reply-comment-to-form-{{$comment->id}}"  name="rating" min="0" max="5" value="5" type="hidden">
 
-                                <textarea style=" width: 120px;height: 100px" form="reply-comment-to-form-{{$comment->id}}" name="text">Введите ответ на коммент</textarea>
+                                <textarea style=" width: 120px;height: 100px" form="reply-comment-to-form-{{$comment->id}}" name="text" required>Введите ответ на коммент</textarea>
                                 <button style="margin: 10px" form="reply-comment-to-form-{{$comment->id}}" class="comment-reply btn btn-success">Отправить ответ</button>
 
 
@@ -78,6 +79,58 @@
 {{--                            <td> <a style="    color: #eb1717;" href="{{route('category_action_delete', ['id' => $category->id])}}">delete</a></td>--}}
 
                         </tr>
+                            @foreach($comment->children as $children)
+                                <tr id="comment-{{$children->id}}" style="width: 90%">
+                                    <td>{{$children->user ? $children->user->name : "Guest"}} </td>
+
+                                    <td style="word-wrap: break-word;" id="prodtitle-{{$children->id}}">Вiдповiдь на комментар: {{$comment->text}}</td>
+                                    <td style="word-wrap: break-word;" id="text-{{$children->id}}">{{$children->text}} </td>
+                                    <td id="rating-{{$children->id}}">{{$children->rating}} </td>
+                                    <td id="created-{{$children->id}}">{{$children->created_at}} </td>
+
+                                    <td id="reply-{{$children->id}}">
+                                        <form id="reply-comment-to-form-{{$children->id}}" action="{{route('comment_reply')}}"
+                                              method="get"></form>
+                                        <input type="hidden" form="reply-comment-to-form-{{$children->id}}" name="_token" value="{{csrf_token()}}">
+                                        <input type="hidden" form="reply-comment-to-form-{{$children->id}}" name="parent_id" value="{{$children->id}}">
+                                        <input type="hidden" form="reply-comment-to-form-{{$children->id}}" name="product_id" value="{{$children->product->id}}"><input form="reply-comment-to-form-{{$children->id}}"  name="rating" min="0" max="5" value="5" type="hidden">
+
+                                        <textarea style=" width: 120px;height: 100px" form="reply-comment-to-form-{{$children->id}}" name="text">Введите ответ на коммент</textarea>
+                                        <button style="margin: 10px" form="reply-comment-to-form-{{$children->id}}" class="comment-reply btn btn-success">Отправить ответ</button>
+
+
+
+                                    </td>
+
+                                    <td id="edit-{{$children->id}}">
+
+                                        <button data-id="{{$children->id}}"
+                                                data-category-name="{{$children->product->categories[0]->title}}"
+                                                data-product-name="{{$children->product->title}}"
+                                                form="update-comment-to-form"
+                                                class="comment-update btn btn-dark"
+                                                style="margin: 10px; font-size: 12px">
+                                            Редактировать коммент
+                                        </button>
+                                        <button data-id="{{$children->id}}"
+                                                style="margin: 10px;background-color: #eb1717;"
+                                                form="delete-comment-to-form"
+                                                class="comment-delete btn " >
+                                            Удалить коммент
+                                        </button>
+
+
+                                    </td>
+
+
+
+
+                                    {{--                            <td><a href="{{route('category_action_edit', ['id' => $category->id, 'title' => $category->title])}}">edit</a></td>--}}
+                                    {{--                            <td> <a style="    color: #eb1717;" href="{{route('category_action_delete', ['id' => $category->id])}}">delete</a></td>--}}
+
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
 
                     @endforeach

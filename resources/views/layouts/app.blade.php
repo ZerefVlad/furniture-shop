@@ -19,6 +19,13 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
     }
 }
 
+    if(auth()->guest()){
+     $views =  \App\Models\Views::where('user_track', \Session::get('hash'))->skip(0)->latest('created_at')->take(4)->get();
+ } else
+  {
+        $views =  \App\Models\Views::where('user_track', auth()->user()->id)->skip(0)->latest('created_at')->take(4)->get();
+
+  }
 
 
 @endphp
@@ -31,7 +38,8 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Breston</title>
+    <title>Breston - Iнтернет магазин меблiв | Интернет магазин мебели</title>
+    <meta name="description" content="Мебель для дома в магазине Breston. &#9742;     (066) 123-45-67. Самые низкие цены! Товары для дома и сувениры с доставкой по Украине." />
 
     <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -194,10 +202,10 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
         <!-- HEADER -->
         <header class="header">
             <div class="header-wrapper">
-                <div class="container">
+                <div class="container" style="text-align: -webkit-center;">
 
                     <!-- Logo -->
-                    <div class="logo">
+                    <div class="logo" style="margin: 0 !important;">
                         <a href="{{route('main-page')}}"><img src="{{asset('storage/static_img/Logo.png')}}" alt="Alka Shop"/></a>
                     </div>
                     <!-- /Logo -->
@@ -280,7 +288,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                 </div>
             </div>
             <div class="navigation-wrapper">
-                <div class="container">
+                <div class="container" >
                     <!-- Navigation -->
                     <nav class="navigation closed clearfix">
                         <a href="#" class="menu-toggle-close btn"><i class="fa fa-times"></i></a>
@@ -355,6 +363,86 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
         <!-- /HEADER -->
     @yield('content')
 
+        @if($views->count() != 0)
+        <section class="page-section">
+            <div class="container">
+
+                <div class="tabs">
+                    <h1 class="titletabs">Переглянутi товари</h1>
+
+
+
+                </div>
+
+
+                <div class="tab-content">
+
+
+                    <!-- tab 2 -->
+                    <div class="tab-pane fade active in" id="tab-2">
+                        <div class="row">
+                            @foreach($views as $view)
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="thumbnail no-border no-padding">
+                                        <div class="media" style=" width: 270px;height: 330px;display: table-cell;vertical-align: middle; text-align: center;">
+                                            <a class="media-link" href="#">
+                                                <img style="max-width: 270px; max-height: 330px; "
+                                                     src="{{$view->product->getImages()->first() ? $view->product->getImages()->first()->url : '#'}}"
+                                                     alt=""/>
+                                                <span class="icon-view">
+                                                        <strong><i class="fa fa-eye"></i></strong>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="caption text-center">
+                                            <a href="{{route('show_single_product', [ 'product' => $view->product, 'category' => $view->product->categories->first()])}}">
+                                                <h4 class="caption-title prodcateegorytitle">{{$view->product->title}}r</h4>
+                                            </a>
+
+
+
+                                            <div class="price">
+                                                @if($view->product->categories->first()->type != 'default')
+                                                    <ins>{{$view->product->getPriceWithDiscount()}} грн./пог. м</ins>
+                                                @else
+                                                    <ins>{{$view->product->getPriceWithDiscount()}} грн.</ins>
+
+
+                                                    @if($view->product->discount->value != '0')
+                                                        <del>{{$view->product->getPriceWithoutDiscount()}} грн.</del>
+                                                    @endif
+
+                                                @endif
+                                            </div>
+                                            <div class="buttons">
+
+                                                @if(!$view->product->likes()->first())
+                                                    <a class="btn btn-theme btn-theme-transparent btn-wish-list" href="{{route("add_to_like", ['product' => $view->product,'category' => $view->product->categories->first()])}}"><i
+                                                                style="color: #02bbdb;" class="fa fa-heart"></i></a>
+                                                @else
+                                                    <a style="color: #ffffff; background-color: #1c94c4" class="btn btn-theme btn-theme-transparent btn-wish-list" href="{{route("delete_like", ['likes' => $view->product->likes()->first()])}}"><i
+                                                                class="fa fa-heart"></i></a>
+                                                @endif
+                                                <a class="btn btn-theme btn-theme-transparent btn-wish-list" href="{{route('show_single_product', [ 'product' => $view->product, 'category' => $view->product->categories->first()])}}">Детальныше</a>
+                                                {{--                                                @if(!$product->likes()->first())--}}
+                                                {{--                                                <a class="btn btn-theme btn-theme-transparent btn-icon-left" href="{{route("add_to_like", ['product' => $product,'category' => $product->categories->first()])}}">До лайку</a>--}}
+                                                {{--                                                @else--}}
+                                                {{--                                                <a class="btn btn-theme btn-theme-transparent btn-icon-left" href="{{route("delete_like", ['likes' => $product->likes()->first()])}}">Delete лайку</a>--}}
+                                                {{--                                                @endif--}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </section>
+    @endif
 
     <!-- FOOTER -->
         <footer class="footer">
@@ -364,12 +452,14 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
 
                         <div class="col-md-3">
                             <div class="widget">
-                                <h4 class="widget-title">About Us</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sollicitudin
+                                <h4 class="widget-title">Про нас</h4>
+                                <p>ULorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sollicitudin
                                     ultrices
                                     suscipit. Sed commodo vel mauris vel dapibus. Lorem ipsum dolor sit amet,
                                     consectetur
-                                    adipiscing elit.</p>
+                                    adipiscing elit.
+
+                                   </p>
                                 <ul class="social-icons">
                                     <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
@@ -380,40 +470,39 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                         </div>
                         <div class="col-md-3">
                             <div class="widget">
-                                <h4 class="widget-title">News Letter</h4>
+                                <h4 class="widget-title">Підписатися </h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                 <form action="{{route('add_subscriber')}}" method="post" >
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <div class="form-group">
-                                        <input class="form-control" name="email" type="text" placeholder="Enter Your Mail"/>
+                                        <input class="form-control" name="email" type="text" placeholder="Введіть свій Е-Mail" required/>
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit"  class="btn btn-theme btn-theme-transparent" value="Отправить">
+                                        <input type="submit"  class="btn btn-theme btn-theme-transparent" value="Надіслати">
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="widget widget-categories">
-                                <h4 class="widget-title">Information</h4>
+                                <h4 class="widget-title">Інформація</h4>
                                 <ul>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Terms and Conditions</a></li>
-                                    <li><a href="#">Private Policy</a></li>
+                                    <li class="hidden-xs"><a href="{{route('about')}}">Про нас</a></li>
+                                    <li class="hidden-xs"><a href="{{route('show-posts')}}">Блог</a></li>
+                                    <li class="hidden-xs"><a href="{{route('contact')}}">Контакти</a></li>
+                                    <li class="hidden-xs"><a href="{{route('faq')}}">Популярнi питання</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="widget widget-categories">
-                                <h4 class="widget-title">Category</h4>
+                                <h4 class="widget-title">категорiЇ</h4>
                                 <ul>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Terms and Conditions</a></li>
-                                    <li><a href="#">Private Policy</a></li>
+                                    @foreach($categories_header as $category)
+                                        @if($category->isParent())
+                                    <li><a href="{{route('show_product', ['category' => $category])}}">{{$category->title}}</a></li>
+                                    @endif
+                                        @endforeach
                                 </ul>
                             </div>
                         </div>

@@ -119,12 +119,19 @@
                                         </a>
 
 
-                                        <div class="price">
-                                            <ins>{{$product->getPriceWithDiscount()}} грн.</ins>
-                                            @if($product->discount->value != '0')
-                                            <del>{{$product->getPriceWithoutDiscount()}}грн.</del>
-                                            @endif
 
+                                        <div class="price">
+                                            @if($product->categories->first()->type != 'default')
+                                                <ins>{{$product->getPriceWithDiscount()}} грн./пог. м</ins>
+                                            @else
+                                                <ins>{{$product->getPriceWithDiscount()}} грн.</ins>
+
+
+                                                @if($product->discount->value != '0')
+                                                    <del>{{$product->getPriceWithoutDiscount()}}</del>
+                                                @endif
+
+                                            @endif
                                         </div>
                                         <div class="buttons">
 
