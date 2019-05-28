@@ -4,6 +4,8 @@
     $title = $product ? $product->title : '';
     $code = $product ? $product->code : '';
     $description = $product ? $product->description : '';
+    $meta_description = $product ? $product->meta_description : '';
+    $meta_title = $product ? $product->meta_title : '';
     $active = $product ? $product->active : 0;
     $url = $product ? route('product_edit_action', ['product' => $product]) : route('product_create_action');
     $discount = $product ? (!$product->discount ? 0 : $product->discount->value) : 0;
@@ -83,13 +85,13 @@
 
                         <li class="list-item col-md-4">
                             <label class="col-form-label" for="title">Meta title:               </label>
-                            <input form="product-update-form" type="text" name="meta_title" value="{{$product->meta_title}}"
+                            <input form="product-update-form" type="text" name="meta_title" value="{{$meta_title}}"
                                    class="form-control">
                         </li>
 
                         <li class="list-item col-md-8">
                             <label class="col-form-label" for="title">Meta description:</label>
-                            <input form="product-update-form" type="text" name="meta_description" value="{{$product->meta_description}}"
+                            <input form="product-update-form" type="text" name="meta_description" value="{{$meta_description}}"
                                    class="form-control">
                         </li>
 

@@ -287,7 +287,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
 
                 </div>
             </div>
-            <div class="navigation-wrapper">
+            <div class="navigation-wrapper" style="    height: 100%;">
                 <div class="container" >
                     <!-- Navigation -->
                     <nav class="navigation closed clearfix">
@@ -297,16 +297,16 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
 
                             @foreach($categories_header as $category)
                                 @if ($category->isParent())
-                                    <li class="megamenu"><a href="#main" style="color: #02bbdb;"> {{$category->title}}</a>
+                                    <li class="megamenu" style="width: 11%; height: 122px"><a href="#main" style="color: #02bbdb;"> {{$category->title}}</a>
                                         <ul>
-                                            <li class="row">
+                                            <li class="row" >
 
                                                 <div class="col-md-4">
                                                     <div class="product-list">
 
                                                         <div class="media">
                                                             <a class="pull-left media-link"
-                                                               href="{{route('show_product', ['category' => $category])}}">
+                                                               href="{{route('show_product', ['category' => $category])}}" style="height: 122px">
                                                                 <img width="274px" height="168px" class="media-object"
                                                                      src="{{$category->getImage() ? $category->getImage()->url : '#'}}"
                                                                      alt="">

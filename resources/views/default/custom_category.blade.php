@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="caption text-center">
                                         <a href="{{route('show_single_product', [ 'product' => $product, 'category' => $product->categories->first()])}}">
-                                            <h4 class="caption-title prodcateegorytitle">{{$product->title}}r</h4>
+                                            <h4 class="caption-title prodcateegorytitle">{{$product->title}}</h4>
                                         </a>
 
 
@@ -95,7 +95,7 @@
                                         </div>
                                         <div class="caption text-center">
                                             <a href="{{route('show_single_product', [ 'product' => $product, 'category' => $product->categories->first()])}}">
-                                                <h4 class="caption-title prodcateegorytitle">{{$product->title}}r</h4>
+                                                <h4 class="caption-title prodcateegorytitle">{{$product->title}}</h4>
                                             </a>
 
 

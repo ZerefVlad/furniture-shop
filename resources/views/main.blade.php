@@ -336,8 +336,8 @@ text-transform: uppercase;text-align: center;">Подивіться наш бл�
                             <div class="media-body" style="float: left; width: 100%;text-align: left;">
 
                                 <h4 class="media-heading" style="text-align: center"><a href="#">{{$post->title}}</a></h4>
-                                <p style="color: #171717;font-family: Montserrat;font-size: 18px;font-weight: 400;line-height: 25px;">
-                                    {{str_limit($post->text,100)}}</p>
+                                <p style="color: #171717;font-family: Montserrat;font-size: 18px;font-weight: 400;line-height: 25px;    word-break: break-all;">
+                                    {{substr("$post->text",0,300)}}</p>
 
                             </div>
                             <a style="color: #02bbdb;font-family: Montserrat;font-size: 20px;font-weight: 400;line-height: 19px;" href="{{route('show-post', ['post' => $post])}}">показати бiльше</a>
