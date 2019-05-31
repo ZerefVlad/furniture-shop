@@ -115,7 +115,7 @@
                                     </div>
                                     <div class="caption text-center">
                                         <a href="{{route('show_single_product', [ 'product' => $product, 'category' => $product->categories->first()])}}">
-                                            <h4 class="caption-title prodcateegorytitle">{{$product->title}}r</h4>
+                                            <h4 class="caption-title prodcateegorytitle">{{$product->title}}</h4>
                                         </a>
 
 
@@ -265,7 +265,7 @@
                                 Реализованных продаж
                             </p>
                         </td>
-                        <td style="width: 50%;">
+                        <td style="width: 50%;    border: 1px solid;">
                             <p style="margin-bottom: 5px;   ;font-size: 36px;">
                                 13
                             </p>
@@ -275,7 +275,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="width: 50%;">
+                        <td style="width: 50%;    border: 1px solid;">
                             <p style="margin-bottom: 5px;   ;font-size: 36px;">
                                 13
                             </p>
@@ -283,7 +283,7 @@
                                 Лет на рынке
                             </p>
                         </td>
-                        <td style="width: 50%;">
+                        <td style="width: 50%;   ">
                             <p style="margin-bottom: 5px;   ;font-size: 36px;">
                                 +Kyiv
                             </p>
@@ -336,8 +336,8 @@ text-transform: uppercase;text-align: center;">Подивіться наш бл�
                             <div class="media-body" style="float: left; width: 100%;text-align: left;">
 
                                 <h4 class="media-heading" style="text-align: center"><a href="#">{{$post->title}}</a></h4>
-                                <p style="color: #171717;font-family: Montserrat;font-size: 18px;font-weight: 400;line-height: 25px;">
-                                    {{str_limit($post->text,100)}}</p>
+                                <p style="color: #171717;font-family: Montserrat;font-size: 18px;font-weight: 400;line-height: 25px;    word-break: break-all;">
+                                    {{substr("$post->text",0,300)}}</p>
 
                             </div>
                             <a style="color: #02bbdb;font-family: Montserrat;font-size: 20px;font-weight: 400;line-height: 19px;" href="{{route('show-post', ['post' => $post])}}">показати бiльше</a>

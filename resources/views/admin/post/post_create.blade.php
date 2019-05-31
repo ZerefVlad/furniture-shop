@@ -45,7 +45,7 @@ $image_url = $image ? $image->url : '#';
 
                         <li class="list-item col-md-12" style="margin-left: 4%">
                             <label for="text_post">Введите текст</label>
-                            <textarea rows="10" cols="45" name="text" id="text_post" type="text" required >@if ($post) {{$post->text}} @endif</textarea>
+                            <textarea style="    width: 80%; height: 400px;" rows="10" cols="45" name="text" id="text_post" type="text" required >@if ($post) {{$post->text}} @endif</textarea>
                         </li>
 
 

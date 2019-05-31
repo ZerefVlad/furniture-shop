@@ -103,79 +103,89 @@
                             <li class="active"><a
                                         style="color: #02bbdb;font-family: Roboto;font-size: 18px;font-weight: 400;"
                                         href="#user-orders" data-toggle="tab">Історія замовлень</a></li>
-                            <li><a style="color: #02bbdb;font-family: Roboto;font-size: 18px;font-weight: 400;"
-                                   href="#see-product" data-toggle="tab">Переглянуті товари</a></li>
+
 
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-pane fade in active" id="user-orders">
-                                <table class="table">
-                                    <thead>
+                            <div class="tab-content" id="tab-content" style="width: 1170px">
 
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td class="image"><a class="media-link" href="#"><i class="fa fa-plus"></i><img
-                                                        src="assets/img/cart.jpg" alt=""/></a></td>
-                                        <td class="description">
-                                            <h4 style="color: #333333;font-family: Roboto;font-size: 22px;font-weight: 500;">
-                                                <a href="#">Standard Product Name Header Here</a></h4>
-                                            <p style="color: #9e9e9e;font-family: Roboto;font-size: 18px;font-weight: 400;">
-                                                Код товару: 232332</p>
-                                            <p>1 шт.</p>
-                                        </td>
-                                        <td class="quantity"></td>
+                                        <table class="rate-table" style="text-align: center">
+                                            <thead>
+                                            <tr >
+                                                <th scope="col" style="width: 6%; text-align: center">Номер заказа</th>
 
-                                        <td class="total" style="padding-right: 50px">
-                                            <p style="color: #333333;font-family: Roboto;font-size: 22px;font-weight: 500;">
-                                                7550грн</p>
-                                            <p class="skidka"
-                                               style="color: #9e9e9e;font-family: Roboto;font-size: 18px;font-weight: 400;">
-                                                Знижка: 0% </p>
-                                        </td>
+                                                <th scope="col" style="width: 25%; text-align: center">Товар </th>
+                                                <th scope="col" style="width: 12%; text-align: center">Время закза</th>
+                                                <th scope="col" style="width: 35%; text-align: center"   >Комплекты</th>
+                                                <th scope="col" style="text-align:center">Общая сумма заказа</th>
+                                                <th scope="col">Статус заказа</th>
 
-                                    </tr>
-                                    <tr>
-                                        <td class="image"><a class="media-link" href="#"><i class="fa fa-plus"></i><img
-                                                        src="assets/img/cart.jpg" alt=""/></a></td>
-                                        <td class="description">
-                                            <h4 style="color: #333333;font-family: Roboto;font-size: 22px;font-weight: 500;">
-                                                <a href="#">Standard Product Name Header Here</a></h4>
-                                            <p style="color: #9e9e9e;font-family: Roboto;font-size: 18px;font-weight: 400;">
-                                                Код товару: 232332</p>
-                                            <p>1 шт.</p>
-                                        </td>
-                                        <td class="quantity"></td>
+                                            </tr>
 
-                                        <td class="total" style="padding-right: 50px">
-                                            <p style="color: #333333;font-family: Roboto;font-size: 22px;font-weight: 500;">
-                                                7550грн</p>
-                                            <p class="skidka"
-                                               style="color: #9e9e9e;font-family: Roboto;font-size: 18px;font-weight: 400;">
-                                                Знижка: 0% </p>
-                                        </td>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($orders as $order)
+                                                <tr >
+                                                    <td>{{$order->id}} </td>
 
-                                    </tr>
-                                    </tbody>
-                                </table>
+
+                                                    <td style="word-wrap: break-word;text-align: center" >
+                                                        @if ($order->getProductObjects())
+                                                            @foreach($order->getProductObjects() as $product)
+                                                                <p>Название :  {{$product['product']->title}}</p>
+                                                                <p>Код :  {{$product['product']->code}}</p>
+
+                                                                <img style="margin-left: 15%;" width="150" height="150" src="{{$product['product']->getMainProductUrl()}}">
+                                                            @endforeach
+                                                        @endif
+
+
+                                                    </td>
+
+                                                    <td style="text-align: center">{{$order->getCreatedAt()}} </td>
+
+                                                    <td>
+
+
+
+                                                        @if ($order->getComplexesObjects())
+                                                            @foreach($order->getComplexesObjects() as $complex)
+                                                                <div style = "border: 1px solid #0159a1; border-radius: 25px;" >
+                                                                    <img style="margin-top: 15px"
+                                                                            width="200" height="150"
+                                                                            src="{{$complex['product']->getMainProductUrl()}}" alt=""/></a>
+                                                                    <h3>Название основного продукста: {{$complex['product']->title}}</h3>
+                                                                    <img style=""
+                                                                         width="200" height="150"
+                                                                         src="{{$complex['related_product']->getMainProductUrl()}}" alt=""/>
+                                                                    <h3>Название доп продукта: {{$complex['related_product']->title}}</h3>
+
+                                                                </div>
+                                                            @endforeach
+                                                        @endif
+
+                                                    </td>
+
+
+                                                    <td >{{$order->getOrderTotal()}}грн. </td>
+
+
+                                                    <td >{{$order->status}} </td>
+
+
+
+                                                </tr>
+                                            </tbody>
+
+                                            @endforeach
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="tab-pane fade " id="see-product">
-                                <p>Integer egestas, orci id condimentum eleifend, nibh nisi pulvinar eros, vitae ornare
-                                    massa neque ut orci. Nam aliquet lectus sed odio eleifend, at iaculis dolor egestas.
-                                    Nunc elementum pellentesque augue sodales porta. Etiam aliquet rutrum turpis,
-                                    feugiat sodales ipsum consectetur nec. </p>
-                                <p>Morbi imperdiet lacus nec ante blandit, sit amet fermentum magna faucibus. Nunc nec
-                                    libero id urna vulputate venenatis. Aenean vulputate odio felis, in rhoncus sapien
-                                    auctor nec. Donec non posuere sem. Ut quis egestas libero, mattis gravida nibh.
-                                    Phasellus a nisi ac mi luctus tincidunt et non est. Proin ac orci rhoncus arcu
-                                    bibendum molestie vel et metus. Aenean iaculis purus et velit iaculis, nec convallis
-                                    ipsum ornare. Integer a orci enim.</p>
-                            </div>
 
 
-                        </div>
-                    </div>
+
                 </div>
 
             </div>
@@ -184,29 +194,29 @@
     <!-- /PAGE -->
     </div>
     <!-- /CONTENT AREA -->
-    <section class="subscribe">
-        <div class="container full-width" style="background-color: #02bbdb;width: 100%; ">
-            <div class="container">
-                <h1 style="color: #ffffff;font-family: Montserrat;font-size: 68px;font-weight: 700;line-height: 78px;        margin-top: 7%; margin-bottom: 3%;">
-                    Join our mailing list to get the latest announcements
-                </h1>
-                <form action="#">
-                    <div class="form-group">
-                        <input style="opacity: 0.6;color: #ffffff;font-family: Montserrat;font-size: 18px;font-weight: 400;line-height: 78px;    width: 70%;     margin: 0 2% 7% 0;    float: left;"
-                               class="form-control" type="text" placeholder="Enter Your Mail"/>
+{{--    <section class="subscribe">--}}
+{{--        <div class="container full-width" style="background-color: #02bbdb;width: 100%; ">--}}
+{{--            <div class="container">--}}
+{{--                <h1 style="color: #ffffff;font-family: Montserrat;font-size: 68px;font-weight: 700;line-height: 78px;        margin-top: 7%; margin-bottom: 3%;">--}}
+{{--                    Join our mailing list to get the latest announcements--}}
+{{--                </h1>--}}
+{{--                <form action="#">--}}
+{{--                    <div class="form-group">--}}
+{{--                        <input style="opacity: 0.6;color: #ffffff;font-family: Montserrat;font-size: 18px;font-weight: 400;line-height: 78px;    width: 70%;     margin: 0 2% 7% 0;    float: left;"--}}
+{{--                               class="form-control" type="text" placeholder="Enter Your Mail"/>--}}
 
 
-                        <button style="box-shadow: 3px 6px 12px rgba(23, 23, 23, 0.2);border-radius: 29px;background-color: #ffffff;"
-                                class="btn btn-theme btn-theme-transparent">Subscribe
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
+{{--                        <button style="box-shadow: 3px 6px 12px rgba(23, 23, 23, 0.2);border-radius: 29px;background-color: #ffffff;"--}}
+{{--                                class="btn btn-theme btn-theme-transparent">Subscribe--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
+{{--                </form>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 @endsection
 
-<ul>
+{{--<ul>--}}
 
 
 {{--    @foreach($orders as $order)--}}
@@ -229,7 +239,6 @@
 {{--            <h2>Фамилия заказчика: {{$order->getUserData()->second_name}}</h2>--}}
 {{--            <h2>Сумма: {{$order->getOrderTotal()}}</h2>--}}
 {{--            <h2>Время заказа: {{$order->getCreatedAt()}}</h2>--}}
-{{--            --}}{{--<a href="{{route('post_action_delete', ['id' => $post->id])}}">delete</a>--}}
 
 {{--        </li>--}}
 {{--    @endforeach--}}

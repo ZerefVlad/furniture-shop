@@ -364,7 +364,7 @@
                                         <div style="color: #333333;font-family: Lato;font-size: 18px;font-weight: 700;letter-spacing: -0.63px;line-height: 45px;">
                                             <div style="padding: 35px;">
                                                 @foreach($attributes as $attribute)
-                                                    @if($attribute->attribute->title != 'price')
+                                                    @if($attribute->attribute->id != 1)
                                                         <div>
                                                             <p class="col-md-3">{{$attribute->attribute->title}}
                                                                 : </p>

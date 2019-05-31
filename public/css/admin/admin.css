@@ -21,6 +21,7 @@ img {
 body {
   padding-bottom: 80px; }
 
+
 .header {
   min-height: 80px;
   -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.16);
@@ -33,7 +34,7 @@ body {
     .header .header-navbar .nav-link, .header .header-navbar .logout {
       color: #0159a1;
       font-family: Montserrat;
-      font-size: 18px;
+      font-size: 14px;
       font-weight: 400;
       padding: 27px 10px; }
       .header .header-navbar .nav-link:hover, .header .header-navbar .logout:hover {
@@ -440,7 +441,11 @@ body {
       .header .header-navbar .nav-link, .header .header-navbar .logout {
         color: #0159a1;
         font-family: Montserrat;
+<<<<<<< HEAD
         font-size: 12px;
+=======
+        font-size: 13px;
+>>>>>>> a6d7942241d5ec9012f5de2c343715ff4c079d47
         font-weight: 400;
         padding: 20px 10px; }
         .header .header-navbar .nav-link:hover, .header .header-navbar .logout:hover {

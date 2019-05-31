@@ -4,6 +4,9 @@
     $title = $product ? $product->title : '';
     $code = $product ? $product->code : '';
     $description = $product ? $product->description : '';
+    $meta_description = $product ? $product->meta_description : '';
+    $meta_title = $product ? $product->meta_title : '';
+    $url_product = $product ? $product->url_product : '';
     $active = $product ? $product->active : 0;
     $url = $product ? route('product_edit_action', ['product' => $product]) : route('product_create_action');
     $discount = $product ? (!$product->discount ? 0 : $product->discount->value) : 0;
@@ -69,40 +72,46 @@
                 <div class="tab-pane fade show active" id="product-text" role="tabpanel" aria-labelledby="rate-tab">
                     <ul class="data-list">
 
-                        <li class="list-item col-md-6">
-                            <label class="col-form-label" for="title">Название товара</label>
+                        <li class="list-item col-md-12">
+                            <label class="col-form-label col-md-3" for="title">Название товара</label>
                             <input form="product-update-form" type="text" name="title" value="{{$title}}"
                                    class="form-control" required>
                         </li>
-                        <li class="list-item col-md-6">
-                            <label class="col-form-label" for="code">Код</label>
+                        <li class="list-item col-md-12">
+                            <label class="col-form-label col-md-3" for="code">Код</label>
                             <input form="product-update-form" type="text" name="code" value="{{$code}}"
                                    class="form-control" required>
 
                         </li>
+                        <li class="list-item col-md-12">
+                            <label class="col-form-label col-md-3" for="url_product">URL</label>
+                            <input form="product-update-form" type="text" name="url_product" value="{{$url_product}}"
+                                   class="form-control" onkeydown="javascript: if(event.keyCode==111 || event.keyCode==220)return false;">
 
-                        <li class="list-item col-md-4">
-                            <label class="col-form-label" for="title">Meta title:               </label>
-                            <input form="product-update-form" type="text" name="meta_title" value="{{$product->meta_title}}"
+                        </li>
+
+                        <li class="list-item col-md-12 ">
+                            <label class="col-form-label col-md-3" for="title">Meta title:               </label>
+                            <input form="product-update-form" type="text" name="meta_title" value="{{$meta_title}}"
                                    class="form-control">
                         </li>
 
-                        <li class="list-item col-md-8">
-                            <label class="col-form-label" for="title">Meta description:</label>
-                            <input form="product-update-form" type="text" name="meta_description" value="{{$product->meta_description}}"
+                        <li class="list-item col-md-12">
+                            <label class="col-form-label col-md-3" for="title">Meta description:</label>
+                            <input form="product-update-form" type="text" name="meta_description" value="{{$meta_description}}"
                                    class="form-control">
                         </li>
 
                         <li class="list-item col-md-12">
                             <label class="col-form-label" for="description" style="margin-right: 25px">Описание</label>
-                            <textarea form="product-update-form" name="description" id="" cols="30" rows="5"
+                            <textarea form="product-update-form" name="description" id="" style="height: 300px;"
                                       class="form-control" required>
                                  {{$description}}
                             </textarea>
                         </li>
 
 
-                        <li class="list-item col-md-3">
+                        <li class="list-item col-md-6">
                             <label class="form-check-label" for="" style="margin-right: 30px">Цена: </label>
 
 
@@ -117,22 +126,23 @@
 
                         </li>
 
-                        <li class="list-item col-md-3">
+                        <li class="list-item col-md-6">
                             <label class="form-check-label" for="" style="margin-right: 30px">Скидка на товар</label>
                             <input form="product-update-form" type="number" name="discount_value" value="{{$discount}}"
                                    min="0" max="100" style="width: 50px">%
                         </li>
 
-                        <li class="list-item col-md-3">
+                        <li class="list-item col-md-6">
                             <label class="form-check-label" for="">Активность товара</label>
                             <input form="product-update-form" class="form-control form-check" type="checkbox" name="active"
                                    value="{{$active}}"
                                    @if ($active) checked="checked" @endif>
                         </li>
 
-                        <li class="list-item col-md-3">
+                        <li class="list-item col-md-6">
                             <label class="form-check-label" for="" style="margin-right: 30px">Категория товара</label>
-                            <select form="product-update-form" multiple="multiple" name="categories[]">
+                            <select form="product-update-form" multiple="multiple" name="categories[]" style="    width: 400px;height: 400px;
+">
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}"
                                             @if ($product && in_array($category->id, $product->getCategoryIds())) selected @endif>{{$category->title}}</option>
@@ -169,12 +179,12 @@
                                                value="{{$image->id}}">
                                         <input form="update-picture-data-{{$image->id}}" type="hidden" name="product_id"
                                                value="{{$product->id}}">
-
-                                        <button style="margin: 4% 5% 5% 0% " form="update-picture-data-{{$image->id}}"
-                                                class="update-img btn-primary">ОБНОВИТЬЬЬЬЬЬ
+                                        <br>
+                                        <button style="margin: 0% 0% 5% 0% " form="update-picture-data-{{$image->id}}"
+                                                class="update-img btn-primary">Обновити
                                         </button>
                                         <button form="update-picture-data-{{$image->id}}" class="btn-danger delete-img">
-                                            Delete
+                                            Видалити
                                         </button>
                                         <br>
                                     @endforeach
@@ -216,15 +226,15 @@
                                 <input form="product-update-form" type="button" id="attribute-add" value="Add Attribute"/>
                                 @if ($productAttributes)
                                     @foreach($productAttributes as $attribute)
-                                        @if($attribute->attribute->title != 'price')
+                                        @if($attribute->attribute->id != 1)
                                             <form id="update-attribute-data-{{$attribute->attribute->id}}"></form>
-                                            <label style="margin-top:3%" for="">{{$attribute->attribute->title}}</label>
-                                            <input style="width: 100px"
+                                            <label class="col-md-3" style="margin-top:3%" for="">{{$attribute->attribute->title}}</label>
+                                            <input class="col-md-3" style="width: 100px"
                                                    form="update-attribute-data-{{$attribute->attribute->id}}" type="text"
                                                    name="value" value="{{$attribute->value}}">
-                                            <input form="update-attribute-data-{{$attribute->attribute->id}}" type="hidden"
+                                            <input class="col-md-3" form="update-attribute-data-{{$attribute->attribute->id}}" type="hidden"
                                                    name="id" value="{{$attribute->attribute->id}}">
-                                            <input form="update-attribute-data-{{$attribute->attribute->id}}" type="hidden"
+                                            <input class="col-md-3" form="update-attribute-data-{{$attribute->attribute->id}}" type="hidden"
                                                    name="product_id" value="{{$product->id}}">
 
                                             <button form="update-attribute-data-{{$attribute->attribute->id}}"

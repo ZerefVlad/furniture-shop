@@ -1215,7 +1215,7 @@ input[type=checkbox] {
 }
 .header .navigation-wrapper {
 
-  height: 58px;
+  height: 80px;
   background-color: #ffffff;
 }
 .header .navigation-wrapper.navigation-sticky {
@@ -1434,7 +1434,7 @@ input[type=checkbox] {
 
   color: #333333;
   font-family: Roboto;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 400;
 }
 .sf-menu.nav > li > a:hover,
@@ -6844,7 +6844,9 @@ input[type=number]::-webkit-outer-spin-button {
   font-family: Roboto;
   font-size: 22px;
   font-weight: 500;
+  height: 60px;
 }
+
 
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,cyrillic);

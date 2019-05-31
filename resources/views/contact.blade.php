@@ -38,9 +38,9 @@
 
                         <div class="outer required" >
                             <div class="form-group af-inner">
-                                <label class="sr-only" for="name">Name</label>
+                                <label class="sr-only" for="name">Ім'я</label>
                                 <input style="border-radius: 5px;border: 1px solid #c1c1c1;background-color:#f3f3f3;"
-                                       type="text" name="name" id="name" placeholder="Name" value="" size="30"
+                                       type="text" name="name" id="name" placeholder="Ім'я" value="" size="30"
                                        data-toggle="tooltip" title="Name is required"
                                        class="form-control placeholder" required/>
                             </div>
@@ -58,25 +58,25 @@
 
                         <div class="outer required">
                             <div class="form-group af-inner">
-                                <label class="sr-only" for="subject">Phone</label>
+                                <label class="sr-only" for="subject">Телефон</label>
                                 <input style="border-radius: 5px;border: 1px solid #c1c1c1;background-color:#f3f3f3;"
-                                       type="text" name="phone" id="subject" placeholder="Phone" value="" size="30"
+                                       type="text" name="phone" id="subject" placeholder="Номер телефону" value="" size="30"
                                        data-toggle="tooltip" title="Subject is required"
                                        class="form-control placeholder" required/>
                             </div>
                         </div>
 
                         <div class="form-group af-inner">
-                            <label class="sr-only" for="input-message">Message</label>
+                            <label class="sr-only" for="input-message">Ваше питання</label>
                             <textarea style="border-radius: 5px;border: 1px solid #c1c1c1;background-color:#f3f3f3;"
-                                      name="message" id="input-message" placeholder="Message" rows="4" cols="50"
+                                      name="message" id="input-message" placeholder="Ваше питання" rows="4" cols="50"
                                       data-toggle="tooltip" title="Message is required"
                                       class="form-control placeholder"></textarea>
                         </div>
 
                         <div class="outer required">
                             <div class="form-group af-inner">
-                                <input style="border-radius: 30px;background-color: #02bbdb;color: #ffffff;font-family: Montserrat;font-size: 18px;font-weight: 700;line-height: 50px;margin-left: 40%;" type="submit" name="submit" class="form-button form-button-submit btn" id="submit_btn" value="Send message" />
+                                <input style="border-radius: 30px;background-color: #02bbdb;color: #ffffff;font-family: Montserrat;font-size: 18px;font-weight: 700;line-height: 50px;margin-left: 40%;" type="submit" name="submit" class="form-button form-button-submit btn" id="submit_btn" value="Надіслати" />
                             </div>
                         </div>
 
@@ -95,62 +95,7 @@
     <section class="page-section color">
         <div class="container">
 
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="contact-info">
 
-                        <h2 class="block-title" ><span>С.Проліски вул. Броварська, 2А, ТЦ "FOZZY"</span></h2>
-
-                        <div class="media-list">
-                            <div class="media">
-                                <i class="pull-left fa fa-home" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
-                                <div class="media-body" >
-                                    <strong>Адреса:</strong><br>
-                                  Україна, с.Проліски, вул. Броварська, 2А, ТЦ "FOZZY"
-                                </div>
-                            </div>
-
-                            <div class="media">
-                                <i class="pull-left fa fa-clock-o" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
-                                <div class="media-body" >
-                                    <strong>Графік роботи:</strong><br>
-                                  Пн-Нд: 10<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span > - 19<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
-                                <div class="media-body">
-                                    <strong>Телефон:</strong><br>
-                                    (012) 345-7689
-                                </div>
-                            </div>
-                            <div class="media">
-                                <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
-                                <div class="media-body">
-                                    <strong>Телефон:</strong><br>
-                                    (012) 345-7689
-                                </div>
-                            </div>
-                            <div class="media">
-                                <i class="pull-left fa fa-envelope-o" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
-                                <div class="media-body">
-                                    <strong>E-mail:</strong><br>
-                                    brestonua@gmail.com
-                                </div>
-                            </div>
-
-
-
-
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-md-8">
-                <img style="float: right; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/apartment.jpg')}}">
-                <img style="float: right; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/apartment.jpg')}}">
-                </div>
-            </div>
 
             <div class="row">
                 <div class="col-md-4">
@@ -178,14 +123,21 @@
                                 <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
                                 <div class="media-body">
                                     <strong>Телефон:</strong><br>
-                                    (012) 345-7689
+                                    (067) 201-3772
                                 </div>
                             </div>
                             <div class="media">
                                 <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
                                 <div class="media-body">
                                     <strong>Телефон:</strong><br>
-                                    (012) 345-7689
+                                    (099) 041-7115
+                                </div>
+                            </div>
+                            <div class="media">
+                                <i class="pull-left fa fa-viber" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>Viber:</strong><br>
+                                    099 041 7115
                                 </div>
                             </div>
                             <div class="media">
@@ -204,12 +156,14 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <img style="float: right; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/apartment.jpg')}}">
-                    <img style="float: right; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/apartment.jpg')}}">
+                    <img style="float: right; max-width: 300px; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/kievska1.jpeg')}}">
+                    <img style="float: right; max-height: 360px; max-width: 300px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/kievska2.jpeg')}}">
                 </div>
             </div>
 
-            <div class="row">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2537.9357477984076!2d30.764801251263687!3d50.49815357938127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4dbd1c080b6bf%3A0xf98f43a8634d7b04!2z0YPQuy4g0JrQuNC10LLRgdC60LDRjywgMTUyLCDQkdGA0L7QstCw0YDRiywg0JrQuNC10LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwgMDc0MDA!5e0!3m2!1sru!2sua!4v1559282227578!5m2!1sru!2sua" width="1100" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+            <div class="row" style="margin-top: 20px">
                 <div class="col-md-4">
                     <div class="contact-info">
 
@@ -230,21 +184,28 @@
                                 <i class="pull-left fa fa-clock-o" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
                                 <div class="media-body" >
                                     <strong>Графік роботи:</strong><br>
-                                    Пн-Нд: 10<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span > - 20<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span>
+                                    Пн-Нд: 10<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span > - 19<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span>
                                 </div>
                             </div>
                             <div class="media">
                                 <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
                                 <div class="media-body">
                                     <strong>Телефон:</strong><br>
-                                    (012) 345-7689
+                                    +380 (4594) 64585
                                 </div>
                             </div>
                             <div class="media">
                                 <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
                                 <div class="media-body">
                                     <strong>Телефон:</strong><br>
-                                    (012) 345-7689
+                                    (096) 706-2381
+                                </div>
+                            </div>
+                            <div class="media">
+                                <i class="pull-left fa fa-viber" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>Viber:</strong><br>
+                                    096 706 2381
                                 </div>
                             </div>
                             <div class="media">
@@ -263,52 +224,79 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <img style="float: right; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/apartment.jpg')}}">
-                    <img style="float: right; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/apartment.jpg')}}">
+                    <img style="float: right; max-width: 300px; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/onikienka1.jpeg')}}">
+                    <img style="float: right; max-height: 360px; max-width: 300px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/onikienka2.jpeg')}}">
                 </div>
             </div>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2537.333358475172!2d30.81811031573347!3d50.509363879483516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4d94423e859b9%3A0x87143dadc37c3e1a!2z0LLRg9C70LjRhtGPINCe0LvQtdCz0LAg0J7QvdGW0LrRltGU0L3QutCwLCAyMC8yLCDQkdGA0L7QstCw0YDQuCwg0JrQuNGX0LLRgdGM0LrQsCDQvtCx0LsuLCAwNzQwMA!5e0!3m2!1sru!2sua!4v1559282110596!5m2!1sru!2sua" width="1100" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+            <div class="row" style="margin-top: 20px">
+                <div class="col-md-4">
+                    <div class="contact-info">
+
+                        <h2 class="block-title" ><span>С.Проліски вул. Броварська, 2А, ТЦ "FOZZY"</span></h2>
+
+                        <div class="media-list">
+                            <div class="media">
+                                <i class="pull-left fa fa-home" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body" >
+                                    <strong>Адреса:</strong><br>
+                                    Україна, с.Проліски, вул. Броварська, 2А, ТЦ "FOZZY"
+                                </div>
+                            </div>
+
+                            <div class="media">
+                                <i class="pull-left fa fa-clock-o" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body" >
+                                    <strong>Графік роботи:</strong><br>
+                                    Пн-Нд: 10<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span > - 19<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>Телефон:</strong><br>
+                                    (066) 971-2921
+                                </div>
+                            </div>
+
+                            <div class="media">
+                                <i class="pull-left fa fa-viber" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>Viber:</strong><br>
+                                    066 971 2921
+                                </div>
+                            </div>
+                            <div class="media">
+                                <i class="pull-left fa fa-envelope-o" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>E-mail:</strong><br>
+                                    brestonua@gmail.com
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <img style="float: right; max-width: 300px; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/prolisku1.jpeg')}}">
+                    <img style="float: right; max-height: 360px; max-width: 300px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/prolisku2.jpeg')}}">
+                </div>
+            </div>
+            <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2543.665488592401!2d30.79735915125975!3d50.39143407936646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4c2db6cfacba7%3A0x5421d378f9e15781!2z0LLRg9C70LjRhtGPINCR0YDQvtCy0LDRgNGB0YzQutCwLCAyLCDQn9GA0L7Qu9GW0YHQutC4LCDQmtC40ZfQstGB0YzQutCwINC-0LHQuy4sIDA4MzIy!5e0!3m2!1sru!2sua!4v1559282343745!5m2!1sru!2sua" width="1100" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
     </section>
     <!-- PAGE -->
 
-    <div id="map_canvas" style="width: 100%; height: 400px;"></div>
-    </div>
-    <section class="page-section no-padding no-bottom-space" style="padding-top: 0;">
-        <div class="container full-width">
 
 
 
 
-<script>
-
-    var map, markers;
-
-    function initMap() {
-
-        var centerKiev = {
-            lat:50.45466,
-            lng:30.5238
-        };
-
-        var mapOptions = {
-            center:centerKiev,
-            scrollwheel:false,
-            zoom:10
-        };
-
-        map = new google.maps.Map(document.getElementById('map_canvas'),mapOptions);
-
-
-    }
-</script>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtdz9A-0JPgNF8pumJDPDz8dG9rX18Tpw&callback=initMap"
-                    type="text/javascript"></script>
-
-            <!-- Google map -->
-{{--            <div class="google-map">--}}
-{{--                <iframe src="https://www.google.com/maps/embed?pb=" width="1100" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>--}}
-{{--            </div>--}}
-            <!-- /Google map -->
 
         </div>
     </section>

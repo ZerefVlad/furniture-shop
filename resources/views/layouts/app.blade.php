@@ -7,7 +7,10 @@
         /**            * @var app/Models/Category        **/
         $categories_header = Category::all();
 
+$product = isset($product) ? $product : null;
 
+$meta_title = $product&& !is_array($product) ? $product->meta_title : '';
+ $meta_description = $product && !is_array($product) ? $product->meta_description : '';
 
 $result = 'Kyiv';
 $ip_data = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=".$user_ip));
@@ -38,8 +41,8 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Breston - Iнтернет магазин меблiв | Интернет магазин мебели</title>
-    <meta name="description" content="Мебель для дома в магазине Breston. &#9742;     (066) 123-45-67. Самые низкие цены! Товары для дома и сувениры с доставкой по Украине." />
+    <title>{{$meta_title}}  Breston - Iнтернет магазин меблiв | Интернет магазин мебели</title>
+    <meta name="description" content="{{$meta_description}} Мебель для дома в магазине Breston. &#9742;     (066) 123-45-67. Самые низкие цены! Товары для дома и сувениры с доставкой по Украине." />
 
     <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -217,9 +220,10 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                             <p id="tophead-text2"> | </p>
                         </div>
 
-                        <div style="position: relative;float: left">
-                            <p  style="margin: 0 0 5px 20px;"> +38 (066) 1234567</p>
-                            <p style="margin: 0 0 5px 20px;"> +38 (066) 1234567</p>
+                        <div style="position: relative;float: left;    margin-top: -10px;">
+                            <p style="margin: 0 0 0px 20px;"> +38 096 7062381</p>
+                            <p style="margin: 0 0 0px 20px;"> +38 067 2013772</p>
+                            <p style="margin: 0 0 0px 20px;"> +38 066 9712921</p>
                         </div>
 
                     </div>
@@ -287,26 +291,26 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
 
                 </div>
             </div>
-            <div class="navigation-wrapper">
+            <div class="navigation-wrapper" style="    ">
                 <div class="container" >
                     <!-- Navigation -->
                     <nav class="navigation closed clearfix">
                         <a href="#" class="menu-toggle-close btn"><i class="fa fa-times"></i></a>
-                        <ul class="nav sf-menu">
+                        <ul class="nav sf-menu" style="text-align: center">
 
 
                             @foreach($categories_header as $category)
                                 @if ($category->isParent())
-                                    <li class="megamenu"><a href="#main" style="color: #02bbdb;"> {{$category->title}}</a>
+                                    <li class="megamenu" style="width: 11%; height: 80px"><a href="#main" style="color: #02bbdb;"> {{$category->title}}</a>
                                         <ul>
-                                            <li class="row">
+                                            <li class="row" >
 
                                                 <div class="col-md-4">
                                                     <div class="product-list">
 
                                                         <div class="media">
                                                             <a class="pull-left media-link"
-                                                               href="{{route('show_product', ['category' => $category])}}">
+                                                               href="{{route('show_product', ['category' => $category])}}" style="">
                                                                 <img width="274px" height="168px" class="media-object"
                                                                      src="{{$category->getImage() ? $category->getImage()->url : '#'}}"
                                                                      alt="">
@@ -314,7 +318,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                                                             </a>
 
                                                             <div class="media-body">
-                                                                <h4 class="media-heading" id="textmediabody"><a
+                                                                <h4 class="media-heading" id="textmediabody" style="padding-left: 0"><a
                                                                             href="{{route('show_product', ['category' => $category])}}">Вся
                                                                         категорiя</a></h4>
 
@@ -337,7 +341,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                                                                     <i class="fa fa-plus"></i>
                                                                 </a>
                                                                 <div class="media-body">
-                                                                    <h4 class="media-heading" id="textmediabody"><a
+                                                                    <h4 class="media-heading" id="textmediabody"  style="padding-left: 0"><a
                                                                                 href="{{route('show_product', ['category' => $children])}}">{{$children->title}}</a>
                                                                     </h4>
 
@@ -371,7 +375,6 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                     <h1 class="titletabs">Переглянутi товари</h1>
 
 
-
                 </div>
 
 
@@ -396,7 +399,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                                         </div>
                                         <div class="caption text-center">
                                             <a href="{{route('show_single_product', [ 'product' => $view->product, 'category' => $view->product->categories->first()])}}">
-                                                <h4 class="caption-title prodcateegorytitle">{{$view->product->title}}r</h4>
+                                                <h4 class="caption-title prodcateegorytitle">{{$view->product->title}}</h4>
                                             </a>
 
 

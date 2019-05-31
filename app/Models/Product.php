@@ -232,7 +232,7 @@ class Product extends Model
 
     public function getRouteKeyName()
     {
-        return 'title';
+        return 'url_product';
     }
 
     public function comments()

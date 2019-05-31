@@ -20,8 +20,8 @@
 
                     <!-- Blog post -->
                     <article class="post-wrap post-single">
-                        <div class="post-media">
-                            <a href="assets/img/post22.jpg" data-gal="prettyPhoto"><img style="max-width: 1140px" src="{{$post->getImage() ? $post->getImage()->url : '#'}}" alt=""></a>
+                        <div class="post-media" style="height: 400px;">
+                            <a href="assets/img/post22.jpg" data-gal="prettyPhoto"><img style="max-width: 100%; max-height: 100%" src="{{$post->getImage() ? $post->getImage()->url : '#'}}" alt=""></a>
                         </div>
                         <div class="post-header">
 
