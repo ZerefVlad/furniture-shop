@@ -107,7 +107,7 @@
 
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-content" id="tab-content" style="width: 1170px">
+
 
                                         <table class="rate-table" style="text-align: center">
                                             <thead>
@@ -180,7 +180,7 @@
                                             @endforeach
                                         </table>
                                     </div>
-                                </div>
+
                             </div>
 
 
