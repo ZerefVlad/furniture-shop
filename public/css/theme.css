@@ -5796,7 +5796,7 @@ input[type=checkbox] {
   opacity: 1;
 }
 .product-list .media-link:hover:after {
-  background-color: rgba(0, 177, 106, 0.7);
+  /*background-color: rgba(0, 177, 106, 0.7);*/
 }
 /* Shop info banners
 /* ========================================================================== */

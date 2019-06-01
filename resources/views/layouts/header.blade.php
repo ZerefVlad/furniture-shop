@@ -264,12 +264,12 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                                                                 <img width="274px" height="168px" class="media-object"
                                                                      src="{{$category->getImage() ? $category->getImage()->url : '#'}}"
                                                                      alt="">
-                                                                <i class="fa fa-plus"></i>
+
                                                             </a>
 
 
                                                                 <h4 class="media-heading" id="textmediabody"
-                                                                    style="padding: 0; margin: 0"><a
+                                                                    style="padding: 0; margin: 0; "><a style="color: rgb(2, 187, 219)"
                                                                             href="{{route('show_product', ['category' => $category])}}">{{$category->title}}</a></h4>
 
 
@@ -288,11 +288,11 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                                                                          class="media-object"
                                                                          src="{{$children->getImage() ? $children->getImage()->url : '#'}}"
                                                                          alt="">
-                                                                    <i class="fa fa-plus"></i>
+
                                                                 </a>
 
                                                                     <h4 class="media-heading" id="textmediabody"
-                                                                        style="padding-left: 0"><a
+                                                                        style="padding-left: 0"><a style="color: rgb(2, 187, 219)"
                                                                                 href="{{route('show_product', ['category' => $children])}}">{{$children->title}}</a>
                                                                     </h4>
 
