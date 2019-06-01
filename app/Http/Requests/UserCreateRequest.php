@@ -32,7 +32,7 @@ class UserCreateRequest extends FormRequest
     public function messages()
     {
       return [
-       'name.required' => 'заполни поле нэйм'
+       'name.required' => 'заполни поле имени'
       ];
     }
 }

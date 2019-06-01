@@ -1,131 +1,131 @@
-@php
-    use App\Models\Category;
-    use App\Models\Product;
+{{--@php--}}
+{{--    use App\Models\Category;--}}
+{{--    use App\Models\Product;--}}
 
 
-        $user_ip = request()->ip();
-        /**            * @var app/Models/Category        **/
-        $categories_header = Category::all();
+{{--        $user_ip = request()->ip();--}}
+{{--        /**            * @var app/Models/Category        **/--}}
+{{--        $categories_header = Category::all();--}}
 
-$product = isset($product) ? $product : null;
+{{--$product = isset($product) ? $product : null;--}}
 
-$meta_title = $product&& !is_array($product) ? $product->meta_title : '';
- $meta_description = $product && !is_array($product) ? $product->meta_description : '';
+{{--$meta_title = $product&& !is_array($product) ? $product->meta_title : '';--}}
+{{-- $meta_description = $product && !is_array($product) ? $product->meta_description : '';--}}
 
-$result = 'Kyiv';
-$ip_data = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=".$user_ip));
-if($ip_data && $ip_data->geoplugin_countryName != null)
-{
-    $result = $ip_data->geoplugin_city;
-    if(!$result) {
-        $result = 'Kyiv';
-    }
-}
+{{--$result = 'Kyiv';--}}
+{{--$ip_data = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=".$user_ip));--}}
+{{--if($ip_data && $ip_data->geoplugin_countryName != null)--}}
+{{--{--}}
+{{--    $result = $ip_data->geoplugin_city;--}}
+{{--    if(!$result) {--}}
+{{--        $result = 'Kyiv';--}}
+{{--    }--}}
+{{--}--}}
 
-    if(auth()->guest()){
-     $views =  \App\Models\Views::where('user_track', \Session::get('hash'))->skip(0)->latest('created_at')->take(4)->get();
- } else
-  {
-        $views =  \App\Models\Views::where('user_track', auth()->user()->id)->skip(0)->latest('created_at')->take(4)->get();
+{{--    if(auth()->guest()){--}}
+{{--     $views =  \App\Models\Views::where('user_track', \Session::get('hash'))->skip(0)->latest('created_at')->take(4)->get();--}}
+{{-- } else--}}
+{{--  {--}}
+{{--        $views =  \App\Models\Views::where('user_track', auth()->user()->id)->skip(0)->latest('created_at')->take(4)->get();--}}
 
-  }
+{{--  }--}}
 
 
-@endphp
-        <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{{--@endphp--}}
+{{--        <!DOCTYPE html>--}}
+{{--<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">--}}
+{{--<head>--}}
+{{--    <meta charset="utf-8">--}}
+{{--    <meta name="viewport" content="width=device-width, initial-scale=1">--}}
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+{{--    <!-- CSRF Token -->--}}
+{{--    <meta name="csrf-token" content="{{ csrf_token() }}">--}}
 
-    <title>{{$meta_title}}  Breston - Iнтернет магазин меблiв | Интернет магазин мебели</title>
-    <meta name="description" content="{{$meta_description}} Мебель для дома в магазине Breston. &#9742;     (066) 123-45-67. Самые низкие цены! Товары для дома и сувениры с доставкой по Украине." />
+{{--    <title>Breston - Iнтернет магазин меблiв | Интернет магазин мебели {{$meta_title}}</title>--}}
+{{--    <meta name="description" content="{{$meta_description}} Мебель для дома в магазине Breston. &#9742;     (066) 123-45-67. Самые низкие цены! Товары для дома и сувениры с доставкой по Украине." />--}}
 
-    <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <link rel="icon" href="{{asset('storage/static_img/Logo.png')}}" type="images/png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+{{--    <script--}}
+{{--            src="https://code.jquery.com/jquery-3.3.1.min.js"--}}
+{{--            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="--}}
+{{--            crossorigin="anonymous"></script>--}}
+{{--    <!-- Scripts -->--}}
+{{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
+{{--    <link rel="icon" href="{{asset('storage/static_img/Logo.png')}}" type="images/png">--}}
+{{--    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">--}}
+{{--    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">--}}
+{{--    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>--}}
+{{--    <!-- Fonts -->--}}
+{{--    <link rel="dns-prefetch" href="//fonts.gstatic.com">--}}
+{{--    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">--}}
 
-    <!-- Styles -->
+{{--    <!-- Styles -->--}}
 {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 
-    <style >
+{{--    <style >--}}
 
-    </style>
-
-
-    <!-- CSS Global -->
-    <link href="{{ asset('js/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('js/plugins/bootstrap-select/css/bootstrap-select.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('js/plugins/fontawesome/css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('js/plugins/prettyphoto/css/prettyPhoto.css')}}" rel="stylesheet">
-    <link href="{{ asset('js/plugins/owl-carousel2/assets/owl.carousel.css')}}" rel="stylesheet">
-    <link href="{{ asset('js/plugins/owl-carousel2/assets/owl.theme.default.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('js/plugins/animate/animate.min.css')}}" rel="stylesheet">
-    <!-- Theme CSS -->
-    <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/slider.css') }}" rel="stylesheet">
-
-    <!-- Head Libs -->
-    <script src="{{ asset('js/plugins/modernizr.custom.js')}}"></script>
+{{--    </style>--}}
 
 
-    <script src="{{asset('js/slides.js')}}"></script>
+{{--    <!-- CSS Global -->--}}
+{{--    <link href="{{ asset('js/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('js/plugins/bootstrap-select/css/bootstrap-select.min.css')}}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('js/plugins/fontawesome/css/font-awesome.min.css')}}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('js/plugins/prettyphoto/css/prettyPhoto.css')}}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('js/plugins/owl-carousel2/assets/owl.carousel.css')}}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('js/plugins/owl-carousel2/assets/owl.theme.default.min.css')}}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('js/plugins/animate/animate.min.css')}}" rel="stylesheet">--}}
+{{--    <!-- Theme CSS -->--}}
+{{--    <link href="{{ asset('css/theme.css') }}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('css/slider.css') }}" rel="stylesheet">--}}
 
-<script>
-
-
-</script>
-
-
-</head>
-<body>
-
-<div id="app">
-    {{--        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">--}}
-    {{--            <div class="container">--}}
-    {{--                <a class="navbar-brand" href="{{ url('/') }}">--}}
-    {{--                    {{ config('app.name', 'Laravel') }}--}}
-    {{--                </a>--}}
-    {{--                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">--}}
-    {{--                    <span class="navbar-toggler-icon"></span>--}}
-    {{--                </button>--}}
-
-    {{--                <div class="collapse navbar-collapse" id="navbarSupportedContent">--}}
-    {{--                    <!-- Left Side Of Navbar -->--}}
-    {{--                    <ul class="navbar-nav mr-auto">--}}
-
-    {{--                    </ul>--}}
-
-    {{--                    <!-- Right Side Of Navbar -->--}}
-    {{--                    <ul class="navbar-nav ml-auto">--}}
+{{--    <!-- Head Libs -->--}}
+{{--    <script src="{{ asset('js/plugins/modernizr.custom.js')}}"></script>--}}
 
 
+{{--    <script src="{{asset('js/slides.js')}}"></script>--}}
+
+{{--<script>--}}
+
+
+{{--</script>--}}
+
+
+{{--</head>--}}
+{{--<body>--}}
+
+{{--<div id="app">--}}
+{{--    --}}{{--        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">--}}
+{{--    --}}{{--            <div class="container">--}}
+{{--    --}}{{--                <a class="navbar-brand" href="{{ url('/') }}">--}}
+{{--    --}}{{--                    {{ config('app.name', 'Laravel') }}--}}
+{{--    --}}{{--                </a>--}}
+{{--    --}}{{--                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">--}}
+{{--    --}}{{--                    <span class="navbar-toggler-icon"></span>--}}
+{{--    --}}{{--                </button>--}}
+
+{{--    --}}{{--                <div class="collapse navbar-collapse" id="navbarSupportedContent">--}}
+{{--    --}}{{--                    <!-- Left Side Of Navbar -->--}}
+{{--    --}}{{--                    <ul class="navbar-nav mr-auto">--}}
+
+{{--    --}}{{--                    </ul>--}}
+
+{{--    --}}{{--                    <!-- Right Side Of Navbar -->--}}
+{{--    --}}{{--                    <ul class="navbar-nav ml-auto">--}}
 
 
 
-    {{--                        <a href="#main">--}}
-    {{--                        <li>--}}
-    {{--                            <i class="material-icons">--}}
-    {{--                                shopping_cart--}}
-    {{--                            </i>--}}
-    {{--                            <span id="cart-product-count" data-count="0" class="badge-success"></span>--}}
-    {{--                        </li>--}}
-    {{--                        </a>--}}
 
-                            <!-- Authentication Links -->
+
+{{--    --}}{{--                        <a href="#main">--}}
+{{--    --}}{{--                        <li>--}}
+{{--    --}}{{--                            <i class="material-icons">--}}
+{{--    --}}{{--                                shopping_cart--}}
+{{--    --}}{{--                            </i>--}}
+{{--    --}}{{--                            <span id="cart-product-count" data-count="0" class="badge-success"></span>--}}
+{{--    --}}{{--                        </li>--}}
+{{--    --}}{{--                        </a>--}}
+
+{{--                            <!-- Authentication Links -->--}}
 {{--                            @guest--}}
 {{--                                <li class="nav-item">--}}
 {{--                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>--}}
@@ -159,212 +159,229 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
 {{--                </div>--}}
 {{--            </nav>--}}
 
-    <main class="py-4">
-        {{--            @yield('content')--}}
-    </main>
+{{--    <main class="py-4">--}}
+{{--        --}}{{--            @yield('content')--}}
+{{--    </main>--}}
 
-    <!-- WRAPPER -->
-    <div class="wrapper">
+{{--    <!-- WRAPPER -->--}}
+{{--    <div class="wrapper">--}}
 
-        <!-- Popup: Shopping cart items -->
-        <!-- /Popup: Shopping cart items -->
+{{--        <!-- Popup: Shopping cart items -->--}}
+{{--        <!-- /Popup: Shopping cart items -->--}}
 
-        <!-- Header top bar -->
-        <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-left">
-                    <ul class="list-inline">
+{{--        <!-- Header top bar -->--}}
+{{--        <div class="top-bar">--}}
+{{--            <div class="container">--}}
+{{--                <div class="top-bar-left">--}}
+{{--                    <ul class="list-inline">--}}
 
-                        <li class="hidden-xs"><a href="{{route('about')}}">Про нас</a></li>
-                        <li class="hidden-xs"><a href="{{route('show-posts')}}">Блог</a></li>
-                        <li class="hidden-xs"><a href="{{route('contact')}}">Контакти</a></li>
-                        <li class="hidden-xs"><a href="{{route('faq')}}">Популярнi питання</a></li>
+{{--                        <li class="hidden-xs"><a href="{{route('about')}}">Про нас</a></li>--}}
+{{--                        <li class="hidden-xs"><a href="{{route('show-posts')}}">Блог</a></li>--}}
+{{--                        <li class="hidden-xs"><a href="{{route('contact')}}">Контакти</a></li>--}}
+{{--                        <li class="hidden-xs"><a href="{{route('faq')}}">Популярнi питання</a></li>--}}
 
 
 
-                    </ul>
-                </div>
-                <div class="top-bar-right">
-                    <ul class="list-inline">
-                        <!--
-                        <li class="icon-user"><a href="login.html"><img src="assets/img/icon-1.png" alt=""/> <span>Login</span></a></li>
-                        <li class="icon-form"><a href="login.html"><img src="assets/img/icon-2.png" alt=""/> <span>Not a Member? <span class="colored">Sign Up</span></span></a></li>
-                        <li><a href="mailto:support@yourdomain.com"><i class="fa fa-envelope"></i> <span>support@yourdomain.com</span></a></li>
-                         -->
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--                <div class="top-bar-right">--}}
+{{--                    <ul class="list-inline">--}}
+{{--                        <!----}}
+{{--                        <li class="icon-user"><a href="login.html"><img src="assets/img/icon-1.png" alt=""/> <span>Login</span></a></li>--}}
+{{--                        <li class="icon-form"><a href="login.html"><img src="assets/img/icon-2.png" alt=""/> <span>Not a Member? <span class="colored">Sign Up</span></span></a></li>--}}
+{{--                        <li><a href="mailto:support@yourdomain.com"><i class="fa fa-envelope"></i> <span>support@yourdomain.com</span></a></li>--}}
+{{--                         -->--}}
 
-                        <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- /Header top bar -->
+{{--                        <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>--}}
+{{--                        <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>--}}
+{{--                        <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>--}}
+{{--                        <li><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <!-- /Header top bar -->--}}
 
-        <!-- HEADER -->
-        <header class="header">
-            <div class="header-wrapper">
-                <div class="container" style="text-align: -webkit-center;">
+{{--        <!-- HEADER -->--}}
+{{--        <header class="header">--}}
+{{--            <div class="header-wrapper">--}}
+{{--                <div class="container" style="text-align: -webkit-center;">--}}
 
-                    <!-- Logo -->
-                    <div class="logo" style="margin: 0 !important;">
-                        <a href="{{route('main-page')}}"><img src="{{asset('storage/static_img/Logo.png')}}" alt="Alka Shop"/></a>
-                    </div>
-                    <!-- /Logo -->
+{{--                    <!-- Logo -->--}}
+{{--                    <div class="logo" style="margin: 0 !important;">--}}
+{{--                        <a href="{{route('main-page')}}"><img src="{{asset('storage/static_img/Logo.png')}}" alt="Alka Shop"/></a>--}}
+{{--                    </div>--}}
+{{--                    <!-- /Logo -->--}}
 
-                    <!-- Header search -->
-                    <div class="header-left">
-                        <div style="position: relative;float: left;     margin-top: -4%;">
-                            <a id="tophead-text1"  style="margin-bottom: 2%" href="#">{{$result}}</a>
-                            <p id="tophead-text2"> | </p>
-                        </div>
+{{--                    <!-- Header search -->--}}
+{{--                    <div class="header-left">--}}
+{{--                        <div style="position: relative;float: left;     margin-top: -4%;">--}}
+{{--                            <a id="tophead-text1"  style="margin-bottom: 2%" href="#">{{$result}}</a>--}}
+{{--                            <p id="tophead-text2"> | </p>--}}
+{{--                        </div>--}}
 
-                        <div style="position: relative;float: left;    margin-top: -10px;">
-                            <p style="margin: 0 0 0px 20px;"> +38 096 7062381</p>
-                            <p style="margin: 0 0 0px 20px;"> +38 067 2013772</p>
-                            <p style="margin: 0 0 0px 20px;"> +38 066 9712921</p>
-                        </div>
+{{--                        <div style="position: relative;float: left;    margin-top: -10px;">--}}
+{{--                            <p style="margin: 0 0 0px 20px;"> +38 096 7062381</p>--}}
+{{--                            <p style="margin: 0 0 0px 20px;"> +38 067 2013772</p>--}}
+{{--                            <p style="margin: 0 0 0px 20px;"> +38 066 9712921</p>--}}
+{{--                        </div>--}}
 
-                    </div>
-                    <!-- /Header search -->
+{{--                    </div>--}}
+{{--                    <!-- /Header search -->--}}
 
-                    <!-- Header shopping cart -->
-                    <div class="header-cart">
-                        <div class="header-search" style="    top: 0px;    position: absolute;    right: 95%;   width: 270px;    max-width: 50%;">
-                            <input id="search-product" class="form-control" type="text" placeholder="Пошук"/>
-                            <button><i class="fa fa-search" style="    color: rgb(2, 187, 219);"></i></button>
-                        </div>
-                        <div class="search-result" style="
-    position: absolute;
-        top: 60%;
-    right: 40%;
-    z-index: 1024;
-    background-color: #fff;
-    width: 155%;
-    border-radius: 2px;
-    box-sizing: border-box;">
+{{--                    <!-- Header shopping cart -->--}}
+{{--                    <div class="header-cart">--}}
+{{--                        <div class="header-search" style="    top: 0px;    position: absolute;    right: 95%;   width: 270px;    max-width: 50%;">--}}
+{{--                            <input id="search-product" class="form-control" type="text" placeholder="Пошук"/>--}}
+{{--                            <button><i class="fa fa-search" style="    color: rgb(2, 187, 219);"></i></button>--}}
+{{--                        </div>--}}
+{{--                        <div class="search-result" style="--}}
+{{--    position: absolute;--}}
+{{--        top: 60%;--}}
+{{--    right: 40%;--}}
+{{--    z-index: 1024;--}}
+{{--    background-color: #fff;--}}
+{{--    width: 155%;--}}
+{{--    border-radius: 2px;--}}
+{{--    box-sizing: border-box;">--}}
 
-                        </div>
-                        <div class="cart-wrapper">
-                            <a href="{{route('show-likes')}}" class="btn btn-theme-transparent hidden-xs hidden-sm"><i
-                                        class="fa fa-heart" style="    color: rgb(2, 187, 219);"></i></a>
-                            <!--<a href="compare-products.html" class="btn btn-theme-transparent hidden-xs hidden-sm"><i class="fa fa-exchange"></i></a>-->
-                            <a href="#" class="btn btn-theme-transparent" data-toggle="modal" data-target="#popup-cart"><i
-                                        class="fa fa-shopping-cart" style="    color: rgb(2, 187, 219);"></i> <span id="cart-product-count" class="badge-success" style="    color: rgb(2, 187, 219);"></span> </i> </a>
-                            <!-- Mobile menu toggle button -->
-                            <a href="#" class="menu-toggle btn btn-theme-transparent"><i class="fa fa-bars"></i></a>
-                            <!-- /Mobile menu toggle button -->
-                            @guest <ul style="float: right; font-size: 12px; margin-top: 3%;">
-                                <li>
-                                <a href="{{ route('login') }}" class="log-in"> <span>Увiйти</span></a></li>
+{{--                        </div>--}}
+{{--                        <div class="cart-wrapper">--}}
+{{--                            <a href="{{route('show-likes')}}" class="btn btn-theme-transparent hidden-xs hidden-sm"><i--}}
+{{--                                        class="fa fa-heart" style="    color: rgb(2, 187, 219);"></i></a>--}}
+{{--                            <!--<a href="compare-products.html" class="btn btn-theme-transparent hidden-xs hidden-sm"><i class="fa fa-exchange"></i></a>-->--}}
+{{--                            <a href="#" class="btn btn-theme-transparent" data-toggle="modal" data-target="#popup-cart"><i--}}
+{{--                                        class="fa fa-shopping-cart" style="    color: rgb(2, 187, 219);"></i> <span id="cart-product-count" class="badge-success" style="    color: rgb(2, 187, 219);"></span> </i> </a>--}}
+{{--                            <!-- Mobile menu toggle button -->--}}
+{{--                            <a href="#" class="menu-toggle btn btn-theme-transparent"><i class="fa fa-bars"></i></a>--}}
+{{--                            <!-- /Mobile menu toggle button -->--}}
+{{--                            @guest <ul style="float: right; font-size: 12px; margin-top: 3%;">--}}
+{{--                                <li>--}}
+{{--                                <a href="{{ route('login') }}" class="log-in"> <span>Увiйти</span></a></li>--}}
 {{--                                <li class="nav-item">--}}
 {{--                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>--}}
 {{--                                </li>--}}
-                                @if (Route::has('register'))
+{{--                                @if (Route::has('register'))--}}
 {{--                                    <li class="nav-item">--}}
-                                      <li>  <a style="padding: 10%;color: #02bbdb;" href="{{ route('register') }}">Зарееструватися</a></li>
+{{--                                      <li>  <a style="padding: 10%;color: #02bbdb;" href="{{ route('register') }}">Зарееструватися</a></li>--}}
 {{--                                    </li>--}}
-                                @endif</ul>
-                            @else
+{{--                                @endif</ul>--}}
+{{--                            @else--}}
 
-                                <ul style="float: right; font-size: 12px; margin-top: 3%;">
-                                    <li>
+{{--                                <ul style="float: right; font-size: 12px; margin-top: 3%;">--}}
+{{--                                    <li>--}}
 
-                                         <a style="color: #02bbdb;    padding: 6px 10px;" class="log-in" href="{{ route('account') }}"  >
-                                            Особистий кабiнет
-                                         </a>
-                                    </li>
-                                    <li>  <a style="    padding: 0% 40%;color: #02bbdb;" href="{{ route('logout') }} "onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Вийти</a></li>
-                                </ul>
+{{--                                         <a style="color: #02bbdb;    padding: 6px 10px;" class="log-in" href="{{ route('account') }}"  >--}}
+{{--                                            Особистий кабiнет--}}
+{{--                                         </a>--}}
+{{--                                    </li>--}}
+{{--                                    <li>  <a style="    padding: 0% 40%;color: #02bbdb;" href="{{ route('logout') }} "onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Вийти</a></li>--}}
+{{--                                </ul>--}}
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="style=float: right;margin-top: 0%;">
-                                            @csrf
-                                        </form>
+{{--                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="style=float: right;margin-top: 0%;">--}}
+{{--                                            @csrf--}}
+{{--                                        </form>--}}
 
-                            @endguest
-
-
-                        </div>
-                    </div>
-                    <!-- Header shopping cart -->
-
-                </div>
-            </div>
-            <div class="navigation-wrapper" style="    ">
-                <div class="container" >
-                    <!-- Navigation -->
-                    <nav class="navigation closed clearfix">
-                        <a href="#" class="menu-toggle-close btn"><i class="fa fa-times"></i></a>
-                        <ul class="nav sf-menu" style="text-align: center">
+{{--                            @endguest--}}
 
 
-                            @foreach($categories_header as $category)
-                                @if ($category->isParent())
-                                    <li class="megamenu" style="width: 11%; height: 80px"><a href="#main" style="color: #02bbdb;"> {{$category->title}}</a>
-                                        <ul>
-                                            <li class="row" >
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <!-- Header shopping cart -->--}}
 
-                                                <div class="col-md-4">
-                                                    <div class="product-list">
-
-                                                        <div class="media">
-                                                            <a class="pull-left media-link"
-                                                               href="{{route('show_product', ['category' => $category])}}" style="">
-                                                                <img width="274px" height="168px" class="media-object"
-                                                                     src="{{$category->getImage() ? $category->getImage()->url : '#'}}"
-                                                                     alt="">
-                                                                <i class="fa fa-plus"></i>
-                                                            </a>
-
-                                                            <div class="media-body">
-                                                                <h4 class="media-heading" id="textmediabody" style="padding-left: 0"><a
-                                                                            href="{{route('show_product', ['category' => $category])}}">Вся
-                                                                        категорiя</a></h4>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                @foreach($category->children as $children)
-                                                    <div class="col-md-4">
-                                                        <div class="product-list">
-
-                                                            <div class="media">
-                                                                <a class="pull-left media-link"
-                                                                   href="{{route('show_product', ['category' => $children])}}">
-                                                                    <img width="274px" height="168px"
-                                                                         class="media-object"
-                                                                         src="{{$children->getImage() ? $children->getImage()->url : '#'}}"
-                                                                         alt="">
-                                                                    <i class="fa fa-plus"></i>
-                                                                </a>
-                                                                <div class="media-body">
-                                                                    <h4 class="media-heading" id="textmediabody"  style="padding-left: 0"><a
-                                                                                href="{{route('show_product', ['category' => $children])}}">{{$children->title}}</a>
-                                                                    </h4>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            </li>
-                                        </ul>
-                                    </li>
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="navigation-wrapper" style=" height: 80px     ">--}}
+{{--                <div class="container" >--}}
+{{--                    <!-- Navigation -->--}}
+{{--                    <nav class="navigation closed clearfix">--}}
+{{--                        <a href="#" class="menu-toggle-close btn"><i class="fa fa-times"></i></a>--}}
+{{--                        <ul class="nav sf-menu" style="text-align: center">--}}
 
 
-                                @endif
-                            @endforeach
+{{--                            @foreach($categories_header as $category)--}}
+{{--                                @if ($category->isParent())--}}
+{{--                                    <li class="megamenu" style="width: 11%; height: 80px; text-transform: uppercase; font-weight: 800;"><a href="#main" style="color: #02bbdb;font-weight: 500;font-family: serif;"> {{$category->title}}</a>--}}
+{{--                                        <ul>--}}
+{{--                                            <li class="row" >--}}
 
-                        </ul>
-                    </nav>
-                    <!-- /Navigation -->
-                </div>
-            </div>
-        </header>
-        <!-- /HEADER -->
+{{--                                                <div class="col-md-4">--}}
+{{--                                                    <div class="product-list">--}}
+
+{{--                                                        <div class="media">--}}
+{{--                                                            <a class="pull-left media-link"--}}
+{{--                                                               href="{{route('show_product', ['category' => $category])}}" style="">--}}
+{{--                                                                <img width="274px" height="168px" class="media-object"--}}
+{{--                                                                     src="{{$category->getImage() ? $category->getImage()->url : '#'}}"--}}
+{{--                                                                     alt="">--}}
+{{--                                                                <i class="fa fa-plus"></i>--}}
+{{--                                                            </a>--}}
+
+{{--                                                            <div class="media-body">--}}
+{{--                                                                <h4 class="media-heading" id="textmediabody" style="padding-left: 0"><a--}}
+{{--                                                                            href="{{route('show_product', ['category' => $category])}}">Вся--}}
+{{--                                                                        категорiя</a></h4>--}}
+
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+
+{{--                                                @foreach($category->children as $children)--}}
+{{--                                                    <div class="col-md-4">--}}
+{{--                                                        <div class="product-list">--}}
+
+{{--                                                            <div class="media">--}}
+{{--                                                                <a class="pull-left media-link"--}}
+{{--                                                                   href="{{route('show_product', ['category' => $children])}}">--}}
+{{--                                                                    <img width="274px" height="168px"--}}
+{{--                                                                         class="media-object"--}}
+{{--                                                                         src="{{$children->getImage() ? $children->getImage()->url : '#'}}"--}}
+{{--                                                                         alt="">--}}
+{{--                                                                    <i class="fa fa-plus"></i>--}}
+{{--                                                                </a>--}}
+{{--                                                                <div class="media-body">--}}
+{{--                                                                    <h4 class="media-heading" id="textmediabody"  style="padding-left: 0"><a--}}
+{{--                                                                                href="{{route('show_product', ['category' => $children])}}">{{$children->title}}</a>--}}
+{{--                                                                    </h4>--}}
+
+{{--                                                                </div>--}}
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                @endforeach--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
+
+
+{{--                                @endif--}}
+{{--                            @endforeach--}}
+
+{{--                        </ul>--}}
+{{--                    </nav>--}}
+{{--                    <!-- /Navigation -->--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </header>--}}
+{{--        <!-- /HEADER -->--}}
+@php
+use App\Models\Category;
+
+    if(auth()->guest()){
+     $views =  \App\Models\Views::where('user_track', \Session::get('hash'))->skip(0)->latest('created_at')->take(4)->get();
+ } else
+  {
+        $views =  \App\Models\Views::where('user_track', auth()->user()->id)->skip(0)->latest('created_at')->take(4)->get();
+
+  }
+
+ /**            * @var app/Models/Category        **/
+        $categories_header = Category::all();
+@endphp
+
+    @include('layouts.header')
+
     @yield('content')
 
         @if($views->count() != 0)
@@ -388,7 +405,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                                 <div class="col-md-3 col-sm-6">
                                     <div class="thumbnail no-border no-padding">
                                         <div class="media" style=" width: 270px;height: 330px;display: table-cell;vertical-align: middle; text-align: center;">
-                                            <a class="media-link" href="#">
+                                            <a class="media-link" href="{{route('show_single_product', [ 'product' => $view->product, 'category' => $view->product->categories->first()])}}">
                                                 <img style="max-width: 270px; max-height: 330px; "
                                                      src="{{$view->product->getImages()->first() ? $view->product->getImages()->first()->url : '#'}}"
                                                      alt=""/>

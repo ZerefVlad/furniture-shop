@@ -58,6 +58,12 @@
 
 
                     </li>
+                    <li class="list-item">
+                        <button id="add-picture-slide" >Додати зображення</button>
+                        <div class="picture-slides"></div>
+
+
+                    </li>
 
                 </ul>
                 <div class="button-group">

@@ -84,6 +84,9 @@ $(document).ready(function () {
     $('#add-video-slide').click(function () {
         $('.video-slides').append('<input name="video[]" type="text" form="block1-form">');
     });
+    $('#add-picture-slide').click(function () {
+        $('.picture-slides').append('<input name="picture[]" type="file" form="block1-form">' + '<p>Url</p>' + '<input form="block1-form" name="url_picture[]" type="text">');
+    });
 });
 
 /***/ })

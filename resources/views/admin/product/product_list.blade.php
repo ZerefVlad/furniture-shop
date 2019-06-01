@@ -11,7 +11,10 @@
             Создать продукт
         </h1>
     </a>
-
+    <form action="{{route('search_product')}}">
+        <input type="text" name="product">
+        <input type="submit" class="btn btn-success" value="Search">
+    </form>
 {{--    @if (Session::has('post_delete_success'))--}}
 {{--        <div class="alert-success">{{Session::get('post_delete_success')}}</div>--}}
 {{--    @endif--}}

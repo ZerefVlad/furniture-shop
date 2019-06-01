@@ -19,8 +19,10 @@ class DashboardController extends Controller
         return view('admin.dashboard');
     }
 
-    public function showAdminPage()
+    public function showAdminPage(Request $request)
     {
+        $request->user()->authorizeRoles(['admin','manager']);
+
         return view('admin.admin-page');
     }
 

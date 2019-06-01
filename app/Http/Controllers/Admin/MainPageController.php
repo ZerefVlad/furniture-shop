@@ -48,9 +48,19 @@ class MainPageController extends Controller
         }
 
 
+        foreach ($request->get('url_picture') as $key => $url_picture) {
+            $pictureSlides[$key]['url_picture'] = $url_picture;
+        }
+        foreach ($request->file('picture') as $key => $picture) {
+            $picture->storeAs('/main-page/block-1/picture/', $picture->getFilename() . '.jpg');
+            $pictureSlides[$key]['picture'] = Storage::url('/main-page/block-1/picture/' . $picture->getFilename() . '.jpg');
+        }
+
+
         $this->main->block1 = json_encode([
             'textSlides' => $textSlides,
             'videoSlides' => $request->get('video') ?? [],
+            'pictureSlides' => $pictureSlides,
         ]);
         $this->main->save();
         return back();

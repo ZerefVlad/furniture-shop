@@ -313,4 +313,12 @@ class ProductController extends Controller
         $product->deleteRelateProduct($request->all());
     }
 
+    public function search(Request $request)
+    {
+        $products = Product::search($request->get('product'))->get();
+        return view('admin.product.product_list', [
+            'products' => $products,
+        ]);
+    }
+
 }

@@ -36,42 +36,52 @@
 
 
                 <ul class="navbar-nav ml-auto  mt-lg-0">
+                    @if(auth()->user()->hasRole('admin')||auth()->user()->hasRole('manager'))
                     <li class="nav-item ">
                         <a class="nav-link " href="{{route('order_list')}}">Заказы </a>
                     </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('post_list')}}">Посты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('attribute_list')}}">Аттрибуты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('product_list')}}">Продукты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('comment_list')}}">Комментарии</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('product_color_view')}}">Цвета товаров</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('callback')}}">обратная связь</a>
+                        </li>
+                     @endif
+
+                        @if(auth()->user()->hasRole('admin'))
                     <li class="nav-item ">
                         <a class="nav-link " href="{{route('user_list')}}">Пользователи </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('category_list')}}">Категории</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('post_list')}}">Посты</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('attribute_list')}}">Аттрибуты</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('product_list')}}">Продукты</a>
-                    </li>
+
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('main_page_create')}}">Главная страница</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('comment_list')}}">Комментарии</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('subscribers')}}">Подписки</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('product_color_view')}}">Цвета товаров</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('filter')}}">Фильтры</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('callback')}}">обратная связь</a>
-                    </li>
+                   @endif
 
 
 

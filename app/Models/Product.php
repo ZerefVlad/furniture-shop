@@ -21,7 +21,7 @@ use Laravel\Scout\Searchable;
  */
 class Product extends Model
 {
-   // use Searchable;
+    use Searchable;
 
     const ATTRIBUTE_PRICE_NAME = 'price';
 

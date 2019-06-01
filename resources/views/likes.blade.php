@@ -40,7 +40,7 @@
                                 <div class="thumbnail no-border no-padding">
                                     <div class="media"
                                          style=" width: 270px;height: 330px;display: table-cell;vertical-align: middle; text-align: center;">
-                                        <a class="media-link" href="#">
+                                        <a class="media-link" href="{{route('show_single_product', [ 'product' => $likeProduct->product, 'category' => $likeProduct->product->categories->first()])}}">
                                             <img style="max-width: 270px; max-height: 330px; "
                                                  src="{{$likeProduct->product->getImages()->first() ? $likeProduct->product->getImages()->first()->url : '#'}}"
                                                  alt=""/>

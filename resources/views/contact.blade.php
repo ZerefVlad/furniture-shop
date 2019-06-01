@@ -97,84 +97,19 @@
 
 
 
-            <div class="row">
+
+            <div class="row" >
                 <div class="col-md-4">
                     <div class="contact-info">
 
-                        <h2 class="block-title" ><span>М. БРОВАРЫ, BУЛ КИЇВСЬКА 152 (2 ПОВЕРХ)</span></h2>
+                        <h2 class="block-title" ><span> М. БРОВАРИ ИУЛ ОНІКІЄНКА 20/2</span></h2>
 
                         <div class="media-list">
                             <div class="media">
                                 <i class="pull-left fa fa-home" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
                                 <div class="media-body" >
                                     <strong>Адреса:</strong><br>
-                                    Україна,  КиЇвська обл., м.Бровары, вул. КиЇвска 152 (2 поверх)
-                                </div>
-                            </div>
-
-                            <div class="media">
-                                <i class="pull-left fa fa-clock-o" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
-                                <div class="media-body" >
-                                    <strong>Графік роботи:</strong><br>
-                                    Пн-Нд: 10<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span > - 19<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
-                                <div class="media-body">
-                                    <strong>Телефон:</strong><br>
-                                    (067) 201-3772
-                                </div>
-                            </div>
-                            <div class="media">
-                                <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
-                                <div class="media-body">
-                                    <strong>Телефон:</strong><br>
-                                    (099) 041-7115
-                                </div>
-                            </div>
-                            <div class="media">
-                                <i class="pull-left fa fa-viber" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
-                                <div class="media-body">
-                                    <strong>Viber:</strong><br>
-                                    099 041 7115
-                                </div>
-                            </div>
-                            <div class="media">
-                                <i class="pull-left fa fa-envelope-o" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
-                                <div class="media-body">
-                                    <strong>E-mail:</strong><br>
-                                    brestonua@gmail.com
-                                </div>
-                            </div>
-
-
-
-
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <img style="float: right; max-width: 300px; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/kievska1.jpeg')}}">
-                    <img style="float: right; max-height: 360px; max-width: 300px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/kievska2.jpeg')}}">
-                </div>
-            </div>
-
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2537.9357477984076!2d30.764801251263687!3d50.49815357938127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4dbd1c080b6bf%3A0xf98f43a8634d7b04!2z0YPQuy4g0JrQuNC10LLRgdC60LDRjywgMTUyLCDQkdGA0L7QstCw0YDRiywg0JrQuNC10LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwgMDc0MDA!5e0!3m2!1sru!2sua!4v1559282227578!5m2!1sru!2sua" width="1100" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
-
-            <div class="row" style="margin-top: 20px">
-                <div class="col-md-4">
-                    <div class="contact-info">
-
-                        <h2 class="block-title" ><span> М. БРОВАРЫ ИУЛ ОНІКІЄНКА 20/2</span></h2>
-
-                        <div class="media-list">
-                            <div class="media">
-                                <i class="pull-left fa fa-home" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
-                                <div class="media-body" >
-                                    <strong>Адреса:</strong><br>
-                                    Украина, Київска обл., м.Бровары, вул. Олега Онікієнка 20/2
+                                    Украина, Київска обл., м.Бровари, вул. Олега Онікієнка 20/2
 
 
                                 </div>
@@ -224,12 +159,79 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <img style="float: right; max-width: 300px; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/onikienka1.jpeg')}}">
-                    <img style="float: right; max-height: 360px; max-width: 300px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/onikienka2.jpeg')}}">
+                    <img class="contact-img" src="{{asset('storage/static_img/onikienka1.jpeg')}}">
+                    <img class="contact-img" src="{{asset('storage/static_img/onikienka2.jpeg')}}">
                 </div>
             </div>
 
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2537.333358475172!2d30.81811031573347!3d50.509363879483516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4d94423e859b9%3A0x87143dadc37c3e1a!2z0LLRg9C70LjRhtGPINCe0LvQtdCz0LAg0J7QvdGW0LrRltGU0L3QutCwLCAyMC8yLCDQkdGA0L7QstCw0YDQuCwg0JrQuNGX0LLRgdGM0LrQsCDQvtCx0LsuLCAwNzQwMA!5e0!3m2!1sru!2sua!4v1559282110596!5m2!1sru!2sua" width="1100" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+            <div class="row" style="margin-top: 20px">
+                <div class="col-md-4">
+                    <div class="contact-info">
+
+                        <h2 class="block-title" ><span>М. БРОВАРИ, BУЛ КИЇВСЬКА 152 (2 ПОВЕРХ)</span></h2>
+
+                        <div class="media-list">
+                            <div class="media">
+                                <i class="pull-left fa fa-home" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body" >
+                                    <strong>Адреса:</strong><br>
+                                    Україна,  КиЇвська обл., м.Бровари, вул. КиЇвска 152 (2 поверх)
+                                </div>
+                            </div>
+
+                            <div class="media">
+                                <i class="pull-left fa fa-clock-o" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body" >
+                                    <strong>Графік роботи:</strong><br>
+                                    Пн-Нд: 10<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span > - 19<span style="font-size: 75%;line-height: 0; position: relative; vertical-align: baseline;    top: -0.5em;">00</span>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>Телефон:</strong><br>
+                                    (067) 201-3772
+                                </div>
+                            </div>
+                            <div class="media">
+                                <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>Телефон:</strong><br>
+                                    (099) 041-7115
+                                </div>
+                            </div>
+                            <div class="media">
+                                <i class="pull-left fa fa-viber" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>Viber:</strong><br>
+                                    099 041 7115
+                                </div>
+                            </div>
+                            <div class="media">
+                                <i class="pull-left fa fa-envelope-o" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
+                                <div class="media-body">
+                                    <strong>E-mail:</strong><br>
+                                    brestonua@gmail.com
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <img class="contact-img" src="{{asset('storage/static_img/kievska1.jpeg')}}">
+                    <img class="contact-img" src="{{asset('storage/static_img/kievska2.jpeg')}}">
+                </div>
+            </div>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2537.9357477984076!2d30.764801251263687!3d50.49815357938127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4dbd1c080b6bf%3A0xf98f43a8634d7b04!2z0YPQuy4g0JrQuNC10LLRgdC60LDRjywgMTUyLCDQkdGA0L7QstCw0YDRiywg0JrQuNC10LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwgMDc0MDA!5e0!3m2!1sru!2sua!4v1559282227578!5m2!1sru!2sua" width="1100" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+
 
             <div class="row" style="margin-top: 20px">
                 <div class="col-md-4">
@@ -284,8 +286,8 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <img style="float: right; max-width: 300px; max-height: 360px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/prolisku1.jpeg')}}">
-                    <img style="float: right; max-height: 360px; max-width: 300px; margin-left: 50px;margin-bottom:20px " src="{{asset('storage/static_img/prolisku2.jpeg')}}">
+                    <img class="contact-img" src="{{asset('storage/static_img/prolisku1.jpeg')}}">
+                    <img class="contact-img" src="{{asset('storage/static_img/prolisku2.jpeg')}}">
                 </div>
             </div>
             <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2543.665488592401!2d30.79735915125975!3d50.39143407936646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4c2db6cfacba7%3A0x5421d378f9e15781!2z0LLRg9C70LjRhtGPINCR0YDQvtCy0LDRgNGB0YzQutCwLCAyLCDQn9GA0L7Qu9GW0YHQutC4LCDQmtC40ZfQstGB0YzQutCwINC-0LHQuy4sIDA4MzIy!5e0!3m2!1sru!2sua!4v1559282343745!5m2!1sru!2sua" width="1100" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>

@@ -45,6 +45,8 @@ class MainController extends Controller
         $block1 = json_decode($this->main->block1);
         $textSlides = isset($block1->textSlides) ? $block1->textSlides : null;
         $videoSlides = isset($block1->videoSlides) ? $block1->videoSlides : null;
+        $pictureSlides = isset($block1->pictureSlides) ? $block1->pictureSlides : null;
+
 
         $block2 = json_decode($this->main->block2);
 
@@ -57,6 +59,7 @@ class MainController extends Controller
             ->with('user_ip', $user_ip)
             ->with('textSlides', $textSlides)
             ->with('videoSlides', $videoSlides)
+            ->with('pictureSlides', $pictureSlides)
             ->with('block2', $block2)
             ->with('block3', $block3)
             ->with('products', $products)

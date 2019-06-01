@@ -33,13 +33,13 @@ $image_url = $image ? $image->url : '#';
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <ul class="data-list">
 
-                        <li class="list-item col-md-6">
+                        <li class="list-item col-md-12">
                             <label for="title_post">Введите название</label>
-                            <input name="title" id="title_post" type="text" @if ($post) value="{{$post->title}}" @endif required>
+                            <input style="width: 100%;" name="title" id="title_post" type="text" @if ($post) value="{{$post->title}}" @endif required>
                         </li>
                         <li class="list-item col-md-12">
                             <label for="active_category">Активность поста</label>
-                            <input name="active" id="active_post" type="checkbox"  @if ($post) value="{{$post->active}}"
+                            <input  name="active" id="active_post" type="checkbox"  @if ($post) value="{{$post->active}}"
                                    @if ($post->active == 1) checked @endif @else checked @endif >
                         </li>
 

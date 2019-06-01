@@ -61,9 +61,27 @@
                                         <div class="container" style="background-color: rgb(243, 243, 243);">
                                             <iframe width="90%" height="100%"
 
-                                                src="https://www.youtube.com/embed/{{$slide}}" frameborder="0"
-                                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                                allowfullscreen></iframe>
+                                                    src="https://www.youtube.com/embed/{{$slide}}" frameborder="0"
+                                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+                    @endif
+                        @if ($pictureSlides)
+                        @foreach($pictureSlides as $slide)
+                            <li class="slide showing">
+                                <div class="item slide3 dark">
+
+                                    <div class="caption">
+                                        <div class="container" style="background-color: rgb(243, 243, 243);text-align: center">
+                                            <a href="{{$slide->url_picture}}">
+                                                <img style="max-width: 100%; max-height: 100%"
+                                                     src="{{$slide->picture}}" alt="" />
+                                            </a>
+
                                         </div>
                                     </div>
                                 </div>
@@ -104,7 +122,7 @@
                             <div class="col-md-3 col-sm-6">
                                 <div class="thumbnail no-border no-padding">
                                     <div class="media" style=" width: 270px;height: 330px;display: table-cell;vertical-align: middle; text-align: center;">
-                                        <a class="media-link" href="#">
+                                        <a class="media-link" href="{{route('show_single_product', [ 'product' => $product, 'category' => $product->categories->first()])}}">
                                             <img style="max-width: 270px; max-height: 330px; "
                                                  src="{{$product->getImages()->first() ? $product->getImages()->first()->url : '#'}}"
                                                  alt=""/>
@@ -205,7 +223,7 @@
             <div style="position: relative;">
                 <img style="width: 516px; height: 388px; position: absolute;right: 0;z-index: 0;"
                     src="{{isset($block2->image) ? $block2->image: ''}}" alt="" />
-                <img style="width: 126px; height: 125px; position: absolute;    right: 400px;;z-index:1;"
+                <img style="max-width: 200px; max-height: 200px; position: absolute;    right: 400px;;z-index:1;"
                     src="{{isset($block2->image2) ? $block2->image2: ''}}" alt="" />
 
             </div>
@@ -257,13 +275,14 @@
 
 
                     <tr>
-                        <td style="width: 50%;box-shadow: rgba(0, 0, 0, 0.5) 15px 15px 30px;">
+                        <td style="width: 50%;box-shadow: rgba(0, 0, 0, 0.5) 15px 15px 30px;"><a class="1000plus" style="color: #FFFFFF" href="{{route('about')}}">
                             <p style="margin-bottom: 5px;   ;font-size: 36px;">
                                 1000+
                             </p>
                             <p style="margin: 5% 10%;font-family: Lato;font-size: 22px;    font-weight: 500;">
                                 Реализованных продаж
                             </p>
+                            </a>
                         </td>
                         <td style="width: 50%;    border: 1px solid;">
                             <p style="margin-bottom: 5px;   ;font-size: 36px;">
@@ -337,7 +356,7 @@ text-transform: uppercase;text-align: center;">Подивіться наш бл�
 
                                 <h4 class="media-heading" style="text-align: center"><a href="#">{{$post->title}}</a></h4>
                                 <p style="color: #171717;font-family: Montserrat;font-size: 18px;font-weight: 400;line-height: 25px;    word-break: break-all;">
-                                    {{substr("$post->text",0,300)}}</p>
+                                    {{mb_substr("$post->text",0,200,'utf-8')}}</p>
 
                             </div>
                             <a style="color: #02bbdb;font-family: Montserrat;font-size: 20px;font-weight: 400;line-height: 19px;" href="{{route('show-post', ['post' => $post])}}">показати бiльше</a>

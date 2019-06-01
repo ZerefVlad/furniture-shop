@@ -160,3 +160,4 @@ Route::get('/about', function() {
 
 Route::post('/subscribe/send-email', 'Admin\SubscribeController@sendEmail')->name('email_sender');
 //Route::get('/add-likes/{product}', 'ProductController@addLikes')->name('add_to_like');
+Route::get('search', 'Admin\ProductController@search')->name('search_product');

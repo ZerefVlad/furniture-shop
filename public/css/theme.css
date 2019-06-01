@@ -1439,7 +1439,7 @@ input[type=checkbox] {
 }
 .sf-menu.nav > li > a:hover,
 .sf-menu.nav > li > a:focus {
-  background-color: transparent;
+  background-color: rgb(2, 187, 219);;
 }
 .sf-menu.nav > li > a,
 .sf-menu ul li > a {
@@ -1457,20 +1457,23 @@ input[type=checkbox] {
   padding: 3px 15px 3px 15px;
 }
 .sf-menu a {
-  color: #232323;
+  color: rgb(2, 187, 219);
 }
 .sf-menu a:hover {
-  color: #232323;
+  color: #FFFFFF;
 }
 .sf-menu li:hover,
 .sf-menu li.sfHover,
 .sf-menu li.sfHover > a,
 .sf-menu li.active {
 
-  background-color: #f3f3f3;
+  background-color: #E0FFFF;
 
-  color: #232323;
+  color: #FFFFFF;
 
+}
+.nav>li>a :hover {
+  background: none;
 }
 .sf-menu li.active > a {
   color: #232323;
@@ -1544,7 +1547,7 @@ input[type=checkbox] {
   font-family: Roboto;
   font-size: 22px;
   padding-left: 50px;
-  width: 200%;
+  /*width: 200%;*/
 }
 
 .sf-menu li ul ul {
@@ -1569,7 +1572,8 @@ input[type=checkbox] {
   margin-right: -15px;
   margin-top: -4px;
   float: left;
-  background-color: #f4f3f3;
+  /*background-color: #f4f3f3;*/
+  background-color:#E0FFFF ;
   width: 1140px;
 }
 .sf-menu li.megamenu > ul li.row div[class*="col-"] {
@@ -1593,6 +1597,9 @@ input[type=checkbox] {
 }
 .sf-menu li.megamenu ul a:hover {
   color: #02bbdb;
+}
+.sf-menu li.megamenu a:hover {
+
 }
 .sf-menu li.megamenu p {
   margin-bottom: 10px;
@@ -6942,4 +6949,10 @@ body {
 }
 .hide:checked + label:before {
   content: "\2212";
+}
+
+.contact-img {
+  float: right;
+  max-width: 370px;
+  max-height: 360px;
 }

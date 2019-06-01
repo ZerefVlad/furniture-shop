@@ -40,7 +40,7 @@
                             <div class="col-md-3 col-sm-6">
                                 <div class="thumbnail no-border no-padding">
                                     <div class="media">
-                                        <a class="media-link" href="#">
+                                        <a class="media-link" href="{{route('show_single_product', [ 'product' => $product, 'category' => $product->categories->first()])}}">
                                             <img style="max-width: 270px; max-height: 330px; height: 100%;"
                                                  src="{{$product->getImages()->first() ? $product->getImages()->first()->url : '#'}}"
                                                  alt=""/>
@@ -84,7 +84,7 @@
                                 <div class="col-md-3 col-sm-6">
                                     <div class="thumbnail no-border no-padding">
                                         <div class="media">
-                                            <a class="media-link" href="#">
+                                            <a class="media-link" href="{{route('show_single_product', [ 'product' => $product, 'category' => $product->categories->first()])}}">
                                                 <img style="width: 270px; height: 330px;"
                                                      src="{{$product->getImages()->first() ? $product->getImages()->first()->url : '#'}}"
                                                      alt=""/>
