@@ -68,7 +68,7 @@
                             style="color: #02bbdb;font-family: Montserrat;font-size: 28px;font-weight: 500;line-height: 30px; text-transform: uppercase;">
                                 {{$post->title}}</h2>
                         <h3 class="caption-text" style=" color: #31353d;font-family: Montserrat;font-size: 14px;font-weight: 400;
-                            line-height: 23px;">{{substr ($post->text, 0,strpos ($post->text, " ", 1200))}}</h3>
+                            line-height: 23px;">{{mb_substr("$post->text",0,1200,'utf-8')}}</h3>
 
                         <p class="caption-text">
                             <a class="btn btnslider" href="{{route('show-post', ['post' => $post])}}" style="border-radius: 29px;">Детальніше</a>

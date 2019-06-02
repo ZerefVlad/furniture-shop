@@ -464,6 +464,28 @@ use App\Models\Category;
         </section>
     @endif
 
+        <section class="subscribe">
+    <div class="container full-width" style="background-color: #02bbdb;width: 100%; ">
+        <div class="container">
+            <h1 style="color: #ffffff;font-family: Montserrat, Roboto, sans-serif;font-size: 68px;font-weight: 700;line-height: 78px;        margin:0;">
+                Join our mailing list to get the latest announcements
+            </h1>
+            <form action="{{route('add_subscriber')}}" method="post">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <div class="form-group">
+                    <input style="opacity: 0.6;color: #ffffff;font-family: Montserrat;font-size: 18px;font-weight: 400;line-height: 78px;    width: 80%;         float: left;"
+                           class="form-control" type="email" name="email" placeholder="Введіть свій Е-Mail" required/>
+
+
+                    <input style="float: right; margin: 0% 1% 1% 0%; box-shadow: 3px 6px 12px rgba(23, 23, 23, 0.2);border-radius: 29px;background-color: #ffffff;"
+                           type="submit" class="btn btn-theme btn-theme-transparent" value="Підписатися">
+
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
     <!-- FOOTER -->
         <footer class="footer">
             <div class="footer-widgets">
@@ -482,9 +504,9 @@ use App\Models\Category;
                                    </p>
                                 <ul class="social-icons">
                                     <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+{{--                                    <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>--}}
                                     <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
+{{--                                    <li><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>--}}
                                 </ul>
                             </div>
                         </div>
@@ -495,7 +517,7 @@ use App\Models\Category;
                                 <form action="{{route('add_subscriber')}}" method="post" >
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <div class="form-group">
-                                        <input class="form-control" name="email" type="text" placeholder="Введіть свій Е-Mail" required/>
+                                        <input class="form-control" name="email" type="email" placeholder="Введіть свій Е-Mail" required/>
                                     </div>
                                     <div class="form-group">
                                         <input type="submit"  class="btn btn-theme btn-theme-transparent" value="Надіслати">

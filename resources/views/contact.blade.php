@@ -13,9 +13,9 @@
     <section class="page-section breadcrumbs">
         <div class="container">
             <div class="page-header">
-                <h1 style="color: #333333;font-family: Montserrat;font-size: 47px;font-weight: 900;line-height: 50px;text-transform: uppercase;">Контакти</h1>
+                <h1 style="color: rgb(2, 187, 219);font-family: Montserrat,sans-serif;font-size: 47px;font-weight: 900;line-height: 50px;text-transform: uppercase;">Контакти</h1>
             </div>
-            <p style="color: #252424;font-family: Montserrat;font-size: 18px;font-weight: 400;"> Lorem ipsum dolor sit amet,    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+            <p style="color: #252424;font-family: Montserrat;font-size: 18px;font-weight: 400;"> Детальну інформацію можна отримати за телефоном, написавши нам або завітавши до наших салонів, де наші спеціалісти нададуть Вам якісну та професійну консультацію. </p>
 
         </div>
     </section>
@@ -39,7 +39,7 @@
                         <div class="outer required" >
                             <div class="form-group af-inner">
                                 <label class="sr-only" for="name">Ім'я</label>
-                                <input style="border-radius: 5px;border: 1px solid #c1c1c1;background-color:#f3f3f3;"
+                                <input style="border-radius: 5px;border: 1px solid #c1c1c1;background-color:#AFEEEE;"
                                        type="text" name="name" id="name" placeholder="Ім'я" value="" size="30"
                                        data-toggle="tooltip" title="Name is required"
                                        class="form-control placeholder" required/>
@@ -49,7 +49,7 @@
                         <div class="outer required">
                             <div class="form-group af-inner">
                                 <label class="sr-only" for="email">Email</label>
-                                <input style="border-radius: 5px;border: 1px solid #c1c1c1;background-color:#f3f3f3;"
+                                <input style="border-radius: 5px;border: 1px solid #c1c1c1;background-color:#AFEEEE;"
                                        type="email" name="email" id="email" placeholder="Email" value="" size="30"
                                        data-toggle="tooltip" title="Email is required"
                                        class="form-control placeholder" required/>
@@ -59,7 +59,7 @@
                         <div class="outer required">
                             <div class="form-group af-inner">
                                 <label class="sr-only" for="subject">Телефон</label>
-                                <input style="border-radius: 5px;border: 1px solid #c1c1c1;background-color:#f3f3f3;"
+                                <input style="border-radius: 5px;border: 1px solid #c1c1c1;background-color:#AFEEEE;"
                                        type="text" name="phone" id="subject" placeholder="Номер телефону" value="" size="30"
                                        data-toggle="tooltip" title="Subject is required"
                                        class="form-control placeholder" required/>
@@ -68,15 +68,15 @@
 
                         <div class="form-group af-inner">
                             <label class="sr-only" for="input-message">Ваше питання</label>
-                            <textarea style="border-radius: 5px;border: 1px solid #c1c1c1;background-color:#f3f3f3;"
+                            <textarea style="border-radius: 5px;border: 1px solid #c1c1c1;background-color:#AFEEEE;"
                                       name="message" id="input-message" placeholder="Ваше питання" rows="4" cols="50"
                                       data-toggle="tooltip" title="Message is required"
                                       class="form-control placeholder"></textarea>
                         </div>
 
                         <div class="outer required">
-                            <div class="form-group af-inner">
-                                <input style="border-radius: 30px;background-color: #02bbdb;color: #ffffff;font-family: Montserrat;font-size: 18px;font-weight: 700;line-height: 50px;margin-left: 40%;" type="submit" name="submit" class="form-button form-button-submit btn" id="submit_btn" value="Надіслати" />
+                            <div class="form-group af-inner" style="text-align: center">
+                                <input style="border-radius: 30px;background-color: #02bbdb;color: #ffffff;font-family: Montserrat;font-size: 18px;font-weight: 700;line-height: 50px;" type="submit" name="submit" class="form-button form-button-submit btn" id="submit_btn" value="Надіслати" />
                             </div>
                         </div>
 
@@ -99,17 +99,18 @@
 
 
             <div class="row" >
+                <h2 style="text-align: center; margin-bottom: 0" class="block-title" > М. БРОВАРИ ВУЛ ОНІКІЄНКА 20/2</h2>
                 <div class="col-md-4">
                     <div class="contact-info">
 
-                        <h2 class="block-title" ><span> М. БРОВАРИ ИУЛ ОНІКІЄНКА 20/2</span></h2>
+
 
                         <div class="media-list">
                             <div class="media">
                                 <i class="pull-left fa fa-home" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
                                 <div class="media-body" >
                                     <strong>Адреса:</strong><br>
-                                    Украина, Київска обл., м.Бровари, вул. Олега Онікієнка 20/2
+                                    Україна, Київска обл., м.Бровари, вул. Олега Онікієнка 20/2
 
 
                                 </div>
@@ -126,21 +127,21 @@
                                 <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
                                 <div class="media-body">
                                     <strong>Телефон:</strong><br>
-                                    +380 (4594) 64585
+                                    +380 (4594) 6 45 85
                                 </div>
                             </div>
                             <div class="media">
                                 <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
                                 <div class="media-body">
                                     <strong>Телефон:</strong><br>
-                                    (096) 706-2381
+                                    +380 (96) 706 23 81
                                 </div>
                             </div>
                             <div class="media">
                                 <i class="pull-left fa fa-viber" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
                                 <div class="media-body">
                                     <strong>Viber:</strong><br>
-                                    096 706 2381
+                                    +380 (96) 706 23 81
                                 </div>
                             </div>
                             <div class="media">
@@ -166,18 +167,19 @@
 
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2537.333358475172!2d30.81811031573347!3d50.509363879483516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4d94423e859b9%3A0x87143dadc37c3e1a!2z0LLRg9C70LjRhtGPINCe0LvQtdCz0LAg0J7QvdGW0LrRltGU0L3QutCwLCAyMC8yLCDQkdGA0L7QstCw0YDQuCwg0JrQuNGX0LLRgdGM0LrQsCDQvtCx0LsuLCAwNzQwMA!5e0!3m2!1sru!2sua!4v1559282110596!5m2!1sru!2sua" width="1100" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
 
-            <div class="row" style="margin-top: 20px">
+            <div class="row" style="margin-top: 40px">
+                <h2 class="block-title" style="text-align: center; margin-bottom: 0">М. БРОВАРИ, BУЛ КИЇВСЬКА 152 (2 ПОВЕРХ)</h2>
                 <div class="col-md-4">
                     <div class="contact-info">
 
-                        <h2 class="block-title" ><span>М. БРОВАРИ, BУЛ КИЇВСЬКА 152 (2 ПОВЕРХ)</span></h2>
+
 
                         <div class="media-list">
                             <div class="media">
                                 <i class="pull-left fa fa-home" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
                                 <div class="media-body" >
                                     <strong>Адреса:</strong><br>
-                                    Україна,  КиЇвська обл., м.Бровари, вул. КиЇвска 152 (2 поверх)
+                                    Україна,  Київська обл., м.Бровари, вул. Київска 152 (2 поверх)
                                 </div>
                             </div>
 
@@ -192,21 +194,21 @@
                                 <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
                                 <div class="media-body">
                                     <strong>Телефон:</strong><br>
-                                    (067) 201-3772
+                                   +380 (67) 201 37 72
                                 </div>
                             </div>
                             <div class="media">
                                 <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
                                 <div class="media-body">
                                     <strong>Телефон:</strong><br>
-                                    (099) 041-7115
+                                   +380 (99) 041 71 15
                                 </div>
                             </div>
                             <div class="media">
                                 <i class="pull-left fa fa-viber" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
                                 <div class="media-body">
                                     <strong>Viber:</strong><br>
-                                    099 041 7115
+                                    +380 (99) 041 71 15
                                 </div>
                             </div>
                             <div class="media">
@@ -233,18 +235,19 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2537.9357477984076!2d30.764801251263687!3d50.49815357938127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4dbd1c080b6bf%3A0xf98f43a8634d7b04!2z0YPQuy4g0JrQuNC10LLRgdC60LDRjywgMTUyLCDQkdGA0L7QstCw0YDRiywg0JrQuNC10LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwgMDc0MDA!5e0!3m2!1sru!2sua!4v1559282227578!5m2!1sru!2sua" width="1100" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
 
 
-            <div class="row" style="margin-top: 20px">
+            <div class="row" style="margin-top: 40px">
+                <h2 style="text-align: center; margin-bottom: 0" class="block-title" >С.Проліски вул. Броварська, 2А, ТЦ "FOZZY"</h2>
                 <div class="col-md-4">
                     <div class="contact-info">
 
-                        <h2 class="block-title" ><span>С.Проліски вул. Броварська, 2А, ТЦ "FOZZY"</span></h2>
+
 
                         <div class="media-list">
                             <div class="media">
                                 <i class="pull-left fa fa-home" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
                                 <div class="media-body" >
                                     <strong>Адреса:</strong><br>
-                                    Україна, с.Проліски, вул. Броварська, 2А, ТЦ "FOZZY"
+                                    Україна, с.Проліски, вул. Броварська, 2А,<br> ТЦ "FOZZY"
                                 </div>
                             </div>
 
@@ -259,7 +262,7 @@
                                 <i class="pull-left fa fa-phone" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
                                 <div class="media-body">
                                     <strong>Телефон:</strong><br>
-                                    (066) 971-2921
+                                   +380 (66) 971 29 21
                                 </div>
                             </div>
 
@@ -267,7 +270,7 @@
                                 <i class="pull-left fa fa-viber" style="color: #02bbdb;background-color: #ffffff;font-size: 20px;font-weight: 400;"></i>
                                 <div class="media-body">
                                     <strong>Viber:</strong><br>
-                                    066 971 2921
+                                    +380 (66) 971 29 21
                                 </div>
                             </div>
                             <div class="media">

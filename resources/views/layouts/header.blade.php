@@ -47,7 +47,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
 
     <title>Breston - Iнтернет магазин меблiв | Интернет магазин мебели {{$meta_title}}</title>
     <meta name="description"
-          content="{{$meta_description}} Мебель для дома в магазине Breston. &#9742;     (066) 123-45-67. Самые низкие цены! Товары для дома и сувениры с доставкой по Украине."/>
+          content="{{$meta_description}} Мебель для дома в магазине Breston. &#9742;     (066) 971-29-21. Самые низкие цены! Мебель для дома с доставкой по Украине."/>
 
     <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -55,7 +55,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
             crossorigin="anonymous"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <link rel="icon" href="{{asset('storage/static_img/Logo.png')}}" type="images/png">
+    <link rel="icon" href="{{asset('storage/static_img/logo1.png')}}" type="images/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -129,9 +129,9 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
 
 
                         <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+{{--                        <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>--}}
                         <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
+{{--                        <li><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>--}}
                     </ul>
                 </div>
             </div>
@@ -187,7 +187,6 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                         <div class="cart-wrapper">
                             <a href="{{route('show-likes')}}" class="btn btn-theme-transparent hidden-xs hidden-sm"><i
                                         class="fa fa-heart" style="    color: rgb(2, 187, 219);"></i></a>
-                            <!--<a href="compare-products.html" class="btn btn-theme-transparent hidden-xs hidden-sm"><i class="fa fa-exchange"></i></a>-->
                             <a href="#" class="btn btn-theme-transparent" data-toggle="modal" data-target="#popup-cart"><i
                                         class="fa fa-shopping-cart" style="    color: rgb(2, 187, 219);"></i> <span
                                         id="cart-product-count" class="badge-success"
@@ -199,14 +198,10 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                                 <ul style="float: right; font-size: 12px; margin-top: 3%;">
                                     <li>
                                         <a href="{{ route('login') }}" class="log-in"> <span>Увiйти</span></a></li>
-                                    {{--                                <li class="nav-item">--}}
-                                    {{--                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>--}}
-                                    {{--                                </li>--}}
+
                                     @if (Route::has('register'))
-                                        {{--                                    <li class="nav-item">--}}
                                         <li><a style="padding: 10%;color: #02bbdb;" href="{{ route('register') }}">Зарееструватися</a>
                                         </li>
-                                        {{--                                    </li>--}}
                                     @endif</ul>
                             @else
 
@@ -224,7 +219,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                                 </ul>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="style=float: right;margin-top: 0%;">
+                                      style="float: right;margin-top: 0%;">
                                     @csrf
                                 </form>
 
@@ -248,7 +243,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                             @foreach($categories_header as $category)
                                 @if ($category->isParent())
                                     <li class="megamenu"
-                                        style="width: 11%; height: 80px; text-transform: uppercase; font-weight: 800;">
+                                        style="width: 11.111%; height: 80px; text-transform: uppercase; font-weight: 800;">
                                         <a href="#main"
                                            style="    line-height: 20px;height: 100%;font-weight: 500;font-family: serif,sans-serif;"> {{$category->title}}</a>
                                         <ul>

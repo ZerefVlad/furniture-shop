@@ -194,26 +194,7 @@
     <!-- /PAGE -->
     </div>
     <!-- /CONTENT AREA -->
-{{--    <section class="subscribe">--}}
-{{--        <div class="container full-width" style="background-color: #02bbdb;width: 100%; ">--}}
-{{--            <div class="container">--}}
-{{--                <h1 style="color: #ffffff;font-family: Montserrat;font-size: 68px;font-weight: 700;line-height: 78px;        margin-top: 7%; margin-bottom: 3%;">--}}
-{{--                    Join our mailing list to get the latest announcements--}}
-{{--                </h1>--}}
-{{--                <form action="#">--}}
-{{--                    <div class="form-group">--}}
-{{--                        <input style="opacity: 0.6;color: #ffffff;font-family: Montserrat;font-size: 18px;font-weight: 400;line-height: 78px;    width: 70%;     margin: 0 2% 7% 0;    float: left;"--}}
-{{--                               class="form-control" type="text" placeholder="Enter Your Mail"/>--}}
 
-
-{{--                        <button style="box-shadow: 3px 6px 12px rgba(23, 23, 23, 0.2);border-radius: 29px;background-color: #ffffff;"--}}
-{{--                                class="btn btn-theme btn-theme-transparent">Subscribe--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
-{{--                </form>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
 @endsection
 
 {{--<ul>--}}

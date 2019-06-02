@@ -17,12 +17,15 @@
             </h1>
             <ul class="data-list static-list">
                 @foreach($subscribers as $subscribe)
-                <li class="list-item">
-                    <i class="fas fa-envelope"></i><span> {{$subscribe->email}}</span>
+                <li class="list-item col-md-12">
+                    <div class="col-md-6">
+                        <i class="fas fa-envelope"></i><span> {{$subscribe->email}}</span>
+                    </div>
+                    <div class="col-md-6">
+                    <a class="col-md-6" href="{{route('subscriber_delete', ['subscribe' => $subscribe])}}"><span>Удалить подписчика</span></a>
+                    </div>
                 </li>
-                <li class="list-item">
-                    <a href="{{route('subscriber_delete', ['subscribe' => $subscribe])}}"><span>Удалить подписчика</span></a>
-                </li>
+
                     @endforeach
             </ul>
 

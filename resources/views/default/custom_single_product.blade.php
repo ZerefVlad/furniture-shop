@@ -226,7 +226,7 @@
                     <hr class="page-divider"/>
 
                     <!-- PAGE -->
-                    <section class="page-section">
+
                         <div class="container">
                             <div class="tabs-wrapper content-tabs">
                                 <ul class="nav nav-tabs">
@@ -330,19 +330,19 @@
 
 
                                         <div class="comments-form">
-                                            <h4 class="block-title">Додати коментар</h4>
+                                            <h4 class="block-title" style="color: rgb(2, 187, 219)">Залишити відгук</h4>
                                             <form id="add-comment-to-form"
                                                   action="{{route('add_comment',['category' => $category, 'product' => $product])}}"
-                                                  method="post" name="comments-form" id="comments-form"></form>
+                                                  method="post" name="comments-form" ></form>
                                             <input type="hidden" form="add-comment-to-form" name="_token"
                                                    value="{{csrf_token()}}">
 
                                             <div class="form-group"><textarea form="add-comment-to-form" name="text"
-                                                                              placeholder="Your message"
+                                                                              placeholder="Ваш відгук"
                                                                               class="form-control"
                                                                               title="comments-form-comments"
 
-                                                                              rows="6">Введите коммент</textarea>
+                                                                              rows="6" style="background-color:#AFEEEE;">Введіть відгук</textarea>
                                             </div>
 
                                             <input form="add-comment-to-form" type="number" name="rating" min="0"
