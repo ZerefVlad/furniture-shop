@@ -424,6 +424,9 @@ use App\Models\Category;
                                             <div class="price">
                                                 @if($view->product->categories->first()->type != 'default')
                                                     <ins>{{$view->product->getPriceWithDiscount()}} грн./пог. м</ins>
+                                                    @if($view->product->discount->value != '0')
+                                                        <del>{{$view->product->getPriceWithoutDiscount()}} грн./пог. м</del>
+                                                    @endif
                                                 @else
                                                     <ins>{{$view->product->getPriceWithDiscount()}} грн.</ins>
 
@@ -468,7 +471,7 @@ use App\Models\Category;
     <div class="container full-width" style="background-color: #02bbdb;width: 100%; ">
         <div class="container">
             <h1 style="color: #ffffff;font-family: Montserrat, Roboto, sans-serif;font-size: 68px;font-weight: 700;line-height: 78px;        margin:0;">
-                Join our mailing list to get the latest announcements
+                Підпишіться на наші оновлення
             </h1>
             <form action="{{route('add_subscriber')}}" method="post">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -477,7 +480,7 @@ use App\Models\Category;
                            class="form-control" type="email" name="email" placeholder="Введіть свій Е-Mail" required/>
 
 
-                    <input style="float: right; margin: 0% 1% 1% 0%; box-shadow: 3px 6px 12px rgba(23, 23, 23, 0.2);border-radius: 29px;background-color: #ffffff;"
+                    <input style="float: right; margin: 0% 3% 1% 0%; box-shadow: 3px 6px 12px rgba(23, 23, 23, 0.2);border-radius: 29px;background-color: #ffffff;"
                            type="submit" class="btn btn-theme btn-theme-transparent" value="Підписатися">
 
                 </div>
@@ -513,7 +516,7 @@ use App\Models\Category;
                         <div class="col-md-3">
                             <div class="widget">
                                 <h4 class="widget-title">Підписатися </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <p>Підпишіться на наші оновлення та завжди будьте в курсі останніх новинок та вигідних пропозицій.</p>
                                 <form action="{{route('add_subscriber')}}" method="post" >
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <div class="form-group">
@@ -574,6 +577,7 @@ use App\Models\Category;
     </div>
     <!-- /WRAPPER -->
 
+</div>
 </div>
 
 

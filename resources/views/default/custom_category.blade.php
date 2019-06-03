@@ -57,7 +57,9 @@
 
                                         <div class="price">
                                             <ins>{{$product->getPriceWithDiscount()}} грн./пог. м</ins>
-                                            <p></p>
+                                            @if($product->discount->value != '0')
+                                                <del>{{$product->getPriceWithoutDiscount()}}грн./пог. м</del>
+                                            @endif
                                         </div>
                                         <div class="buttons">
 
@@ -100,8 +102,10 @@
 
 
                                             <div class="price">
-                                                <ins>{{$product->getPriceWithDiscount()}} грн.</ins>
-                                                <del>{{$product->getPriceWithoutDiscount()}}</del>
+                                                <ins>{{$product->getPriceWithDiscount()}} грн./пог. м</ins>
+                                                @if($product->discount->value != '0')
+                                                    <del>{{$product->getPriceWithoutDiscount()}}грн.</del>
+                                                @endif
                                             </div>
                                             <div class="buttons">
 

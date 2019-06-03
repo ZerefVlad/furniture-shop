@@ -129,9 +129,9 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
 
 
                         <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-{{--                        <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>--}}
+                        {{--                        <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>--}}
                         <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-{{--                        <li><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>--}}
+                        {{--                        <li><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>--}}
                     </ul>
                 </div>
             </div>
@@ -163,6 +163,12 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                             <p style="margin: 0 0 0px 20px;"> +38 066 9712921</p>
                         </div>
 
+
+
+
+
+
+
                     </div>
                     <!-- /Header search -->
 
@@ -192,12 +198,19 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                                         id="cart-product-count" class="badge-success"
                                         style="    color: rgb(2, 187, 219);"></span> </i> </a>
                             <!-- Mobile menu toggle button -->
-                            <a href="#" class="menu-toggle btn btn-theme-transparent"><i class="fa fa-bars"></i></a>
+{{--                            <a href="#" class="menu-toggle btn btn-theme-transparent"><i class="fa fa-bars"></i></a>--}}
+{{--                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navig" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">--}}
+{{--                                <i class="fas fa-bars"></i>--}}
+{{--                            </button>--}}
                             <!-- /Mobile menu toggle button -->
                             @guest
+
+
                                 <ul style="float: right; font-size: 12px; margin-top: 3%;">
+
                                     <li>
-                                        <a href="{{ route('login') }}" class="log-in"> <span>Увiйти</span></a></li>
+                                        <a href="{{ route('login') }}" class="log-in"> <span>Увiйти</span></a>
+                                    </li>
 
                                     @if (Route::has('register'))
                                         <li><a style="padding: 10%;color: #02bbdb;" href="{{ route('register') }}">Зарееструватися</a>
@@ -205,14 +218,27 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                                     @endif</ul>
                             @else
 
-                                <ul style="float: right; font-size: 12px; margin-top: 3%;">
-                                    <li>
 
-                                        <a style="color: #02bbdb;    padding: 6px 10px;" class="log-in"
-                                           href="{{ route('account') }}">
-                                            Особистий кабiнет
-                                        </a>
-                                    </li>
+
+
+                                <ul style="float: right; font-size: 12px; margin-top: 3%;">
+
+                                    @if(auth()->user()->hasRole('admin')||auth()->user()->hasRole('manager'))
+                                        <li>
+                                            <a href="{{ route('admin-page') }}" class="log-in">
+                                                <span>Адмін панель</span></a>
+                                        </li>
+
+                                    @else
+                                        <li>
+
+                                            <a style="color: #02bbdb;    padding: 6px 10px;" class="log-in"
+                                               href="{{ route('account') }}">
+                                                Особистий кабiнет
+                                            </a>
+                                        </li>
+                                    @endif
+
                                     <li><a style="    padding: 0% 40%;color: #02bbdb;" href="{{ route('logout') }} "
                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Вийти</a>
                                     </li>
@@ -232,7 +258,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
 
                 </div>
             </div>
-            <div class="navigation-wrapper" style=" height: 80px     ">
+            <div class="navigation-wrapper" id="navig" style=" height: 80px     ">
                 <div class="container">
                     <!-- Navigation -->
                     <nav class="navigation closed clearfix">
@@ -263,9 +289,11 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                                                             </a>
 
 
-                                                                <h4 class="media-heading" id="textmediabody"
-                                                                    style="padding: 0; margin: 0; "><a style="color: rgb(2, 187, 219)"
-                                                                            href="{{route('show_product', ['category' => $category])}}">{{$category->title}}</a></h4>
+                                                            <h4 class="media-heading" id="textmediabody"
+                                                                style="padding: 0; margin: 0; "><a
+                                                                        style="color: rgb(2, 187, 219)"
+                                                                        href="{{route('show_product', ['category' => $category])}}">{{$category->title}}</a>
+                                                            </h4>
 
 
                                                         </div>
@@ -286,10 +314,11 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
 
                                                                 </a>
 
-                                                                    <h4 class="media-heading" id="textmediabody"
-                                                                        style="padding-left: 0"><a style="color: rgb(2, 187, 219)"
-                                                                                href="{{route('show_product', ['category' => $children])}}">{{$children->title}}</a>
-                                                                    </h4>
+                                                                <h4 class="media-heading" id="textmediabody"
+                                                                    style="padding-left: 0"><a
+                                                                            style="color: rgb(2, 187, 219)"
+                                                                            href="{{route('show_product', ['category' => $children])}}">{{$children->title}}</a>
+                                                                </h4>
 
 
                                                             </div>
@@ -310,5 +339,6 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                 </div>
             </div>
         </header>
+
         <!-- /HEADER -->
 

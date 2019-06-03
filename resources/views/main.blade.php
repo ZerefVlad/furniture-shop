@@ -107,8 +107,7 @@
 
             <div class="tabs">
                 <h1 class="titletabs">Оцініть останні новинки</h1>
-                <p class="titletext ">But I must explain to you how all this mistaken idea of denouncing pleasure
-                    and praising pain was born and I will give you a complete account of the system.</p>
+                <p class="titletext ">Представляємо Вашій увазі нові моделі м’яких та корпусних меблів сезону літо 2019.</p>
             </div>
 
 
@@ -141,12 +140,16 @@
                                         <div class="price">
                                             @if($product->categories->first()->type != 'default')
                                                 <ins>{{$product->getPriceWithDiscount()}} грн./пог. м</ins>
+
+                                                @if($product->discount->value != '0')
+                                                    <del>{{$product->getPriceWithoutDiscount()}}грн./пог. м</del>
+                                                @endif
                                             @else
                                                 <ins>{{$product->getPriceWithDiscount()}} грн.</ins>
 
 
                                                 @if($product->discount->value != '0')
-                                                    <del>{{$product->getPriceWithoutDiscount()}}</del>
+                                                    <del>{{$product->getPriceWithoutDiscount()}}грн.</del>
                                                 @endif
 
                                             @endif
@@ -185,8 +188,7 @@
         <div class="container" style="height:500px">
             <div class="tabs">
                 <h1 class="titletabs">СПЕЦІАЛЬНА ПРОПОЗИЦІЯ</h1>
-                <p class="titletext ">But I must explain to you how all this mistaken idea of denouncing pleasure
-                    and praising pain was born and I will give you a complete account of the system.</p>
+                <p class="titletext ">Саме для Вас компанія Breston пропонує вигідні пропозиції</p>
             </div>
 
 
@@ -240,8 +242,7 @@
 
             <div class="tabs">
                 <h1 class="titletabs">Подивiться наше вiдео</h1>
-                <p class="titletext ">But I must explain to you how all this mistaken idea of denouncing pleasure
-                    and praising pain was born and I will give you a complete account of the system.</p>
+
             </div>
 
             <div style="    margin: 0 8%;height: 570px;
@@ -259,16 +260,22 @@
         <div class="container">
 
             <div class="tabs">
-                <h1 class="titletabs">О Нашiй Компанii</h1>
-                <p class="titletext ">But I must explain to you how all this mistaken idea of denouncing pleasure
-                    and praising pain was born and I will give you a complete account of the system.</p>
+                <h1 class="titletabs">Про Нашу Компанiю</h1>
+                <p class="titletext ">Breston – твій надійний партнер у світі меблів!</p>
             </div>
 
             <div class="col-md-6" style="width: 50%;padding: 0% 3%;">
 
-            <p class="lead" style="font-weight: 600;font-family: Lato;font-size: 22px;">Почему мебель для дома на заказ выгодно приобретать в компании "Брестон"</p>
+{{--            <p class="lead" style="font-weight: 600;font-family: Lato;font-size: 22px;">Наша компанія пропонує Вашій увазі широкий асортимент корпусних та м’яких меблів класу «економ», «стандарт», «преміум», «люкс» на будь-який смак. </p>--}}
 
-            <p style="font-weight: 300;font-family: Lato;font-size: 18px;">Все мы стараемся сделать свой дом максимально комфортным, внести в него тепло и уют. С каждым годом проводится все больше косметических и капитальных ремонтов, чтобы обновить и освежить интерьер, сделать его более модным и современным. Неотъемлемой частью любого интерьера является мебель. Однако, стандартная мебель, которая представлена в каждом магазине и не имеет ничего примечательного вряд ли понравится человеку имеющему чувство вкуса. Именно поэтому идеальным решением для создания современного и комфортного интерьера станет мебель под заказ.</p>
+            <p style="font-weight: 300;font-family: Lato;font-size: 20px;">
+                Наша компанія пропонує Вашій увазі широкий асортимент корпусних та м’яких меблів класу «економ», «стандарт», «преміум», «люкс» на будь-який смак.
+            </p>
+                <p style="font-weight: 300;font-family: Lato;font-size: 20px;">
+                    Завітайте до наших салонів і ми допоможемо Вам створити оселю Вашої мрії. Наші менеджери запропонують Вам найкращі варіанти меблів, нададуть якісну консультацію щодо вибору тієї чи іншої моделі, матеріалу виходячи із Ваших побажань.            </p>
+                <p style="font-weight: 300;font-family: Lato;font-size: 20px;">
+                    Наша місія – забезпечити Вас якісними, комфортними, привабливими меблями, які будуть створювати затишок у Вашому домі.
+                </p>
             </div>
             <div class="col-md-6" style="width: 50%; height: 320px">
                 <table style="color: #FFFFFF; background-color: #02bbdb; width: 100%; height: 100%;text-align: center; border-radius: 15px;border-collapse: separate;">
@@ -277,37 +284,41 @@
                     <tr>
                         <td style="width: 50%;box-shadow: rgba(0, 0, 0, 0.5) 15px 15px 30px;"><a class="1000plus" style="color: #FFFFFF" href="{{route('about')}}">
                             <p style="margin-bottom: 5px;   ;font-size: 36px;">
-                                1000+
+                                50000+
                             </p>
                             <p style="margin: 5% 10%;font-family: Lato;font-size: 22px;    font-weight: 500;">
-                                Реализованных продаж
+                                Реалізованих товарів
                             </p>
                             </a>
                         </td>
                         <td style="width: 50%;    border: 1px solid;">
-                            <p style="margin-bottom: 5px;   ;font-size: 36px;">
-                                13
-                            </p>
                             <p style="margin: 5% 10%;font-family: Lato;font-size: 22px;    font-weight: 500;">
-                                Человек в команде
+                                Висококваліфікована команда
                             </p>
+
+
+
                         </td>
                     </tr>
                     <tr>
                         <td style="width: 50%;    border: 1px solid;">
                             <p style="margin-bottom: 5px;   ;font-size: 36px;">
-                                13
+                                10+
                             </p>
                             <p style="margin: 5% 10%;font-family: Lato;font-size: 22px;    font-weight: 500;">
-                                Лет на рынке
+                                Років на ринку меблів України
                             </p>
                         </td>
                         <td style="width: 50%;   ">
-                            <p style="margin-bottom: 5px;   ;font-size: 36px;">
-                                +Kyiv
+
+                            <p style="margin: 5% 10%;font-family: Lato;font-size: 22px;    font-weight: 500;">
+                                Вигідні пропозиції
                             </p>
                             <p style="margin: 5% 10%;font-family: Lato;font-size: 22px;    font-weight: 500;">
-                                Представительство в столице
+                                Програма лояльності
+                            </p>
+                            <p style="margin: 5% 10%;font-family: Lato;font-size: 22px;    font-weight: 500;">
+                                Привабливі знижки
                             </p>
                         </td>
                     </tr>
@@ -315,12 +326,11 @@
                 </table>
 
             </div>
-            <div class="col-md-12" style="padding: 0% 3%;">
+{{--            <div class="col-md-12" style="padding: 0% 3%;">--}}
 
-                <p style="font-weight: 300;font-family: Lato;font-size: 18px;">
-                    Изготовление мебели на заказ предусматривает учет всех пожеланий заказчика, таким образом можно обустроить жилье своей мечты. Качественную мебель предлагает интернет магазин мебели “Алька Мебель”. Здесь Вы сможете найти именно то, что искали. Профессионалы компании изготовят мебель под заказ, которая будет соответствовать всем Вашим требованиям, будут учтены особенности помещения и предложены оптимальные дизайнерские решения для создания максимально комфортных условий.</p>
-
-            </div>
+{{--                <p style="font-weight: 300;font-family: Lato;font-size: 18px;">--}}
+{{--                    Наша місія – забезпечити Вас якісними, комфортними, привабливими меблями, які будуть створювати затишок у Вашому домі.--}}
+{{--            </div>--}}
         </div>
     </section>
 

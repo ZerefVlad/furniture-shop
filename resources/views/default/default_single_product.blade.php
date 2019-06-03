@@ -129,6 +129,7 @@
                     </div>
                     <div class="container">
                         <form class="content">
+                            <del style="    position: relative;float: right;margin-top: 5%; color: #111111; font-family: Roboto;font-size: 24px;font-weight: 500;">{{$product->getPriceWithoutDiscount()}}грн.</del>
                             <div class="product-price">{{$product->getPriceWithDiscount()}} грн.</div>
 
                             <h2 class="product-title">{{$product->title}}</h2>
