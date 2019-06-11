@@ -3,6 +3,7 @@
     $relatedProducts = $product->getRelatedProducts();
     $imgs = $product->getImages();
 
+
 @endphp
 @extends('layouts.app')
 <style>
@@ -408,7 +409,9 @@
                                                     відгук</h4>
                                                 <form id="add-comment-to-form"
                                                       action="{{route('add_comment',['category' => $category, 'product' => $product])}}"
-                                                      method="post" name="comments-form"></form>
+                                                      method="post" name="comments-form"
+                                                      enctype="multipart/form-data"
+                                                ></form>
                                                 <input type="hidden" form="add-comment-to-form" name="_token"
                                                        value="{{csrf_token()}}">
 
@@ -423,6 +426,9 @@
 
                                                 <input form="add-comment-to-form" type="number" name="rating" min="0"
                                                        max="5" value="5" style="">
+                                                <button id="add-picture-slide" >Додати зображення</button>
+                                                <div class="picture-slides"></div>
+
                                                 <div class="form-group">
                                                     <button form="add-comment-to-form"
                                                             type="submit"
@@ -466,8 +472,13 @@
                                                             <p id="text-{{$comment->id}}"
                                                                class="comment-text"
                                                                style="word-wrap: break-word;">{{$comment->text}}</p>
+{{--                                                            @foreach($comment->picture as $pict)--}}
+{{--                                                                <img src="{{$pict->picture->url}}" alt="" >--}}
+{{--                                                                @endforeach--}}
 
-
+{{--@php(dd($comment))--}}
+                                                            <img alt="" src="{{asset('storage/static_img/blog1.jpg')}}">
+                                                            <img alt="" src="{{asset('storage/static_img/blog3.jpg')}}">
                                                         </div>
                                                     </div>
                                                     @foreach($comment->children as $children)
@@ -520,4 +531,5 @@
 
                 </div>
                 <!-- /CONTENT AREA -->
+
 @endsection

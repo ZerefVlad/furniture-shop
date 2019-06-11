@@ -226,7 +226,7 @@
                                 <input form="product-update-form" type="button" id="attribute-add" value="Add Attribute"/>
                                 @if ($productAttributes)
                                     @foreach($productAttributes as $attribute)
-                                        @if($attribute->attribute->id != 1)
+                                        @if($attribute->attribute->id != 2)
                                             <form id="update-attribute-data-{{$attribute->attribute->id}}"></form>
                                             <label class="col-md-3" style="margin-top:3%" for="">{{$attribute->attribute->title}}</label>
                                             <input class="col-md-3" style="width: 100px"

@@ -28,5 +28,9 @@ $(document).ready(function () {
         })
     });
 
+    $('#add-picture-slide').click(function () {
+        $('.picture-slides').append('<input name="picture[]" type="file" form="add-comment-to-form">');
+    });
+
 
 });

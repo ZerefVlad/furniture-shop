@@ -11,6 +11,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Views as UserView;
 use App\Models\Likes as UserLike;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProductController extends Controller
 {
@@ -98,6 +100,7 @@ class ProductController extends Controller
     {
 
         $product->addComment($request->except(['_token']), $request->user());
+
         return back();
     }
 
@@ -117,6 +120,24 @@ class ProductController extends Controller
         $searchedProducts = Product::search($searchText)->get();
 
         return view('modals.search')->with('products', $searchedProducts);
+    }
+
+    public function addImage(Comment $comment, array $imageData): void
+    {
+        $imageData = array_merge($imageData, [
+            'url' => Storage::url('products/'.$imageData['code'].'/'.$imageData['title'].'.png')
+        ]);
+        $comment->addImage($imageData);
+    }
+
+    public function updateImage(Comment $comment, array $imageData): void
+    {
+        $comment->updateImage($imageData);
+    }
+
+    public function deleteImage(Comment $comment, int $imageId)
+    {
+        $comment->deleteImage($imageId);
     }
 
 

@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\Configurators\ProductIndexConfigurator;
+use http\Env\Request;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Scout\Searchable;
@@ -242,6 +244,7 @@ class Product extends Model
 
     public function addComment(array $data, ?User $user)
     {
+       // dd($data);
 
         $comment = new Comment();
         $comment->text = $data['text'];
@@ -250,6 +253,33 @@ class Product extends Model
         if ($user) {
             $comment->user()->associate($user);
         }
+
+
+//        $imageData = array_merge($imageData, [
+//            'url' => Storage::url('/products/comments/picture/'.$imageData[]->getFilename().'/'.$imageData['title'].'.png')
+//        ]);
+//        $comment->addImage($imageData);
+
+
+        if ($data['picture']) {
+            foreach ($data['picture'] as $key => $picture) {
+
+                $picture->storeAs('/comments/picture/'.$comment->product->code.'/', $picture->getFilename() . '.jpg');
+                $pictureComment[$key]['picture'] = Storage::url('/comments/picture/'.$comment->product->code.'/' . $picture->getFilename() . '.jpg');
+
+            }
+        }
+
+//
+//        foreach ($data['picture'] as $key => $picture) {
+//            $picture->storeAs('/products/comments/picture/', $picture->getFilename() . '.jpg');
+//            $pictureComment[$key]['picture'] = Storage::url('/products/comments/picture/' . $picture->getFilename() . '.jpg');
+//        }
+
+
+
+
+
         $comment->save();
 
         return $comment;

@@ -120,6 +120,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                         <li class="hidden-xs"><a href="{{route('show-posts')}}">Блог</a></li>
                         <li class="hidden-xs"><a href="{{route('contact')}}">Контакти</a></li>
                         <li class="hidden-xs"><a href="{{route('faq')}}">Популярнi питання</a></li>
+                        <li class="hidden-xs"><a href="{{route('comments')}}">Коментарі</a></li>
 
 
                     </ul>
@@ -197,12 +198,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                                         class="fa fa-shopping-cart" style="    color: rgb(2, 187, 219);"></i> <span
                                         id="cart-product-count" class="badge-success"
                                         style="    color: rgb(2, 187, 219);"></span> </i> </a>
-                            <!-- Mobile menu toggle button -->
-{{--                            <a href="#" class="menu-toggle btn btn-theme-transparent"><i class="fa fa-bars"></i></a>--}}
-{{--                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navig" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">--}}
-{{--                                <i class="fas fa-bars"></i>--}}
-{{--                            </button>--}}
-                            <!-- /Mobile menu toggle button -->
+
                             @guest
 
 
@@ -258,10 +254,19 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
 
                 </div>
             </div>
-            <div class="navigation-wrapper" id="navig" style=" height: 80px     ">
+
+            <div class="navigation-wrapper"  style=" height: 80px     ">
+
+                <!-- Mobile menu toggle button -->
+                <a href="#" class="navbar-toggle btn btn-theme-transparent"  data-toggle="collapse" data-target="#navig"><i class="fa fa-bars"></i></a>
+
+                <!-- /Mobile menu toggle button -->
                 <div class="container">
+
+
+
                     <!-- Navigation -->
-                    <nav class="navigation closed clearfix">
+                    <nav class=" navbar navigation closed clearfix" id="navig" role="navigation">
                         <a href="#" class="menu-toggle-close btn"><i class="fa fa-times"></i></a>
                         <ul class="nav sf-menu" style="text-align: center">
 

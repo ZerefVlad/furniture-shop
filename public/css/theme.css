@@ -5592,6 +5592,13 @@ input[type=checkbox] {
     margin-left: 0;
   }
 }
+
+/*@media (max-width: 480px) {*/
+/*  .media img {*/
+/*    display: none;*/
+/*  }*/
+/*}*/
+
 .cart-wrapper .btn {
   /*height: 40px;*/
   border-color: white;

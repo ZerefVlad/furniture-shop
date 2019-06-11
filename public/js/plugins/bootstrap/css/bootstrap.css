@@ -5871,6 +5871,7 @@ button.close {
 .carousel-inner > .active {
   left: 0;
 }
+
 .carousel-inner > .next,
 .carousel-inner > .prev {
   position: absolute;
