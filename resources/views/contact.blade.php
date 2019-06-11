@@ -293,8 +293,7 @@
                     <img class="contact-img" src="{{asset('storage/static_img/prolisku2.jpeg')}}">
                 </div>
             </div>
-            <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2543.665488592401!2d30.79735915125975!3d50.39143407936646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4c2db6cfacba7%3A0x5421d378f9e15781!2z0LLRg9C70LjRhtGPINCR0YDQvtCy0LDRgNGB0YzQutCwLCAyLCDQn9GA0L7Qu9GW0YHQutC4LCDQmtC40ZfQstGB0YzQutCwINC-0LHQuy4sIDA4MzIy!5e0!3m2!1sru!2sua!4v1559282343745!5m2!1sru!2sua" width="1100" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2543.7673312539346!2d30.796983641172037!3d50.38953571828804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4c2dcbd18141d%3A0x7ee663516d19788b!2zRk9aWlkg0J_RgNC-0LvRltGB0LrQuA!5e0!3m2!1sru!2sua!4v1560253571022!5m2!1sru!2sua" width="1100" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>        </div>
     </section>
     <!-- PAGE -->
 

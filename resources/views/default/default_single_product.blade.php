@@ -366,16 +366,59 @@
 
                                         <div style="color: #333333;font-family: Lato;font-size: 18px;font-weight: 700;letter-spacing: -0.63px;line-height: 45px;">
                                             <div style="padding: 35px;">
+                                                <table style="width: 100%">
+                                                    <thead>
+
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr style="    border: solid 1px #e9e9e9; background-color: #0f0f0f; color: #FFFFFF; font-weight: 600" >
                                                 @foreach($attributes as $attribute)
                                                     @if($attribute->attribute->id != 1)
-                                                        <div>
-                                                            <p class="col-md-3">{{$attribute->attribute->title}}
-                                                                : </p>
-                                                            <p class="col-md-3">{{$attribute->value}}</p>
-                                                        </div>
+
+
+                                                                <th style="    border: solid 1px #e9e9e9;text-align: center;    padding: 10px 0;">
+                                                                    {{$attribute->attribute->title}}
+                                                                </th>
+
+
+
+
+
+
+
+{{--                                                        <div>--}}
+{{--                                                            <p class="col-md-3">{{$attribute->attribute->title}}--}}
+{{--                                                                : </p>--}}
+{{--                                                            <p class="col-md-3">{{$attribute->value}}</p>--}}
+{{--                                                        </div>--}}
                                                     @endif
                                                 @endforeach
+</tr>
+                                                    <tr>
+                                                        @foreach($attributes as $attribute)
+                                                            @if($attribute->attribute->id != 1)
 
+
+
+                                                                <td style="    border: solid 1px #e9e9e9;text-align: center;    padding: 10px 0;">
+                                                                    {{$attribute->value}}
+                                                                </td>
+
+
+
+
+
+
+                                                                {{--                                                        <div>--}}
+                                                                {{--                                                            <p class="col-md-3">{{$attribute->attribute->title}}--}}
+                                                                {{--                                                                : </p>--}}
+                                                                {{--                                                            <p class="col-md-3">{{$attribute->value}}</p>--}}
+                                                                {{--                                                        </div>--}}
+                                                            @endif
+                                                        @endforeach
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
 
                                         </div>
