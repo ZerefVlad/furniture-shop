@@ -249,16 +249,38 @@
 
                                         <div style="color: #333333;font-family: Lato;font-size: 18px;font-weight: 700;letter-spacing: -0.63px;line-height: 45px;">
                                             <div style="padding: 35px;">
-                                                @foreach($attributes as $attribute)
-                                                    @if($attribute->attribute->id != 1)
-                                                        <div>
-                                                            <p class="col-md-3">{{$attribute->attribute->title}}
-                                                                : </p>
-                                                            <p class="col-md-3">{{$attribute->value}}</p>
-                                                        </div>
-                                                    @endif
-                                                @endforeach
+                                                <table style="width: 100%">
+                                                    <thead>
 
+                                                    </thead>
+                                                    <tbody>
+
+                                                    @foreach($attributes as $attribute)
+                                                        @if($attribute->attribute->id != 1)
+                                                            <tr>
+
+                                                                <th style="       border: solid 1px #e9e9e9; background-color: #0f0f0f; color: #FFFFFF; font-weight: 600; text-align: center;width: 40%">
+                                                                    {{$attribute->attribute->title}}
+                                                                </th>
+
+                                                                <td style="    border: solid 1px #e9e9e9;text-align: center;    padding: 10px 0;">
+                                                                    {{$attribute->value}}
+                                                                </td>
+
+
+
+
+
+                                                                {{--                                                        <div>--}}
+                                                                {{--                                                            <p class="col-md-3">{{$attribute->attribute->title}}--}}
+                                                                {{--                                                                : </p>--}}
+                                                                {{--                                                            <p class="col-md-3">{{$attribute->value}}</p>--}}
+                                                            </tr>       {{--                                                        </div>--}}
+                                                        @endif
+                                                    @endforeach
+
+                                                    </tbody>
+                                                </table>
                                             </div>
 
                                         </div>
@@ -288,7 +310,39 @@
 
 
                                         <div class="comments">
+                                            <div class="comments-form">
+                                                <h4 class="block-title" style="color: rgb(2, 187, 219)">Залишити відгук</h4>
+                                                <form id="add-comment-to-form"
+                                                      action="{{route('add_comment',['category' => $category, 'product' => $product])}}"
+                                                      method="post" name="comments-form" ></form>
+                                                <input type="hidden" form="add-comment-to-form" name="_token"
+                                                       value="{{csrf_token()}}">
+
+                                                <div class="form-group"><textarea form="add-comment-to-form" name="text"
+                                                                                  placeholder="Ваш відгук"
+                                                                                  class="form-control"
+                                                                                  title="comments-form-comments"
+
+                                                                                  rows="6" style="background-color:#AFEEEE;">Введіть відгук</textarea>
+                                                </div>
+
+                                                <input form="add-comment-to-form" type="number" name="rating" min="0"
+                                                       max="5" value="5" style="">
+                                                <button id="add-picture-slide">Додати зображення</button>
+                                                <div class="picture-slides"></div>
+
+                                                <div class="form-group">
+                                                    <button form="add-comment-to-form"
+                                                            type="submit"
+                                                            class="btn btn-theme btn-theme-transparent btn-icon-left"
+                                                            id="submit"><i class="fa fa-comment"></i> Надiслати
+                                                    </button>
+                                                </div>
+                                                </form>
+                                            </div>
+
                                             @foreach($product->comments as $comment)
+                                                @if($comment->isParent())
                                                 <div class="media comment" id="comment-{{$comment->id}}">
 
                                                     <div class="media-body">
@@ -320,42 +374,60 @@
                                                         <p id="text-{{$comment->id}}"
                                                            class="comment-text"
                                                            style="word-wrap: break-word;">{{$comment->text}}</p>
+                                                            @foreach($comment->getPictures() as $img)
+                                                                <img style="max-width:300px; height:200px;margin-left: 10px" src="{{$img->url}}" alt="">
+                                                            @endforeach
 
 
                                                     </div>
+
+                                                    @foreach($comment->children as $children)
+                                                        <div class="media comment" id="comment-{{$comment->id}}"
+                                                             style="width: 80%">
+
+                                                            <div class="media-body">
+                                                                <h4>Вiдповiдь Адмiнiстратора</h4>
+
+                                                                @if ($children->user && auth()->user() && ($children->user->id === auth()->user()->id || auth()->user()->id === 1))
+                                                                    <button data-id="{{$children->id}}"
+                                                                            data-category-name="{{$children->title}}"
+                                                                            data-product-name="{{$children->title}}"
+                                                                            form="update-comment-to-form"
+                                                                            class="comment-update btn btn-success"
+                                                                    >
+                                                                        Редактировать коммент
+                                                                    </button>
+
+                                                                    <button data-id="{{$children->id}}"
+
+                                                                            form="delete-comment-to-form"
+                                                                            class="comment-delete btn btn-success"
+                                                                    >
+                                                                        Удалить коммент
+                                                                    </button>
+                                                                @endif
+                                                                <p class="comment-meta">
+                                                            <span class="comment-author">
+                                                                <a href="#">{{$children->user ? $children->user->name : "Guest"}}</a>   </span>
+                                                                <p>{{$children->rating}}</p>
+                                                                </p>
+
+                                                                <p id="text-{{$children->id}}"
+                                                                   class="comment-text"
+                                                                   style="word-wrap: break-word;">{{$children->text}}</p>
+
+
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                    @endif
                                                 </div>
                                             @endforeach
                                         </div>
 
 
 
-                                        <div class="comments-form">
-                                            <h4 class="block-title" style="color: rgb(2, 187, 219)">Залишити відгук</h4>
-                                            <form id="add-comment-to-form"
-                                                  action="{{route('add_comment',['category' => $category, 'product' => $product])}}"
-                                                  method="post" name="comments-form" ></form>
-                                            <input type="hidden" form="add-comment-to-form" name="_token"
-                                                   value="{{csrf_token()}}">
 
-                                            <div class="form-group"><textarea form="add-comment-to-form" name="text"
-                                                                              placeholder="Ваш відгук"
-                                                                              class="form-control"
-                                                                              title="comments-form-comments"
-
-                                                                              rows="6" style="background-color:#AFEEEE;">Введіть відгук</textarea>
-                                            </div>
-
-                                            <input form="add-comment-to-form" type="number" name="rating" min="0"
-                                                   max="5" value="5" style="">
-                                            <div class="form-group">
-                                                <button form="add-comment-to-form"
-                                                        type="submit"
-                                                        class="btn btn-theme btn-theme-transparent btn-icon-left"
-                                                        id="submit"><i class="fa fa-comment"></i> Надiслати
-                                                </button>
-                                            </div>
-                                            </form>
-                                        </div>
                                         <!-- // -->
 
                                     </div>

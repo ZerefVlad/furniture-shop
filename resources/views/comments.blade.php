@@ -11,8 +11,10 @@ $products = \App\Models\Product::all();
     @if($comment->isParent())
 
         <div class="media comment" id="comment-{{$comment->id}}">
-
-            <div class="media-body">
+            <a href="{{route('show_single_product', [
+            'product' => $comment->product,
+            'category' => $comment->product->categories->first()
+            ])}}">{{$comment->product->title}}</a>            <div class="media-body">
                 @if ($comment->user && auth()->user() && ($comment->user->id === auth()->user()->id || auth()->user()->id === 1))
                     <button data-id="{{$comment->id}}"
                             data-category-name="{{$category->title}}"
@@ -40,13 +42,10 @@ $products = \App\Models\Product::all();
                 <p id="text-{{$comment->id}}"
                    class="comment-text"
                    style="word-wrap: break-word;">{{$comment->text}}</p>
-                {{--                                                            @foreach($comment->picture as $pict)--}}
-                {{--                                                                <img src="{{$pict->picture->url}}" alt="" >--}}
-                {{--                                                                @endforeach--}}
 
-                {{--@php(dd($comment))--}}
-                <img alt="" src="{{asset('storage/static_img/blog1.jpg')}}">
-                <img alt="" src="{{asset('storage/static_img/blog3.jpg')}}">
+                    @foreach($comment->getPictures() as $img)
+                        <img style="max-width^300px; height:300px;margin-left: 10px" src="{{$img->url}}" alt="">
+                    @endforeach
             </div>
         </div>
         @foreach($comment->children as $children)

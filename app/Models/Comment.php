@@ -74,6 +74,13 @@ class Comment extends Model
         return false;
     }
 
+    public function getPictures()
+    {
+        return Image::where('model', __CLASS__)
+            ->where('model_id', $this->id)
+            ->get();
+    }
+
     public function parent()
     {
         return $this->belongsTo(Comment::class, 'parent_id');

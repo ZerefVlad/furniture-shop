@@ -254,33 +254,22 @@ class Product extends Model
             $comment->user()->associate($user);
         }
 
+        $comment->save();
 
-//        $imageData = array_merge($imageData, [
-//            'url' => Storage::url('/products/comments/picture/'.$imageData[]->getFilename().'/'.$imageData['title'].'.png')
-//        ]);
-//        $comment->addImage($imageData);
-
-
-        if ($data['picture']) {
+        if (isset($data['picture'])) {
             foreach ($data['picture'] as $key => $picture) {
-
                 $picture->storeAs('/comments/picture/'.$comment->product->code.'/', $picture->getFilename() . '.jpg');
-                $pictureComment[$key]['picture'] = Storage::url('/comments/picture/'.$comment->product->code.'/' . $picture->getFilename() . '.jpg');
+                $url = Storage::url('/comments/picture/'.$comment->product->code.'/' . $picture->getFilename() . '.jpg');
 
+                Image::create([
+                    'model' => Comment::class,
+                    'model_id' => $comment->id,
+                    'title' => '',
+                    'alt' => '',
+                    'url' => $url,
+                ]);
             }
         }
-
-//
-//        foreach ($data['picture'] as $key => $picture) {
-//            $picture->storeAs('/products/comments/picture/', $picture->getFilename() . '.jpg');
-//            $pictureComment[$key]['picture'] = Storage::url('/products/comments/picture/' . $picture->getFilename() . '.jpg');
-//        }
-
-
-
-
-
-        $comment->save();
 
         return $comment;
     }
