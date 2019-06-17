@@ -23,4 +23,6 @@ $(document).ready(function () {
     $('.pre').click(function (e) {
         previewSlide();
     });
+
+
 });

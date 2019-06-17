@@ -6,6 +6,7 @@
 
 @endphp
 @extends('layouts.app')
+
 <style>
     .select_color {
         border: solid 1px #111111;
@@ -84,47 +85,133 @@
 
                         <div class="container full-width">
 
-                            <div class="main-slider">
-                                <span class="pre" style="    position: absolute;
-        top: 265px;
-    left: 150px;
-    font-size: 80px;
-    color: rgb(2, 187, 219);"><i class="fa fa-angle-left"></i></span>
-                                <span class="nex"
-                                      style="    position: absolute;top: 265px;right: 130px;font-size: 80px;color: rgb(2, 187, 219);"><i
-                                            class="fa fa-angle-right"></i></span>
+{{--                            <div class="main-slider">--}}
+{{--                                <span class="pre" style="    position: absolute;--}}
+{{--        top: 265px;--}}
+{{--    left: 150px;--}}
+{{--    font-size: 80px;--}}
+{{--    color: rgb(2, 187, 219);"><i class="fa fa-angle-left"></i></span>--}}
+{{--                                <span class="nex"--}}
+{{--                                      style="    position: absolute;top: 265px;right: 130px;font-size: 80px;color: rgb(2, 187, 219);"><i--}}
+{{--                                            class="fa fa-angle-right"></i></span>--}}
 
-                                <ul id="slides">
-
-
-                                    <li class="slide showing" style="text-align: center">
-                                        <div class="container">
-                                            <img style="max-width: 100%; max-height: 500px"
-                                                 src="{{$product->getMainProductUrl()}}">
-                                        </div>
+{{--                                <ul id="slides">--}}
 
 
-                                    </li>
-                                    @foreach($imgs as $img)
+{{--                                    <li class="slide showing" style="text-align: center">--}}
+{{--                                        <div class="container">--}}
+{{--                                            <img style="max-width: 100%; max-height: 500px"--}}
+{{--                                                 src="{{$product->getMainProductUrl()}}">--}}
+{{--                                        </div>--}}
 
 
-                                        @if($img->url != $product->getMainProductUrl())
-                                            <li class="slide " style="text-align: center">
-                                                <div class="container">
-                                                    <img style="max-width: 100%; max-height: 500px;"
-                                                         src="{{$img->url}}">
-                                                </div>
+{{--                                    </li>--}}
+{{--                                    @foreach($imgs as $img)--}}
 
 
-                                            </li>
-                                        @endif
+{{--                                        @if($img->url != $product->getMainProductUrl())--}}
+{{--                                            <li class="slide " style="text-align: center">--}}
+{{--                                                <div class="container">--}}
+{{--                                                    <img style="max-width: 100%; max-height: 500px;"--}}
+{{--                                                         src="{{$img->url}}">--}}
+{{--                                                </div>--}}
 
 
-                                    @endforeach
+{{--                                            </li>--}}
+{{--                                        @endif--}}
 
-                                </ul>
+
+{{--                                    @endforeach--}}
+
+{{--                                </ul>--}}
+{{--                            </div>--}}
+
+                            <div class="w3-content w3-display-container" style="max-width:800px">
+
+                                @foreach($imgs as $img)
+
+                                    <div class="mySlides" style="text-align: center; height: 500px">
+
+                                        <img style="max-width: 100%; max-height: 500px;"
+                                             src="{{$img->url}}">
+
+                                    </div>
+
+
+                                @endforeach
+                                <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle"
+                                     style="width:100%">
+                                    <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+                                    <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+                                    @for($i = 1; $i <= $imgs->count(); $i++)
+                                        <span class="w3-badge demo w3-border w3-transparent w3-hover-white"
+                                              onclick="currentDiv({{$i}})"></span>
+
+                                    @endfor
+
+                                </div>
                             </div>
                         </div>
+
+
+{{--                        <div class="w3-content w3-display-container" style="max-width:800px">--}}
+
+{{--                            @foreach($imgs as $img)--}}
+
+{{--                                <div class="mySlides" style="text-align: center">--}}
+
+{{--                                    <img style="max-width: 100%; height: 500px;"--}}
+{{--                                         src="{{$img->url}}">--}}
+
+{{--                                </div>--}}
+
+
+{{--                            @endforeach--}}
+{{--                            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle"--}}
+{{--                                 style="width:100%">--}}
+{{--                                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>--}}
+{{--                                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>--}}
+{{--                                @for($i = 1; $i <= $imgs->count(); $i++)--}}
+{{--                                    <span class="w3-badge demo w3-border w3-transparent w3-hover-white"--}}
+{{--                                          onclick="currentDiv({{$i}})"></span>--}}
+
+{{--                                @endfor--}}
+
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+                        <script>
+                            var slideIndex = 1;
+                            showDivs(slideIndex);
+
+                            function plusDivs(n) {
+                                showDivs(slideIndex += n);
+                            }
+
+                            function currentDiv(n) {
+                                showDivs(slideIndex = n);
+                            }
+
+                            function showDivs(n) {
+                                var i;
+                                var x = document.getElementsByClassName("mySlides");
+                                var dots = document.getElementsByClassName("demo");
+                                if (n > x.length) {
+                                    slideIndex = 1
+                                }
+                                if (n < 1) {
+                                    slideIndex = x.length
+                                }
+                                for (i = 0; i < x.length; i++) {
+                                    x[i].style.display = "none";
+                                }
+                                for (i = 0; i < dots.length; i++) {
+                                    dots[i].className = dots[i].className.replace(" w3-white", "");
+                                }
+                                x[slideIndex - 1].style.display = "block";
+                                dots[slideIndex - 1].className += " w3-white";
+                            }
+                        </script>
 
 
                     </div>
@@ -373,11 +460,11 @@
                                                 </thead>
                                                 <tbody>
 
-                                                    @foreach($attributes as $attribute)
-                                                        @if($attribute->attribute->id != 1)
-                                                <tr>
+                                                @foreach($attributes as $attribute)
+                                                    @if($attribute->attribute->id != 1)
+                                                        <tr>
 
-                                                            <th style="       border: solid 1px #e9e9e9; background-color: #0f0f0f; color: #FFFFFF; font-weight: 600; text-align: center;width: 40%">
+                                                            <th style="       border: solid 1px #e9e9e9; background-color: rgb(2, 187, 219); color: #FFFFFF; font-weight: 600; text-align: center;width: 40%">
                                                                 {{$attribute->attribute->title}}
                                                             </th>
 
@@ -386,16 +473,13 @@
                                                             </td>
 
 
-
-
-
                                                             {{--                                                        <div>--}}
                                                             {{--                                                            <p class="col-md-3">{{$attribute->attribute->title}}--}}
                                                             {{--                                                                : </p>--}}
                                                             {{--                                                            <p class="col-md-3">{{$attribute->value}}</p>--}}
-                                                </tr>       {{--                                                        </div>--}}
-                                                        @endif
-                                                    @endforeach
+                                                        </tr>       {{--                                                        </div>--}}
+                                                    @endif
+                                                @endforeach
 
                                                 </tbody>
                                             </table>
@@ -497,7 +581,8 @@
                                                            style="word-wrap: break-word;">{{$comment->text}}</p>
 
                                                         @foreach($comment->getPictures() as $img)
-                                                                <img style="max-width:300px; height:200px;margin-left: 10px" src="{{$img->url}}" alt="">
+                                                            <img style="max-width:300px; height:200px;margin-left: 10px"
+                                                                 src="{{$img->url}}" alt="">
                                                         @endforeach
                                                     </div>
                                                 </div>

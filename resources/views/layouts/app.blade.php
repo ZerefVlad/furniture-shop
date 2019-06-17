@@ -498,11 +498,7 @@ use App\Models\Category;
                         <div class="col-md-3">
                             <div class="widget">
                                 <h4 class="widget-title">Про нас</h4>
-                                <p>ULorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sollicitudin
-                                    ultrices
-                                    suscipit. Sed commodo vel mauris vel dapibus. Lorem ipsum dolor sit amet,
-                                    consectetur
-                                    adipiscing elit.
+                                <p>Представляємо Вашій увазі шафи-купе та кухні на замовлення, а також широкий асортимент диванів, столів, ліжок, матраців та всього необхідного для створення затишку у Вашому домі.
 
                                    </p>
                                 <ul class="social-icons">

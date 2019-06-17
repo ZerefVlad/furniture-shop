@@ -84,50 +84,115 @@
 
                         <div class="container full-width">
 
-                            <div class="main-slider">
-                                <span class="pre" style="    position: absolute;
-        top: 265px;
-    left: 150px;
-    font-size: 80px;
-    color: rgb(2, 187, 219);"><i class="fa fa-angle-left"></i></span>
-                                <span class="nex" style="    position: absolute;top: 265px;right: 130px;font-size: 80px;color: rgb(2, 187, 219);"><i class="fa fa-angle-right"></i></span>
+{{--                            <div class="main-slider">--}}
+{{--                                <span class="pre" style="    position: absolute;--}}
+{{--        top: 265px;--}}
+{{--    left: 150px;--}}
+{{--    font-size: 80px;--}}
+{{--    color: rgb(2, 187, 219);"><i class="fa fa-angle-left"></i></span>--}}
+{{--                                <span class="nex" style="    position: absolute;top: 265px;right: 130px;font-size: 80px;color: rgb(2, 187, 219);"><i class="fa fa-angle-right"></i></span>--}}
 
-                                <ul id="slides">
-
-
-                                    <li class="slide showing" style="text-align: center">
-                                        <div class="container">
-                                            <img style="max-width: 100%; max-height: 500px"
-                                                 src="{{$product->getMainProductUrl()}}">
-                                        </div>
+{{--                                <ul id="slides">--}}
 
 
-                                    </li>
-                                    @foreach($imgs as $img)
+{{--                                    <li class="slide showing" style="text-align: center">--}}
+{{--                                        <div class="container">--}}
+{{--                                            <img style="max-width: 100%; max-height: 500px"--}}
+{{--                                                 src="{{$product->getMainProductUrl()}}">--}}
+{{--                                        </div>--}}
 
 
-                                        @if($img->url != $product->getMainProductUrl())
-                                            <li class="slide " style="text-align: center">
-                                                <div class="container">
-                                                    <img style="max-width: 100%; max-height: 500px;"
-                                                         src="{{$img->url}}">
-                                                </div>
+{{--                                    </li>--}}
+{{--                                    @foreach($imgs as $img)--}}
 
 
-                                            </li>
-                                        @endif
+{{--                                        @if($img->url != $product->getMainProductUrl())--}}
+{{--                                            <li class="slide " style="text-align: center">--}}
+{{--                                                <div class="container">--}}
+{{--                                                    <img style="max-width: 100%; max-height: 500px;"--}}
+{{--                                                         src="{{$img->url}}">--}}
+{{--                                                </div>--}}
 
 
-                                    @endforeach
-                                    {{--                    <li class="slide">Slide 3</li>--}}
-                                    {{--                    <li class="slide">Slide 4</li>--}}
-                                    {{--                    <li class="slide">Slide 5</li>--}}
-                                </ul>
+{{--                                            </li>--}}
+{{--                                        @endif--}}
+
+
+{{--                                    @endforeach--}}
+{{--                                    --}}{{--                    <li class="slide">Slide 3</li>--}}
+{{--                                    --}}{{--                    <li class="slide">Slide 4</li>--}}
+{{--                                    --}}{{--                    <li class="slide">Slide 5</li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+
+                            <div class="w3-content w3-display-container" style="max-width:800px">
+
+                                @foreach($imgs as $img)
+
+                                    <div class="mySlides" style="text-align: center; height: 500px">
+
+                                        <img style="max-width: 100%; max-height: 500px;"
+                                             src="{{$img->url}}">
+
+                                    </div>
+
+
+                                @endforeach
+                                <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle"
+                                     style="width:100%">
+                                    <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+                                    <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+                                    @for($i = 1; $i <= $imgs->count(); $i++)
+                                        <span class="w3-badge demo w3-border w3-transparent w3-hover-white"
+                                              onclick="currentDiv({{$i}})"></span>
+
+                                    @endfor
+
+                                </div>
                             </div>
                         </div>
 
 
+                        <script>
+                            var slideIndex = 1;
+                            showDivs(slideIndex);
+
+                            function plusDivs(n) {
+                                showDivs(slideIndex += n);
+                            }
+
+                            function currentDiv(n) {
+                                showDivs(slideIndex = n);
+                            }
+
+                            function showDivs(n) {
+                                var i;
+                                var x = document.getElementsByClassName("mySlides");
+                                var dots = document.getElementsByClassName("demo");
+                                if (n > x.length) {
+                                    slideIndex = 1
+                                }
+                                if (n < 1) {
+                                    slideIndex = x.length
+                                }
+                                for (i = 0; i < x.length; i++) {
+                                    x[i].style.display = "none";
+                                }
+                                for (i = 0; i < dots.length; i++) {
+                                    dots[i].className = dots[i].className.replace(" w3-white", "");
+                                }
+                                x[slideIndex - 1].style.display = "block";
+                                dots[slideIndex - 1].className += " w3-white";
+                            }
+                        </script>
+
                     </div>
+
+
+
+
                     <div class="container">
                         <form class="content">
                             <h3 style="    position: relative;float: right;margin-top: 5%; color: #111111; font-family: Roboto;font-size: 24px;font-weight: 500;">/пог. м</h3>
@@ -259,7 +324,7 @@
                                                         @if($attribute->attribute->id != 1)
                                                             <tr>
 
-                                                                <th style="       border: solid 1px #e9e9e9; background-color: #0f0f0f; color: #FFFFFF; font-weight: 600; text-align: center;width: 40%">
+                                                                <th style="       border: solid 1px #e9e9e9; background-color: rgb(2, 187, 219); color: #FFFFFF; font-weight: 600; text-align: center;width: 40%">
                                                                     {{$attribute->attribute->title}}
                                                                 </th>
 
@@ -367,7 +432,7 @@
                                                         <p class="comment-meta">
                                                             <span class="comment-author">
                                                                 <a href="#">{{$comment->user ? $comment->user->name : "Guest"}}</a>
-</span>
+                                                            </span>
                                                         <p>{{$comment->rating}}</p>
                                                         </p>
 

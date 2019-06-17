@@ -5,9 +5,9 @@
     <!-- BREADCRUMBS -->
     <section class="page-section breadcrumbs">
         <div class="container">
-            <div class="page-header">
-                <h1 style="text-transform: none">Про нас</h1>
-            </div>
+
+                <h1 style="text-transform: none">Breston – твій надійний партнер у світі меблів!</h1>
+
             <ul class="breadcrumb"></ul>
         </div>
     </section>
@@ -17,10 +17,41 @@
     <section class="page-section color">
         <div class="container">
 
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>
+            <p class="lead">
+                Представляємо Вашій увазі шафи-купе та кухні на замовлення, а також широкий асортимент диванів, столів, ліжок, матраців та всього необхідного для створення затишку у Вашому домі.
+            </p>
 
+            <h1 style="text-transform: none">Чому Вам буде вигідно довіритися саме нашій компанії?</h1>
 
+            <p class="lead">
+                Ми – команда професіоналів, яка працює вже більше 10 років. Розпочавши як невеличка компанія ми поступово зайняли достойну нішу на ринку меблів України. За цей час нами було реалізовано понад 50 000 одиниць товару, число задоволених покупців постійно зростає.
+            </p>
+            <p class="lead">
+                У 2018 році компанія одержала офіційно зареєстроване Свідоцтво на знак для товарів і послуг, що затверджує Торгову марку «Breston».
+            </p>
 
+            <h1 style="text-transform: none">Наші переваги:</h1>
+
+            <ul class="lead" >
+                <li >
+                    Команда висококваліфікованих працівників, яка із задоволенням проконсультує та допоможе Вам у здійсненні вибору, буде з Вами на зв’язку протягом всього періоду виготовлення продукції та після його завершення
+                </li>
+                <li>
+                    Індивідуальний підхід до кожного нашого клієнта
+                </li>
+                <li>
+                    Власне виробництво корпусних меблів, що дозволяє встановлювати мінімальні ціни на нашу продукцію, при цьому забезпечивши її високу якість
+                </li>
+                <li>
+                    Співробітництво з фабриками м’яких та дерев’яних меблів по всій Україні, що пропонує клієнтам широкий асортимент товарів на будь-який смак
+                </li>
+                <li>
+                    Власний автопарк, який гарантує безпечну доставку продукції до Вашого дому
+                </li>
+                <li>
+                    Гарантія на товари до 24 місяців
+                </li>
+            </ul>
 
         </div>
     </section>

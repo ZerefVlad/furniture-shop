@@ -5599,6 +5599,11 @@ input[type=checkbox] {
 /*  }*/
 /*}*/
 
+.lead li:before {
+  content:"\2714\0020";
+  color: #02bbdb;
+}
+
 .cart-wrapper .btn {
   /*height: 40px;*/
   border-color: white;
