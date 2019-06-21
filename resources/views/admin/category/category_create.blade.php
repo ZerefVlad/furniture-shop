@@ -15,7 +15,7 @@ $image_url = $image ? $image->url : '#';
 
 
     <div class="row users-data">
-        <div class="col-12 col-md-12 user-item">
+        <div class="container">
             <h1 style="    font-family: Montserrat;    font-size: 22px;    font-weight: 700;    margin: 30px;    text-align: center;">
                 Введите категорию
             </h1>

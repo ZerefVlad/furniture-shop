@@ -33,7 +33,7 @@
 
 
                 <div class="row users-data">
-                    <div class="col-12 col-md-12 user-item">
+                    <div class="container">
                         <div class="users-info">
 
                             <ul class="data-list static-list">

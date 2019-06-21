@@ -195,7 +195,7 @@
 
                     <div class="container">
                         <form class="content">
-                            <h3 style="    position: relative;float: right;margin-top: 5%; color: #111111; font-family: Roboto;font-size: 24px;font-weight: 500;">/пог. м</h3>
+                            <h3 style="    position: relative;float: right;margin-top: 5%; color: #111111; font-family: Roboto;font-size: 24px;font-weight: 500;">/від пог. м</h3>
                             <div class="product-price">{{$product->getPriceWithDiscount()}} грн.</div>
 
                             <h2 class="product-title">{{$product->title}}</h2>

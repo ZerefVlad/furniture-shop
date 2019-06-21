@@ -6,6 +6,9 @@ $products = \App\Models\Product::all();
 
 @section('content')
     <section class="container">
+        <div style="height: 400px; text-align: center">
+            <img height="100%"  src="{{asset('storage/static_img/comment.jpeg')}}">
+        </div>
 @foreach($products as $product)
 @foreach($product->comments as $comment)
     @if($comment->isParent())

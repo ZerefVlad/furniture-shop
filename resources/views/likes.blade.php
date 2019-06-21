@@ -57,9 +57,9 @@
 
                                         <div class="price">
                                             @if($likeProduct->product->categories->first()->type != 'default')
-                                                <ins>{{$likeProduct->product->getPriceWithDiscount()}} грн./пог. м</ins>
+                                                <ins>{{$likeProduct->product->getPriceWithDiscount()}} грн./від пог. м</ins>
                                                 @if($likeProduct->discount->value != '0')
-                                                    <del>{{$likeProduct->getPriceWithoutDiscount()}}грн./пог. м</del>
+                                                    <del>{{$likeProduct->getPriceWithoutDiscount()}}грн./від пог. м</del>
                                                 @endif
                                             @else
                                                 <ins>{{$likeProduct->product->getPriceWithDiscount()}} грн.</ins>

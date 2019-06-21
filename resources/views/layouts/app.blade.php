@@ -423,9 +423,9 @@ use App\Models\Category;
 
                                             <div class="price">
                                                 @if($view->product->categories->first()->type != 'default')
-                                                    <ins>{{$view->product->getPriceWithDiscount()}} грн./пог. м</ins>
+                                                    <ins>{{$view->product->getPriceWithDiscount()}} грн./від пог. м</ins>
                                                     @if($view->product->discount->value != '0')
-                                                        <del>{{$view->product->getPriceWithoutDiscount()}} грн./пог. м</del>
+                                                        <del>{{$view->product->getPriceWithoutDiscount()}} грн./від пог. м</del>
                                                     @endif
                                                 @else
                                                     <ins>{{$view->product->getPriceWithDiscount()}} грн.</ins>

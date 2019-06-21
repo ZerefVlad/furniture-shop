@@ -56,9 +56,9 @@
 
 
                                         <div class="price">
-                                            <ins>{{$product->getPriceWithDiscount()}} грн./пог. м</ins>
+                                            <ins>{{$product->getPriceWithDiscount()}} грн./від пог. м</ins>
                                             @if($product->discount->value != '0')
-                                                <del>{{$product->getPriceWithoutDiscount()}}грн./пог. м</del>
+                                                <del>{{$product->getPriceWithoutDiscount()}}грн./від пог. м</del>
                                             @endif
                                         </div>
                                         <div class="buttons">

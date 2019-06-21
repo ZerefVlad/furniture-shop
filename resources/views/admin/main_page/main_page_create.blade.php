@@ -37,7 +37,7 @@
 {{--<input type="submit" form="block3-form" value="Block 3">--}}
 
 <div class="row users-data">
-    <div class="col-12 col-md-5 user-item">
+    <div class="container">
         <div class="users-info">
             <h1 style="    font-family: Montserrat;    font-size: 22px;    font-weight: 700;    margin: 30px;    text-align: center;">
                 Введiть зображення та вiдео для слайдеру
