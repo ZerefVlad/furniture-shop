@@ -5592,7 +5592,9 @@ input[type=checkbox] {
     margin-left: 0;
   }
 }
-
+.italic{
+  font-style: italic;
+}
 /*@media (max-width: 480px) {*/
 /*  .media img {*/
 /*    display: none;*/
@@ -6797,6 +6799,7 @@ input[type=checkbox] {
 .div-cell {
   height: 100% !important;
   display: table !important;
+  width: 50%;
 }
 .div-cell {
   display: table-cell !important;

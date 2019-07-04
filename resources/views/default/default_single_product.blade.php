@@ -336,8 +336,9 @@
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#item-description" data-toggle="tab">Опис товару</a>
                                 </li>
-                                <li><a href="#complect" data-toggle="tab">Додаткові товари</a></li>
                                 <li><a href="#parametr" data-toggle="tab">Параметри</a></li>
+
+                                <li><a href="#complect" data-toggle="tab">Додаткові товари</a></li>
                                 <li><a href="#video" data-toggle="tab">Відео</a></li>
                                 <li><a href="#reviews" data-toggle="tab">Відгуки </a></li>
                             </ul>

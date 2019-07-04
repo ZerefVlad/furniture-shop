@@ -977,7 +977,7 @@ a {
 .w3-display-bottommiddle {
     position: absolute;
     left: 50%;
-    bottom: 0;
+    bottom: 0%;
     transform: translate(-50%, 0%);
     -ms-transform: translate(-50%, 0%)
 }
@@ -1788,5 +1788,7 @@ a {
 .w3-badge {
     height: 13px;
     width: 13px;
-    padding: 0
+    padding: 0;
+    margin-top: 35%;
+
 }
