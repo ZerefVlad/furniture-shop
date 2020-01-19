@@ -532,6 +532,7 @@ use App\Models\Category;
                                     <li class="hidden-xs"><a href="{{route('show-posts')}}">Блог</a></li>
                                     <li class="hidden-xs"><a href="{{route('contact')}}">Контакти</a></li>
                                     <li class="hidden-xs"><a href="{{route('faq')}}">Популярнi питання</a></li>
+                                    <li class="hidden-xs"><a href="{{route('fotogalery')}}">Фотогалерея</a></li>
                                 </ul>
                             </div>
                         </div>

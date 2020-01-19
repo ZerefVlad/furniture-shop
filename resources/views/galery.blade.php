@@ -29,14 +29,18 @@
                                 <div class="thumbnail no-border no-padding">
                                     <div class="media"
                                          style="width: 270px;height: 330px;display: table-cell;vertical-align: middle; text-align: center;">
-{{----}}
-                                            <img style="max-width: 270px; max-height: 330px; height: 100%;"
+                                        @if(count($g->children)>0)
+                                            <a href="{{route('element_fotogalery', [ 'galery' => $g ])}}">
+                                            <img style="max-width: 250px; max-height: 280px; height: 100%;"
                                                  src="{{$g->getImage()->first() ? $g->getImage()->first()->url : '#'}}"
                                                  alt=""/>
-                                            <span class="icon-view">
-                                                        <strong><i class="fa fa-eye"></i></strong>
-                                                </span>
-{{--                                        </a>--}}
+                                            </a>
+                                        @else
+                                            <img style="max-width: 250px; max-height: 280px; height: 100%;"
+                                                 src="{{$g->getImage()->first() ? $g->getImage()->first()->url : '#'}}"
+                                                 alt=""/>
+                                        @endif
+
                                     </div>
                                     <div class="caption text-center">
                                         @if(count($g->children)>0)
