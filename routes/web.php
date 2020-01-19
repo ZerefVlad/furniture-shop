@@ -25,6 +25,9 @@ Route::group(['prefix' => 'category'], function () {
     Route::get('/{category}/{product}/{comment}/update', 'ProductController@updateComment')->name('update_comment');
 });
 
+Route::get('/fotogalery', 'GaleryController@showGalery')->name('fotogalery');
+Route::get('/fotogalery/{galery}', 'GaleryController@showElementGalery')->name('element_fotogalery');
+
 Route::get('/delete-likes/{like}', 'ProductController@deleteLike')->name('delete_like');
 Route::get('/likes', 'ProductController@showLike')->name('show-likes');
 
@@ -78,6 +81,17 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/edit-category/{category}', 'Admin\CategoryController@editCategory')->name('category_edit');
         Route::get('/delete-category/{category}', 'Admin\CategoryController@deleteCategory')->name('category_action_delete');
         Route::get('/{category}/picture-delete', 'Admin\CategoryController@deletePicture')->name('category_delete_picture');
+
+    });
+
+    Route::group(['prefix' => 'galery'], function () {
+        Route::get('/', 'Admin\GaleryController@index')->name('galery_list');
+        Route::get('/create', 'Admin\GaleryController@galeryActionCreate')->name('galery_action_create');
+        Route::get('/edit/{galery}', 'Admin\GaleryController@galeryActionEdit')->name('galery_action_edit');
+        Route::post('/create-galery', 'Admin\GaleryController@createGalery')->name('galery_create');
+        Route::post('/edit-galery/{galery}', 'Admin\GaleryController@editGalery')->name('galery_edit');
+        Route::get('/delete-galery/{galery}', 'Admin\GaleryController@deleteGalery')->name('galery_action_delete');
+        Route::get('/{galery}/picture-delete', 'Admin\GaleryController@deletePicture')->name('galery_delete_picture');
 
     });
 

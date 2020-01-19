@@ -121,6 +121,7 @@ if($ip_data && $ip_data->geoplugin_countryName != null)
                         <li class="hidden-xs"><a href="{{route('contact')}}">Контакти</a></li>
                         <li class="hidden-xs"><a href="{{route('faq')}}">Популярнi питання</a></li>
                         <li class="hidden-xs"><a href="{{route('comments')}}">Коментарі</a></li>
+                        <li class="hidden-xs"><a href="{{route('fotogalery')}}">Фотогалерея</a></li>
 
 
                     </ul>

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Galery;
 use App\Models\Comment;
 use App\Models\Filter;
 use App\Models\Likes;
@@ -38,6 +39,7 @@ class RouteServiceProvider extends ServiceProvider
 
         parent::boot();
         Route::model('category', Category::class);
+        Route::model('galery', Galery::class);
         Route::model('product', Product::class);
         Route::model('order', Order::class);
         Route::model('comment', Comment::class);
